@@ -1,4 +1,6 @@
 #labels Phase-Requirements
+=16/9=
+
 Xây dựng trên PHP / MySQL
 
 Sử dụng ... Framework
@@ -6,4 +8,3 @@ Sử dụng ... Framework
 Xampp webserver
 
 Developer tools: Eclipse for PHP / PHP Designer
-
