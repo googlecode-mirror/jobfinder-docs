@@ -1,0 +1,9 @@
+#labels Phase-Requirements
+Xây dựng trên PHP / MySQL
+
+Sử dụng ... Framework
+
+Xampp webserver
+
+Developer tools: Eclipse for PHP / PHP Designer
+
