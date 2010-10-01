@@ -23,11 +23,11 @@
 
 /** General Style Info **/
 body {
-	background: #003d4c;
+	background: #def1f6;
 	color: #fff;
 	font-family:'lucida grande',verdana,helvetica,arial,sans-serif;
 	font-size:90%;
-	margin: 0;
+	margin: 10px 165px;
 }
 a {
 	color: #003d4c;
@@ -43,7 +43,8 @@ a img {
 }
 h1, h2, h3, h4 {
 	font-weight: normal;
-	margin-bottom:0.5em;
+
+-bottom:0.5em;
 }
 h1 {
 	background:#fff;
@@ -72,20 +73,23 @@ ul, li {
 /** Layout **/
 #container {
 	text-align: left;
+    
 }
 
 #header{
-	padding: 10px 20px;
+	padding: 10px 0px;
+   
+    
 }
 #header h1 {
 	line-height:20px;
-	background: #003d4c url('../img/cake.icon.png') no-repeat left;
+	background: #def1f6 url('../img/cake.icon.png') no-repeat left;
 	color: #fff;
 	padding: 0px 30px;
 }
 #header h1 a {
 	color: #fff;
-	background: #003d4c;
+	background: #def1f6;
 	font-weight: normal;
 	text-decoration: none;
 }
@@ -98,6 +102,7 @@ ul, li {
 	background: #fff;
 	clear: both;
 	color: #333;
+    font-size: 85%;
 	padding: 10px 20px 40px 20px;
 	overflow: auto;
 }
@@ -106,7 +111,35 @@ ul, li {
 	padding: 6px 10px;
 	text-align: right;
 }
-
+/** Navi **/
+    ul#list-nav {
+    list-style:none;
+    margin:10px;
+    padding:0;
+    width:auto;
+   
+    }
+    
+    ul#list-nav li {
+    display: inline;
+    
+    }
+    
+    ul#list-nav li a {
+    text-decoration:none;
+    padding:5px 10px;
+    width:auto;
+    background:#485e49;
+    color:#eee;
+    float:left;
+    text-align:center;
+    border-left:3px solid #def1f6;
+    }
+    
+    ul#list-nav li a:hover {
+    background:#a2b3a1;
+    color:#000
+    }
 /** containers **/
 div.form,
 div.index,
