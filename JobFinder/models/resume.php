@@ -1,19 +1,8 @@
 <?php
-class Employer extends AppModel {
-	var $name = 'Employer';
-	var $displayField = 'email';
+class Resume extends AppModel {
+	var $name = 'Resume';
 	var $validate = array(
-		'email' => array(
-			'email' => array(
-				'rule' => array('email'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'password' => array(
+		'jobseeker_id' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
 				//'message' => 'Your custom message here',
@@ -23,7 +12,7 @@ class Employer extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'company_name' => array(
+		'resume_title' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
 				//'message' => 'Your custom message here',
@@ -33,7 +22,27 @@ class Employer extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'company_size' => array(
+		'first_name' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'last_name' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'nationality' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
@@ -73,9 +82,9 @@ class Employer extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'contact_name' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
+		'email' => array(
+			'email' => array(
+				'rule' => array('email'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -83,17 +92,7 @@ class Employer extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'telephone' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'howknow' => array(
+		'status' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
@@ -107,6 +106,13 @@ class Employer extends AppModel {
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 	var $belongsTo = array(
+		'Jobseeker' => array(
+			'className' => 'Jobseeker',
+			'foreignKey' => 'jobseeker_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
 		'Country' => array(
 			'className' => 'Country',
 			'foreignKey' => 'country_id',
@@ -124,9 +130,9 @@ class Employer extends AppModel {
 	);
 
 	var $hasMany = array(
-		'Job' => array(
-			'className' => 'Job',
-			'foreignKey' => 'employer_id',
+		'ResumeEducation' => array(
+			'className' => 'ResumeEducation',
+			'foreignKey' => 'resume_id',
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
@@ -139,7 +145,33 @@ class Employer extends AppModel {
 		),
 		'ResumeSaved' => array(
 			'className' => 'ResumeSaved',
-			'foreignKey' => 'employer_id',
+			'foreignKey' => 'resume_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'ResumeSkill' => array(
+			'className' => 'ResumeSkill',
+			'foreignKey' => 'resume_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'ResumeTargetJob' => array(
+			'className' => 'ResumeTargetJob',
+			'foreignKey' => 'resume_id',
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
@@ -152,7 +184,20 @@ class Employer extends AppModel {
 		),
 		'ResumeViewLog' => array(
 			'className' => 'ResumeViewLog',
-			'foreignKey' => 'employer_id',
+			'foreignKey' => 'resume_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'ResumeWorkExp' => array(
+			'className' => 'ResumeWorkExp',
+			'foreignKey' => 'resume_id',
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',

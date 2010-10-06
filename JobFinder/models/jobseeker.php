@@ -1,7 +1,6 @@
 <?php
-class Employer extends AppModel {
-	var $name = 'Employer';
-	var $displayField = 'email';
+class Jobseeker extends AppModel {
+	var $name = 'Jobseeker';
 	var $validate = array(
 		'email' => array(
 			'email' => array(
@@ -23,7 +22,7 @@ class Employer extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'company_name' => array(
+		'first_name' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
 				//'message' => 'Your custom message here',
@@ -33,9 +32,9 @@ class Employer extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'company_size' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
+		'last_name' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -43,9 +42,9 @@ class Employer extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'address' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
+		'birthday' => array(
+			'date' => array(
+				'rule' => array('date'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -63,29 +62,9 @@ class Employer extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'province_id' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'contact_name' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'telephone' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
+		'residence' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -113,20 +92,13 @@ class Employer extends AppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
-		),
-		'Province' => array(
-			'className' => 'Province',
-			'foreignKey' => 'province_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
 		)
 	);
 
 	var $hasMany = array(
-		'Job' => array(
-			'className' => 'Job',
-			'foreignKey' => 'employer_id',
+		'JobSaved' => array(
+			'className' => 'JobSaved',
+			'foreignKey' => 'jobseeker_id',
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
@@ -137,9 +109,9 @@ class Employer extends AppModel {
 			'finderQuery' => '',
 			'counterQuery' => ''
 		),
-		'ResumeSaved' => array(
-			'className' => 'ResumeSaved',
-			'foreignKey' => 'employer_id',
+		'JobViewLog' => array(
+			'className' => 'JobViewLog',
+			'foreignKey' => 'jobseeker_id',
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
@@ -150,9 +122,9 @@ class Employer extends AppModel {
 			'finderQuery' => '',
 			'counterQuery' => ''
 		),
-		'ResumeViewLog' => array(
-			'className' => 'ResumeViewLog',
-			'foreignKey' => 'employer_id',
+		'Resume' => array(
+			'className' => 'Resume',
+			'foreignKey' => 'jobseeker_id',
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
