@@ -1,82 +1,76 @@
-<h2>Sweet, "JobFinder" got Baked by CakePHP!</h2>
+	<div class="job_new">
 
-<?php
-if (Configure::read() > 0):
-	Debugger::checkSecurityKeys();
-endif;
-?>
-<p>
-<?php
-	if (is_writable(TMP)):
-		echo '<span class="notice success">';
-			__('Your tmp directory is writable.');
-		echo '</span>';
-	else:
-		echo '<span class="notice">';
-			__('Your tmp directory is NOT writable.');
-		echo '</span>';
-	endif;
-?>
-</p>
-<p>
-<?php
-	$settings = Cache::settings();
-	if (!empty($settings)):
-		echo '<span class="notice success">';
-				printf(__('The %s is being used for caching. To change the config edit APP/config/core.php ', true), '<em>'. $settings['engine'] . 'Engine</em>');
-		echo '</span>';
-	else:
-		echo '<span class="notice">';
-				__('Your cache is NOT working. Please check the settings in APP/config/core.php');
-		echo '</span>';
-	endif;
-?>
-</p>
-<p>
-<?php
-	$filePresent = null;
-	if (file_exists(CONFIGS . 'database.php')):
-		echo '<span class="notice success">';
-			__('Your database configuration file is present.');
-			$filePresent = true;
-		echo '</span>';
-	else:
-		echo '<span class="notice">';
-			__('Your database configuration file is NOT present.');
-			echo '<br/>';
-			__('Rename config/database.php.default to config/database.php');
-		echo '</span>';
-	endif;
-?>
-</p>
-<?php
-if (!empty($filePresent)):
-	if (!class_exists('ConnectionManager')) {
-		require LIBS . 'model' . DS . 'connection_manager.php';
-	}
-	$db = ConnectionManager::getInstance();
- 	$connected = $db->getDataSource('default');
-?>
-<p>
-<?php
-	if ($connected->isConnected()):
-		echo '<span class="notice success">';
- 			__('Cake is able to connect to the database.');
-		echo '</span>';
-	else:
-		echo '<span class="notice">';
-			__('Cake is NOT able to connect to the database.');
-		echo '</span>';
-	endif;
-?>
-</p>
-<?php endif;?>
-<h3><?php __('Editing this Page') ?></h3>
-<p>
-<?php
-	printf(__('To change the content of this page, edit: %s
-		To change its layout, edit: %s
-		You can also add some CSS styles for your pages at: %s', true),
-		APP . 'views' . DS . 'pages' . DS . 'home.ctp.<br />',  APP . 'views' . DS . 'layouts' . DS . 'default.ctp.<br />', APP . 'webroot' . DS . 'css');
-?>
-</p>
+	</div>
+<div class="timkiem" >
+	<div class="pane">
+        Tìm việc nhanh : <input type="text" /> 
+        <select >
+            <option>Tất cả các địa điểm</option>
+            <option>Hồ Chí Minh</option>
+            <option>Đồng Nai</option>
+            <option>Bình Dương</option>
+        </select>
+        <input type="button" class="btnsearch" value="Tìm kiếm" />
+    </div>
+</div>
+
+<div class="main">
+	<div class="main_left">
+    	<div class="title">Việc Làm Với Nhà 
+							Tuyển Dụng Hàng Đầu</div>
+		<div class="logo">
+        	<div class="hinh"><img class="border_img" src="img/1.gif" /> <img class="border_img" src="img/2.gif" /></div>
+            <div class="hinh"><img class="border_img" src="img/3.gif" /> <img class="border_img" src="img/4.gif" /></div>
+            <div class="hinh"><img class="border_img" src="img/5.gif" /> <img class="border_img" src="img/6.gif" /></div>
+        	<div class="hinh"><img class="border_img" src="img/1.gif" /> <img class="border_img" src="img/2.gif" /></div>
+            <div class="hinh"><img class="border_img" src="img/3.gif" /> <img class="border_img" src="img/4.gif" /></div>
+            <div class="hinh"><img class="border_img" src="img/5.gif" /> <img class="border_img" src="img/6.gif" /></div>            
+        	<div class="hinh"><img class="border_img" src="img/1.gif" /> <img class="border_img" src="img/2.gif" /></div>
+            <div class="hinh"><img class="border_img" src="img/3.gif" /> <img class="border_img" src="img/4.gif" /></div>
+            <div class="hinh"><img class="border_img" src="img/5.gif" /> <img class="border_img" src="img/6.gif" /></div>            
+            
+        </div>
+    </div>
+    
+    <div class="main_right">
+    	<div class="logongang">
+        	<div class="logonho"><img src="img/7.gif" /><br />Lien he voi Hang may in canon</div>
+            <div class="logonho"><img src="img/7.gif" /><br />Lien he voi Hang may in canon</div>
+            <div class="logonho"><img src="img/7.gif" /><br />Lien he voi Hang may in canon</div>
+            <div class="logonho"><img src="img/7.gif" /><br />Lien he voi Hang may in canon</div>
+             <div class="clearboth"></div>
+        </div>
+        <div class="rl">
+        	<div class="title_xanh">
+        		Việc Làm Tốt Nhất
+            </div>
+            <div class="divleft">
+            	<div class="tin">KS TK Kiểu Dáng Công Nghiệp <br/><br/> <b>VIETTEL GROUP</b></div>
+                <div class="tin">KS TK Kiểu Dáng Công Nghiệp <br /><BR /><b>VIETTEL GROUP</b></div>
+                <div class="tin">KS TK Kiểu Dáng Công Nghiệp <br /><BR /><b>VIETTEL GROUP</b></div>
+                <div class="tin">KS TK Kiểu Dáng Công Nghiệp <br /><BR /><b>VIETTEL GROUP</b></div>
+                <div class="tin">KS TK Kiểu Dáng Công Nghiệp <br /><BR /><b>VIETTEL GROUP</b></div>
+                <div class="tin">KS TK Kiểu Dáng Công Nghiệp <br /><BR /><b>VIETTEL GROUP</b></div>
+				<div class="clearboth"></div>
+            </div>
+            <div class="divright">              
+                <div class="tin1">KS TK Kiểu Dáng Công Nghiệp <br /><BR /><b>VIETTEL GROUP</b></div>
+                <div class="tin1">KS TK Kiểu Dáng Công Nghiệp <br /><BR /><b>VIETTEL GROUP</b></div>
+                <div class="tin1">KS TK Kiểu Dáng Công Nghiệp <br /><BR /><b>VIETTEL GROUP</b></div>
+                <div class="tin1">KS TK Kiểu Dáng Công Nghiệp <br /><BR /><b>VIETTEL GROUP</b></div>
+                <div class="tin1">KS TK Kiểu Dáng Công Nghiệp <br /><BR /><b>VIETTEL GROUP</b></div>
+                <div class="tin1">KS TK Kiểu Dáng Công Nghiệp <br /><BR /><b>VIETTEL GROUP</b></div>
+                <div class="clearboth"></div>
+            </div>
+            <div class="clearboth"></div>
+        </div>
+        <div class="rr"><object height="166" width="178" data="img/f1.swf" type="application/x-shockwave-flash">
+            <param value="img/f1.swf" name="movie">
+            <param value="high" name="quality"></object><br /><img src="img/r1.gif" /><br /><img src="img/r2.gif" /></div>
+        <div class="clearboth"></div>
+    </div>
+    
+    <div class="clearboth"></div>    
+</div>
+
+
