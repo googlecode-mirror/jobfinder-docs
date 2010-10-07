@@ -33,29 +33,71 @@
 <body>
 	<!-- Phần header -->
 	<div class="job_header">
+		<div class="job_wrap_header">
+			<div class="job_tophead"> Top Header </div>
+			<br clear="all"/>
+			<div class="job_toplogobanner">
+				<div class="job_embed">
+				<img width="980px" height="200px" src="../img/banner.png" alt="asdasd" />					
+						Embed flash here		
+					
+				</div>
+				<!--  
+				<embed height="110" width="360" allowscriptaccess="always" wmode="transparent" 
+						type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" 
+						src="../img/banner.swf" />
+				-->					
+			</div>
+		</div>
 
 	</div>
 	
+	
+	
 	<div class="job_nav">
-		<div class="job_menu">
+		<div class="job_wrapmenu">
+			<div class="job_menu">
     		<ul>
-        		<li><a href="#"> <span>Trang chủ</span>  </a></li>
-	            <li><a href="#"> Tìm việc </a></li>
-	            <li><a href="#"> Tìm hồ sơ </a></li>
-	            <li><a href="#"> Quản lý nghề nghiệp </a></li>
+        		<li>
+        			<a href="#"> 
+        				<span> Trang chủ</span>  
+        			</a>
+        		</li>
+	            <li>
+        			<a href="#"> 
+        				<span> Tìm việc</span>  
+        			</a>
+        		</li>
+	            <li>
+        			<a href="#"> 
+        				<span> Tìm hồ sơ</span>  
+        			</a>
+        		</li>
+	            <li>
+        			<a href="#"> 
+        				<span> Quản lý nghề nghiệp</span>  
+        			</a>
+        		</li>
         	</ul>
-   	 	</div>
-	    <div class="member_area">
-	        <ul>
-	        	<li><a href="#"> Đăng nhập </a></li>
-	            <li><a href="#"> Đăng ký </a></li>
-	        </ul>
-	    </div>
+   	 		</div>
+   	 	
+	   	 	<!-- Đăng nhập - Đăng ký -->
+		    <div class="member_area">
+		        <a href="#"> Đăng nhập </a>
+		        <span class="job_spacemenu"> | </span>
+		        <a href="#"> Đăng ký </a>    
+		    </div>
+		
+		</div>
+		
+   	 	
     <div class="clearboth">
     </div>
 	</div>
+	
 	<!-- Phần body -> home -->
 	<?php echo $content_for_layout; ?>
+	
 	<!-- Phần Footer -->
 	<div class="footer">Về JobFinder| Liên Hệ| Góc Báo Chí| Trợ Giúp| Thỏa Thuận Sử Dụng| Quy Định Bảo Mật| Sơ Đồ Trang Web
 	</div>
