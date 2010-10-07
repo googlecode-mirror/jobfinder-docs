@@ -19,64 +19,47 @@
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+<?php
+	echo $this->Html->meta('icon');
+	echo $this->Html->css('cake.generic');
+	echo $scripts_for_layout;
+?>
+
 <head>
-	<?php echo $this->Html->charset(); ?>
-	<title>
-		<?php __('CakePHP'); ?>
-		<?php echo $title_for_layout; ?>
-	</title>
-	<?php
-		echo $this->Html->meta('icon');
-		echo $this->Html->css('cake.generic');
-		echo $scripts_for_layout;
-	?>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>JobFinder</title>	
 </head>
+
 <body>
-	<div id="container">
-       <!-- Header -->
-	   <div id="header">
-	       	<h1>
-                <?php echo $this->Html->link(__('CakePHP: the rapid', true), 'http://cakephp.org'); ?>
-            </h1>
-            <!-- Banner -->
-            
-            <img align="middle" src="http://localhost/JobFinder/webroot/img/banner.png"/>
-            
-            
-            
-            <!-- navigation -->
-            <ul id="list-nav">
-                <li><a href="http://localhost/JobFinder">Trang chủ</a></li>
-                <li><a href="#">Tìm việc</a></li>
-                <li><a href="employers">Tạo hồ sơ</a></li>
-                <li><a href="#">Quản lý nghề nghiệp</a></li>
-            </ul>
-	  <!-- end Header -->	
-	  <br clear="all" />
-    </div>
-    
+	<!-- Phần header -->
+	<div class="job_header">
 
-
-		</div>
-		<div id="content">
-
-			<?php echo $this->Session->flash(); ?>
-			<?php echo $content_for_layout; ?>
-
-		</div>
-        
-        
-        
-        <!-- Footer -->
-		<div id="footer">
-			<?php echo $this->Html->link(
-					$this->Html->image('cake.power.gif', array('alt'=> __('CakePHP: the rapid development php framework', true), 'border' => '0')),
-					'http://www.cakephp.org/',
-					array('target' => '_blank', 'escape' => false)
-				);
-			?>
-		</div>
 	</div>
 	
+	<div class="job_nav">
+		<div class="job_menu">
+    		<ul>
+        		<li><a href="#"> <span>Trang chủ</span>  </a></li>
+	            <li><a href="#"> Tìm việc </a></li>
+	            <li><a href="#"> Tìm hồ sơ </a></li>
+	            <li><a href="#"> Quản lý nghề nghiệp </a></li>
+        	</ul>
+   	 	</div>
+	    <div class="member_area">
+	        <ul>
+	        	<li><a href="#"> Đăng nhập </a></li>
+	            <li><a href="#"> Đăng ký </a></li>
+	        </ul>
+	    </div>
+    <div class="clearboth">
+    </div>
+	</div>
+	<!-- Phần body -> home -->
+	<?php echo $content_for_layout; ?>
+	<!-- Phần Footer -->
+	<div class="footer">Về JobFinder| Liên Hệ| Góc Báo Chí| Trợ Giúp| Thỏa Thuận Sử Dụng| Quy Định Bảo Mật| Sơ Đồ Trang Web
+	</div>
 </body>
+
+
 </html>
