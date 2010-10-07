@@ -17,71 +17,117 @@ padding:0;
 clear:both;
 }
 
+/**/
 .job_header {
-background:url(../img/bgtop.gif) repeat;
-color:#FFFFFF;
-height:130px;
-min-width:980px;
-}
-/* Menu*/
+	background:url(../img/bgtop.gif) repeat;
+	color:#FFFFFF;
+	height:130px;
+	min-width:980px;
+	}
 
+.job_wrap_header {
+	margin:auto;
+	position:relative;
+	width:980px;
+	}
+
+.job_tophead {
+	float:left;
+	padding-top:5px;
+	}
+	
+.job_toplogobanner {
+	padding-left:15px;
+	padding-top:25px;
+	width:790px;
+	}
+.job_embed{
+	color: violet;
+	}
+	
+
+/* Job Navigation */
 .job_nav {
-background:none repeat scroll 0 0 #7FDCF8;
-height:30px;
-min-width:980px;
-margin-bottom:5px;
+	background:none repeat scroll 0 0 #7FDCF8;
+	height:30px;
+	min-width:980px;
+	margin-bottom:5px;
+	}
 
-}
-
+/* Job Menu */
 .job_menu {
 margin:auto;
 width:980px;
 }
+
+/* Job Wrapmenu*/
+.job_wrapmenu {
+	margin:auto;
+	width:980px;
+}
+
+
+/* Job Menu ul */
 .job_menu ul {
-float:left;
-margin:0;
-padding:10px 0 0 0;
-list-style-type:none;
+	float:left;
+	margin:0;
+	padding: 5px 0 0 0;
+	list-style-type:none;
 }
-
-.job_menu ul li a span{
-display:block;
-padding:3px 11px 3px 7px;
-}
-
-/* Đang nhap - dang ky */
-.member_area{
-padding:10px 0 0 0;
-float: right;
-}
-
 
 .job_menu ul li{
-float:left;
-margin-right:15px;
-
+	float:left;
+	margin-right:15px;
 }
 
 .job_menu ul li a{
-color:#333333;
-display:block;
-float:left;
-font-weight:bold;
-height:15px;
-padding:0 0 4px 4px;
-text-decoration:none;
-text-transform:uppercase;
+	color:#333333;
+	display:block;
+	float:left;
+	font-weight:bold;
+	height:15px;
+	padding:0 0 4px 4px;
+	text-decoration:none;
+	text-transform:uppercase;
 }
 
+.job_menu ul li a span, .job_menu ul li a.vsredirect span {
+	display:block;
+	padding:3px 11px 3px 7px;
+}
+
+.job_menu ul li a:hover{
+	background: url("../img/job_nav_over.gif") no-repeat scroll 100% 0 transparent;
+	color: #00CCFF;
+	text-decoration: none;
+}
+
+/* Job member area : Đang nhap - dang ky */
+.member_area{
+	padding:8px;
+	float: right;
+}
+
+a{
+	color: #666666;
+}
+
+a:hover{
+	color: #FF9900;
+}
+
+.job_spacemenu {
+	padding:0 10px;
+}
 
 .member_area ul {
-float:left;
-margin:0 40px 0 0;
-padding:0;
-list-style:none;
+	float:left;
+	margin:0 40px 0 0;
+	padding:0;
+	list-style:none;
 
 }
-/* Hihi   */
+
 .member_area ul li{
 float:left;
 margin-right:5px;
