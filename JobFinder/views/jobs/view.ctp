@@ -1,64 +1,92 @@
+<?php 
+	$company_size = array(1 =>"1-10" , 2 => "10-50"); 
+?>
 <div class="jobs view">
 <h2><?php  __('Job Detail');?></h2>
-<fieldset title="Sơ lược về công ty">
-	<dl>
-		<dd>
-			
-		</dd>
-	</dl>
-		
-
+<fieldset>
+<legend>Sơ lược về công ty</legend>
+<table>
+	<tr>
+		<td><?php __('Logo here'); ?></td>
+		<td><?php echo $job[0]['JobContactInformation'][0]['company_name']; ?></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td><?php echo $job[0]['JobContactInformation'][0]['company_website']; ?></td>
+	</tr>
+	<tr>
+		<td><?php __('Sơ lược về công ty: '); ?></td>
+		<td><?php echo $job[0]['JobContactInformation'][0]['company_profile']; ?></td>
+	</tr>
+	<tr>
+		<td><?php __('Quy mô công ty: '); ?></td>
+		<td><?php echo $company_size[$job[0]['JobContactInformation'][0]['company_size']]; ?></td>
+	</tr>
+	<tr>
+		<td><?php __('Địa chỉ công ty: '); ?></td>
+		<td><?php echo $job[0]['JobContactInformation'][0]['company_address']; ?></td>
+	</tr>
+</table>
 </fieldset>
-	<dl>
-		<dt><?php __('Job Title'); ?></dt>
-		<dd>
-			<?php echo $job['Job']['job_title']; ?>
-			&nbsp;
-		</dd>
-		<dt><?php __('Job Code'); ?></dt>
-		<dd>
-			<?php echo $job['Job']['job_code']; ?>
-			&nbsp;
-		</dd>
-		<dt><?php __('Job Level Id'); ?></dt>
-		<dd>
-			<?php echo $job['Job']['job_level_id']; ?>
-			&nbsp;
-		</dd>
-		<dt><?php __('Job Type Id'); ?></dt>
-		<dd>
-			<?php echo $job['Job']['job_type_id']; ?>
-			&nbsp;
-		</dd>
-		<dt><?php __('Salary Range'); ?></dt>
-		<dd>
-			<?php echo $job['Job']['salary_range']; ?>
-			&nbsp;
-		</dd>
-		<dt><?php __('Minimun Salary'); ?></dt>
-		<dd>
-			<?php echo $job['Job']['minimun_salary']; ?>
-			&nbsp;
-		</dd>
-		<dt><?php __('Maximun Salary'); ?></dt>
-		<dd>
-			<?php echo $job['Job']['maximun_salary']; ?>
-			&nbsp;
-		</dd>
-		<dt><?php __('Job Category Id'); ?></dt>
-		<dd>
-			<?php echo $job['Job']['job_category_id']; ?>
-			&nbsp;
-		</dd>
-		<dt><?php __('Job Description'); ?></dt>
-		<dd>
-			<?php echo $job['Job']['job_description']; ?>
-			&nbsp;
-		</dd>
-		<dt><?php __('Status'); ?></dt>
-		<dd>
-			<?php echo $job['Job']['status']; ?>
-			&nbsp;
-		</dd>
-	</dl>
+
+<fieldset>
+<legend>Chi tiết công việc</legend>
+<table>
+	<tr>
+		<td><?php __('Chức danh: '); ?></td>
+		<td>
+			<?php echo $job[0]['Job']['job_title']; ?>
+		</td>
+		</tr>
+	<tr>
+		<td><?php __('Mô tả công việc: '); ?></td>
+		<td>
+			<?php echo $job[0]['Job']['job_description']; ?>
+		</td>
+		</tr>
+	<tr>
+		<td><?php __('Cấp bậc tối thiểu: '); ?></td>
+		<td>
+			<?php echo $job[0]['JobLevel']['level']; ?>
+		</td>
+		</tr>
+	<tr>
+		<td><?php __('Loại hình làm việc: '); ?></td>
+		<td>
+			<?php echo $job[0]['JobType']['type']; ?>
+		</td>
+		</tr>
+	<tr>
+		<td><?php __('Ngành nghề: '); ?></td>
+		<td>
+			<?php echo $job[0]['JobCategory']['name']; ?>
+		</td>
+		</tr>
+	<tr>
+		<td><?php __('Status'); ?></td>
+		<td>
+			<?php echo $job[0]['Job']['status']; ?>
+		</td>
+		</tr>
+	<tr>
+		<td><?php __('Salary Range'); ?></td>
+		<td>
+			<?php echo $job[0]['Job']['salary_range']; ?>
+		<td>
+		</tr>
+	<tr>
+		<td><?php __('Minimun Salary'); ?></td>
+		<td>
+			<?php echo $job[0]['Job']['minimun_salary']; ?>
+		</td>
+		</tr>
+	<tr>
+		<td><?php __('Maximun Salary'); ?></td>
+		<td>
+			<?php echo $job[0]['Job']['maximun_salary']; ?>
+		</td>
+	</tr>
+</table>
+	
+</fieldset>
 </div>
