@@ -31,4 +31,32 @@
  * @subpackage    cake.app
  */
 class AppController extends Controller {
+	function checkSession(){
+		
+	// fill $username with session data
+	$jobseeker = $this->Session->read('Jobseeker');
+
+	// if the $username is empty,
+	// send user to login page
+	if (!$jobseeker){
+		$this->redirect('/jobseekers/login');
+		exit();
+	} /*else {
+		// if $username is not empty,
+		// check to make sure it's correct
+		$results = $this->Jobseeker->findByEmail($jobseeker);
+
+		// if not correct, send to login page
+		if(!$results){
+			$this->Session->delete('Jobseeker');
+			$this->Session->setFlash('Incorrect session data.');
+			$this->redirect('/jobseekers/login');
+			exit();
+		}
+
+		// otherwise set $user variable as users email address
+		$this->set('Jobseeker', $results['Jobseeker']['email']);
+	}
+	}*/
+}
 }
