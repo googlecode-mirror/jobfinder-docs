@@ -1,6 +1,6 @@
 <?php
-class SkillGroup extends AppModel {
-	var $name = 'SkillGroup';
+class CategoryType extends AppModel {
+	var $name = 'CategoryType';
 	var $displayField = 'name';
 	var $validate = array(
 		'name' => array(
@@ -17,9 +17,9 @@ class SkillGroup extends AppModel {
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 	var $hasMany = array(
-		'Skill' => array(
-			'className' => 'Skill',
-			'foreignKey' => 'skill_group_id',
+		'Category' => array(
+			'className' => 'Category',
+			'foreignKey' => 'category_type_id',
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
@@ -31,5 +31,6 @@ class SkillGroup extends AppModel {
 			'counterQuery' => ''
 		)
 	);
+
 }
 ?>

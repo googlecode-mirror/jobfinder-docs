@@ -7,7 +7,7 @@ class JobsController extends AppController {
 	function beforeFilter(){
 		if ($this->action != 'index')
         {
-            $this->checkSession();
+            $this->checkJobSeekerSession();
         }
 	}
 	
@@ -41,9 +41,10 @@ class JobsController extends AppController {
 	}
 	
 	function admin_approve($id = null) {
-		//Status: 0 chưa duyệt
-	 	// 1: đã duyệt
-	 	// 2: ko đạt
+		//Status: 0 => "Chờ duyệt", 
+		//1=> "Đã duyệt", 
+		//2 => "Không đạt", 
+		//3 => "Đã chỉnh sửa chờ duyệt"
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid status', true));
 			$this->redirect(array('action' => 'admin_index'));

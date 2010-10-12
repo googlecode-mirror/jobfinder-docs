@@ -1,8 +1,11 @@
 <?php
 class SkillGroupsController extends AppController {
-
 	var $name = 'SkillGroups';
 
+	function beforeFilter(){
+		$this->checkAdminSession();
+	}
+	
 	function admin_index() {
 		$this->SkillGroups->recursive = 0;
 		$this->set('skillGroups', $this->paginate());
