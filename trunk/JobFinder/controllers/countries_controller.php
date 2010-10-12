@@ -1,7 +1,10 @@
 <?php
 class CountriesController extends AppController {
-
 	var $name = 'Countries';
+
+	function beforeFilter(){
+		$this->checkAdminSession();
+	}
 
 	function admin_index() {
 		$this->Country->recursive = 0;

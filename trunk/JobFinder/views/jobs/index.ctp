@@ -1,3 +1,5 @@
+<?php echo $this->element('job_menu'); ?>
+
 <div class="jobs index">
 	<h2><?php __('Việc Làm Tốt Nhất');?></h2>
 	<fieldset>

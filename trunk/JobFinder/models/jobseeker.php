@@ -1,87 +1,95 @@
 <?php
 class Jobseeker extends AppModel {
 	var $name = 'Jobseeker';
+	function getActivationHash()
+	{
+		if (!isset($this->id)) {
+			return false;
+		}
+		return substr(Security::hash(Configure::read('Security.salt') . $this->field('created') . date('Ymd')), 0, 8);
+	}
+	
 	var $validate = array(
 		'email' => array(
 			'email' => array(
 				'rule' => array('email'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
+	//'message' => 'Your custom message here',
+	//'allowEmpty' => false,
+	//'required' => false,
+	//'last' => false, // Stop validation after this rule
+	//'on' => 'create', // Limit validation to 'create' or 'update' operations
+	),
+	),
 		'password' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
+	//'message' => 'Your custom message here',
+	//'allowEmpty' => false,
+	//'required' => false,
+	//'last' => false, // Stop validation after this rule
+	//'on' => 'create', // Limit validation to 'create' or 'update' operations
+	),
+	),
 		'first_name' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
+	//'message' => 'Your custom message here',
+	//'allowEmpty' => false,
+	//'required' => false,
+	//'last' => false, // Stop validation after this rule
+	//'on' => 'create', // Limit validation to 'create' or 'update' operations
+	),
+	),
 		'last_name' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
+	//'message' => 'Your custom message here',
+	//'allowEmpty' => false,
+	//'required' => false,
+	//'last' => false, // Stop validation after this rule
+	//'on' => 'create', // Limit validation to 'create' or 'update' operations
+	),
+	),
 		'birthday' => array(
 			'date' => array(
 				'rule' => array('date'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
+	//'message' => 'Your custom message here',
+	//'allowEmpty' => false,
+	//'required' => false,
+	//'last' => false, // Stop validation after this rule
+	//'on' => 'create', // Limit validation to 'create' or 'update' operations
+	),
+	),
 		'country_id' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'residence' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
+	//'message' => 'Your custom message here',
+	//'allowEmpty' => false,
+	//'required' => false,
+	//'last' => false, // Stop validation after this rule
+	//'on' => 'create', // Limit validation to 'create' or 'update' operations
+	),
+	),
+		'province_id' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+	//'message' => 'Your custom message here',
+	//'allowEmpty' => false,
+	//'required' => false,
+	//'last' => false, // Stop validation after this rule
+	//'on' => 'create', // Limit validation to 'create' or 'update' operations
+	),
+	),
 		'howknow' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
+			'notempty' => array(
+				'rule' => array('notempty'),
+	//'message' => 'Your custom message here',
+	//'allowEmpty' => false,
+	//'required' => false,
+	//'last' => false, // Stop validation after this rule
+	//'on' => 'create', // Limit validation to 'create' or 'update' operations
+	),
+	),
 	);
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
@@ -92,8 +100,22 @@ class Jobseeker extends AppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
-		)
-	);
+			),
+		'Province' => array(
+			'className' => 'Province',
+			'foreignKey' => 'province_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+			),
+		'Category' => array(
+			'className' => 'Category',
+			'foreignKey' => 'howknow',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+			)
+			);
 
 	var $hasMany = array(
 		'JobSaved' => array(
@@ -108,7 +130,7 @@ class Jobseeker extends AppModel {
 			'exclusive' => '',
 			'finderQuery' => '',
 			'counterQuery' => ''
-		),
+			),
 		'JobViewLog' => array(
 			'className' => 'JobViewLog',
 			'foreignKey' => 'jobseeker_id',
@@ -121,7 +143,7 @@ class Jobseeker extends AppModel {
 			'exclusive' => '',
 			'finderQuery' => '',
 			'counterQuery' => ''
-		),
+			),
 		'Resume' => array(
 			'className' => 'Resume',
 			'foreignKey' => 'jobseeker_id',
@@ -134,8 +156,9 @@ class Jobseeker extends AppModel {
 			'exclusive' => '',
 			'finderQuery' => '',
 			'counterQuery' => ''
-		)
-	);
+			)
+			);
+
 
 }
 ?>
