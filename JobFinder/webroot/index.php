@@ -50,7 +50,7 @@
  *
  */
 	if (!defined('CAKE_CORE_INCLUDE_PATH')) {
-		define('CAKE_CORE_INCLUDE_PATH', 'E:' . DS . 'xampp' . DS . 'htdocs' . DS . 'CakePHP');
+		define('CAKE_CORE_INCLUDE_PATH', 'D:' . DS . 'Nhocvp' . DS . 'xampp' . DS . 'htdocs' . DS . 'CakePHP');
 	}
 
 /**
