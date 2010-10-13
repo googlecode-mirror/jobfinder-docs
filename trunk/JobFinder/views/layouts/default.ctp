@@ -44,7 +44,7 @@
     			<span class="vnw_forempleft"><!-- --></span>
     			<div class="vnw_forempct">
     				Bạn tìm người tài?
-                    <br>
+                    <br />
                     <a href="#/?lang=2">» Cho nhà tuyển dụng</a>
                 </div>
                 <!-- end vnw_forempct -->
@@ -52,18 +52,18 @@
     			<span class="vnw_forempright"><!-- --></span>
             </div>
             <!-- end vnw_foremp -->            
-	        <br clear="all">
+	        <br clear="all" />
         
 		<!-- begin logo - banner -->
 		<div class="vnw_toplogobanner">
 			<div class="floatLeft">
                 <a href="#/">
                         <img width="235" height="85" alt="" 
-                        src="../img/vnw_logo_vn.gif">
+                        src="../img/vnw_logo_vn.gif" />
                 </a>
             </div>
 			
-			<br clear="all">
+			<br clear="all" />
 		</div>
 		<!-- end logo - banner -->
         </div><!-- end vnw_wrap_header -->
@@ -72,42 +72,15 @@
 
 
 <!-- begin navigation -->
-    <div id="vnw_nav">
-	   <div class="vnw_wrapmenu">
-            
-        	<ul class="vnw_mainnav">
-            	<li>
-                    <a class="" href="http://localhost/JobFinder/">
-                        <span>Trang chủ</span>
-                    </a>
-                </li>
-        	  	<li>
-                    <a class="" href="#">
-                        <span>Tìm việc</span>
-                    </a>
-                </li>
-        		<li>
-                    <a class="" href="#">
-                        <span>Tạo hồ sơ</span>
-                    </a>
-                </li>
-        	    <li class="noborder">
-                    <a class="" href="#">
-                        <span>Quản lý nghề nghiệp</span>
-                    </a>
-                </li>
-        	</ul>
-			<div class="vnw_login">
-        		<a href="#">Đăng nhập</a>
-			    <span class="vnw_spacemenu"> | </span>
-			    <a href="#">Đăng ký</a>
-		    </div>
-            <br clear="all">
-        </div><!-- end wrap -->
-    </div><!-- end navigation -->
+
+    <!--end navigation -->
+    
+    <!-- Phần body -> home -->
+    <div class="container">
+    	<?php echo $content_for_layout; ?>
+    </div>
+		
 	
-	<!-- Phần body -> home -->
-	<?php echo $content_for_layout; ?>
 	
 	<!-- Phần Footer -->
     
@@ -128,7 +101,7 @@
 		<a href="/privacy_policy.php">Quy Định Bảo Mật</a>
             <span class="vnw_spacemenu">|</span>
 		<a href="/site_map.php">Sơ Đồ Trang Web</a>
-		<p align="center"> Đồ án chuyên nghành A Đại học Hoa Sen: Website tuyển dụng<br>
+		<p align="center"> Đồ án chuyên nghành A Đại học Hoa Sen: Website tuyển dụng
 					</p>
 	</div><!-- end vnw_wrap -->	
     <!--[if IE 6]><div><img src="http://images.vietnamworks.com/spacer.gif" alt="" width="980" height="1" /></div><![endif]--> 

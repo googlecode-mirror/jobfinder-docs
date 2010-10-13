@@ -8,7 +8,7 @@ class Jobseeker extends AppModel {
 		}
 		return substr(Security::hash(Configure::read('Security.salt') . $this->field('created') . date('Ymd')), 0, 8);
 	}
-	
+
 	var $validate = array(
 		'email' => array(
 			'email' => array(
@@ -19,6 +19,14 @@ class Jobseeker extends AppModel {
 	//'last' => false, // Stop validation after this rule
 	//'on' => 'create', // Limit validation to 'create' or 'update' operations
 	),
+		'isUnique' => array(
+			'rule' => array('isUnique'),
+		'message' => 'This email has already been used.',
+	//'allowEmpty' => false,
+	//'required' => false,
+	//'last' => false, // Stop validation after this rule
+	//'on' => 'create', // Limit validation to 'create' or 'update' operations
+	)
 	),
 		'password' => array(
 			'notempty' => array(
@@ -117,7 +125,7 @@ class Jobseeker extends AppModel {
 			)
 			);
 
-	var $hasMany = array(
+			var $hasMany = array(
 		'JobSaved' => array(
 			'className' => 'JobSaved',
 			'foreignKey' => 'jobseeker_id',

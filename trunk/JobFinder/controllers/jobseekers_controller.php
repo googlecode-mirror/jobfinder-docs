@@ -21,6 +21,11 @@ class JobseekersController extends AppController {
 				$this->Jobseeker->save($dbuser, false, array('last_login'));
 				// redirect the user
 				$this->Session->setFlash('You have successfully logged in.');
+				$auth_redirect = $this->Session->read('auth_redirect');
+				if(!$auth_redirect){
+					$this->Session->delete('auth_redirect');
+					$this->redirect($auth_redirect);
+				}
 				$this->redirect('/jobseekers/index');
 			} else {
 				$this->set('error', 'Either your email or password is incorrect.');
@@ -85,6 +90,9 @@ class JobseekersController extends AppController {
 	}
 	
 	function index(){
+		//save user visit url
+		$request_params = Router::getParams();
+		$this->Session->write('auth_redirect','/'.$request_params['url']['url']);
 		$this->checkJobSeekerSession();
 	}
 }
