@@ -4,7 +4,7 @@
 	echo $this->Html->css('jobs');
 ?>
 
-<div class="jobs_index">
+<div class="jobs index">
 
 	<h2 class="jobs_index h2"><span><?php __('Việc Làm Tốt Nhất');?></span></h2>
 	
