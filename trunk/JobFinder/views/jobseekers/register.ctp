@@ -7,9 +7,12 @@ echo $form->input('first_name');
 echo $form->input('last_name');
 echo $form->input('birthday', array('dateFormat' => 'DMY', 'minYear' => date('Y') - 70, 'maxYear' => date('Y') - 15));
 echo $form->input('gender', array('options' => array(0=> 'Nam', 1 =>'Nữ'), 'empty' => '...'));
-echo $form->input('country_id', array('empty' => 'Vui lòng chọn..'));
-echo $form->input('province_id', array('empty' => 'Vui lòng chọn..'));
+echo $form->input('country_id', array('empty' => 'Vui lòng chọn..','id'=>'countries'));
+echo $form->input('province_id', array('empty' => 'Vui lòng chọn..','id'=>'provinces'));
 echo $form->input('howknow', array('label' => 'How do you know ?', 'empty' => 'Vui lòng chọn...'));
+echo $captchaTool->show();
+echo $captchaError;
 echo $form->submit('Create Account');
+echo $ajax->observeField('countries',array('url'=>'update_province_select','update'=>'provinces'));
 echo $form->end();
 ?>

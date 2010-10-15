@@ -1,7 +1,8 @@
 <?php
 class SkillGroupsController extends AppController {
 	var $name = 'SkillGroups';
-
+	var $helpers = array('Html','Form','Ajax','Javascript');    
+	
 	function beforeFilter(){
 		$this->checkAdminSession();
 	}

@@ -44,7 +44,7 @@ class PagesController extends AppController {
  * @var array
  * @access public
  */
-	var $helpers = array('Html');
+	var $helpers = array('Html','Form','Ajax','Javascript');    
 
 /**
  * This controller does not use a model
@@ -52,7 +52,7 @@ class PagesController extends AppController {
  * @var array
  * @access public
  */
-	var $uses = array();
+	var $uses = array('Job');
 
 /**
  * Displays a view

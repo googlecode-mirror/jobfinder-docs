@@ -1,7 +1,8 @@
 <?php
 class CountriesController extends AppController {
 	var $name = 'Countries';
-
+	var $helpers = array('Html','Form','Ajax','Javascript');    
+	
 	function beforeFilter(){
 		$this->checkAdminSession();
 	}

@@ -2,6 +2,7 @@
 
 class ProvincesController extends AppController {
 	var $name = 'Provinces';
+	var $helpers = array('Html','Form','Ajax','Javascript');    
 	
 	function beforeFilter(){
 		$this->checkAdminSession();
@@ -65,6 +66,14 @@ class ProvincesController extends AppController {
 		}
 		$this->Session->setFlash(__('Province was not deleted', true));
 		$this->redirect(array('action' => 'index'));
+	}
+	
+	function getlist($country_id=null) { 
+		if (!$country_id) {
+			return $this->Province->find('list');
+	    } else {
+	    	return $this->Province->find('list',array('conditions'=>array('country_id'=>$country_id)));
+	    }
 	}
 }
 ?>

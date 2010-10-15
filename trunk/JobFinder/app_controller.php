@@ -31,7 +31,7 @@
  * @subpackage    cake.app
  */
 class AppController extends Controller {
-	var $uses = array('Jobseeker','Employer','Admin'); 
+	var $uses = array('Jobseeker','Employer','Admin','Category','CategoryType'); 
 	
 	function checkJobSeekerSession(){	
 		// fill $jobseeker with session data
@@ -53,6 +53,9 @@ class AppController extends Controller {
                 $this->Session->setFlash('Incorrect session data.');
                 $this->redirect('/jobseekers/login');
                 exit();
+            }
+            else {
+            	return $jobseeker;
             }
         }
 	}
@@ -78,6 +81,10 @@ class AppController extends Controller {
                 $this->redirect('/employers/login');
                 exit();
             }
+            else {
+            	return $employer;
+            }
+            
         }
 	}
 	
@@ -94,7 +101,7 @@ class AppController extends Controller {
 		else {
         	// if $admin is not empty,
             // check to make sure it's correct
-            $results = $this->Admin->findByUsername($jobseeker['Admin']['username']);
+            $results = $this->Admin->findByUsername($admin['Admin']['username']);
             // if not correct, send to login page
             if(!$results){
 	            $this->Session->delete('Admin');
