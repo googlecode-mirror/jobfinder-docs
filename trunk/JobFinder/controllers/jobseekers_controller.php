@@ -132,6 +132,23 @@ class JobseekersController extends AppController {
 		$request_params = Router::getParams();
 		$this->Session->write('auth_redirect','/'.$request_params['url']['url']);
 		$this->checkJobSeekerSession();
+		$jobseeker=$this->Session->read('jobseeker');
+		
+		$this->paginate['Jobseeker.JobSaved'] = array('conditions'=> array('Jobseeker.JobSaved.jobseeker_id'=>$jobseeker['Jobseeker']['id']));
+		$this->set('jobsaveds', $this->paginate('Jobseeker.JobSaved'));
+	}
+	function delete_jobsaved($id=null) {
+		if (!$id) {
+                        $this->Session->setFlash(__('Invalid id for Job', true));
+                        $this->redirect(array('action'=>'index'));
+                }
+                if ($this->Jobseeker->JobSaved->delete($id)) {
+                        $this->Session->setFlash(__('Job Saved deleted', true));
+                        $this->redirect(array('action'=>'index'));
+                }
+                $this->Session->setFlash(__('Job saved was not deleted', true));
+                $this->redirect(array('action' => 'index'));
+		
 	}
 	
 	function update_province_select() {
