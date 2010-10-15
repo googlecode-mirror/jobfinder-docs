@@ -1,9 +1,9 @@
 <?php
 
 class JobLevelsController extends AppController {
-
 	var $name = 'JobLevels';
-
+	var $helpers = array('Html','Form','Ajax','Javascript');    
+	
 	function beforeFilter(){
 		$this->checkAdminSession();
 	}

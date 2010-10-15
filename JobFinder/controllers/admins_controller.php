@@ -1,7 +1,8 @@
 <?php
 class AdminsController extends AppController {
 	var $name = 'Admins';
-
+	var $helpers = array('Html','Form','Ajax','Javascript');    
+	
 	function login() {
 		$admin = $this->Session->read('Admin');
 		if ($admin){

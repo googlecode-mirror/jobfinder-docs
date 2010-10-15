@@ -2,7 +2,7 @@
 class JobsController extends AppController {
 	var $name = 'Jobs';
 	var $scaffold;
-	var $helpers = array('Html', 'Javascript', 'Ajax');
+	var $helpers = array('Html','Form','Ajax','Javascript');
 	
 	function beforeFilter(){
 		if ($this->action != 'index')

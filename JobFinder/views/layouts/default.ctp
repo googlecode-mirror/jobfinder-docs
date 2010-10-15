@@ -23,6 +23,7 @@
 	echo $this->Html->meta('icon');
 	echo $this->Html->css('cake.generic');
 	echo $scripts_for_layout;
+	echo $javascript->link(array('prototype'));
 ?>
 
 <head>
@@ -76,9 +77,9 @@
     <!--end navigation -->
     
     <!-- Phần body -> home -->
-    <div class="container">
+    
     	<?php echo $content_for_layout; ?>
-    </div>
+    
 		
 	
 	

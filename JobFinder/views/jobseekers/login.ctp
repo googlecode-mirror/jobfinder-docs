@@ -1,5 +1,7 @@
+<?php 
+	echo $this->element('job_menu');
+?>
 <?php
-    echo $session->flash('auth');
     echo $form->create('Jobseeker', array('action' => 'login'));
     echo $form->input('email');
     echo $form->input('password');

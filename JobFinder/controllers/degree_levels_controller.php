@@ -1,9 +1,9 @@
 <?php
 
 class DegreeLevelsController extends AppController {
-
 	var $name = 'DegreeLevels';
-
+	var $helpers = array('Html','Form','Ajax','Javascript');    
+	
 	function beforeFilter(){
 		$this->checkAdminSession();
 	}
