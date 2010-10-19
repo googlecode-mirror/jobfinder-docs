@@ -18,11 +18,11 @@
      <h2>Thông tin liên lạc</h2>
     <ul>
        <li><?php echo $this->Form->input('address', array('label'=>'Địa chỉ:'));?></li>
-       <li><?php echo $this->Form->input('country_id', array('label'=>'Quốc gia:','empty' => 'Vui lòng chọn..', 'id'=>'countries'));?></li>
-       <li><?php echo $this->Form->input('province_id', array('label'=>'Tỉnh/Thành phố:','empty' => 'Vui lòng chọn..', 'id'=>'provinces'));?></li>
+       <li><?php echo $this->Form->input('country_id', array('label'=>'Quốc gia:','empty' => 'Vui lòng chọn..','value'=> $jobseeker['Jobseeker']['country_id'], 'id'=>'countries'));?></li>
+       <li><?php echo $this->Form->input('province_id', array('label'=>'Tỉnh/Thành phố:','empty' => 'Vui lòng chọn..','value'=> $jobseeker['Jobseeker']['province_id'], 'id'=>'provinces'));?></li>
        <li><?php echo $this->Form->input('telephone', array('label'=>'Số điện thoại:'));?></li>
        <li><?php echo $this->Form->input('mobile', array('label'=>'Số di động:'));?></li>
-       <li><?php echo $this->Form->input('email', array('label'=>'Địa chỉ Email:'));?></li>
+       <li><?php echo $this->Form->input('email', array('label'=>'Địa chỉ Email:','value'=> $jobseeker['Jobseeker']['email']));?></li>
     </ul>
     <?php echo $ajax->observeField('countries',array('url'=>'update_province_select','update'=>'provinces'));?>
     <div class="actions">
