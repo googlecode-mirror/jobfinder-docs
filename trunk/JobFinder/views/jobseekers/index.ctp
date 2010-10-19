@@ -69,6 +69,7 @@
 		<td><?php echo $resume['Resume']['modified']; ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View', true), array('controller'=> 'resumes','action' => 'view', $resume['Resume']['id'])); ?>
+			<?php echo $this->Html->link(__('Edit', true), array('controller'=> 'resumes','action' => 'edit', $resume['Resume']['id'])); ?>
 			<?php echo $this->Html->link(__('Delete', true), array('action' => 'delete_resume', $resume['Resume']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $resume['Resume']['id'])); ?>
 		</td>
 	</tr>
