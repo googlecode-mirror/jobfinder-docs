@@ -69,6 +69,7 @@ class ProvincesController extends AppController {
 	}
 	
 	function getlist($country_id=null) { 
+		
 		if (!$country_id) {
 			return $this->Province->find('list');
 	    } else {

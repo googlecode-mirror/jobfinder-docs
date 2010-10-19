@@ -23,9 +23,6 @@ class SkillsController extends AppController {
 	function admin_add() {
 		$this->set('skillGroups', $this->Skill->SkillGroup->find('list'));
 		
-		/*$this->set('skillGroups', $this->Skill->SkillGroup->find('list', array(
-					'conditions' => array('SkillGroup.id' => $this->Skill->SkillGroup->Type->field('id', array('id =' => '4cad871e-7254-4a94-b278-059439e9a00e'))))));*/
-		
 		if(!empty($this->data)) {
 			$this->Skill->create();
 			if ($this->Skill->save($this->data)) {

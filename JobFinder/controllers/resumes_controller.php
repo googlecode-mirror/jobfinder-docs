@@ -4,7 +4,6 @@ class ResumesController extends AppController {
 	var $helpers = array('Html','Form','Ajax','Javascript');
 	var $components = array('RequestHandler');
 	var $uses = array('Resume', 'ResumeWorkExp');
-	var $id;
 	
 	function createResume(){
 		$jobseeker = $this->checkJobSeekerSession();
@@ -38,15 +37,37 @@ class ResumesController extends AppController {
 
 	function createResumeWorkExp($resumeID = null){
 		$jobseeker = $this->checkJobSeekerSession();
+		$this->set('jobLevels', $this->ResumeWorkExp->ResumeJobExp->JobLevel->find('list'));
+		$this->set('jobexps', $this->ResumeWorkExp->ResumeJobExp->find('all', array('conditions' => 
+				array('ResumeJobExp.resume_work_exp_id' => $this->Session->read('workID')))));
 		if (!$resumeID && !empty($this->data)) {
 			$this->ResumeWorkExp->create();
 			if ($this->ResumeWorkExp->save($this->data)) {
+				$work_id = $this->ResumeWorkExp->id;
+				$this->Session->write('workID',$work_id);
+				foreach($this->data['ResumeJobExp'] as $job) {
+        		$job = array('ResumeJobExp' => $job);
+        		$job['ResumeJobExp']['resume_work_exp_id'] = $work_id;
+
+		        // clear any previous Book data
+		        $this->ResumeWorkExp->ResumeJobExp->create();
+		        // We set the Book data this way so that validation is processed correctly
+		        $this->ResumeWorkExp->ResumeJobExp->set($job);
+		        
+		        $this->ResumeWorkExp->ResumeJobExp->save();
+		       
+				
 				$this->Session->setFlash(__('The resume has been saved', true));
-				$this->redirect(array('action' => 'createResume', $resumeID));
+				//$this->redirect(array('action' => 'createResume', $resumeID));
+				$this->redirect(array('action' => 'createResumeWorkExp', $this->data['ResumeWorkExp']['resume_id']));
+			}
+				
 			} else {
 				$this->Session->setFlash(__('The resume could not be saved. Please, try again.', true));
 				$this->redirect(array('action' => 'createResumeWorkExp', $this->data['ResumeWorkExp']['resume_id']));
 			}
+			
 		}
+		
 	}
 }

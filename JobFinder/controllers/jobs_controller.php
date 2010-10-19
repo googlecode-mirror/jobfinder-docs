@@ -3,6 +3,7 @@ class JobsController extends AppController {
 	var $name = 'Jobs';
 	var $scaffold;
 	var $helpers = array('Html','Form','Ajax','Javascript');
+	var $uses = array('Job','Province');
 	
 	function beforeFilter(){
 		if ($this->action != 'index')
@@ -18,7 +19,7 @@ class JobsController extends AppController {
 	}
 
 	function view($id = null) {
-		
+		$this->set('provinces',$this->Province->find('list'));
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid job', true));
 			$this->redirect(array('action' => 'index'));
