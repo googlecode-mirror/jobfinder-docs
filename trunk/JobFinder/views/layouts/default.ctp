@@ -23,7 +23,9 @@
 	echo $this->Html->meta('icon');
 	echo $this->Html->css('cake.generic');
 	echo $scripts_for_layout;
-	echo $javascript->link(array('prototype'));
+	echo $html->charset('UTF-8');
+    //echo $javascript->link(array('prototype'));
+    
 ?>
 
 <head>
@@ -77,7 +79,7 @@
     <!--end navigation -->
     
     <!-- Phần body -> home -->
-    
+        <?php echo $this->element('job_menu');?>
     	<?php echo $content_for_layout; ?>
     
 		
