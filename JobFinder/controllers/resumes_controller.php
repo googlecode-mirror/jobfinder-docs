@@ -4,7 +4,12 @@ class ResumesController extends AppController {
 	var $helpers = array('Html','Form','Ajax','Javascript');
 	var $components = array('RequestHandler');
 	var $uses = array('Resume', 'ResumeWorkExp');
-	
+	function beforeFilter(){
+		if ($this->action != 'index')
+        {
+            $this->checkJobSeekerSession();
+        }
+	}
 	function createResume(){
 		$jobseeker = $this->checkJobSeekerSession();
 		$this->set('jobseeker', $jobseeker);
@@ -69,5 +74,13 @@ class ResumesController extends AppController {
 			
 		}
 		
+	}
+	function view($id = null) {
+		
+		if (!$id) {
+			$this->Session->setFlash(__('Invalid resume', true));
+			$this->redirect(array('action' => 'index'));
+		}
+		$this->set('resume', $this->Resume->findAllById($id));
 	}
 }
