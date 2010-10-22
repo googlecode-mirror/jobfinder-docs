@@ -43,9 +43,9 @@ class ResumeTargetJob extends AppModel {
 			),
 		),
 		'job_types' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
+			'multiple' => array(
+				'rule' => array('multiple', array('min'=>1, 'max'=>3)),
+       			'message' => 'Please select at least one and maximum 3 option',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -53,9 +53,9 @@ class ResumeTargetJob extends AppModel {
 			),
 		),
 		'job_locations' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
+			'multiple' => array(
+				'rule' => array('multiple', array('min'=>1, 'max'=>3)),
+				'message' => 'Please select at least one and maximum 3 option',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -63,19 +63,9 @@ class ResumeTargetJob extends AppModel {
 			),
 		),
 		'job_categories' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'company_size' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
+			'multiple' => array(
+				'rule' => array('multiple', array('min'=>1, 'max'=>3)),
+				'message' => 'Please select at least one and maximum 3 option',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule

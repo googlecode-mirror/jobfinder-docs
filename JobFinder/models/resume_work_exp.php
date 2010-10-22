@@ -14,8 +14,8 @@ class ResumeWorkExp extends AppModel {
 		),
 		'years_work' => array(
 			'numeric' => array(
-				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
+				'rule' => array('range', -1, 11),
+				'message' => 'Số năm kinh nghiệm từ 0 đến 10 năm',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule

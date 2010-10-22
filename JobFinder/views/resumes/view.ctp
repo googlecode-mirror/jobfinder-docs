@@ -1,65 +1,62 @@
 ﻿<?php
 	echo $this->Html->meta('icon');
 	echo $this->Html->css('job detail');
+	$gender =  array(0 => 'Nam', 1 =>'Nữ');
+	$martial =  array(0 => 'Độc thân', 1 =>'Đã kết hôn');
 ?>
-
 <div class="resume_detail">
     <h2><?php  __('Resume Detail');?></h2>
     <fieldset>
-    <legend>H? so b?n thân</legend>
+    <legend>Hồ sơ</legend>
        
     <table>
     	<tr>
-    		<td><?php __('ID Ngu?i xin vi?c'); ?></td>
-    		<td><?php echo $resume[0]['Resume'][0]['jobseeker_id']; ?></td>
+    		<td><?php __('Tên hồ sơ: '); ?></td>
+    		<td><?php echo $resume['Resume']['resume_title']; ?></td>
     	</tr>
     	<tr>
-    		<td><?php __('Tên hồ sơ '); ?></td>
-    		<td><?php echo $resume[0]['Resume'][0]['resume_title']; ?></td>
+    		<td><?php __('Họ tên: '); ?></td>
+    		<td><?php echo $resume['Resume']['last_name'].' '. $resume['Resume']['first_name']; ?></td>
     	</tr>
     	<tr>
-    		<td><?php __('Họ '); ?></td>
-    		<td><?php echo $resume[0]['Resume'][0]['first_name']; ?></td>
+    		<td><?php __('Ngày sinh: '); ?></td>
+    		<td><?php echo $resume['Resume']['birthday']; ?></td>
     	</tr>
     	<tr>
-    		<td><?php __('Tên'); ?></td>
-    		<td><?php echo $resume[0]['Resume'][0]['last_name']; ?></td>
-    	</tr>
-    	<tr>
-    		<td><?php __('Ðịa chỉ công ty: '); ?></td>
-    		<td><?php echo $resume[0]['Resume'][0]['birthday']; ?></td>
+    		<td><?php __('Giới tính: '); ?></td>
+    		<td><?php echo $gender[$resume['Resume']['gender']]; ?></td>
     	</tr>
 		<tr>
-    		<td><?php __('Tình trạng hôn nhân '); ?></td>
-    		<td><?php echo $resume[0]['Resume'][0]['martial_status']; ?></td>
+    		<td><?php __('Tình trạng hôn nhân: '); ?></td>
+    		<td><?php echo $martial[$resume['Resume']['martial_status']]; ?></td>
     	</tr>
 		<tr>
-    		<td><?php __('Quốc tịch '); ?></td>
-    		<td><?php echo $resume[0]['Resume'][0]['nationality']; ?></td>
+    		<td><?php __('Quốc tịch: '); ?></td>
+    		<td><?php echo $nationalities[$resume['Resume']['nationality']]; ?></td>
     	</tr>
 		<tr>
-    		<td><?php __('Ðịa chỉ liên lạc'); ?></td>
-    		<td><?php echo $resume[0]['Resume'][0]['address']; ?></td>
+    		<td><?php __('Ðịa chỉ liên lạc: '); ?></td>
+    		<td><?php echo $resume['Resume']['address']; ?></td>
     	</tr>
 		<tr>
-    		<td><?php __('Nước '); ?></td>
-    		<td><?php echo $resume[0]['Resume'][0]['country_id']; ?></td>
+    		<td><?php __('Quốc gia: '); ?></td>
+    		<td><?php echo $resume['Country']['name']; ?></td>
     	</tr>
 		<tr>
-    		<td><?php __('Tỉnh thành '); ?></td>
-    		<td><?php echo $resume[0]['Resume'][0]['province_id']; ?></td>
+    		<td><?php __('Tỉnh/Thành phố: '); ?></td>
+    		<td><?php echo $resume['Province']['name']; ?></td>
     	</tr>
 		<tr>
-    		<td><?php __('Ðiện thoại liên lạc '); ?></td>
-    		<td><?php echo $resume[0]['Resume'][0]['telephone']; ?></td>
+    		<td><?php __('Ðiện thoại liên lạc: '); ?></td>
+    		<td><?php echo $resume['Resume']['telephone']; ?></td>
     	</tr>
 		<tr>
-    		<td><?php __('Điện thoại di động'); ?></td>
-    		<td><?php echo $resume[0]['Resume'][0]['mobile']; ?></td>
+    		<td><?php __('Di động: '); ?></td>
+    		<td><?php echo $resume['Resume']['mobile']; ?></td>
     	</tr>
 		<tr>
-    		<td><?php __('Email '); ?></td>
-    		<td><?php echo $resume[0]['Resume'][0]['email']; ?></td>
+    		<td><?php __('Địa chỉ Email: '); ?></td>
+    		<td><?php echo $resume['Resume']['email']; ?></td>
     	</tr>
 		
     </table>

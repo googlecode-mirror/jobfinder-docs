@@ -24,7 +24,7 @@ class JobsController extends AppController {
 			$this->Session->setFlash(__('Invalid job', true));
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->set('job', $this->Job->findAllById($id));
+		$this->set('job', $this->Job->read(null,$id));
 	}
 	
 	function admin_index()

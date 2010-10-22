@@ -24,7 +24,7 @@
 	echo $this->Html->css('cake.generic');
 	echo $scripts_for_layout;
 	echo $html->charset('UTF-8');
-    //echo $javascript->link(array('prototype'));
+	echo $javascript->link(array('prototype','false'));
     
 ?>
 
@@ -80,11 +80,9 @@
     
     <!-- Phần body -> home -->
         <?php echo $this->element('job_menu');?>
+        <?php echo $this->Session->flash();?>
     	<?php echo $content_for_layout; ?>
     
-		
-	
-	
 	<!-- Phần Footer -->
     
     

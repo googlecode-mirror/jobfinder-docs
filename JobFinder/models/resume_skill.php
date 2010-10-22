@@ -32,6 +32,17 @@ class ResumeSkill extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
+		'year_use' => array(
+			'numeric' => array(
+				'rule' => array('range',0,11),
+				'allowEmpty' => true,
+				'message' => 'Số năm sử dụng từ 0 đến 10 năm hoặc để trống',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
 	);
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
@@ -49,7 +60,14 @@ class ResumeSkill extends AppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
-		)
+		),
+		'Category' => array(
+			'className' => 'Category',
+			'foreignKey' => 'proficiency',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
 	);
 }
 ?>

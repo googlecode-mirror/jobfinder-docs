@@ -104,6 +104,13 @@ class Job extends AppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
+		),
+		'Category' => array(
+			'className' => 'Category',
+			'foreignKey' => 'salary_range',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
 		)
 	);
 
