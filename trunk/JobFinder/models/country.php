@@ -1,9 +1,9 @@
 <?php
 class Country extends AppModel {
 	var $name = 'Country';
-	var $displayField = 'country_name';
+	var $displayField = 'name';
 	var $validate = array(
-		'country_name' => array(
+		'name' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
 				//'message' => 'Your custom message here',

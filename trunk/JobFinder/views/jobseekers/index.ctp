@@ -1,4 +1,4 @@
-<?php echo $this->element('job_menu'); ?>
+<div class='container'>
 <div class="jobsaveds index">
 	<h2><?php __('Job saved');?></h2>
 	<table cellpadding="0" cellspacing="0">
@@ -69,7 +69,7 @@
 		<td><?php echo $resume['Resume']['modified']; ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View', true), array('controller'=> 'resumes','action' => 'view', $resume['Resume']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit', true), array('controller'=> 'resumes','action' => 'edit', $resume['Resume']['id'])); ?>
+			<?php echo $this->Html->link(__('Edit', true), array('controller'=> 'resumes','action' => 'modifyResume', $resume['Resume']['id'])); ?>
 			<?php echo $this->Html->link(__('Delete', true), array('action' => 'delete_resume', $resume['Resume']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $resume['Resume']['id'])); ?>
 		</td>
 	</tr>
@@ -88,4 +88,5 @@
  |
 		<?php echo $this->Paginator->next(__('next', true) . ' >>', array(), null, array('class' => 'disabled'));?>
 	</div>
+</div>
 </div>

@@ -5,6 +5,7 @@
 			<th><?php echo $this->Paginator->sort('id');?></th>
 			<th><?php echo $this->Paginator->sort('category_type_id');?></th>
 			<th><?php echo $this->Paginator->sort('name');?></th>
+			<th><?php echo $this->Paginator->sort('key');?></th>
 			<th><?php echo $this->Paginator->sort('created');?></th>
 			<th><?php echo $this->Paginator->sort('modified');?></th>
 			<th class="actions"><?php __('Actions');?></th>
@@ -23,6 +24,7 @@
 			<?php echo $this->Html->link($category['CategoryType']['name'], array('controller' => 'category_types', 'action' => 'view', $category['CategoryType']['id'])); ?>
 		</td>
 		<td><?php echo $category['Category']['name']; ?>&nbsp;</td>
+		<td><?php echo $category['Category']['key']; ?>&nbsp;</td>
 		<td><?php echo $category['Category']['created']; ?>&nbsp;</td>
 		<td><?php echo $category['Category']['modified']; ?>&nbsp;</td>
 		<td class="actions">

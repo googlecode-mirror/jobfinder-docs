@@ -1,7 +1,8 @@
 <div class='container'>
-<?php echo $this->Form->create('Resume',array('action'=>'createResume'));?>
+<?php echo $this->Form->create('Resume', array('action'=>'modifyResume'));?>
     <h2>Thông tin hồ sơ</h2>
     <ul>
+    	<li><?php echo $this->Form->input('id', array('type'=>'hidden')); ?></li>
     	<li><?php echo $this->Form->input('resume_title', array('label'=>'Tiêu đề hồ sơ:')); ?></li>
     </ul>
     <h2>Thông tin cá nhân</h2>

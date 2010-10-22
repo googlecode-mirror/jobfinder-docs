@@ -85,6 +85,7 @@ class ResumeJobExp extends AppModel {
 		'end_date' => array(
 			'date' => array(
 				'rule' => array('date'),
+				'allowEmpty' => true,
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,

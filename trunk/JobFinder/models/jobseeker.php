@@ -116,16 +116,9 @@ class Jobseeker extends AppModel {
 			'fields' => '',
 			'order' => ''
 			),
-		'Category' => array(
-			'className' => 'Category',
-			'foreignKey' => 'howknow',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-			)
 			);
 
-			var $hasMany = array(
+	var $hasMany = array(
 		'JobSaved' => array(
 			'className' => 'JobSaved',
 			'foreignKey' => 'jobseeker_id',

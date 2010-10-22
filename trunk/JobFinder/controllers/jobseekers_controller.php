@@ -56,7 +56,7 @@ class JobseekersController extends AppController {
 		$this->set('howknows', $this->Category->find('list', array(
 					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'HowKnow'))))));
 		$this->set('countries', $this->Jobseeker->Country->find('list'));
-		$this->set('provinces', $this->Jobseeker->Province->find('list'));
+		$provinces = array();
 		$this->set('captchaError', null);
 		if (!empty($this->data)) {
 			if ($this->Captcha->validate()) {
@@ -170,8 +170,10 @@ class JobseekersController extends AppController {
 
 	function update_province_select() {
 		if(!empty($this->data['Jobseeker']['country_id'])) {
-			$options = $this->requestAction('/provinces/getlist/'.$this->data['Jobseeker']['country_id']);
-			$this->set('options',$options);
+			$this->set('options',$this->Jobseeker->Province->find('list',array(
+				'conditions' => array('Province.country_id' => $this->data['Jobseeker']['country_id']),
+				'group' => array('Province.name'))));
+			$this->render('/jobseekers/ajax_dropdown');
 		}
 	}
 }

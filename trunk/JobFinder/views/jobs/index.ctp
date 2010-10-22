@@ -1,9 +1,9 @@
-
 <?php
 	echo $this->Html->meta('icon');
 	echo $this->Html->css('jobs');
 ?>
 
+<div class="container">
 <div class="jobs index">
 
 	<h2 class="jobs_index h2"><span><?php __('Việc Làm Tốt Nhất');?></span></h2>
@@ -30,6 +30,6 @@
 	<br clear="all">
 	
 </div>
-
+</div>
 
 

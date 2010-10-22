@@ -1,6 +1,3 @@
-<?php 
-	echo $this->element('job_menu');
-?>
 <?php
     echo $form->create('Jobseeker', array('action' => 'login'));
     echo $form->input('email');

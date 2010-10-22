@@ -32,7 +32,7 @@
  */
 class AppController extends Controller {
 	var $uses = array('Jobseeker','Employer','Admin','Category','CategoryType'); 
-	
+
 	function checkJobSeekerSession(){	
 		// fill $jobseeker with session data
 		$jobseeker = $this->Session->read('Jobseeker');
