@@ -43,5 +43,39 @@ class EmployersController extends AppController {
 		$this->Session->setFlash('You have successfully logged out.');
 		$this->redirect('/');
     }
+    
+    function admin_index()
+	{
+		$employers = $this->Employer->find('all');
+        $this->set('employers', $this->paginate());
+		
+	}
+
+	function admin_view($id = null) {
+		if (!$id) {
+			$this->Session->setFlash(__('Invalid employer', true));
+			$this->redirect(array('action' => 'admin_index'));
+		}
+		$this->set('employers', $this->Employer->findAllById($id));
+	}
+	
+	function admin_edit($id = null) {
+	
+		if (!$id && empty($this->data)) {
+			$this->Session->setFlash(__('Invalid actived', true));
+			$this->redirect(array('action' => 'admin_index'));
+		}
+		if (!empty($this->data)) {
+			if ($this->Employer->save($this->data, false, array('actived'))) {
+				$this->Session->setFlash(__('Has been saved', true));
+				$this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('Could not be saved. Please, try again.', true));
+			}
+		}
+		if (empty($this->data)) {
+			$this->data = $this->Employer->read(null, $id);
+		}
+	}
 }
 ?>
