@@ -1,11 +1,11 @@
 <?php
 class JobseekersController extends AppController {
 	var $name = 'Jobseekers';
-	var $helpers = array('Html','Form','Ajax','Javascript','Recaptcha.CaptchaTool');
-	var $components = array('RequestHandler','Email','Recaptcha.Captcha' => array(
+	var $helpers = array('Html','Form','Ajax','Javascript','Recaptcha.CaptchaTool');      
+	var $components = array('RequestHandler','Email','Recaptcha.Captcha' => array( 
                 'private_key' => '6LeP2r0SAAAAAPYU1WQUkoj9IyVljJVQiBVshL1x',  
                 'public_key' => '6LeP2r0SAAAAAN8qyexGrxfP-6cMh6vWGuFAOL3K'));
-
+	
 	function login(){
 		$jobseeker = $this->Session->read('Jobseeker');
 		if ($jobseeker){
@@ -30,13 +30,13 @@ class JobseekersController extends AppController {
 					// redirect the user
 					$this->Session->setFlash('You have successfully logged in.');
 					$auth_redirect = $this->Session->read('auth_redirect');
-					if(!empty($auth_redirect)){
+					if(!$auth_redirect){
 						$this->Session->delete('auth_redirect');
 						$this->redirect($auth_redirect);
 					}
 					$this->redirect('/jobseekers/index');
 				}
-			}
+			} 
 			else {
 				$this->Session->setFlash('Either your email or password is incorrect.');
 				$this->data['Jobseeker']['password'] = null;
@@ -56,11 +56,10 @@ class JobseekersController extends AppController {
 		$this->set('howknows', $this->Category->find('list', array(
 					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'HowKnow'))))));
 		$this->set('countries', $this->Jobseeker->Country->find('list'));
-		$provinces = array();
+		$this->set('provinces', $this->Jobseeker->Province->find('list'));
 		$this->set('captchaError', null);
 		if (!empty($this->data)) {
-			if ($this->Captcha->validate()) {
-				$this->set('captchaError', null);
+		
 				$this->data['Jobseeker']['password'] = md5($this->data['Jobseeker']['password']);
 				//active user
 				$this->data['Jobseeker']['actived'] = 1;
@@ -73,10 +72,10 @@ class JobseekersController extends AppController {
 				}
 			}
 			else {
-				$this->set('captchaError','Captcha code invalid');
+				//$this->set('captchaError','Captcha code invalid');
 				$this->data['Jobseeker']['password'] = null;
 			}
-		}
+
 	}
 
 	function activate($user_id = null, $in_hash = null) {
@@ -95,7 +94,7 @@ class JobseekersController extends AppController {
 			}
 		}
 	}
-
+	
 	function __sendActivationEmail($user_id) {
 		$user = $this->Jobseeker->find(array('Jobseeker.id' => $user_id), array('Jobseeker.id','Jobseeker.email'), null, false);
 		if ($user === false) {
@@ -131,49 +130,47 @@ class JobseekersController extends AppController {
 		//save user visit url
 		$request_params = Router::getParams();
 		$this->Session->write('auth_redirect','/'.$request_params['url']['url']);
-		$jobseeker = $this->checkJobSeekerSession();
-		
-		$this->paginate['JobSaved'] =  array('conditions' => array('jobseeker_id' => $jobseeker['Jobseeker']['id']));
-		$this->paginate['Resume'] =  array('conditions' => array('jobseeker_id' => $jobseeker['Jobseeker']['id']));
-		$this->Jobseeker->Resume->recursive = -1;
-		$this->set('jobsaveds', $this->paginate('JobSaved'));
-		$this->set('resumes', $this->paginate('Resume'));
+		$this->checkJobSeekerSession();
 	}
-
-	function delete_jobsaved($id=null) {
-		if (!$id) {
-			$this->Session->setFlash(__('Invalid id for Job', true));
-			$this->redirect(array('action'=>'index'));
-		}
-		if ($this->Jobseeker->JobSaved->delete($id)) {
-			$this->Session->setFlash(__('Job Saved deleted', true));
-			$this->redirect(array('action'=>'index'));
-		}
-		$this->Session->setFlash(__('Job saved was not deleted', true));
-		$this->redirect(array('action' => 'index'));
-
-	}
-
-	function delete_resume($id=null) {
-		if (!$id) {
-			$this->Session->setFlash(__('Invalid id for resume', true));
-			$this->redirect(array('action'=>'index'));
-		}
-		if ($this->Jobseeker->Resume->delete($id)) {
-			$this->Session->setFlash(__('Resume deleted', true));
-			$this->redirect(array('action'=>'index'));
-		}
-		$this->Session->setFlash(__('Resume was not deleted', true));
-		$this->redirect(array('action' => 'index'));
-
-	}
-
+	
 	function update_province_select() {
-		if(!empty($this->data['Jobseeker']['country_id'])) {
-			$this->set('options',$this->Jobseeker->Province->find('list',array(
-				'conditions' => array('Province.country_id' => $this->data['Jobseeker']['country_id']),
-				'group' => array('Province.name'))));
-			$this->render('/jobseekers/ajax_dropdown');
+	  if(!empty($this->data['Jobseeker']['country_id'])) {
+	    $options = $this->requestAction('/provinces/getlist/'.$this->data['Jobseeker']['country_id']);
+	    $this->set('options',$options);
+	  }
+	}
+    
+    function admin_index()
+	{
+		$jobseekers = $this->Jobseeker->find('all');
+        $this->set('jobseekers', $this->paginate());
+		
+	}
+
+	function admin_view($id = null) {
+		if (!$id) {
+			$this->Session->setFlash(__('Invalid jobseeker', true));
+			$this->redirect(array('action' => 'admin_index'));
+		}
+		$this->set('jobseekers', $this->Jobseeker->findAllById($id));
+	}
+	
+	function admin_edit($id = null) {
+	
+		if (!$id && empty($this->data)) {
+			$this->Session->setFlash(__('Invalid actived', true));
+			$this->redirect(array('action' => 'admin_index'));
+		}
+		if (!empty($this->data)) {
+			if ($this->Jobseeker->save($this->data, false, array('actived'))) {
+				$this->Session->setFlash(__('Has been saved', true));
+				$this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('Could not be saved. Please, try again.', true));
+			}
+		}
+		if (empty($this->data)) {
+			$this->data = $this->Jobseeker->read(null, $id);
 		}
 	}
 }
