@@ -1,1746 +1,2327 @@
 @charset "utf-8";
 
-/* CSS Document */
-
-body {
-    color:#666666;
-    font-family:Verdana,Arial,Helvetica,sans-serif;
-    font-size:11px;
-    }
-    
-.container {
-	line-height:16px;
-	margin:0 auto;
-	padding-top:10px;
-	width:980px;
-}
-
-* {
-    outline-color:-moz-use-text-color;
-    outline-style:none;
-    outline-width:medium;
-    }
-
-    
-
-.wrap_cr {
-    padding-top:10px;
-    width:980px;
-    margin:auto;
-    height:1%;
-    padding-bottom:10px;
-    }
-.link {
-    color:#555555;
-    text-decoration:underline
-    }
-.link:hover {
-     color:#ff9900;
-     text-decoration:underline
-    }
-
-.nolink {
-     color:#939598;
-     text-decoration:underline;
-    }
-
-.both {
-     clear:both
-    } 
-a.searchresult{
-    color:#003399; 
-    text-decoration: underline;
-    }
-a.searchresult:visited{
-    color:#333333; 
-    text-decoration: underline;
-    }
-a.searchresult:hover{
-    color:#F7931D; 
-    text-decoration: underline;
-    } 
-
-body table {
-font-size:11px;
-text-align:left;
-}
-body div {
-}
-
-
-#vnw_header {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("../img/vnw_topheadbg.gif");
-    background-position:0 0;
-    background-repeat:repeat-x;
-    color:#FFFFFF;
-    height:130px;
-    min-width:980px;
-    }
-#vnw_header a:hover {
-    color: #FF9900;
-}
-
-a:hover {
-    color:#F7931D;
-    text-decoration: underline;
-    } 
-
-.vnw_wrap_header {
-    margin-bottom:auto;
-    margin-left:auto;
-    margin-right:auto;
-    margin-top:auto;
-    position:relative;
-    width:980px;
-    }
-    
-.vnw_tophead {
-    float:left;
-    padding-top:5px;
-    }
-        
-#vnw_header a {
-    color:#FFFFFF;
-    }
-
-.vnw_btnlang_vn {
-    right:170px;
-    }    
-        
-.text_yellow {
-    color:#FFFF00;
-    }
-
-.vnw_spacemenu {
-    padding-bottom:0;
-    padding-left:10px;
-    padding-right:10px;
-    padding-top:0;
-    }
-
-.vnw_foremp {
-    height:52px;
-    position:absolute;
-    right:0;
-    text-align:right;
-    top:0;
-    }
-
-.vnw_forempleft {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("../img/vnw_bgforemp.gif");
-    background-position:0 0;
-    background-repeat:no-repeat;
-    display:block;
-    float:left;
-    height:52px;
-    width:9px;
-    }
-
-.vnw_forempct {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("../img/vnw_bgforemp.gif");
-    background-position:0 100%;
-    background-repeat:repeat-x;
-    float:left;
-    height:37px;
-    line-height:18px;
-    padding-bottom:10px;
-    padding-left:0;
-    padding-right:0;
-    padding-top:5px;
-    text-align:right;
-    }
-
-.vnw_forempct a {
-    color:#FFFF00 !important;
-    font-weight:bold;
-    text-decoration:none;
-    }
-.vnw_forempright {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("../img/vnw_bgforemp.gif");
-    background-position:100% 0;
-    background-repeat:no-repeat;
-    display:block;
-    float:left;
-    height:52px;
-    width:9px;
-    }
-
-.vnw_toplogobanner {
-    padding-left:15px;
-    padding-top:15px;
-    width:790px;
-    }
-.floatLeft {
-    float:left;
-    } 
-
-img {
-    border-bottom-color:-moz-use-text-color;
-    border-bottom-style:none;
-    border-bottom-width:medium;
-    border-left-color-ltr-source:physical;
-    border-left-color-rtl-source:physical;
-    border-left-color-value:-moz-use-text-color;
-    border-left-style-ltr-source:physical;
-    border-left-style-rtl-source:physical;
-    border-left-style-value:none;
-    border-left-width-ltr-source:physical;
-    border-left-width-rtl-source:physical;
-    border-left-width-value:medium;
-    border-right-color-ltr-source:physical;
-    border-right-color-rtl-source:physical;
-    border-right-color-value:-moz-use-text-color;
-    border-right-style-ltr-source:physical;
-    border-right-style-rtl-source:physical;
-    border-right-style-value:none;
-    border-right-width-ltr-source:physical;
-    border-right-width-rtl-source:physical;
-    border-right-width-value:medium;
-    border-top-color:-moz-use-text-color;
-    border-top-style:none;
-    border-top-width:medium;
-    }    
-    
-    
-.vnw_topbanner {
-    height:71px;
-    margin-top:10px;
-    width:550px;
-    }   
- 
-
-element.style {
-    clear:both;
-    } 
-      
-element.style {
-    position:relative;
-    }    
-
-.vnw_topbanner table {
-    width:550px;
-    }  
-.vnw_topbanner table td {
-    text-align:right;
-    }    
-
-
-
-
-#vnw_nav {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:#7FDCF8;
-    background-image:none;
-    background-position:0 0;
-    background-repeat:repeat;
-    height:30px;
-    min-width:980px;
-    }
-
-
-
-.vnw_wrapmenu {
-    margin-bottom:auto;
-    margin-left:auto;
-    margin-right:auto;
-    margin-top:auto;
-    width:980px;
-    }
-
-ul.vnw_mainnav {
-    float:left;
-    margin-bottom:0;
-    margin-left:0;
-    margin-right:0;
-    margin-top:0;
-    padding-bottom:0;
-    padding-left:0;
-    padding-right:0;
-    padding-top:5px;
-    }
-
-ul.vnw_mainnav li a:hover span {
-    background-attachment: scroll;
-    background-color: transparent;
-    background-image: url("../img/vnw_mainnav_over.gif");
-    background-position: 100% 0;
-    background-repeat: no-repeat;
-
-}
-
-ul {
-    list-style-type:none;
-    }
-
-ul.vnw_mainnav li {
-    float:left;
-    margin-right:5px;
-    }
-
-ul.vnw_mainnav li a, ul.vnw_mainnav li a.vsredirect {
-    color:#333333;
-    display:block;
-    float:left;
-    font-weight:bold;
-    height:15px;
-    padding-bottom:4px;
-    padding-left:4px;
-    padding-right:0;
-    padding-top:0;
-    text-decoration:none;
-    text-transform:uppercase;
-    }
-
-ul.vnw_mainnav li a span, ul.vnw_mainnav li a.vsredirect span {
-    display:block;
-    padding-bottom:3px;
-    padding-left:7px;
-    padding-right:11px;
-    padding-top:3px;
-    }
-
-
-
-.vnw_login {
-    float:right;
-    padding-top:8px;
-    }
-
-a {
-    color:#666666;
-    } 
-
-.vnw_spacemenu {
-    padding-bottom:0;
-    padding-left:10px;
-    padding-right:10px;
-    padding-top:0;
-    }
-
-
-
-/*home*/
-
-#vnw_contentbg {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("../img/vnw_contentbg.gif");
-    background-position:0 0;
-    background-repeat:repeat-x;
-    min-width:980px;
-    padding-top:10px;
-    }
-
-.vnw_wrap {
-    margin-bottom:auto;
-    margin-left:auto;
-    margin-right:auto;
-    margin-top:auto;
-    width:950px;
-    }
-
-.vnw_bgpanel {
-    color:#333333;
-    height:209px;
-    position:relative;
-    width:950px;
-    }
-.vnw_bgpanel_2_vn {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("../img/vnw_panel2_vn.jpg");
-    background-position:0 0;
-    background-repeat:no-repeat;
-    }
-  
-.vnw_bgpanel_3_vn {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("../img/vnw_panel3_vn.jpg");
-    background-position:0 0;
-    background-repeat:no-repeat;
-    }
-
-.vnw_bgpanel_1_vn {
-	background:url("../img/vnw_panel1_vn.jpg") no-repeat scroll 0 0 transparent;
-	}
-
-.vnw_bgpanel_1_vn, 
-.vnw_bgpanel_2_vn, 
-.vnw_bgpanel_3_vn {
-    height:209px;
-    width:950px;
-    }
-
-ul.vnw_paneltab {
-    left:390px;
-    margin-bottom:0;
-    margin-left:0;
-    margin-right:0;
-    margin-top:0;
-    padding-bottom:0;
-    padding-left:0;
-    padding-right:0;
-    padding-top:0;
-    position:absolute;
-    top:8px;
-    z-index:1;
-    }
-
-ul.vnw_paneltab li {
-    float:left;
-    margin-right:10px;
-    }
-
-ul.vnw_paneltab li a.tabactive {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("../img/vnw_tab_panel.gif");
-    background-position:0 -46px;
-    background-repeat:no-repeat;
-    color:#00CCFF;
-    }
-
-ul.vnw_paneltab li a.tabactive span {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("../img/vnw_tab_panel.gif");
-    background-position:100% 0;
-    background-repeat:no-repeat;
-    }
-
-element.style {
-    display:block;
-    }
-
-.vnw_title2 {
-    color:#FF9900;
-    font-size:14px;
-    font-weight:bold;
-    margin-bottom:0;
-    margin-left:0;
-    margin-right:0;
-    margin-top:0;
-    }
-
-.vnw_title4 {
-    color:#00CCFF;
-    font-weight:bold;
-    }
-
-ul.vnw_catgorysearch {
-    float:left;
-    margin-bottom:5px;
-    margin-left:0;
-    margin-right:0;
-    margin-top:5px;
-    padding-bottom:0;
-    padding-left:0;
-    padding-right:0;
-    padding-top:0;
-    width:240px;
-    }
-
-ul.vnw_catgorysearch li {
-    color:#6F6F6F;
-    padding-bottom:5px;
-    }
-
-ul.vnw_catgorysearch li a {
-    text-decoration:none;
-    }
-
-
-.vnw_searchother {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("../img/vnw_dotline.gif");
-    background-position:0 0;
-    background-repeat:repeat-x;
-    clear:both;
-    padding-top:10px;
-    }
-
-.vnw_searchother a {
-    padding-right:30px;
-    }
-
-.vnw_viewall {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("../img/vnw_bulletarrow.gif");
-    background-position:0 -32px;
-    background-repeat:no-repeat;
-    color:#333333;
-    display:block;
-    font-weight:bold;
-    padding-left:10px;
-    }
-
-.vnw_tabctPanel {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("../img/vnw_panel_bg.gif");
-    background-position:0 0;
-    background-repeat:no-repeat;
-    height:146px;
-    left:369px;
-    padding-bottom:10px;
-    padding-left:20px;
-    padding-right:20px;
-    padding-top:10px;
-    position:absolute;
-    top:30px;
-    width:492px;
-    z-index:0;
-    }
-
-.vnw_listjobtool {
-    margin-bottom:0;
-    margin-left:40px;
-    margin-right:0;
-    margin-top:20px;
-    padding-bottom:0;
-    padding-left:0;
-    padding-right:0;
-    padding-top:0;
-    }
-
-.vnw_listjobtool li {
-    margin-bottom:15px;
-    }
-
-.vnw_title2 {
-    color:#FF9900;
-    font-size:14px;
-    font-weight:bold;
-    margin-bottom:0;
-    margin-left:0;
-    margin-right:0;
-    margin-top:0;
-    }
-
-.vnw_tabctPanel_dj02 {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("../img/vnw_panel_bg02.gif");
-    background-position:0 0;
-    background-repeat:no-repeat;
-    height:162px;
-    left:369px;
-    padding-top:4px;
-    position:absolute;
-    top:30px;
-    width:532px;
-    z-index:0;
-    }
-
-.vnw_tabctPanel_dj02Bg {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("http://images.vietnamworks.com/vnw_panel_dj02.jpg");
-    background-position:0 0;
-    background-repeat:no-repeat;
-    height:48px;
-    padding-bottom:0;
-    padding-left:30px;
-    padding-right:0;
-    padding-top:110px;
-    width:502px;
-    }
-
-
-
-
-.vnw_conrer_panel {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:#FFFFFF;
-    background-image:url("../img/vnw_corner_panel_bg.gif");
-    background-position:0 100%;
-    background-repeat:repeat-x;
-    height:36px;
-    }
-
-.vnw_formquicksearch {
-    float:right;
-    padding-bottom:0;
-    padding-left:0;
-    padding-right:50px;
-    padding-top:10px;
-    }
-
-form {
-    display:block;
-    margin-bottom:0;
-    margin-left:0;
-    margin-right:0;
-    margin-top:0;
-    padding-bottom:0;
-    padding-left:0;
-    padding-right:0;
-    padding-top:0;
-    }
-
-
-input, select {
-    font-family:Verdana,Arial,Helvetica,sans-serif;
-    font-size:11px;
-    }
-
-.vnw_btn1 {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("../img/vnw_btn1.gif");
-    background-position:0 0;
-    background-repeat:no-repeat;
-    border-bottom-style:none;
-    border-left-style-ltr-source:physical;
-    border-left-style-rtl-source:physical;
-    border-left-style-value:none;
-    border-right-style-ltr-source:physical;
-    border-right-style-rtl-source:physical;
-    border-right-style-value:none;
-    border-top-style:none;
-    color:#FFFFFF;
-    cursor:pointer;
-    font-size:11px;
-    font-weight:bold;
-    height:21px;
-    width:80px;
-    }
-
-
-.vnw_botbannel {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:#DFDFDF;
-    background-image:none;
-    background-position:0 0;
-    background-repeat:repeat;
-    height:6px;
-    margin-bottom:10px;
-    }
-
-
-.vnw_botbannel_left {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("../img/vnw_corner_panel.gif");
-    background-position:-6px 0;
-    background-repeat:no-repeat;
-    display:block;
-    float:left;
-    height:6px;
-    width:6px;
-    }
-
-.vnw_botbannel_right {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("../img/vnw_corner_panel.gif");
-    background-position:0 0;
-    background-repeat:no-repeat;
-    display:block;
-    float:right;
-    height:6px;
-    width:6px;
-    }
-
-ul.vnw_paneltab {
-    left:390px;
-    margin-bottom:0;
-    margin-left:0;
-    margin-right:0;
-    margin-top:0;
-    padding-bottom:0;
-    padding-left:0;
-    padding-right:0;
-    padding-top:0;
-    position:absolute;
-    top:8px;
-    z-index:1;
-    }
-
-ul.vnw_paneltab li {
-    float:left;
-    margin-right:10px;
-    }
-
-ul.vnw_paneltab li a.tabactive {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("../img/vnw_tab_panel.gif");
-    background-position:0 -46px;
-    background-repeat:no-repeat;
-    color:#00CCFF;
-    }
-
-ul.vnw_paneltab li a.tabactive span {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("../img/vnw_tab_panel.gif");
-    background-position:100% 0;
-    background-repeat:no-repeat;
-    }
-ul.vnw_paneltab li a.tabactive:hover {
-    color: #00CCFF;
-}
-
-#vnw_leftcol {
-    float:left;
-    width:220px;
-    }
-
-.vnw_conrertop_t {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("../img/vnw_boxbg.gif");
-    background-position:0 -48px;
-    background-repeat:repeat-x;
-    height:6px;
-    }
-
-.vnw_conrertopt_left {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("../img/vnw_boxbg.gif");
-    background-position:0 -36px;
-    background-repeat:no-repeat;
-    display:block;
-    float:left;
-    height:6px;
-    width:6px;
-    }
-
-.vnw_conrertopt_right {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("../img/vnw_boxbg.gif");
-    background-position:-12px -36px;
-    background-repeat:no-repeat;
-    display:block;
-    float:right;
-    height:6px;
-    width:6px;
-    }
-
-h2.vnw_boxtitle {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:#00BCF3;
-    background-image:url("../img/vnw_boxbg.gif");
-    background-position:0 -55px;
-    background-repeat:repeat-x;
-    border-bottom-color:#CCCCCC;
-    border-bottom-style:solid;
-    border-bottom-width:1px;
-    border-left-color-ltr-source:physical;
-    border-left-color-rtl-source:physical;
-    border-left-color-value:#CCCCCC;
-    border-left-style-ltr-source:physical;
-    border-left-style-rtl-source:physical;
-    border-left-style-value:solid;
-    border-left-width-ltr-source:physical;
-    border-left-width-rtl-source:physical;
-    border-left-width-value:1px;
-    border-right-color-ltr-source:physical;
-    border-right-color-rtl-source:physical;
-    border-right-color-value:#CCCCCC;
-    border-right-style-ltr-source:physical;
-    border-right-style-rtl-source:physical;
-    border-right-style-value:solid;
-    border-right-width-ltr-source:physical;
-    border-right-width-rtl-source:physical;
-    border-right-width-value:1px;
-    border-top-color:-moz-use-text-color;
-    border-top-style:none;
-    border-top-width:medium;
-    color:#FFFFFF;
-    font-size:16px;
-    font-weight:bold;
-    line-height:20px;
-    margin-bottom:0;
-    margin-left:0;
-    margin-right:0;
-    margin-top:0;
-    padding-bottom:5px;
-    padding-left:5px;
-    padding-right:5px;
-    padding-top:5px;
-    }
-
-.vnw_fe_ct {
-    padding-right:0;
-    }
-
-.logo_feature {
-    border-bottom-color:-moz-use-text-color;
-    border-bottom-style:none;
-    border-bottom-width:0;
-    border-left-color-ltr-source:physical;
-    border-left-color-rtl-source:physical;
-    border-left-color-value:-moz-use-text-color;
-    border-left-style-ltr-source:physical;
-    border-left-style-rtl-source:physical;
-    border-left-style-value:none;
-    border-left-width-ltr-source:physical;
-    border-left-width-rtl-source:physical;
-    border-left-width-value:0;
-    border-right-color-ltr-source:physical;
-    border-right-color-rtl-source:physical;
-    border-right-color-value:-moz-use-text-color;
-    border-right-style-ltr-source:physical;
-    border-right-style-rtl-source:physical;
-    border-right-style-value:none;
-    border-right-width-ltr-source:physical;
-    border-right-width-rtl-source:physical;
-    border-right-width-value:0;
-    border-top-color:-moz-use-text-color;
-    border-top-style:none;
-    border-top-width:0;
-    margin-left:2px;
-    margin-top:10px;
-    }
-
-
-.logo_feature td {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("../img/bg_featured_logo.png");
-    background-position:0 1px;
-    background-repeat:no-repeat;
-    height:55px;
-    padding-left:1px;
-    padding-top:2px;
-    vertical-align:top;
-    width:98px;
-    }
-
-
-.vnw_conrer_bot {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("../img/vnw_boxbg.gif");
-    background-position:0 -117px;
-    background-repeat:repeat-x;
-    height:6px;
-    margin-bottom:10px;
-    }
-
-
-
-.vnw_conrer_bot_left {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("../img/vnw_boxbg.gif");
-    background-position:-24px -36px;
-    background-repeat:repeat-x;
-    display:block;
-    float:left;
-    height:6px;
-    width:6px;
-    }
-
-.vnw_conrer_bot_right {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("../img/vnw_boxbg.gif");
-    background-position:-18px -36px;
-    background-repeat:repeat-x;
-    display:block;
-    float:right;
-    height:6px;
-    width:6px;
-    }
-
-.vnw_AffiliateAdv {
-    text-align:center;
-    }
-
-.vnw_AffiliateAdv img {
-    margin-bottom:10px;
-    }
-
-#vnw_rightcol {
-    float:right;
-    height:1%;
-    width:720px;
-    }
-
-.vnw_conrertop {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("../img/vnw_boxbg.gif");
-    background-position:0 -122px;
-    background-repeat:repeat-x;
-    height:6px;
-    }
-
-.vnw_conrer_top_left {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("../img/vnw_boxbg.gif");
-    background-position:-24px -42px;
-    background-repeat:no-repeat;
-    display:block;
-    float:left;
-    height:6px;
-    width:6px;
-    }
-
-.vnw_conrer_top_right {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("../img/vnw_boxbg.gif");
-    background-position:-18px -42px;
-    background-repeat:no-repeat;
-    display:block;
-    float:right;
-    height:6px;
-    width:6px;
-    }
-
-.vnw_conrer_ct {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:#FFFFFF;
-    background-image:url("../img/vnw_boxbg_ct.gif");
-    background-position:0 100%;
-    background-repeat:repeat-x;
-    border-left-color-ltr-source:physical;
-    border-left-color-rtl-source:physical;
-    border-left-color-value:#CCCCCC;
-    border-left-style-ltr-source:physical;
-    border-left-style-rtl-source:physical;
-    border-left-style-value:solid;
-    border-left-width-ltr-source:physical;
-    border-left-width-rtl-source:physical;
-    border-left-width-value:1px;
-    border-right-color-ltr-source:physical;
-    border-right-color-rtl-source:physical;
-    border-right-color-value:#CCCCCC;
-    border-right-style-ltr-source:physical;
-    border-right-style-rtl-source:physical;
-    border-right-style-value:solid;
-    border-right-width-ltr-source:physical;
-    border-right-width-rtl-source:physical;
-    border-right-width-value:1px;
-    height:1%;
-    padding-bottom:10px;
-    padding-left:10px;
-    padding-right:10px;
-    padding-top:10px;
-    }
-.nopadding {
-    padding-bottom:0 !important;
-    padding-left:0 !important;
-    padding-right:0 !important;
-    padding-top:0 !important;
-    }
-
-
-#vnw_vipLogo {
-    padding-bottom:5px;
-    padding-left:8px;
-    padding-right:5px;
-    padding-top:5px;
-    }
-
-
-#vnw_vipLogo .salesLogo {
-    float:left;
-    height:113px;
-    overflow-x:hidden;
-    overflow-y:hidden;
-    padding-bottom:0;
-    padding-left:5px;
-    padding-right:5px;
-    padding-top:0;
-    width:165px;
-    }
-#vnw_vipLogo .salesLogo .salesLogoImage {
-    border-bottom-color:#FFFFFF;
-    border-bottom-style:solid;
-    border-bottom-width:2px;
-    border-left-color-ltr-source:physical;
-    border-left-color-rtl-source:physical;
-    border-left-color-value:#FFFFFF;
-    border-left-style-ltr-source:physical;
-    border-left-style-rtl-source:physical;
-    border-left-style-value:solid;
-    border-left-width-ltr-source:physical;
-    border-left-width-rtl-source:physical;
-    border-left-width-value:2px;
-    border-right-color-ltr-source:physical;
-    border-right-color-rtl-source:physical;
-    border-right-color-value:#FFFFFF;
-    border-right-style-ltr-source:physical;
-    border-right-style-rtl-source:physical;
-    border-right-style-value:solid;
-    border-right-width-ltr-source:physical;
-    border-right-width-rtl-source:physical;
-    border-right-width-value:2px;
-    border-top-color:#FFFFFF;
-    border-top-style:solid;
-    border-top-width:2px;
-    margin-bottom:0;
-    margin-left:0;
-    margin-right:0;
-    margin-top:0;
-    padding-bottom:0;
-    padding-left:0;
-    padding-right:0;
-    padding-top:0;
-    }
-#vnw_vipLogo .salesLogo .salesLogoDesc {
-    color:#333333;
-    display:block;
-    font-size:10px;
-    height:25px;
-    padding-bottom:0;
-    padding-left:5px;
-    padding-right:5px;
-    padding-top:0;
-    }
-
-
-#vnw_vipLogo .salesLogo .salesLogoLink {
-    display:block;
-    height:113px;
-    text-decoration:none;
-    width:165px;
-    }
-
-
-#vnw_vipLogo .salesLogo .salesLogoLink:hover {
-    background-attachment: scroll;
-    background-color: #FF9933;
-    background-image: url("http://images.vietnamworks.com/vnm_bkg_viplogo.gif");
-    background-position: 0 0;
-    background-repeat: no-repeat;
-    }
-
-#vnw_vipLogo .salesLogo .salesLogoLink:hover .salesLogoImage {
-    border-bottom-color: #FF9933;
-    border-bottom-style: solid;
-    border-bottom-width: 2px;
-    border-top-color: #FF9933;
-    border-top-style: solid;
-    border-top-width: 2px;   
-    }
-
-#vnw_vipLogo .salesLogo .salesLogoTitle {
-    color:#00CCFF;
-    display:block;
-    font-weight:bold;
-    padding-bottom:5px;
-    padding-left:2px;
-    padding-right:2px;
-    padding-top:10px;
-    }
-
-#vnw_vipLogo .salesLogo .salesLogoLink:hover .salesLogoTitle {
-    color: #FFFFFF;
-}
-    
-#vnw_vipLogo .salesLogo .salesLogoLink:hover .salesLogoDesc {
-    color: #000000;
-}    
-    
-    
-
-
-
-
-
-#vnw_rightcol_left {
-    float:left;
-    width:530px;
-    }
-
-.vnw_conrertop_t {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("../img/vnw_boxbg.gif");
-    background-position:0 -48px;
-    background-repeat:repeat-x;
-    height:6px;
-    }
-
-.vnw_conrertopt_left {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("../img/vnw_boxbg.gif");
-    background-position:0 -36px;
-    background-repeat:no-repeat;
-    display:block;
-    float:left;
-    height:6px;
-    width:6px;
-    }
-
-
-.vnw_conrertopt_right {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("../img/vnw_boxbg.gif");
-    background-position:-12px -36px;
-    background-repeat:no-repeat;
-    display:block;
-    float:right;
-    height:6px;
-    width:6px;
-    }
-
-
-ul.vnw_topjobslist {
-    margin-bottom:0;
-    margin-left:0;
-    margin-right:0;
-    margin-top:0;
-    padding-bottom:0;
-    padding-left:0;
-    padding-right:0;
-    padding-top:0;
-    width:240px;
-    }
-
-.nobackground {
-    -moz-background-clip:border !important;
-    -moz-background-origin:padding !important;
-    -moz-background-size:auto auto !important;
-    background-attachment:scroll !important;
-    background-color:transparent !important;
-    background-image:none !important;
-    background-position:0 0 !important;
-    background-repeat:repeat !important;
-    }
-
-ul.vnw_topjobslist li {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("../img/vnw_dotline.gif");
-    background-position:0 100%;
-    background-repeat:repeat-x;
-    margin-bottom:10px;
-    padding-bottom:10px;
-    }
-
-
-ul.vnw_topjobslist li a {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("../img/vnw_bulletarrow2.gif");
-    background-position:0 2px;
-    background-repeat:no-repeat;
-    display:block;
-    font-weight:bold;
-    padding-bottom:5px;
-    padding-left:12px;
-    text-decoration:none;
-    }
-
-ul.vnw_topjobslist li span {
-    display:block;
-    padding-left:12px;
-    }
-
-ul.vnw_topjobslist {
-    margin-bottom:0;
-    margin-left:0;
-    margin-right:0;
-    margin-top:0;
-    padding-bottom:0;
-    padding-left:0;
-    padding-right:0;
-    padding-top:0;
-    width:240px;
-    }
-
-.floatRight {
-float:right;
-}
-
-.vnw_topjobs_view {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("../img/vnw_dotline.gif");
-    background-position:0 0;
-    background-repeat:repeat-x;
-    padding-top:10px;
-    }
-
-.vnw_viewall {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("../img/vnw_bulletarrow.gif");
-    background-position:0 -32px;
-    background-repeat:no-repeat;
-    color:#333333;
-    display:block;
-    font-weight:bold;
-    padding-left:10px;
-    }
-
-
-
-#vnw_rightcol_right {
-    float:right;
-    width:180px;
-    }
-
-.vnw_bottom {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("../img/vnw_linebottom.gif");
-    background-position:0 0;
-    background-repeat:repeat-x;
-    height:1%;
-    }
-
-.vnw_bottom_bg {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("../img/vnw_boxbg_ct.gif");
-    background-position:0 100%;
-    background-repeat:repeat-x;
-    padding-bottom:24px;
-    padding-left:0;
-    padding-right:0;
-    padding-top:24px;
-    }
-
-.vnw_bottom_line {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("../img/vnw_dotline_hoz.gif");
-    background-position:490px 0;
-    background-repeat:repeat-y;
-    }
-
-
-.vnw_careeradvice {
-    float:left;
-    padding-right:10px;
-    text-align:justify;
-    width:480px;
-    }
-
-
-
-.vnw_title3 {
-    color:#FF9900;
-    font-size:11px;
-    font-weight:bold;
-    margin-bottom:0;
-    margin-left:0;
-    margin-right:0;
-    margin-top:0;
-    text-transform:uppercase;
-    }
-
-
-.vnw_paddingtop {
-padding-top:10px;
-}
-
-
-.vnw_viewall {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("../img/vnw_bulletarrow.gif");
-    background-position:0 -32px;
-    background-repeat:no-repeat;
-    color:#333333;
-    display:block;
-    font-weight:bold;
-    padding-left:10px;
-    }
-
-
-.vnw_paddingtop {
-    padding-top:10px;
-    }
-
-.vnw_poll {
-    float:right;
-    width:450px;
-    }
-
-
-p {
-margin-bottom:10px;
-margin-left:0;
-margin-right:0;
-margin-top:10px;
-padding-bottom:0;
-padding-left:0;
-padding-right:0;
-padding-top:0;
-}
-
-.vnw_title4 {
-    color:#00CCFF;
-    font-weight:bold;
-    }
-
-.vnw_formpoll {
-}
-
-.vnw_formpoll span {
-    display:block;
-    padding-bottom:5px;
-    }
-
-
-.vnw_checkpoll {
-    vertical-align:middle;
-    }
-
-.vnw_labelpoll {
-    display:inline;
-    padding-top:3px;
-    vertical-align:middle;
-    }
-
-
-
-/*Footer*/
-
-
-.vnw_footer2 {
-    -moz-background-clip:border;
-    -moz-background-origin:padding;
-    -moz-background-size:auto auto;
-    background-attachment:scroll;
-    background-color:#939598;
-    background-image:none;
-    background-position:0 0;
-    background-repeat:repeat;
-    color:#FFFFFF;
-    min-width:980px;
-    padding-bottom:10px;
-    padding-left:0;
-    padding-right:0;
-    padding-top:10px;
-    text-align:center;
-    }
-
-.vnw_footer2 a {
-    color:#FFFFFF;
-    text-decoration:underline;
-    }
-
-.vnw_spacemenu {
-    padding-bottom:0;
-    padding-left:10px;
-    padding-right:10px;
-    padding-top:0;
-    }
-
-p {
-    margin-bottom:10px;
-    margin-left:0;
-    margin-right:0;
-    margin-top:10px;
-    padding-bottom:0;
-    padding-left:0;
-    padding-right:0;
-    padding-top:0;
-    }
-
-element.style {
-	position:absolute;
-	top:-10000px;
-	}
-
-<!--  Jobs css Jobs css Jobs css Jobs css Jobs css Jobs css  -->
-
-
-/** Tables **/
-table {
-	background: #fff;
-	border-right:0;
-	clear: both;
-	color: #333;
-	margin-bottom: 10px;
-	width: 100%;
-}
-th {
-	border:0;
-	border-bottom:2px solid #555;
-	text-align: left;
-	padding:4px;
-}
-th a {
-	display: block;
-	padding: 2px 4px;
-	text-decoration: none;
-}
-th a.asc:after {
-	content: ' ⇣';
-}
-th a.desc:after {
-	content: ' ⇡';
-}
-table tr td {
-	background: #fff;
-	padding: 6px;
-	text-align: left;
-	vertical-align: top;
-	border-bottom:1px solid #ddd;
-}
-table tr:nth-child(2n) td {
-	background: #f5f5f5;
-}
-table .altrow td {
-	background: #f5f5f5;
-}
-td.actions {
-	text-align: center;
-	white-space: nowrap;
-}
-table td.actions a {
-	margin: 0px 6px;
-	padding:2px 5px;
-}
-.cake-sql-log table {
-	background: #f4f4f4;
-}
-.cake-sql-log td {
-	padding: 4px 8px;
-	text-align: left;
-	font-family: Monaco, Consolas, "Courier New", monospaced;
-}
-.cake-sql-log caption {
-	color:#fff;
-}
-
-form .input {
-	color: #444;
-}
-form .required {
-	font-weight: bold;
-}
-form .required label:after {
-	color: #e32;
-	content: '*';
+body {font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px; color:#666; margin:0; padding:0}
+
+* {outline:none;}
+a {color:#666}
+a:hover {color:#f90;}
+
+img {border:none;}
+form {display:block; padding:0; margin:0}
+input, select {font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px}
+ul {list-style-type:none}	
+p {padding:0; margin:10px 0}
+
+.text_yellow {color:#ff0}
+.clear {clear:both}
+
+.floatLeft {float:left}
+.floatRight {float:right}
+
+.noborder {border:none !important}
+.nobackground {background:none !important}
+.nomargin {margin:0 !important}
+.nopadding {padding:0 !important}
+
+.job_wrap {width:950px; margin:auto}
+.job_wrapmenu {width:980px; margin:auto}
+
+.job_viewall { background:url(../img/home/job_bulletarrow.gif) no-repeat 0 -32px; display:block; font-weight:bold; padding-left:10px; color:#333}
+.job_viewall:hover {background-position:0 4px}
+
+.job_btn1 {border-style:none; background:url(../img/home/job_btn1.gif) no-repeat; width:80px; height:21px; color:#fff; font-weight:bold; cursor:pointer; font-size:11px}
+.job_paddingtop {padding-top:10px}
+
+.job_title2 {color:#f90; font-size:14px; font-weight:bold; margin:0}
+.job_title3 {color:#f90; font-weight:bold; text-transform:uppercase; margin:0; font-size:11px}
+.job_title4 {color:#0cf; font-weight:bold}
+/* ------------ header --------------------- */
+#job_header { background:url(../img/home/job_topheadbg.gif) repeat-x; height:130px; min-width:980px; color:#fff}
+#job_header a {color:#fff;}
+#job_header a:hover {color:#f90;}
+		
+	.job_wrap_header {width:980px; margin:auto; position:relative}	
+	.job_star {position:absolute; top:5px; left:0}
+	
+	.job_tophead { float:left; padding-top:5px;}
+	.job_spacemenu {padding:0 10px}
+	
+	.job_btnlang, .job_btnlang_vn {background:url(../img/home/job_bntlang_bg.gif) no-repeat; width:79px; height:19px; float:right; text-align:center; display:block; color:#fff; text-decoration:none; font-weight:bold; margin-top:3px; padding-top:2px;; position:absolute; right:135px}
+	.job_btnlang_vn { right:170px}
+	.job_btnlang:hover {color:#fff !important; text-decoration:none}
+	.job_btnlang_vn:hover {color:#fff !important; text-decoration:none}
+	
+	.job_foremp {position:absolute; height:52px; top:0; right:0; text-align:right}
+		.job_forempct {background:url(../img/home/job_bgforemp.gif) repeat-x 0 100%; height:37px; float:left; padding:5px 0 10px 0; line-height:18px; text-align:right;}
+		.job_forempct a {color:#ff0 !important; text-decoration:none; font-weight:bold}
+		.job_forempct a:hover {color:#ff0; text-decoration:underline}
+    	.job_forempleft {background:url(../img/home/job_bgforemp.gif) no-repeat 0 0; width:9px; float:left; display:block; height:52px}
+		.job_forempright {background:url(../img/home/job_bgforemp.gif) no-repeat 100% 0; width:9px; float:left; display:block; height:52px}
+		
+	.job_toplogobanner {width:980px; padding:7px 5px 5px 5px;}
+		.job_topbanner {margin-top:10px; width:550px; height:71px}	
+		.job_topbanner table {width:550px}
+		.job_topbanner table td {text-align:right}
+/* ------------ end header ----------------- */
+
+/* ------------- main navigation new ------------*/
+#job_nav {background:#FEC900; height:30px; min-width:980px}
+	ul.job_mainnav {margin:0; padding:5px 0 0 0; float:left}
+	ul.job_mainnav li { float:left; margin-right:5px}
+	
+	ul.job_mainnav li a,
+	ul.job_mainnav li a.vsredirect { display:block; float:left;font-weight:bold; text-decoration:none; text-transform:uppercase; padding:0 0 4px 4px; color:#333; height:15px}
+	ul.job_mainnav li a span,
+	ul.job_mainnav li a.vsredirect span {display:block; padding:3px 11px 3px 7px}
+		ul.job_mainnav li a.vsredirect:hover { background: url(../img/home/job_vs_nav_s.gif) no-repeat 0 -19px; color: #fff; }
+	ul.job_mainnav li a.vsredirect:hover span { background: url(../img/home/job_vs_nav_s.gif) no-repeat 100% -19px; }
+
+	ul.job_mainnav li a:hover {background:url(../img/home/job_mainnav_over.gif) no-repeat 0 0; color:#0cf; text-decoration:none}
+	ul.job_mainnav li a:hover span {background:url(../img/home/job_mainnav_over.gif) no-repeat 100% 0}
+	ul.job_mainnav li a.menuactive {background:url(../img/home/job_mainnav_over.gif) no-repeat 0 -24px}
+	ul.job_mainnav li a.menuactive span{background:url(../img/home/job_mainnav_over.gif) no-repeat 100% -24px}
+	
+	ul.job_mainnav li a.menuactive:hover {background:url(../img/home/job_mainnav_over.gif) no-repeat 0 0; color:#0cf; text-decoration:none}
+	ul.job_mainnav li a.menuactive:hover span {background:url(../img/home/job_mainnav_over.gif) no-repeat 100% 0}
+	
+	.job_login {float:right; padding-top:8px}
+	
+#job_nav_sub {background:url(../img/home/job_subnavbg.gif) repeat-x 0 0; height:30px; min-width:980px}
+	ul.job_subnav {margin:0; padding:6px 0 0 0}
+	ul.job_subnav li {float:left; margin-right:5px}
+	ul.job_subnav li a { display:block; float:left; font-weight:bold; color:#fff; text-decoration:none; padding:0 0 4px 4px; height:15px}	
+	ul.job_subnav li a span {display:block; padding:3px 11px 3px 7px}
+	ul.job_subnav li a:hover {background:url(../img/home/job_mainnav_over.gif) no-repeat 0 -48px; color:#fff}
+	ul.job_subnav li a:hover span {background:url(../img/home/job_mainnav_over.gif) no-repeat 100% -48px}
+	
+	ul.job_subnav li a.subactive {background:url(../img/home/job_mainnav_over.gif) no-repeat 0 -48px; color:#fff}
+	ul.job_subnav li a.subactive span {background:url(../img/home/job_mainnav_over.gif) no-repeat 100% -48px}
+/* ------------- end main navigation new ------------*/
+
+/* ------------- main navigation ------------*/
+#job_mainnav {background:url(../img/home/job_mainnavbg.gif) repeat-x; height:30px; min-width:980px}
+	ul.job_navigation { margin:0; padding:6px 0 0 0; float:left}
+	ul.job_navigation li {border-right:#ccc 1px solid; float:left; padding:0 5px} 
+	ul.job_navigation li a {display:block; float:left; color:#333; font-weight:bold; text-decoration:none; text-transform:uppercase; padding:3px 10px}
+	ul.job_navigation li a:hover {background:#0cf; color:#fff}
+	ul.job_navigation li a.menuactive {background:#0cf; color:#fff}
+	
+	.job_login {float:right; padding-top:8px}
+	
+#job_subnav {background:url(../img/home/job_mainnavbg.gif) repeat-x 0 -30px; height:30px; min-width:980px}
+	ul.job_subnavigation {margin:0; padding:6px 0 0 0}
+	ul.job_subnavigation li {float:left; padding:3px 5px 0 5px; color:#fff; font-weight:bold} 
+	ul.job_subnavigation li a {display:block; float:left; color:#fff; font-weight:bold; text-decoration:none; }
+	ul.job_subnavigation li a:hover { text-decoration:underline; color:#fff}
+/* ------------- end main navigation --------*/
+
+/* ------------- content -------------------*/
+#job_contentbg {padding-top:10px; min-width:980px}
+	#job_leftcol {width:220px; float:left}
+	#job_rightcol {width:720px; float:right; height:1%}
+		#job_rightcol_left {width:720px; float:left}
+		#job_rightcol_right {width:180px; float:right}		
+/* ------------- end content ---------------*/
+
+/* ------------- box corner -------------------*/
+.job_conrertop {background:url(../img/home/job_boxbg.gif) repeat-x 0 -122px; height:6px}
+	.job_conrer_top_left {background:url(../img/home/job_boxbg.gif) no-repeat -24px -42px; width:6px; height:6px; display:block; float:left}
+	.job_conrer_top_right {background:url(../img/home/job_boxbg.gif) no-repeat -18px -42px; width:6px; height:6px; display:block; float:right}
+
+.job_conrertop_t {background:url(../img/home/job_boxbg.gif) repeat-x 0 -48px; height:6px}
+	.job_conrertopt_left {background:url(../img/home/job_boxbg.gif) no-repeat 0 -36px; width:6px; height:6px; display:block; float:left}
+	.job_conrertopt_right {background:url(../img/home/job_boxbg.gif) no-repeat -12px -36px; width:6px; height:6px; display:block; float:right}
+h2.job_boxtitle {background:#00bcf3 url(../img/home/job_boxbg.gif) repeat-x 0 -55px; color:#fff; font-weight:bold; font-size:16px; margin:0; padding:5px; border:#ccc 1px solid; border-top:none; line-height:20px}
+.job_conrer_ct {background:#fff url(../img/home/job_boxbg_ct.gif) repeat-x 0 100%; border-left:#ccc 1px solid; border-right:#ccc 1px solid; padding:10px; height:1%}
+.job_conrer_bot {background:url(../img/home/job_boxbg.gif) repeat-x 0 -117px; height:6px; margin-bottom:10px}
+	.job_conrer_bot_left {background:url(../img/home/job_boxbg.gif) repeat-x -24px -36px; height:6px; width:6px; display:block; float:left}
+	.job_conrer_bot_right {background:url(../img/home/job_boxbg.gif) repeat-x -18px -36px; height:6px; width:6px; display:block; float:right}
+/* ------------- end box corner ---------------*/
+
+/*  bottom panel -- */
+.job_conrer_panel {background:#fff url(../img/home/job_corner_panel_bg.gif) repeat-x 0 100%; height:36px}
+.job_botbannel {background:#dfdfdf; height:6px; margin-bottom:10px}
+	.job_botbannel_left { background:url(../img/home/job_corner_panel.gif) no-repeat -6px 0; width:6px; height:6px; display:block; float:left}
+	.job_botbannel_right { background:url(../img/home/job_corner_panel.gif) no-repeat 0 0; width:6px; height:6px; display:block; float:right}
+	
+.job_edulink { padding-left:15px; float:left; line-height:18px}	
+.job_edulink img {margin:7px 7px 0 0; vertical-align:middle}
+.job_edulink a { text-decoration:none}
+.job_edulink a:hover { text-decoration:underline; color:#333 !important}
+
+.job_formquicksearch {padding:10px 50px 0 0; float:right}
+
+
+.job_bgpanel {color:#333; width:950px; height:209px; position:relative;}
+
+.job_bgpanel_1_en, .job_bgpanel_2_en, .job_bgpanel_3_en, .job_bgpanel_1_vn, .job_bgpanel_2_vn, .job_bgpanel_3_vn {width:950px; height:209px;}
+
+
+.job_bgpanel_1_vn {background:url(../img/home/job_panel1_vn.jpg) no-repeat}
+.job_bgpanel_2_vn {background:url(../img/home/job_panel2_vn.jpg) no-repeat}
+.job_bgpanel_3_vn {background:url(../img/home/job_panel3_vn.jpg) no-repeat}
+.job_bgpanel_4_vn {background:url(../img/home/job_panel4_vn.jpg) no-repeat}
+
+.job_clickablespace {position:absolute}
+
+.job_tabctPanel { width:492px; background:url(../img/home/job_panel_bg.gif) no-repeat; height:146px; position:absolute; top:30px; left:369px; z-index:0; padding:10px 20px}
+ul.job_paneltab {padding:0; margin:0; position:absolute; top:8px; left:390px; z-index:1}
+ul.job_paneltab li {float:left; margin-right:10px}
+ul.job_paneltab li a { background:url(../img/home/job_tab_panel.gif) no-repeat 0 -69px; float:left; padding-left:20px; color:#fff; font-weight:bold; text-decoration:none; text-align:center; text-transform:uppercase}
+ul.job_paneltab li a:hover {color:#fff}
+ul.job_paneltab li a span {	background:url(../img/home/job_tab_panel.gif) no-repeat 100% -23px; display: block; padding:6px 20px 4px 0; cursor:pointer}
+
+ul.job_paneltab li a.tabactive { background:url(../img/home/job_tab_panel.gif) no-repeat 0 -46px; color:#0cf}
+ul.job_paneltab li a.tabactive:hover {color:#0cf} 
+ul.job_paneltab li a.tabactive span { background:url(../img/home/job_tab_panel.gif) no-repeat 100% 0;}
+
+/* ---- category search ---- */
+ul.job_catgorysearch { padding:0; margin:5px 0; width:240px; float:left}
+ul.job_catgorysearch li {padding-bottom:5px; color:#6f6f6f}
+ul.job_catgorysearch li a { text-decoration:none}
+ul.job_catgorysearch li a.searchmore {color:#f90; font-weight:bold; text-decoration:none}
+ul.job_catgorysearch li a.searchmore:hover {text-decoration:underline}
+
+.job_searchother { background:url(../img/home/job_dotline.gif) repeat-x 0 0; padding-top:10px; #padding-top:5px; clear:both }
+.job_searchother a {padding-right:30px}
+
+.job_listjobtool {padding:0; margin:20px 0 0 40px}
+.job_listjobtool li {margin-bottom:15px}
+.job_listjobtool a { background:url(../img/home/job_bulletarrow3.gif) no-repeat 0 0; font-weight:bold; text-decoration:none; padding:0 0 0 20px}
+.job_listjobtool a:hover {background-position:0 -54px; color:#f90; text-decoration:underline}
+
+.job_gettingahead { margin-top:10px; }
+
+.job_liststar {margin:0 0 0 90px; padding:0; width:200px; _margin-left:45px}
+.job_liststar li { margin-bottom:5px}
+.job_liststar  li a {background:url(../img/home/job_bulletarrow4.gif) no-repeat 0 -43px; font-style:italic; padding-left:20px}
+.job_liststar  li a:hover {background-position:0 1px}
+
+	
+/*  end bottom panel -- */
+
+/*  feature logo -- */
+.job_fe_ct {padding-right:0}
+.job_fe {margin-bottom:10px}
+.job_fe td { padding-bottom:10px; padding-right:5px}
+.job_fe a {border:#ededed 2px solid; display:block; width:88px; height:43px}
+.job_fe a:hover {border:#f90 2px solid}
+/*  end feature logo -- */
+
+/* Affiliate Advertisment */
+.job_AffiliateAdv {text-align:center}
+.job_AffiliateAdv img {margin-bottom:10px}
+
+/* -- top jobs -- */
+ul.job_topjobslist { padding:0; margin:0; width:320px}
+ul.job_topjobslist li {background:url(../img/home/job_dotline.gif) repeat-x 0 100%; padding-bottom:10px; margin-bottom:10px}
+ul.job_topjobslist li a {background:url(../img/home/job_bulletarrow2.gif) no-repeat 0 2px; display:block; font-weight:bold; text-decoration:none; padding-left:12px; padding-bottom:5px}
+ul.job_topjobslist li a:hover {background-position:0 -78px}
+ul.job_topjobslist li span {padding-left:12px; display:block}
+
+.job_topjobs_view {padding-top:10px; background:url(../img/home/job_dotline.gif) repeat-x 0 0 }
+/* -- end top jobs -- */
+
+/* ------ Carreer - Poll ------ */
+.job_bottom {background:url(../img/home/job_linebottom.gif) repeat-x 0 0; height:1%}
+.job_bottom_bg {background:url(../img/home/job_boxbg_ct.gif) repeat-x 0 100%; padding:10px 0; padding:24px 0}
+.job_bottom_line {background:url(../img/home/job_dotline_hoz.gif) repeat-y 490px 0}
+
+.job_careeradvice {width:480px; float:left; text-align:justify; padding-right:10px}
+.job_careeradvice img { border:#ccc 2px solid; margin:10px 10px 0 0; float:left}
+
+.job_formpoll {}
+.job_formpoll span {display:block; padding-bottom:5px}
+.job_poll {width:450px; float:right}
+.job_checkpoll {vertical-align:middle}
+.job_labelpoll { vertical-align:middle; padding-top:3px; display:inline}
+
+/* --------------------- footer ------------------*/
+.job_footer1 {background:url(../img/home/job_bgfooter.gif); border-bottom:#ccc 1px solid; border-top:#ccc 1px solid; color:#fff; text-align:center; padding:10px 0; min-width:980px}
+
+.job_footer2{ color:#fff; background:#939598; text-align:center; padding:10px 0px; min-width:980px}
+.job_footer2 a{ color:#fff; text-decoration:underline}
+.job_footer2 a:hover{ color:#ff9900; text-decoration:underline}
+/* --------------------- end footer --------------*/
+
+/* ------------------- FEATURE EMPLOYER Logos -----------------*/
+#job_featureLogos{}
+#job_featureLogos .salesLogo{display:block; float:left; padding:0 12px 10px 0;}
+#job_featureLogos .salesLogoLink{border:2px solid #EFEFEF; display:block; width:88px; height:43px;}
+#job_featureLogos .salesLogoLink:hover{border:2px solid #F93;}
+#job_featureLogos .salesLogoTitle, #job_featureLogos .salesLogoDesc{display:none; width:0; height:0;}
+/* ------------------- VIP Logos -----------------*/
+#job_vipLogo{ padding:5px 5px 5px 8px;}
+	#job_vipLogo .salesLogo{width:165px; height:113px; overflow:hidden; float:left; padding:0 5px;}
+		#job_vipLogo .salesLogo .salesLogoImage{border:2px solid #FFF; margin:0; padding:0;}
+		#job_vipLogo .salesLogo .salesLogoTitle{color:#0CF; font-weight:bold; display:block; padding:10px 2px 5px 2px;}
+		#job_vipLogo .salesLogo .salesLogoDesc{color:#333; font-size:10px; height:25px; display:block; padding:0 5px;}
+		#job_vipLogo .salesLogo .salesLogoLink{text-decoration:none; width:165px; height:113px; display:block;}
+		#job_vipLogo .salesLogo .salesLogoLink:hover{background:url(../img/home/job_bkg_viplogo.gif) no-repeat #F93;}
+		#job_vipLogo .salesLogo .salesLogoLink:hover .salesLogoImage{border:2px solid #F93;}
+		#job_vipLogo .salesLogo .salesLogoLink:hover .salesLogoTitle{color:#FFF;}
+		#job_vipLogo .salesLogo .salesLogoLink:hover .salesLogoDesc{color:#000;}
+/* --------------------- end footer --------------*/
+
+.job_tabctPanel_dj01 { background:url(../img/home/job_panel_bg01.gif) no-repeat; position:absolute; top:30px; left:369px; z-index:0; width:532px; height:162px; padding-top:4px}
+.job_tabctPanel_dj01Bg {background:url(../img/home/job_panel_dj01.jpg) no-repeat 0 0; width:155px; height:57px; padding:100px 0 0 377px}
+.job_tabctPanel_dj02 { background:url(../img/home/job_panel_bg02.gif) no-repeat; position:absolute; top:30px; left:369px; z-index:0; width:532px; height:162px; padding-top:4px}
+.job_tabctPanel_dj02Bg {background:url(../img/home/job_panel_dj02.jpg) no-repeat 0 0; width:502px; height:48px; padding:110px 0 0 30px}
+ul.job_paneltab li .dj_iconNew { position:absolute; width:25px; height:17px; top:-7px; right:15px}
+* html .pngIE { behavior: url("css/pngbehavior.htc");}
+
+ul.job_paneltab li a.djPromote { position:absolute; z-index:10; top:-8px; width:120px; background:url(../img/home/job_tab_panel2.gif) no-repeat 0 -93px; float:left; height:32px; padding-left:20px; color:#fff; font-weight:bold; text-decoration:none; text-align:center; text-transform:uppercase}
+ul.job_paneltab li a.djPromote span {background:url(../img/home/job_tab_panel2.gif) no-repeat 100% -31px; display:block; padding:14px 20px 4px 0; cursor:pointer}
+
+ul.job_paneltab li a.djPromote:hover {background-position:0 -62px; color:#0cf;}
+ul.job_paneltab li a.djPromote:hover span {background-position:100% 0px;}
+
+ul.job_paneltab li a.djActive { position:absolute; z-index:10; top:-8px; width:120px; background:url(../img/home/job_tab_panel2.gif) no-repeat 0 -62px; float:left; height:32px; padding-left:20px; color:#0cf; font-weight:bold; text-decoration:none; text-align:center; text-transform:uppercase; color:#0cf}
+ul.job_paneltab li a.djActive span {background:url(../img/home/job_tab_panel2.gif) no-repeat 100% 0px; display:block; padding:14px 20px 4px 0; cursor:pointer}
+
+/*-----------------------------------------------------------------------------------------------------------------*/
+form .required label:before {
+	color: #FF9933;
+	content: '* ';
 	display:inline;
 }
 
-/** Notices and Errors **/
-div.message {
-	clear: both;
-	color: #fff;
-	font-size: 140%;
-	font-weight: bold;
-	margin: 0 0 1em 0;
-	background: #c73e14;
-	padding: 5px;
+
+/*-----------------------------------------------------------------------------------------------------------------------------*/
+
+.wrap_cr {	padding-top:10px;	width:980px; margin:auto; height:1%; padding-bottom:10px;}
+.link {	color:#555555;	text-decoration:underline}
+.link:hover {color:#ff9900;	text-decoration:underline}
+
+.nolink {color:#939598;text-decoration:underline;}
+
+.both {	clear:both}
+/* --- line and current step */
+.ln_step {background:url(http://images.vietnamworks.com/dot_line_step.gif);	height:22px;font-size:10px;	padding-top:7px;clear:both;}
+
+.ln_step a{color:#555555;text-decoration:none;}
+.ln_step a:hover{color:#ff9900;	text-decoration:underline;}
+.ln_step .step_current {font-weight:bold;color:#ff9900;}
+
+/* content */
+#content_cr {padding-top:15px}
+
+#left_cr {float:left;width:230px;}
+
+.left_box {border-top:#ff9900 1px dashed;border-bottom:#ff9900 1px dashed;background:url(http://images.vietnamworks.com/dot_line_ver.gif) left repeat-y;
+			margin-bottom:20px;	clear:both;}
+.left_box .border_right{background:url(http://images.vietnamworks.com/dot_line_ver.gif) right repeat-y;}
+.left_box .pad {padding:0px 5px 10px 10px;line-height:24px}
+.left_box .pad1 {padding:5px 15px 10px 10px;}
+.left_box h1{background:#f4f4f4 url(http://images.vietnamworks.com/dot_line_ver.gif) left repeat-y;border-bottom:#ff9900 1px dashed;
+            border-right:#ff9900 1px dashed;display:block;font-size:11px;margin:0px;font-weight:bold;color:#ff9900;	padding:5px 10px}
+
+.left_box .titright {float:right;}
+.left_box .titleft {float:left;font-weight:bold}
+.left_box ul {list-style-type:none; clear:both; margin:0px; padding:0px}
+.left_box ul li {clear:both}
+.left_box ul img {float:right; padding-top:10px}
+.left_box ul span {float:left }
+.left_box .optional {clear:both;font-weight:bold}
+
+/* right col */
+#right_cr {	float:right;width:740px;}
+
+.require {color:#ff9900;}
+
+.opt_box {padding:0px; margin:0px; list-style-type:none;}
+.opt_box li {clear:both;padding-top:10px}
+.opt_box .option_b {float:left}
+.opt_box label {float:left; margin-top:3px; margin-left:5px; width:684px}
+.opt_box span {float:left; margin-top:3px; margin-left:5px; width:684px}
+.btn_back {	background:url(http://images.vietnamworks.com/btn_back.gif);width:67px;height:29px;font-weight:bold;color:#fff;	border-style:none;padding-bottom:5px}
+.btn_cont {background:url(http://images.vietnamworks.com/btn_continue.gif);width:95px;height:29px;font-weight:bold;
+			color:#fff;border-style:none;padding-bottom:5px}
+.btn_savcom {background:url(http://images.vietnamworks.com/btn_savecom.gif);width:151px;height:29px;
+			font-weight:bold;color:#fff;border-style:none;padding-bottom:5px}
+.qr_info {padding:0px 0px 10px 5px}
+
+.form_field {display:inline;}
+.form_field p {display:block;clear:both;margin:0px;	height:30px
 }
-div.error-message {
-	clear: both;
-	color: #fff;
-	font-weight: bold;
-	background: #c73e14;
+.form_field .text_row {height:60px}
+
+.form_field label {width:250px;padding-top:2px;	text-align:right;float:left}
+.form_field .lb_hide {color:#939598}
+.form_field .field {width:210px;display:block;
+			margin-left:10px;
+			float:left
 }
-p.error {
-	background-color: #e32;
-	color: #fff;
-	font-family: Courier, monospace;
-	font-size: 120%;
-	line-height: 140%;
-	padding: 0.8em;
-	margin: 1em 0;
+.form_field .field_dis {
+			background:#f4f4f4;
+			border-style:none;
+			border:#7f9db9 solid 1px;
+			color:#939598;
+			width:212px;
+			height:15px
 }
-p.error em {
-	color: #000;
-	font-weight: normal;
-	line-height: 140%;
-}
-.notice {
-	background: #ffcc00;
-	color: #000;
-	display: block;
-	font-family: Courier, monospace;
-	font-size: 120%;
-	line-height: 140%;
-	padding: 0.8em;
-	margin: 1em 0;
-}
-.success {
-	background: green;
-	color: #fff;
+.form_field .field1 {
+			width:100px;
+			display:block;
+			margin-left:10px;
+			float:left
 }
 
-/**  Actions  **/
-div.actions ul {
-	margin: 0;
-	padding: 0;
+.form_field .text_area {
+			width:215px;
+			display:block;
+			margin-left:10px;
+			float:left;
+			font-family:Verdana, Arial, Helvetica, sans-serif;
+			font-size:11px
 }
-div.actions li {
-	margin:0 0 0.5em 0;
-	list-style-type: none;
-	white-space: nowrap;
-	padding: 0;
+
+.form_field .text_area1 {
+			width:268px;
+			height:50px;
+			display:block;
+			margin-left:10px;
+			float:left;
+			font-family:Verdana, Arial, Helvetica, sans-serif;
+			font-size:11px
 }
-div.actions ul li a {
+/*.form_field .text_area1 {
+}*/
+.form_field .field_list {
+			display:block;
+			margin-left:10px;
+			float:left;
+}
+
+.form_field .tb_multi {
+			float:right;
+			clear:both;
+			margin-bottom:10px
+}
+.form_field .check_right {
+			float:left; margin-left:7px; margin-bottom:5px
+}
+
+.form_field .yes_no {
+			float:left; margin-top:3px; margin-right:15px
+}
+.form_field .tb_multi td {
+			padding-bottom:3px
+}
+.form_field .selectmulti {
+		    width:145px;
+}
+.form_field  .titselect {
+			font-weight:bold
+}
+.form_field  .titselect_red {
+			color:#FF0000
+}
+.form_field .btn_move {
+			width:19px
+}
+.form_field .form_check {
+			list-style-type:none;
+			float:left;
+			width:160px;
+			margin:0px;
+			padding:0px;
+}
+.form_field .form_check li {
+			clear:both
+}
+.form_field .form_check .check {
+			float:left;
+}
+.form_field .form_check span {
+			float:left;
+			margin-top:3px
+}
+.form_field .field_list_w {
+			width:215px
+}
+.form_field .check_avail {
+			margin-left:250px; padding:0px 0px 10px 10px
+}
+
+.more {
+			clear:both;
+}
+.lbm {
+			float:left;
+			padding-top:3px
+}
+.checkm {
+			display:block;
+			float:left
+}
+
+.form_field .month {
+		width:90px
+}
+
+.form_field .month1 {
+		width:70px
+}
+.form_field .skill {
+		width:250px
+}
+.form_field .other_w {
+		width:100px
+}
+.form_field .field_o {
+		width:150px
+}
+.form_field .current {
+		width:70px
+}
+
+.form_field .day {
+		width:45px
+}
+.form_field .price {
+		width:50px
+}
+.form_field .year {
+		width:60px
+}
+.form_field .gender {
+		width:90px
+}
+.form_field .marial {
+		width:90px
+}
+.form_field .nationality {
+		width:90px
+}
+.form_field .exper {
+		width:100px
+}
+.form_field .sub_note {
+		padding-left:260px; padding-top:5px; clear:both
+}
+.form_field .jobtitle {
+		width:60px
+}
+
+.tip_anchor{ /*CSS for link that shows hint onmouseover*/
+	cursor: help;
+	margin: 3px 8px;
+}
+.tip_anchor1{ /*CSS for link that shows hint onmouseover*/
+	cursor: help;
+}
+.tip_anchor:hover {
+		background:url(http://images.vietnamworks.com/icon_q_over.gif)
+}
+
+.white_content1 {BORDER-RIGHT: #3399cc 1px solid; BORDER-TOP: #3399cc 0px solid; DISPLAY: block; BACKGROUND: #fff; BORDER-LEFT: #3399cc 1px solid; BORDER-BOTTOM: #3399cc 0px solid;}
+
+.tb_list {
+}
+.tb_list a {
+			color:#555555;
+			text-decoration:none
+}
+.tb_list a:hover {
+			color:#ff9900;
+			text-decoration:none
+}
+.tb_list td {
+			padding:5px 10px
+			
+}
+
+.tb_list .tb_title {
+			font-weight:bold
+}
+.tb_list .td_bg {
+			background:#f5f5f5 url(http://images.vietnamworks.com/dot_line_tb.gif) top repeat-x;
+}
+.tb_list .td_bg1 {
+			background:#ffffff url(http://images.vietnamworks.com/dot_line_tb.gif) top repeat-x;
+}
+
+.tb_list .tb_icon td {
+			padding:0px
+}
+
+.line_dotted {
+			background:url(http://images.vietnamworks.com/dot_line_cr.gif) top repeat-x;
+			height:10px;
+			margin-top:5px;
+			clear:both
+}
+
+.frame_table {
+			overflow:auto; width:690px; height:80px; border:#7f9db9 1px solid;
+			padding-left:20px
+}
+.btn_add {
+			margin-left:260px
+}
+.btn_pos {
+			text-align:right; padding-bottom:10px; clear:both
+}
+
+.field_cp {
+			margin-bottom:10px;
+			clear:both;
+}
+
+.field_col1 {
+			float:left;
+			width:175px;
+			text-align:right
+}
+.field_col2 {
+			float:left;
+			width:130px;
+			text-align:right
+}
+
+.field_col3 {
+			float:left;
+			margin-left:20px
+}
+.summary_pr {
+			text-align:right;
+			padding-bottom:10px;
+			font-weight:bold
+}
+.summary_pr_l1 td{
+			text-align:right;
+			padding-bottom:5px;
+			padding-right:10px;
+			vertical-align:top;
+}
+.summary_pr_l2 td{
+			text-align:left;
+			padding-bottom:5px;
+}
+.bg_title {
+			font-size:1.2em
+}
+.field_err{
+	margin:0px;
+	padding:0px 0px 5px 260px;
+	display:block;
+	color:#FF0000;
+
+}
+.field_green{
+	margin:0px;
+	padding:0px 0px 5px 170px;
+	display:block;
+	color:#009900;
+	font-weight:bold;
+
+}
+
+/* my account new update */
+.line_title {
+			background:url(http://images.vietnamworks.com/dot_line_cr.gif) bottom repeat-x
+}
+.pos_btn1 {
+			margin-left:260px;
+			clear:both
+}
+
+.sub_title {
+			font-weight:bold;
+			color:#ff9900;
+			padding-bottom:10px;
+			float:left; width:150px; padding-top:10px
+}
+.form_field2 {
+			margin-left:10px; float:left; padding-bottom:10px; padding-top:10px
+}
+.form_field .field_text {
+			width:210px;
+			display:block;
+			margin-left:10px;
+			float:left;
+			padding-top:2px
+}
+
+.print_ver {
+			float:right; margin:0px 0px 2px 0px
+}
+
+.link_bgtitle a{
+			color:#ffffff;
+			text-decoration:none;
+			font-size:12px
+}
+.link_bgtitle a:hover {
+			color:#ffffff;
+			text-decoration:underline;
+			font-size:12px
+}
+
+/* add 20 march */
+.note_field {
+			padding-top:2px; display:block; float:left 		
+}
+
+.lb_check {
+			display:block; float:left; padding-top:4px; font-weight:normal; margin-left:2px
+}
+
+ /*Table infomation container*/
+.table_info{
+	width:100%;
+	padding:0px;
+	border:none;
+	margin-top:10px;
+}
+.table_info td{vertical-align:top}
+
+.table_info div{
+	margin-bottom:20px;
+}
+.table_info p {
+	margin:0px;
+	padding-bottom:2px;
+}
+
+
+.table_info dl, dt, dd{
+	margin:0px;
+	margin-top:10px;
+}
+
+.table_info dt{
+	text-decoration:underline;
+}
+/* end Table infomation container*/
+
+.prver{
+	margin:0px;
+	text-align:left;
+	margin-bottom:10px;
+	margin-left:20px;
+}
+.prver .pad_tb {
+	padding-left:20px
+}
+.prver_title{
+	margin:0px;
+	font-size:14px;	
+	font-weight:bold;
+	color:#FFFFFF;
+	background: url(http://images.vietnamworks.com/bg_print.gif) repeat-x 0px 0px;
+	padding-left:20px;
+	padding-top:5px;
+	height:25px;
+		
+}
+
+/*.prver table{
+	margin-left:20px;
+}*/
+
+.wrap_cr1 {
+	margin:auto;
+	padding-top:10px;
+	width:980px;
+	height:1%;
+	padding-bottom:10px;
+}
+
+.content_step{background:#fff url(http://images.vietnamworks.com/cr_bg_step.jpg) no-repeat top left;}
+
+.content_copy{background:#fff url(http://images.vietnamworks.com/cr_bg_copy.jpg) no-repeat top left;}
+
+.content_bor {
+	padding:10px 5px 5px 285px;
+	text-align:justify
+}
+.content_bor p {
+	display:block;
+	margin:0px;
+	padding-top:10px
+} 
+.link_under {
+	color:#555555;
+	text-decoration:underline
+}
+.link_under:hover {
+	color:#ff9900;
+	text-decoration:underline
+}
+.content_apply {
+	padding-bottom:5px; margin-top:10px
+}
+.content_apply_sub {
+	padding-left:25px; margin-top:15px
+}
+.cover_letter_app {
+	width:400px;
+	display:block;
+	margin-top:10px;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:11px;
+}
+.note_red {
+	color:#ff0000;
+	font-style:italic
+}
+.btn_bg {
+	height:29px; float:left	
+}
+.btn_bg .btn_c {
+	background:url(http://images.vietnamworks.com/btn_c.gif); 
+	height:29px;
+	color:#fff;
+	border-style:none;
+	float:left;
+	padding-bottom:5px;
+	font-weight:bold;
+	font-size:12px;
+}
+
+.btn_bg .btn_l {
+	background:url(http://images.vietnamworks.com/btn_l.gif); width:9px; height:29px; float:left
+}
+.btn_bg .btn_r {
+	background:url(http://images.vietnamworks.com/btn_r.gif); width:9px; height:29px; float:left
+}
+.field_text_b {
+	display:block;
+	margin-left:10px;
+	float:left;
+	padding-top:2px;
+	font-weight:bold
+}	
+.field_mail {
+	width:306px;
+	display:block;
+	margin-left:10px;
+	float:left
+}
+.field_subj {
+	width:406px;
+	display:block;
+	margin-left:10px;
+	float:left
+}
+.text_cover {
+	width:406px;
+	display:block;
+	margin-left:10px;
+	float:left;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:11px;
+}
+.sub_field {
+		padding-left:170px; padding-top:5px; clear:both;
+
+}
+.note_red {
+	color:#ff0000;
+	font-style:italic
+}
+.err_oth{
+	padding:5px 0px ;
+	margin-left:170px;
+}
+.tb_top tr{
+	vertical-align:top;
+}
+.tb_top td{
+	padding-left:10px;
+}
+.lb_mid{
+	display:block;
+	float:left;
+	padding:3px 0px 0px 5px;
+	font-weight:normal;
+	
+}
+.view_left {
+	clear:both
+}
+.view_left .tit_view {
+	float:left;
+	display:block;
+	text-align:right;
+	padding:3px 10px 5px 3px;
+	width:120px
+}
+.view_left .ct_view {
+	float:left;
+	display:block;
+	width:160px;
+	padding:3px 0px;
+}
+
+/* style for check list */
+.boxlist_title {
+	background:#a9aaad;
+	color:#ffffff;
+	font-size:12px;
+	font-weight:bold;
+	padding:5px 0 5px 10px;
+	margin-bottom:3px;
+	text-transform:uppercase;
+}
+
+ul.check_list {
+	list-style-type:none;
+	margin:0;
+	padding:0;
+}
+
+ul.check_list li {
+	border-bottom:#e1e1e2 1px solid;
+	border-top:#e1e1e2 1px solid;
+	background:#f4f4f4;
+	height:19px;
+	padding:5px 0 0 10px;
+	margin-bottom:3px;
+}
+
+ul.check_list li#current {
+	background:#fff;
+	color:#ff9900;
+}
+ul.check_list li#cur_back {
+	background:#fff url(http://images.vietnamworks.com/check_vit2.gif) right  no-repeat;
+	color:#ff9900;
+}
+ul.check_list li.visited {
+	background:#f4f4f4 url(http://images.vietnamworks.com/check_vit.gif) right  no-repeat;
+}
+
+ul.check_list li a {
+	text-decoration:none;
+	color:#333;
+}
+ul.check_list li a:hover {
+	text-decoration:underline;
+	color:#333;
+}
+ul.check_list li.disable {
+	color:#939598;
+}
+
+.tit_checklist {
+	padding:5px 0 2px 10px;
+	height:19px;
+}
+.tit_checklist .tit_right {
+			float:right;
+
+}
+.tit_checklist .tit_left {
+			float:left;
+			font-weight:bold
+}
+
+.leftbox_mar {
+	margin-bottom:15px;
+}
+
+/* end check list */
+
+.info_page {
+	background:#e7e7e7 url(http://images.vietnamworks.com/bg_infopage.gif) top no-repeat;
+	border:#00adef 1px solid;
+	padding:10px;
+	margin-bottom:15px;
+	text-align:justify;
+}
+
+/* style for quick tips */
+.quicktips_box {
+	border:#00adef 1px solid; padding:10px; text-align:justify
+}	
+.quicktips_box span {
+	color:#ff9900; font-weight:bold; font-size:12px; margin-bottom:5px; display:block;
+}
+/* end quick tips */
+
+/*------------------------------------------------------------*/
+			/*style for apply online */
+/*------------------------------------------------------------*/
+.apply_search {
+	margin:15px 0;
+	margin-left:30px;
+}		
+.lable_field {padding:2px 10px 0px 3px; vertical-align:middle; display:inline; width:100px}
+.lable_field_vn {padding:2px 0px 0px 3px; vertical-align:middle; display:inline; width:100px}
+.content_apply .lable {padding:2px 10px 0px 3px; vertical-align:middle; display:inline;}
+.content_apply .input_text { width:250px; margin-left:10px;}
+.content_apply .input {padding:0; vertical-align:middle; display:inline;}
+.content_apply_sub .list_title { margin-bottom:10px}
+.job_infotit {float:left; margin-right:10px}
+.job_tit {float:left; font-weight:bold; margin-bottom:10px; width:570px;}
+.job_tit_e {float:left; font-weight:bold; margin-bottom:10px; width:590px;}
+
+/*------------------------------------------------------------*/
+			/*style for apply online thankyou*/
+/*------------------------------------------------------------*/
+.box_thank { background:url(http://images.vietnamworks.com/appthank_line.gif) top repeat-x; height:332px}
+.box_thank .boxthank_ct { background:url(http://images.vietnamworks.com/appthank_boderright.gif) right no-repeat; display:block; height:332px}
+.box_thank .thank_tit { font-weight:bold; font-size:12px; color:#ff9900; margin-bottom:5px}
+.box_thank .jobtitle { color:#00adef; font-weight:bold}
+.box_thank .thank_people { text-align:right; font-style:italic}
+.box_thank_list { list-style-type:none; margin:20px 0 0 0; padding:20px 0 0 0; background:url(http://images.vietnamworks.com/dot_line_cr.gif) top repeat-x}
+.box_thank_list li { background:url(http://images.vietnamworks.com/appthank_arrow.gif) top left no-repeat; padding-left:25px; margin-bottom:17px; line-height:15px}
+
+/*------------------------------------------------------------*/
+			/*style for resume posting thankyou*/
+/*------------------------------------------------------------*/
+.box_resumethank {background:url(http://images.vietnamworks.com/thankyou_resposting_line.gif) repeat-x 0 0px; height:142px; margin:auto;}
+.box_resumethank a { color:#555555; text-decoration:underline}
+.box_resumethank a:hover { color:#ff9900; text-decoration:underline}
+.box_resumethank .sendmail { color:#00aeef; text-decoration:underline}
+.box_resumethank .sendmail:hover { color:#ff9900; text-decoration:underline}
+.box_resumethank .resumethank_ct {background:url(http://images.vietnamworks.com/thankyou_resposting_rightbg.gif) top right no-repeat; height:142px}
+.resumethank_tit { color:#00aeef}
+
+/* arrow style */
+.thanks_bestmatches {background:#d5d5d5 url(http://images.vietnamworks.com/thank_resume_bestmatches.jpg) left no-repeat; height:26px; padding-top:15px; padding-left:115px}
+.thanks_newest {background:#d5d5d5 url(http://images.vietnamworks.com/thank_resume_newest.jpg) left no-repeat; height:26px; padding-top:15px; padding-left:80px; margin-top:40px}
+
+.thanks_bestmatches_vn {background:#d5d5d5 url(http://images.vietnamworks.com/thank_resume_bestmatches_vn.jpg) left no-repeat; height:26px; padding-top:15px; padding-left:140px}
+.thanks_newest_vn {background:#d5d5d5 url(http://images.vietnamworks.com/thank_resume_newest_vn.jpg) left no-repeat; height:26px; padding-top:15px; padding-left:145px; margin-top:40px}
+
+
+.text_inf {	
+	padding:10px 35px;
+}
+
+.list_resume td{
+	padding:5px 2px 7px 5px;	
+}
+
+.list_resume input {
+	padding:0;
+	margin:0;
+}
+.list_resume .title_list {
+	background:#999999;
+	color:#ffffff;
+	font-weight:bold;
+	font-size:10px;
+}
+.list_resume .row1_list {
+	background:#ffffff url(http://images.vietnamworks.com/dot_line_tb.gif) bottom repeat-x;
+}
+.list_resume .row2_list {
+	background:#f6f6f6 url(http://images.vietnamworks.com/dot_line_tb.gif) bottom repeat-x;
+}
+
+.check_all {
+	float:left; padding:10px 3px
+}
+.view_all1, .view_all2 {
+	float:right; padding:10px 3px
+}
+.view_all1 a {
+	font-weight:bold;
+	color:#ff9900;
+	text-decoration:underline
+}
+
+.view_all1 a:hover {
+	font-weight:bold;
+	color:#ff9900;
+	text-decoration:underline
+}
+
+.view_all2 a {
+	font-weight:bold;
+	color:#00adef;
+	text-decoration:underline
+}
+.view_all2 a:hover {
+	font-weight:bold;
+	color:#00adef;
+	text-decoration:underline
+}
+
+.check_area {
+	clear:both;
+	padding-top:15px
+}
+.check_area .pad_check {
+	padding-top:5px; margin-left:20px
+}
+.check_area .text_tit {
+	padding-bottom:5px
+}
+/* style for worst */
+ul.worstcv_list {list-style-type:none; padding:0; margin:0}
+ul.worstcv_list li {background:url(http://images.vietnamworks.com/worstcv/worst_starbullet.gif) no-repeat 0 2px; padding-left:15px; margin-bottom:10px}
+ul.worstcv_list li a {color:#00adef; font-weight:bold; text-decoration:none}
+ul.worstcv_list li a:hover {text-decoration:underline} 
+
+.worstcv_part {clear:both; margin-top:20px; height:1%}
+.worstcv_left { width:560px; float:left}
+.worstcv_right { width:370px; float:left; margin-top:10px}
+.worstcv_ct { border:#999 2px solid; padding:0 10px; text-align:justify}
+.worstcv_right p {margin:10px 0; padding:0}
+.worstcv_right h3 {display:block; background:#999; color:#fff; font-weight:bold; font-size:11px; padding:10px; margin:0}
+.worstcv_right h4 {margin:10px 0; padding:0; font-weight:bold; font-size:11px; color:#00adef}
+
+.worstcvbox {width:520px; float:left}
+.worstcvbox_top {background:url(http://images.vietnamworks.com/worstcv/worst_box.gif) repeat-x 0 -24px; height:11px}
+	.worstcvbox_tl {background:url(http://images.vietnamworks.com/worstcv/worst_box.gif) no-repeat -12px -12px; float:left}
+	.worstcvbox_tr {background:url(http://images.vietnamworks.com/worstcv/worst_box.gif) no-repeat 0 -12px; float:right}
+.worstcvbox_bot {background:url(http://images.vietnamworks.com/worstcv/worst_box.gif) repeat-x 0 -36px; height:11px}
+	.worstcvbox_bl {background:url(http://images.vietnamworks.com/worstcv/worst_box.gif) no-repeat -12px 0; float:left}
+	.worstcvbox_br {background:url(http://images.vietnamworks.com/worstcv/worst_box.gif) no-repeat 0 0; float:right}
+.worstcvbox_tl, .worstcvbox_tr, .worstcvbox_bl, .worstcvbox_br {display:block; height:11px; width:12px}
+
+.worstcvbox_ct {background:url(http://images.vietnamworks.com/worstcv/worst_box_bg.gif) repeat-y; width:484px; padding:10px 18px}
+
+/*------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*Style25*/
+body table{
+	font-size: 11px;
+	text-align: left;
+}
+body div{
+	/*text-align: left;*/
+}
+input, textarea{
+	/*font-family: Arial, Helvetica, sans-serif;*/
+	color: #222222;
+}
+
+/*Main Link
+a{
+	color:#003399;
+	text-decoration: none;
+}
+a:hover{
+	color:#F7931D;
+	text-decoration: underline;
+}
+*/
+/* Huy 20-02-2006*/
+a.searchresult{
+	color:#003399;	text-decoration: underline;
+}
+a.searchresult:visited{
+	color:#333333;	text-decoration: underline;
+}
+a.searchresult:hover{
+	color:#F7931D;	text-decoration: underline;
+}
+
+.description{
+	color:#333333;
+}
+/*LINK TEXT Promotion with bold attribute */
+a.txt_promo_bold{		
+	color:#555555; font-weight: bold; text-decoration: underline;
+}
+a.txt_promo_bold:visited{
+	color:#333333; font-weight: bold; text-decoration: underline;
+}
+a.txt_promo_bold:hover{		
+	color:#F7931D; font-weight: bold; text-decoration: underline;
+}
+.txt_promo_bold{font-weight: bold;}
+/*LINK Promotion with bold and red attribute */
+a.txt_promo_boldred{		
+	font-weight: bold; color:#FF0000; text-decoration: underline;
+}
+a.txt_promo_boldred:visited{		
+	font-weight: bold; color:#FF0000; text-decoration: underline;
+}
+a.txt_promo_boldred:hover{		
+	font-weight: bold; color:#F7931D; text-decoration: underline;
+}
+.txt_promo_boldred{font-weight: bold; color:#FF0000;}
+/* LINK Normal */
+a.txt_normal {
+	color:#555555; text-decoration: underline;
+}
+a.txt_normal:visited{
+	color:#333333; text-decoration: underline;
+}
+a.txt_normal:hover{		
+	color:#F7931D; text-decoration: underline;
+}
+
+.txt_title a{	/*Link in Title*/
 	font-weight: normal;
-	display: block;
-	clear: both;
 }
-div.actions ul li a:hover {
+.txt_title a:hover{
+	font-weight: normal;
+}
+.nav_bar{ /*Sub menu*/
+	color:#FFFF00;
+	/*padding: 5px 10px 5px 10px;*/
+	PADDING-RIGHT: 8px; PADDING-LEFT: 23px; PADDING-BOTTOM: 5px; PADDING-TOP: 5px;
+	MARGIN: 0px;
+}
+.nav_bar a{ /*link in sub menu */
+	color:#FFFF00;
+	font-weight: bold;
+	PADDING-RIGHT: 8px; PADDING-LEFT: 8px; PADDING-BOTTOM: 5px; PADDING-TOP: 5px;
+}
+.nav_bar a:hover{
+	color:#FFFFFF;
+	PADDING-RIGHT: 8px; PADDING-LEFT: 8px; PADDING-BOTTOM: 5px; PADDING-TOP: 5px;
+}
+.nav_bar a.selected {
+	PADDING-RIGHT: 8px; PADDING-LEFT: 8px; PADDING-BOTTOM: 5px; PADDING-TOP: 5px;
+	color:#FFFFFF;
+}
+.nav_bar_right {
+	color:#FFFFFF;
+	font-weight:bold;
+}
+.nav_bar_right a{
+	color:#FFFFFF;
+	font-weight:bold;
+	text-decoration:none;
+}
+.nav_bar_right a:hover{
+	color:#FFFF00;
+	font-weight:bold;
+	text-decoration:underline;
+}
+
+/* Text Format */
+.txt_note{			/*Make note 1px Smaller */
+	font-size:10px;
+}
+.txt_1{				/*TXT in homepage*/
+	color:#FFFFFF;
+}
+.txt_2{				/*TXT in left column*/
+	color:#666666;
+}
+.txt_3{				/*TXT in forget password*/
+	color:#33BEF2;
+	font-size:14px;
+	font-weight:bold;
+}
+.txt_error{			/*TXT error*/
+	color:#FF0000; font-weight:100;
+}
+.txt_title{
+	color:#FFFFFF;
+	background:url(http://images.vietnamworks.com/bar_title.gif) no-repeat left 50% #07aaef;
+	padding-left: 30px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	text-align:left;
+	font-size: 12px;
+	font-weight: bold;
+}
+.title_bg{PADDING-LEFT: 30px; FONT-WEIGHT: bold; FONT-SIZE: 12px; BACKGROUND:#00aeef url(http://images.vietnamworks.com/tn_bg_title_left.gif) no-repeat left; COLOR: #ffffff; TEXT-ALIGN: left}
+.title_bg a{color:#ffffff;}
+.title_bg div{ display:block;background:url(http://images.vietnamworks.com/tn_bg_title_right.gif) right no-repeat; height:20px; padding-top:5px}
+
+
+.txt_tilte_lv2{
+	color:#F7931D;
+	text-align:left;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.txt_require{		/*TXT of require star*/
+	color:#FF0000;
+	text-align:left;
+	padding-left:0px;
+}
+
+.txt_orange{font-size:20px; color:#FF9900; font-weight:bold; padding-left:30px; padding-top:15px}
+.txt_bluelogo{font-size:18px; color:#00aeef; font-weight:bold; }
+
+.error { /*error header*/
+	font-weight: bold;
+	color:#FF0000;
+}
+.error_text {			/*TXT error*/
+	color:#FF0000;
+	font-weight: bold;
+}
+
+/* Form Elements */
+input, select{
+	font-size: 11px;
+}
+
+.txt_adver{				/*TXT for advertising title*/
+	color:#CECECE;
+	font-size:10px;
+	/*font-weight:bold;*/
+}
+
+/***************************************************************************
+****************************************************************************
+									End Edit
+****************************************************************************
+***************************************************************************/
+/* Employer Pages : begin */
+.e_home_recruit{
+	background:url(http://images.vietnamworks.com/e_home_recruit.gif) top center no-repeat;
+	padding-left: 245px;
+	padding-top: 185px;
+	width:525px; /* fixed for IE5.x/win: 280+245 */
+	voice-family: "\"}\"";
+	voice-family: inherit;
+	width:280px; /* the value should be */
+}
+/** nothing **/
+.bla1 {
+}
+.e_home_recruit_vn{
+	background:url(http://images.vietnamworks.com/e_home_recruit_vn.gif) top center no-repeat;
+	padding-left: 245px;
+	padding-top: 185px;
+	width:525px; /* fixed for IE5.x/win: 280+245 */
+	voice-family: "\"}\"";
+	voice-family: inherit;
+	width:280px; /* the value should be */
+}
+/** nothing **/
+.bla2 {
+}
+.e_home_box{
+	width: 170px;
+}
+/** nothing **/
+.bla3 {
+}
+.e_home_box_inside{
+	background:url(http://images.vietnamworks.com/e_cell_body.gif) top no-repeat;
+	color:#FFFFFF;
+	padding: 10px;
+	width: 170px; /* fixed for IE5.x/win: 150+10+10 */
+	voice-family: "\"}\"";
+	voice-family: inherit;
+	width: 150px; /* the value should be */
+}
+/** nothing **/
+.bla4 {
+}
+.e_home_box_inside a{
+	color:#FFFFFF;
+	text-decoration: underline;
+}
+.e_home_box_inside a:hover{
+	color:#FFF200;
+}
+.e_login{
+	background:url(http://images.vietnamworks.com/e_home_login.gif) no-repeat center top;
+	padding-left: 350px;
+	padding-top:70px;
+}
+.e_login_vn{
+	background:url(http://images.vietnamworks.com/e_home_login_vn.gif) no-repeat center top;
+	padding-left: 350px;
+	padding-top:70px;
+}
+/* Employer Pages : end */
+
+/* Main Content */
+.main_content{
+	width: 778px;
+	padding: 0px;
+	background-color:#FFFFFF;
+	vertical-align:top;
+}
+.main_left{
+	background:#E5E5E5 repeat-y right;
+}
+.main_right{
+	background:#E5E5E5 repeat-y left;
+}
+
+/* Top bar */
+.top_space{
+	height: 4px;
+}
+.top_left{
+	background: #939598;
+	color:#FFFFFF;
+	text-align:left;
+	padding-left: 20px;
+}
+.top_left strong{
+	color:#FFFF00;
+}
+.top_right{
+	background: #939598;
+	color:#FFFFFF;
+	text-align: right;
+	padding-right: 10px;
+}
+.top_right a{
+	color:#FFFFFF;
+	font-weight:bold;
+	text-decoration:underline;
+}
+.top_right a:hover{
+	color:#FFFF00;
+	font-weight:bold;
+	text-decoration:underline;
+}
+.top_right strong{
+	color:#FFFF00;
+}
+/* Banner */
+.quick_search_head{
+	background:url(http://images.vietnamworks.com/blue_quick_search_head.gif) no-repeat;
+	height: 22px;
+	padding-left: 10px;
+}
+.quick_search_body{
+	background:url(http://images.vietnamworks.com/blue_quick_search_body.gif) no-repeat;
+	height: 59px;
+	text-align:center;
+}
+/*Content Body*/
+.main_body{
+	background:#00AEEF;
+}
+.main_body_content{
+	background:url(http://images.vietnamworks.com/bg_body_head.gif) #FFFFFF no-repeat top;
+}
+.e_main_inner_content{
+	float:left;
+	width: 69%;
+}
+/*Banner Login */
+.ad_space{
+	text-align:left;
+	vertical-align: top;
+	padding: 16px 0px 0px 5px;
+}
+/*Cell bar */
+.cell_bar{
+	background: #00AEEF url(http://images.vietnamworks.com/blue_cell_title_left.gif) no-repeat left;
+	padding-left: 13px;
+	height:25px;
+}
+.cell_bar_2{
+	background: #00AEEF url(http://images.vietnamworks.com/blue_cell_title_left_2.gif) no-repeat left;
+	padding-left: 17px;
+	height:25px;
+}
+.cell_bar_2 span{
+	float:right;
+	background:white;
+}
+.cell_bar span{
+	float:right;
+}
+.middle{
+	padding: 5px;
+}
+.middle2{
+	padding: 5px;
+	padding-left:15px;
+	color:#004c9b;
+	font-size:12PX
+}
+
+.cell_feature{
+	background: #99CCFF;
+}
+.cell_feature_2{
+	background: #CADFF3;
+}
+.cell_feature_3{
+	background: #999999;
+	padding-left:15px; padding-top:3px;
+	padding-bottom:3px;
+	color:#FFFFFF;
+	font-size:12px;
+}
+.cell_feature .top span, .cell_feature .bottom span{
+	float:right;
+}
+.cell_feature_2 .top span, .cell_feature_2 .bottom span{
+	float:right;
+}
+.cell_feature_4{
+	background: #CCCCCC;
+}
+.cell_feature_4 .top span, .cell_feature_4 .bottom span{
+	float:right;
+}
+.inner_tbl_top{
+	background: url(http://images.vietnamworks.com/tbl_top.gif) repeat-x bottom;
+	padding-left: 15px;
+}
+.inner_tbl_bottom{
+	background: url(http://images.vietnamworks.com/tbl_bottom.gif) repeat-x bottom;
+}
+.inner_tbl_body{
+	padding-left: 10px;
+	padding-right: 10px;
+	border-left: solid 1px #DEDEDE;
+	border-right: solid 1px #DEDEDE;
+	background: #FFFFFF;
+	text-align:justify;
+}
+.inner_tip_tbl_banner{
+	background: url(http://images.vietnamworks.com/tip_tbl_tl_2.gif) no-repeat left bottom;
+	text-align:right;
+	vertical-align:top;
+	height: 32px;
+}
+.inner_tip_tbl_top{
+	background: url(http://images.vietnamworks.com/tip_tbl_top.gif) repeat-x bottom;
+}
+.inner_tip_tbl_bottom{
+	background: url(http://images.vietnamworks.com/tip_tbl_bottom.gif) repeat-x bottom;
+}
+.inner_tip_tbl_body{
+	padding-left: 10px;
+	padding-right: 10px;
+	border-left: solid 1px #B2B2B2;
+	border-right: solid 1px #B2B2B2;
+	background: #FFFFFF;
+	text-align:justify;
+}
+/* Poll */
+.poll_top td{
+	background:url(http://images.vietnamworks.com/blue_box_bg.gif) repeat-x;
+	text-align: center;
+}
+.poll_body{
+	border-bottom: #DEDEDE solid 1px;
+	border-left: #DEDEDE solid 1px;
+	border-right: #DEDEDE solid 1px;
+	padding: 4px;
+}
+/*Line*/
+.line{
+	background:url(http://images.vietnamworks.com/blue_dot_line.gif) repeat-x;
+	height:1px;
+	clear:both;
+}
+.line_2{
+	background:url(http://images.vietnamworks.com/blue_dot_line_2.gif) repeat-x;
+	height:1px;
+	clear:both;
+}
+.line_3{
+	background:url(http://images.vietnamworks.com/blue_dot_line_3.gif) repeat-x;
+	height:1px;
+	clear:both;
+}
+/*others*/
+.tbl_center td{
+	text-align:center;
+}
+.footer {
+	background-color: #939598;
+	background-image: url(http://images.vietnamworks.com/bg_footer.gif);
+	background-repeat: no-repeat;
+	background-position: bottom;
+	color:#FFFFFF;
+	text-align:center;
+	padding-bottom: 10px;
+	padding-top:5px;
+	min-width:760px;
+}
+.footer a{
+	color:#FFFFFF;
+	font-weight:bold;
+	text-decoration:none;
+}
+.footer a:hover{
+	color:#FFFF00;
+	font-weight:bold;
+	text-decoration:underline;
+}
+.footer_hidden{
+	display:none;
+}
+.box_login_home{
+	background:url(http://images.vietnamworks.com/bg_login.gif) no-repeat center;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+.box_login_inner{
+	background:url(http://images.vietnamworks.com/login_box_03.gif) no-repeat bottom right;
+}
+.career_advice{
+	background: #CADFF3 url(http://images.vietnamworks.com/banner_careeradvice.gif) no-repeat top;
+	vertical-align:bottom;
+	padding-left: 154px;
+	padding-top: 55px;
+}
+/*left menu*/
+.left_menu {
+	padding-top: 5px;
+	padding-left: 5px;
+}
+.left_menu .body{
+	padding-left: 5px;
+	background: #CCCCCC;
+}
+.left_tips{
+	padding-left: 10px;
+	vertical-align:top;
+	float:left;
+}
+.left_form{
+	padding-left:30px;
+	vertical-align:top;
+	text-align:left;
+}
+/*inner_content*/
+.inner_content {
+	padding-top: 5px;
+	padding-left: 5px;
+	padding-right: 5px;
+	text-align:center;
+}
+
+.welcome {
+	padding-bottom: 15px;
+}
+.wrapper .my_resume, .wrapper .my_job_alert, .wrapper .my_job_tracker, .wrapper .my_career_advice{
+	float:left;
+	width:49.5%;
+	padding-left:1px;
+}
+.wrapper .my_job, .wrapper .my_candidate, .wrapper .my_template, .wrapper .my_resume_alert {
+	float:left;
+	width:49.5%;
+	padding-left:1px;
+}
+.tbl{
+	background-color:#FFFFFF;
+}
+.wrapper_2{
+	width: 980px;
+	margin:auto;
+	padding-top:10px	
+}
+.wrapper_2columns{
+	padding-left:0px;
+	padding-right:0px;
+	padding-top:5px;
+	padding-bottom:5px;
+}
+/* Table List */
+.tbl_tr_list{
+	background: #999999 url(http://images.vietnamworks.com/blue_dot_line_2.gif) repeat-x bottom;
+	color:white;
+	font-weight: bold;
+	text-align:left;
+	height:20px;
+}
+.tbl_td_list{
+	background:url(http://images.vietnamworks.com/blue_dot_line_3.gif) repeat-x bottom;
+}
+.tbl_td_list2{
+	background: #D7E7F6 url(http://images.vietnamworks.com/blue_dot_line_3.gif) repeat-x bottom;
+}
+.tbl_td_list3{
+	background: #FFFFFF url(http://images.vietnamworks.com/blue_dot_line_3.gif) repeat-x bottom;
+	background-color: #e7f2fd;
+	color:#000000;
+}
+.tbl_td_list3 td{
+	padding: 10px;
+}
+.tbl_td_list td, .tbl_td_list2 td{
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-right: 2px;
+	padding-left: 3px;
+	color: #003399;
+}
+.tbl_td_list a, .tbl_td_list2 a{
 	text-decoration: underline;
 }
 
-
-/** Related **/
-div.related {
-	clear: both;
-	display: block;
+.rs_search_title{
+	background: #999999 url(http://images.vietnamworks.com/blue_dot_line_2.gif) bottom repeat-x;
+	color: white;
+	padding: 5px;
+}
+.brief_list td{
+	background:url(http://images.vietnamworks.com/blue_dot_line_3.gif) bottom repeat-x;
+	padding-left: 5px;
+}
+.brief_list_2 td{
+	background:#F7F7F7 url(http://images.vietnamworks.com/blue_dot_line_3.gif) bottom repeat-x;
+	padding-left: 5px;
+}
+td.rs_search_check{
+	background:#e5e5e5;
+	padding:2px;
+	text-align:center;
+}
+.rs_search_des{
+	background:#f7f7f7 url(http://images.vietnamworks.com/blue_dot_line_3.gif) bottom repeat-x;
 }
 
-/** Debugging **/
-pre {
-	color: #000;
-	background: #f0f0f0;
-	padding: 1em;
+/*********** Thanks **************/
+.thank_page{
+	background:url(http://images.vietnamworks.com/thanks_box.gif) no-repeat bottom;
+	padding: 115px 230px 5px 25px;
+	vertical-align:bottom;
 }
-pre.cake-debug {
-	background: #ffcc00;
-	font-size: 120%;
-	line-height: 140%;
-	margin-top: 1em;
-	overflow: auto;
-	position: relative;
+.thank_page div{
+	color: #00AEEF;
+	font-weight:bold;
+	font-size: 18px;
+	padding-bottom: 5px;
 }
-div.cake-stack-trace {
-	background: #fff;
-	color: #333;
-	margin: 0px;
-	padding: 6px;
-	font-size: 120%;
-	line-height: 140%;
-	overflow: auto;
-	position: relative;
+.thank_page span{
+	color: #31B733;
+	font-weight:bold;
 }
-div.cake-code-dump pre {
-	position: relative;
-	overflow: auto;
+
+/********** PRICE LIST ***********/
+.pl_tbl{
+	border-bottom: 1px solid #666;
+	border-left: 1px solid #666;
+	border-top: 0px solid #666;
+	border-right: 0px solid #666;
 }
-div.cake-stack-trace pre, div.cake-code-dump pre {
-	color: #000;
-	background-color: #F0F0F0;
-	margin: 0px;
-	padding: 1em;
-	overflow: auto;
+.pl_tbl tr td{
+	border-collapse:collapse;
+	border-top: 1px solid #666;
+	border-right: 1px solid #666;
 }
-div.cake-code-dump pre, div.cake-code-dump pre code {
-	clear: both;
+.pl_header{
+	background:#00aeef;
+	color:#FFFFFF;
+	font-weight:bold;
+	padding-left:20px;
+}
+.pl_header_2{
+	/*background:#66ccff;*/
+	font-weight:bold;
+}
+.pl_sub_1{
+	margin: 1px 1px 0px 0px;
+	background:#CCC;
+}
+.pl_sub_2{
+	margin: 1px 1px 0px 0px;
+	background:#FFF;
+}
+
+/*********** TAB POLL **************/
+.tabcontent{
+display:none;
+}
+
+.news_frame {
+ margin-top:5px;
+ /*margin-bottom:5px;*/
+ margin-left:10px;
+ margin-right:10px;
+}
+
+.paginator {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; padding-left:10px; padding-right:10px;
+	font-size:11px;
+}
+
+.paginator A {
+	text-decoration:underline
+}
+
+.paginator A:visited {
+	text-decoration:underline
+}
+
+.paginator .this-page {
+	text-decoration:none; font-weight:bold;
+}
+
+.paginator A:hover {
+	text-decoration:underline
+}
+
+
+#hintbox{/*CSS for pop up hint box */
+	position:absolute;
+	background-color: lightyellow;
+	width: 150px; /*Default width of hint.*/
+	padding: 3px;
+	border:1px solid black;
+	font:normal 9px Verdana;
+	line-height:18px;
+	z-index:100;
+	visibility: hidden;
+	text-align:left;
+}
+
+.hintanchor{ /*CSS for link that shows hint onmouseover*/
+	cursor: help;
+	margin: 3px 8px;
+}
+
+.tab_boder_body_left{
+	border-left: 1px solid #00AEEF;
+}
+
+.tab_boder_body_right{
+	border-right: 1px solid #00AEEF;
+}
+
+.tab_boder_head{
+	background-image:url(http://images.vietnamworks.com/tab_border_bg_top.gif);
+	background-position:bottom;
+	background-repeat:repeat-x;
+}
+
+.tab_boder_foot{
+	border-bottom: 1px solid #00AEEF;
+}
+
+.blueSubTitle {color:#FF9900; font-size:12px;}
+.blueSubTitle {
 	font-size: 12px;
-	line-height: 15px;
-	margin: 4px 2px;
-	padding: 4px;
-	overflow: auto;
+	font-weight: bold;
+	text-decoration: none;
+	color: #003399;
 }
-div.cake-code-dump span.code-highlight {
-	background-color: #ff0;
-	padding: 4px;
+/* Huy 2-3-3006*/
+.e_border_upgrade{
+	background: url(http://images.vietnamworks.com/border_1.gif) no-repeat center;
+	padding: 15px;
 }
-div.code-coverage-results div.code-line {
-	padding-left:5px;
-	display:block;
-	margin-left:10px;
-}
-div.code-coverage-results div.uncovered span.content {
-	background:#ecc;
-}
-div.code-coverage-results div.covered span.content {
-	background:#cec;
-}
-div.code-coverage-results div.ignored span.content {
-	color:#aaa;
-}
-div.code-coverage-results span.line-num {
-	color:#666;
-	display:block;
-	float:left;
-	width:20px;
-	text-align:right;
-	margin-right:5px;
-}
-div.code-coverage-results span.line-num strong {
-	color:#666;
-}
-div.code-coverage-results div.start {
-	border:1px solid #aaa;
-	border-width:1px 1px 0px 1px;
-	margin-top:30px;
-	padding-top:5px;
-}
-div.code-coverage-results div.end {
-	border:1px solid #aaa;
-	border-width:0px 1px 1px 1px;
-	margin-bottom:30px;
-	padding-bottom:5px;
-}
-div.code-coverage-results div.realstart {
-	margin-top:0px;
-}
-div.code-coverage-results p.note {
-	color:#bbb;
-	padding:5px;
-	margin:5px 0 10px;
-	font-size:10px;
-}
-div.code-coverage-results span.result-bad {
-	color: #a00;
-}
-div.code-coverage-results span.result-ok {
-	color: #fa0;
-}
-div.code-coverage-results span.result-good {
-	color: #0a0;
-}
-	
 
+/*.bodyTextGray{ background-color:#CCCCCC}*/
+/* Head Bar */
+#div_head_bar{
+	clear:both;
+	font-family:Arial, Helvetica, sans-serif;
+}
+.head_bar_select{
+	background:url(http://images.vietnamworks.com/bullet_7.gif) no-repeat left;	
+	padding-left: 22px;	
+	color:#FFFFFF;	
+	font-weight: bold;		
+	float:left;
+}
+.head_bar_select .left{
+	background:url(http://images.vietnamworks.com/head_bar_select_l.gif) no-repeat left;	width:5px;	height:25px;	float:left;
+}
+.head_bar_select .main_text{
+	float:left;		background: #00aaef;	padding: 5px 0px 5px 0px;	font-size: 12px;	
+}
+.head_bar_select .right{
+	background:url(http://images.vietnamworks.com/head_bar_select_r.gif) no-repeat right;	width:5px;	float:left;	height:25px;	
+}
+
+.head_bar{
+	background:url(http://images.vietnamworks.com/bullet_7.gif) no-repeat left; padding-left: 22px; color:#00aaef; font-weight: bold; font-size:12px;	
+	float:left;
+}
+.head_bar .left{
+	background:url(http://images.vietnamworks.com/head_bar_l.gif) no-repeat left; width:5px;	float:left;	height:25px;	
+}
+.head_bar .main_text{
+	float:left; background: url(http://images.vietnamworks.com/head_bar_bg.gif);	padding: 5px 0px 5px 0px; font-size:12px;		
+}
+.head_bar .right{
+	background:url(http://images.vietnamworks.com/head_bar_r.gif) no-repeat right;	width:5px;	float:left;	height:25px;	
+}
+.btn_js{
+	font-size:11px;
+	font-weight: bold;
+	background-color: #FF9900;
+	background-image:url(http://images.vietnamworks.com/btn_bg.gif);
+	background-position:center;
+	color:#FFFFFF;
+	border-top: 1px solid #f9ab4f;
+	border-left: 1px solid #f9ab4f;
+	border-right: 1px solid #b66c15;
+	border-bottom: 1px solid #b66c15;
+	height:22px;
+	cursor:pointer;
+}
+/**********promotion***********/
+.style1 {
+	color: #009900;
+	font-weight: bold;
+	font-size: 24px;
+}
+.style3 {
+	color: #00aaef;
+	font-size: 12px;
+	font-weight: bold;	
+}
+
+
+
+
+
+/***************************************************************************
+VNW 2.5 CSS
+****************************************************************************/
+/* style of page ------------------------------------------------------------------------------------*/
+body{ font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px; margin:0px; color:#555555}
+/*
+a{color:#555555}
+a:hover{color:#ff9900}
+*/
+.link_public a{color:#555555;}
+.link_public a:hover{color:#ff9900}
+.link_public_un a{color:#555555; text-decoration:underline}
+.link_public_un a:hover{color:#ff9900;text-decoration:underline}
+
+/* style of layout ------------------------------------------------------------------------------------*/
+.wrap{width:980px; margin:auto; padding-top:10px}
+.bold{font-weight:bold}
+
+/*style for header ------------------------------------------------------------------------------------*/
+.top_header{background:#00aded; color:#fff; font-size:10px; height:25px; min-width:980px}
+.top_header a{text-decoration:underline; color:#fff}
+.top_header a:hover{text-decoration:underline; color:#ffff33}
+.top_header .head_content{width:980px; text-align:left; margin:0px auto 0px;}
+.top_header .head_left{text-align:left;margin-top:5px; margin-bottom:5px; float:left; width:900px;}
+.top_header .icon_home{float:left; width:13px; height:11px; margin-right:5px}
+.top_header .status_count{color:#fff; font-size:11px; float:left}
+.top_header .count{font-weight:bold; color:#ffff33}  
+.top_header .make_home{ font-weight:bold}
+.top_header .contact{ margin-left:25px; margin-right:0px}
+.top_header .language_vn{ float:right; background:#FF0000;  border-top:#fff 1px solid; border-left:#fff 1px solid; border-right:#fff 1px solid; padding-left:10px; padding-right:10px; padding-bottom:5px; padding-top:3px}
+.top_header .language_vn a{color:#ffff33}
+.top_header .language_eng{ float:right; background:#025195;  border-top:#fff 1px solid; border-left:#fff 1px solid; border-right:#fff 1px solid; padding-left:10px; padding-right:10px; padding-bottom:5px; padding-top:3px}
+.top_header .language_eng a{color:#ffff33}
+.logo{height:116px; float:left}
+.top_banner{ width:425px; height:70px; margin-top:15px; float:right}
+.top_header .head_right{float:right}
+
+/*style for navigation ------------------------------------------------------------------------------------*/
+.nav_bg{background:url(http://images.vietnamworks.com/header_bg.gif) bottom repeat-x; height:150px}
+.wrap_nav{width:980px; margin:0px auto 0px; clear:both;position:relative}
+.mannav_pos{width:980px;margin:0px auto 0px;clear:both;height:22px;	position:absolute;top:120px;left:0px}
+.mannav{float:left; margin-right:2px; font-weight:bold}
+.mannav a,
+.mannav a span { display:block;background: #96979b url(http://images.vietnamworks.com/right_corner.gif) no-repeat right top; padding-right:5px; text-decoration:none; color:#fff}
+.mannav a span { display:block;background: url(http://images.vietnamworks.com/left_corner.gif) no-repeat left top; padding-left:10px; padding-top:5px; padding-bottom:5px}
+.mannav a:hover{background-color:#00aeef}
+
+.nav_active{float:left; margin-right:2px; font-weight:bold}
+.nav_active,
+.nav_active span{ display:block;background: #00aeef url(http://images.vietnamworks.com/right_corner.gif) no-repeat right top; padding-right:5px; text-decoration:none; color:#fff}
+.nav_active span{ display:block;background: url(http://images.vietnamworks.com/left_corner.gif) no-repeat left top; padding-left:10px; padding-top:5px; padding-bottom:5px}
+
+.for_emp{float:right; font-weight:bold}
+.for_emp a,
+.for_emp a span { display:block;background: #006599 url(http://images.vietnamworks.com/right_corner.gif) no-repeat right top; padding-right:5px; text-decoration:none; color:#fff}
+.for_emp a span { display:block;background: url(http://images.vietnamworks.com/left_corner.gif) no-repeat left top; padding-left:10px; padding-top:5px; padding-bottom:5px}
+
+.sub_nav{clear:both; background:#01aef0 url(http://images.vietnamworks.com/bg_nav.gif) bottom repeat-x; padding-top:5px; padding-bottom:5px; margin-bottom:10px;border-top:#048dd3 1px solid; min-width:980px}
+.sub_nav_div{display:block; border-bottom:#fff 1px dashed; padding-bottom:5px; padding-left:5px; text-align:center}
+.sub_nav_span{text-align:left; color:#fff;}
+.sub_nav_span a{text-decoration:none; color:#fff}
+.sub_nav_span a:hover{text-decoration:none; color:#ff9900}
+
+
+/* style for footer --------------------------------------------------------------------------------------------------------*/
+.footer{clear:both; background-color:white /*padding-top:10px;*/}
+.footer_blue{ color:#fff; background:#01aef0; border-bottom:#fff 1px dashed; text-align:center; padding:10px 0px 8px 0px; min-width:980px;}
+.footer_gray{ color:#fff; background:#939598; text-align:center; padding:10px 0px 17px 0px; min-width:980px;}
+.footer_gray a{ color:#fff; text-decoration:underline}
+.footer_gray a:hover{ color:#ff9900; text-decoration:underline}
+.copyright{padding-top:12px}
+
+/* layout for homepage =================================================================================== */
+#main_content{ margin-top:10px}
+.left_col{float:left; width:573px}
+.left_col .left_leftcol{float:left; width:213px}
+.left_col .right_leftcol{float:right; width:350px}
+.right_col{float:right; width:178px}
+
+.view_more{color:#3399cc;font-weight:bold; clear:both; padding:5px 0px 5px 0px}
+.view_more a{color:#3399cc; text-decoration:underline}
+.view_more a:hover{color:#ff9900; text-decoration:underline}
+
+.view_more_orange{color:#ff9900;font-weight:bold; clear:both; padding:5px 0px 5px 0px}
+.view_more_orange a{color:#ff9900; text-decoration:underline}
+.view_more_orange a:hover{color:#ff9900; text-decoration:underline}
+
+
+/* quick search box style -------------------------*/
+.adv_save_search{margin-left:34px; margin-top:10px}
+
+
+/* top jobs box style -----------------------------*/
+.job_content{border-bottom:#3399cc 1px dashed; padding:0px 5px 8px 10px; margin-bottom:8px}
+.job_titlle { font-weight:bold; padding-bottom:5px;}
+.job_titlle a{text-decoration:none}
+.job_comp{}
+
+/* featured logo box style ------------------------*/
+.logo_in_line{height:48px; margin-top:10px; margin-left:4px}
+.logo_in_line .logo_left, .logo_right{float:left; background:#fff url(http://images.vietnamworks.com/bg_featured_logo.png); width:91px; height:47px; padding:1px 0px 0px 1px}
+.logo_in_line .logo_left{margin-right:7px;}
+
+.logo_feature{
+	margin-top:10px; 
+	margin-left:2px;
+	border:0px;
+}
+
+.logo_feature td{
+	vertical-align: top;
+	background: url(http://images.vietnamworks.com/bg_featured_logo.png)  0px 1px no-repeat; 
+	width:98px;
+	height:55px;
+	padding-left:1px; 
+	padding-top:2px;
+}
+/* adv banner style --------------------------------*/
+.banner_adv{ list-style-type:none; margin:0px; padding:0px}
+.banner_adv li{margin-bottom:10px}
+
+
+/*style for box shadow, categoty search --------------------------------------------------------------------------*/
+.cat_search_box{background:#f5f5f5 url(http://images.vietnamworks.com/img_homepage.gif) no-repeat 5px bottom;}
+.content_catsearch{margin-left:150px}
+.content_catsearch a{text-decoration:underline; }
+
+.content_catsearch .padding_cat{padding-top:10px}
+.content_catsearch .list_cat_left{ list-style-type:none; float:left; width:170px; margin:0px; padding-left:10px}
+.content_catsearch .list_cat_left li{padding-bottom:5px}
+.content_catsearch .list_cat_right{ list-style-type:none; margin:0px; padding-left:5px}
+.content_catsearch .list_cat_right li{padding-bottom:5px}
+.content_catsearch em {color:#999; font-style:normal}
+.content_catsearch .padding_cat a{color:#333333}
+.content_catsearch .padding_cat a:hover{color:#ff9900}
+
+/*style for corner box -----------------------------------------------------------------------------------------*/
+.box_corner {margin-bottom:10px}
+.xtop {DISPLAY: block; FONT-SIZE: 1px; BACKGROUND: none transparent scroll repeat 0% 0%}
+.xbottom {DISPLAY: block; FONT-SIZE: 1px; BACKGROUND: none transparent scroll repeat 0% 0%}
+.xb1, .xb2, .xb3 {DISPLAY: block; OVERFLOW: hidden; HEIGHT: 1px}
+
+.gray_curve{BORDER-RIGHT: #939393 1px solid;BORDER-LEFT: #939393 1px solid}
+.gray_curve1{BORDER-RIGHT: #939393 1px solid;BORDER-LEFT: #939393 1px solid;background:#e9e9e9}
+.gray_top{BACKGROUND: #939393;}
+.gray_content {BORDER-RIGHT: #939393 1px solid; BORDER-TOP: #939393 0px solid; DISPLAY: block; BORDER-LEFT: #939393 1px solid; BORDER-BOTTOM: #939393 0px solid; padding:10px 5px 10px 7px}
+.gray_content {background:#e9e9e9 url(http://images.vietnamworks.com/bg_login_box.gif) top repeat-x}
+
+.blue_gray_curve{BORDER-RIGHT: #98d7fc 1px solid;BORDER-LEFT: #98d7fc 1px solid; background:#e4f5ff}
+.blue_gray_top{BACKGROUND: #98d7fc;}
+.blue_gray_content {BORDER-RIGHT: #98d7fc 1px solid; BORDER-TOP: #98d7fc 0px solid; DISPLAY: block; BACKGROUND: #e4f5ff; BORDER-LEFT: #98d7fc 1px solid; BORDER-BOTTOM: #98d7fc 0px solid; padding:10px 5px 10px 7px}
+
+.gray_light_curve{BORDER-RIGHT: #d3d3d3 1px solid;BORDER-LEFT: #d3d3d3 1px solid; background:transparent}
+.gray_light_top{BACKGROUND: #d3d3d3;}
+.gray_light_content {BACKGROUND:scroll transparent repeat 10% 10% ;BORDER-RIGHT: #d3d3d3 1px solid; BORDER-TOP: #d3d3d3 0px solid; DISPLAY: block; BORDER-LEFT: #d3d3d3 1px solid; BORDER-BOTTOM: #d3d3d3 0px solid; padding:5px 5px 10px 7px}
+
+.blue_curve{BORDER-RIGHT: #3399cc 1px solid;BORDER-LEFT: #3399cc 1px solid}
+.blue_top{BACKGROUND: #3399cc;}
+.blue_content {BORDER-RIGHT: #3399cc 1px solid; BORDER-TOP: #3399cc 0px solid; DISPLAY: block; BACKGROUND: #eaf5f9; BORDER-LEFT: #3399cc 1px solid; BORDER-BOTTOM: #3399cc 0px solid; padding:10px}
+.blue_content a{color:#555;}
+.blue_content a:hover{color:#F7931D;}
+.blue_title{BACKGROUND: #00adef;}/*color of box title*/ 
+.blue_bg_title{margin:0; font-size:1.2em; padding:0 10px 5px 10px; background:#00adef; color:#fff; height:15px}
+.blue_bg_title a{color:#fff; text-decoration:underline; font-size:10px}
+.blue_bg_title a:hover{color:#ff9900; text-decoration:underline; font-size:10px}
+.blue_bg_bottom{background:#eaf5f9}
+.white_content {BORDER-RIGHT: #3399cc 1px solid; BORDER-TOP: #3399cc 0px solid; DISPLAY: block; BACKGROUND: #fff; BORDER-LEFT: #3399cc 1px solid; BORDER-BOTTOM: #3399cc 0px solid; padding:10px}
+
+
+/* style for navigation -------------------------------- */
+.nav_content_active {BORDER-RIGHT: #048dd3 1px solid; BORDER-TOP: #048dd3 0px solid; DISPLAY: block; BORDER-LEFT: #048dd3 1px solid; BORDER-BOTTOM: #00aded 1px solid; padding:7px 5px 7px 5px; background:#00aeef}
+.nav_content_active {font-weight:bold; color:#fff; text-decoration:none}
+.nav_content_inactive {BORDER-RIGHT: #939393 1px solid; BORDER-TOP: #939393 0px solid; DISPLAY: block; BORDER-LEFT: #939393 1px solid; BORDER-BOTTOM: #048dd3 1px solid; padding:7px 5px 7px 5px; background:#fff}
+.nav_content_inactive {font-weight:bold; color:#555; text-decoration:none}
+
+.nav_curve{BORDER-RIGHT: #939393 1px solid;BORDER-LEFT: #939393 1px solid;background:#fff}
+.nav_top{BACKGROUND: #939393;}
+
+.nav_curve_over{BORDER-RIGHT: #048dd3 1px solid;BORDER-LEFT: #048dd3 1px solid;background:#00aeef}
+.nav_top_over{BACKGROUND: #048dd3;}
+.nav_content_inactive_over{BORDER-RIGHT: #048dd3 1px solid; BORDER-TOP: #048dd3 0px solid; DISPLAY: block; BORDER-LEFT: #048dd3 1px solid; BORDER-BOTTOM: #00aded 1px solid; padding:7px 5px 7px 5px; background:#00aeef;font-weight:bold; color:#fff; text-decoration:none; cursor:pointer}      
+
+/*a:hover .nav_curve{BORDER-RIGHT: #048dd3 1px solid;BORDER-LEFT: #048dd3 1px solid;background:#00aeef}
+a:hover .nav_top{BACKGROUND: #048dd3;}
+a:hover .nav_content_inactive{BORDER-RIGHT: #048dd3 1px solid;BORDER-LEFT: #048dd3 1px solid; BORDER-BOTTOM: #00aded 1px solid;background:#00aeef; color:#fff; text-decoration:none}
+*/
+
+.nav_btn{text-align:center; margin-right:2px; float:left; cursor:pointer}
+.nav_home{width:60px}
+.nav_jobsearch{width:90px}
+.nav_createresume{width:120px}
+.nav_careercenter{width:120px}
+.nav_edu{width:90px}
+
+.nav_btn_emp{text-align:center;float:right}
+.nav_emp_top{BACKGROUND: #939393;}
+.nav_emp_curve{BORDER-RIGHT: #939393 1px solid;BORDER-LEFT: #939393 1px solid;background:#0a8fd2}
+
+.nav_content_emp {BORDER-RIGHT: #939393 1px solid; BORDER-TOP: #939393 0px solid; DISPLAY: block; BORDER-LEFT: #939393 1px solid; BORDER-BOTTOM: #048dd3 0px solid; padding:7px 5px 7px 5px; background:#0a8fd2 url(http://images.vietnamworks.com/bg_btn_emp.jpg) bottom}
+.nav_content_emp {font-weight:bold; color:#ffff33; text-decoration:none}
+.nav_content_emp a{ color:#FFFF00; text-decoration:none}
+.nav_content_emp a:hover{ color:#FFFF00; text-decoration:none}
+/*end navigation -- */
+
+.xb1 {MARGIN: 0px 3px}
+.xb2 {MARGIN: 0px 2px}
+.xb3 {MARGIN: 0px 1px}
+
+
+/* style for form --------------------------------------------------------------------------------------------------*/
+.form_login{display:block; margin-top:10px; margin-bottom:10px}
+.form_login label{display:block; margin-top:5px}
+.text_box{border-style:none; border:#7f9db9 1px solid; width:200px; padding-left:2px}
+.pos_btn{text-align:right; padding-top:10px; clear:both}
+.button1{ border-style:none; border:#dedede 1px solid}
+.btn_js1{ font-size:11px; font-weight: bold; background-color: #FF9900; background-position:center; color:#FFFFFF; border-top: 1px solid #f9ab4f; border-left: 1px solid #f9ab4f; border-right: 1px solid #b66c15; border-bottom: 1px solid #b66c15; height:22px; cursor:pointer}
+.btn_js2{ font-size:12px; font-weight: bold; color:#FFFFFF; cursor:pointer; background:url(http://images.vietnamworks.com/bg_btn.gif); width:93px; height:25px; border-style:none; cursor:pointer;}
+
+.form_poll{display:block; margin-top:10px; margin-bottom:10px}
+.form_poll ul{list-style-type:none; margin:0px; padding:0px}
+.form_poll ul li{clear:both}
+.form_poll .option_poll{float:left;}
+.form_poll label{float:left; margin-top:3px; margin-left:5px; width:133px}
+
+/*style for text --------------------------------------------------------------------------------------------------*/
+.txt_title1{font-size:12px; font-weight:bold; color:#00aeef}
+.txt_title2{font-size:16px; font-weight:bold; color:#00aeef}
+.txt_title3{font-size:20px; font-weight:bold; color:#ff9900}
+.line_dashed{border-bottom:#939598 1px dashed; margin-bottom:10px; clear:both}
+.line_dashed1{border-bottom:#939598 1px dashed; margin:11px 15px 11px 0px}
+.signup_box{margin-top:5px; font-size:10px}
+.signup_box a{text-decoration:none}
+.signup_box span{display:block; margin-bottom:5px}
+
+/*style for tab box -----------------------------------------------------------------------------------------------*/
+.tab_btn{position:relative; z-index:1;height:24px; cursor:pointer;}
+.tab_content{position:relative; top:-1px}
+.tab_btn_active{float:left; height:24px;cursor:pointer; margin-right:2px; cursor:pointer;}
+.tab_btn_active a{color:#555; text-decoration:none}
+.tab_btn_active a:hover{color:#ff9900; text-decoration:none}
+.tab_btn_inactive{height:24px; float:left; color:#fff; cursor:pointer; margin-right:2px}
+.tab_btn_inactive a{color:#fff; text-decoration:none}
+.tab_btn_inactive a:hover{color:#ff9900; text-decoration:none}
+
+/*style for corner box*/
+.tab_box {BACKGROUND: none transparent scroll repeat 0% 0%;}
+.tbtop {DISPLAY: block; FONT-SIZE: 1px; BACKGROUND: none transparent scroll repeat 0% 0%}
+.tbbottom {DISPLAY: block; FONT-SIZE: 1px; BACKGROUND: none transparent scroll repeat 0% 0%}
+
+/*top content corner*/
+.tb1_top, .tb2_top, .tb3_top{DISPLAY: block; OVERFLOW: hidden; HEIGHT: 1px}
+.tb2_top, .tb3_top{BORDER-RIGHT: #939393 1px solid; BACKGROUND: #fff !important; BORDER-LEFT: #939393 1px solid}
+.tb1_top {BACKGROUND: #939393; MARGIN: 0px 3px 0px 0px}
+.tb2_top {MARGIN: 0px 2px 0px 0px}
+.tb3_top {MARGIN: 0px 1px 0px 0px}
+
+.tb1, .tb2, .tb3{DISPLAY: block; OVERFLOW: hidden;HEIGHT: 1px}
+.tb2, .tb3{BORDER-RIGHT: #939393 1px solid; BACKGROUND: #fff !important; BORDER-LEFT: #939393 1px solid}
+.tb1 {BACKGROUND: #939393; MARGIN: 0px 3px}
+.tb2 {MARGIN: 0px 2px;}
+.tb3 {MARGIN: 0px 1px}
+
+/*tab corner*/
+.tb1_tab, .tb2_tab, .tb3_tab, .tb4_tab  {DISPLAY: block; OVERFLOW: hidden; HEIGHT: 1px}
+.tb2_tab, .tb3_tab, .tb4_tab   {BORDER-RIGHT: #939393 1px solid; BACKGROUND: #666 !important; BORDER-LEFT: #939393 1px solid}
+.tb1_tab {BACKGROUND: #939393; MARGIN: 0px 3px}
+.tb2_tab {MARGIN: 0px 2px}
+.tb3_tab {MARGIN: 0px 1px}
+.xboxcontent {BORDER-RIGHT: #939393 1px solid; DISPLAY: block; BORDER-LEFT: #939393 1px solid; BORDER-BOTTOM: #939393 0px solid}
+.tb_content,
+.tb_content span{display:block;background:#fff url(http://images.vietnamworks.com/dot.gif) left repeat-y; padding-left:5px}
+.tb_content span{display:block;background:url(http://images.vietnamworks.com/dot.gif) right repeat-y; padding-right:5px; padding-top:10px; padding-bottom:5px}
+
+.tb_content_edge,
+.tb_content_edge .line_edge{display:block;background:#fff url(http://images.vietnamworks.com/dot.gif) left repeat-y; padding-left:5px}
+.tb_content_edge .line_edge{display:block;background:url(http://images.vietnamworks.com/dot.gif) right repeat-y; padding-right:5px; padding-top:10px; padding-bottom:5px}
+
+.tb_active{BACKGROUND: #fff !important}
+.tb_inactive{BACKGROUND: #666 !important}
+.tb_active, .tb_inactive {font-weight:bold; font-size:11px; padding:3px 5px 5px 3px; text-align:center}
+
+.career_tips_box{list-style-type:none; margin:0px; padding:0px}
+.career_tips_box b{ font-weight:normal}
+.career_tips_box li{padding-top:10px}
+.career_tips_div1{margin-top:0px;margin-bottom:0px; padding-top:7px}
+.career_tips_div2{margin-top:-12px;margin-left:10px}
+.career_tips_div2 a{color:#555555;text-decoration:underline}
+.career_tips_div2 a:hover{color:#ff9900;text-decoration:underline}
+
+/* style for login page ------------------------------------------------------------------------------------------------*/
+.wrap_login{background:url(http://images.vietnamworks.com/pic_login1.jpg) no-repeat left bottom; margin:0px auto 0px; width:980px; padding-top:10px;}
+.left_col_log{float:left; width:322px; margin-left:220px}
+.narrow_title{background:url(http://images.vietnamworks.com/arrow_org.gif) left top no-repeat; margin-top:5px}
+.txt_title4{font-size:13px; font-weight:bold; color:#ff9900}
+.txt_title4 a{text-decoration:none}
+.txt_title4 a:hover{text-decoration:underline; color:#555}
+.txt_title5{font-size:17px; font-weight:bold; color:#ff9900}
+.txt_title6{font-size:17px; font-weight:bold; color:#00aeff}
+.txt_title6 a{color:#00aeff; text-decoration:underline}
+.txt_title6 a:hover{color:#00aeff; text-decoration:underline}
+.txt_title7{font-size:13px; font-weight:bold; color:#555555}
+.gray_content_log {BORDER-RIGHT: #939393 1px solid; BORDER-TOP: #939393 0px solid; DISPLAY: block; BORDER-LEFT: #939393 1px solid; BORDER-BOTTOM: #939393 0px solid; padding:10px 5px 0px 7px}
+.gray_content_log {background:#e9e9e9 url(http://images.vietnamworks.com/bg_login_box.gif) top repeat-x}
+
+.content_box_dot{background:url(http://images.vietnamworks.com/dot_line.gif) repeat-y right;}
+.content_box_dot div{background:url(http://images.vietnamworks.com/dot_line.gif) repeat-y left; padding:10px 10px 10px 15px}
+.content_box_dot p{display:block; margin-top:10px; font-size:10px; padding:0px; margin-bottom:0px}
+
+.box_dot_b{background:url(http://images.vietnamworks.com/dot_line_ho.gif) top repeat-x; height:6px;}
+.box_dot_t{background:url(http://images.vietnamworks.com/dot_line_ho_t.gif) top repeat-x; height:6px;}
+.box_dot_t .topl_box_dot{background:url(http://images.vietnamworks.com/cornerdot_tl.gif) top no-repeat; height:6px; width:7px; float:left}
+.box_dot_t .topr_box_dot{background:url(http://images.vietnamworks.com/cornerdot_tr.gif) top no-repeat; height:6px; width:7px; float:right}
+.box_dot_b .botl_box_dot{background:url(http://images.vietnamworks.com/cornerdot_bl.gif) no-repeat; height:6px; width:7px; float:left}
+.box_dot_b .botr_box_dot{background:url(http://images.vietnamworks.com/cornerdot_br.gif) no-repeat; height:6px; width:7px; float:right}
+
+#cont_loginpage{margin-top:15px;background:url(http://images.vietnamworks.com/pic_login.jpg) left bottom no-repeat;}
+.cont_textloginpage{margin-left:256px; padding-left:10px; border-left:#00adef 4px solid; width:290px}
+.txt_point{color:#00adef}
+.line_dashed1{border-bottom:#939598 1px dashed; margin:11px 15px 11px 0px}
+.register_here{font-size:13px; color:#00aeef;font-weight:bold;}
+.register_here a{color:#00aeef;text-decoration:none}
+.register_here a:hover{color:#ff9900;text-decoration:none}
+
+/* new 14-07-2007*/
+/*------------------------------------------------------------*/
+			/*style for apply online thankyou*/
+/*------------------------------------------------------------*/
+.box_thank { background:url(http://images.vietnamworks.com/appthank_line.gif) top repeat-x; height:332px}
+.box_thank .boxthank_ct { background:url(http://images.vietnamworks.com/appthank_boderright.gif) right no-repeat; display:block; height:332px}
+.box_thank .thank_tit { font-weight:bold; font-size:12px; color:#ff9900; margin-bottom:20px}
+.box_thank .jobtitle { color:#00adef; font-weight:bold}
+.box_thank .thank_people { text-align:right; font-style:italic}
+.box_thank_list { list-style-type:none; margin:20px 0 0 0; padding:20px 0 0 0; background:url(images/dot_line_cr.gif) top repeat-x}
+.box_thank_list li { background:url(http://images.vietnamworks.com/appthank_arrow.gif) top left no-repeat; padding-left:25px; margin-bottom:17px; line-height:15px}
+
+/*--------------------------------------------------------------------------*/
+			/*style for box categoty search news 
+/*--------------------------------------------------------------------------*/
+.home_catsearch{background:#fff url(http://images.vietnamworks.com/testimonial/category_boderright.gif) top right no-repeat; height:199px; margin-bottom:10px}
+
+.home_catsearch .img_successstory1 {background:url(http://images.vietnamworks.com/testimonial/succsesshome_pic1.jpg) no-repeat; width:192px; height:40px; float:left; padding-top:159px}
+.home_catsearch .img_successstory2 {background:url(http://images.vietnamworks.com/testimonial/succsesshome_pic2.jpg) no-repeat; width:192px; height:40px; float:left; padding-top:159px}
+.home_catsearch .img_successstory3 {background:url(http://images.vietnamworks.com/testimonial/succsesshome_pic3.jpg) no-repeat; width:192px; height:40px; float:left; padding-top:159px}
+.home_catsearch .img_successstory4 {background:url(http://images.vietnamworks.com/testimonial/succsesshome_pic4.jpg) no-repeat; width:192px; height:40px; float:left; padding-top:159px}
+.home_catsearch .img_successstory5 {background:url(http://images.vietnamworks.com/testimonial/succsesshome_pic5.jpg) no-repeat; width:192px; height:40px; float:left; padding-top:159px}
+.home_catsearch .img_successstory6 {background:url(http://images.vietnamworks.com/testimonial/succsesshome_pic6.jpg) no-repeat; width:192px; height:40px; float:left; padding-top:159px}
+.home_catsearch .img_successstory7 {background:url(http://images.vietnamworks.com/testimonial/succsesshome_pic7.jpg) no-repeat; width:192px; height:40px; float:left; padding-top:159px}
+.home_catsearch .img_successstory8 {background:url(http://images.vietnamworks.com/testimonial/succsesshome_pic8.jpg) no-repeat; width:192px; height:40px; float:left; padding-top:159px}
+
+.home_catsearch .catsearchbg {border-top:#d3d3d3 1px solid; border-bottom:#d3d3d3 1px solid; height:192px; float:left; padding-top:5px; width:370px; _width:auto; padding-left:0px}
+
+.home_catsearch .browse_more { color:#ff9900; font-weight:bold; padding-top:10px }
+.home_catsearch .browse_more a {color:#ff9900;text-decoration:underline;}
+.home_catsearch .browse_more a:hover { color:#ff9900;text-decoration:underline}
+
+.home_catsearch .list_catleft{ list-style-type:none; float:left; width:180px; margin:15px 0 5px 0; padding:0}
+.home_catsearch .list_catleft li{padding-bottom:5px}
+.home_catsearch .list_catright{ list-style-type:none; float:left; margin:15px 0 5px 0; padding-left:5px}
+.home_catsearch .list_catright li{padding-bottom:5px}
+.home_catsearch a {color:#555555; text-decoration:underline}
+.home_catsearch a:hover {color:#FF9900; text-decoration:underline}
+.home_catsearch em {color:#999; font-style:normal}
+
+/* -----------------------------------------------------------------------------------------*/
+							/* stye for FAQ */
+/* -----------------------------------------------------------------------------------------*/
+.line_title_faq {
+	background:url(http://images.vietnamworks.com/faq_dotted.gif) bottom repeat-x; margin-bottom:15px; padding-bottom:2px
+}
+
+#leftcol_question {float:left; width:480px; margin-top:22px}
+#rightcol_question {float:right; width:480px; margin-top:22px}
+.block_question { border-top:#dfdfdf 14px solid; padding:15px 0}
+.block_question a {color:#555; text-decoration:none}
+.block_question a:hover {color:#f90; text-decoration:underline}
+
+.block_question ul {list-style-type:none; padding:0; margin:10px 0 0 0}
+.block_question ul li { background:url(http://images.vietnamworks.com/faq_linefirst.gif) top  left no-repeat; padding-left:10px}
+
+.faq_block_content {background:url(http://images.vietnamworks.com/faq_dotted.gif) top repeat-x; margin-top:15px}
+.faq_block_content .block_ctleft {background:url(http://images.vietnamworks.com/faq_dotted_ho.gif) top left repeat-y}
+.faq_block_content .block_ctright {background:url(http://images.vietnamworks.com/faq_dotted_ho.gif) top right repeat-y; padding:15px 10px 5px 10px; height:1%}
+.faq_block_content .block_ctbottom {background:url(http://images.vietnamworks.com/faq_dotted.gif) bottom repeat-x}
+.faq_title {background:url(http://images.vietnamworks.com/faq_dotted.gif) bottom repeat-x; height:18px; margin-bottom:15px}
+.faq_title img {float:left}
+.faq_title span {float:right; display:block}
+.faqtitle_answer {background:#dfdfdf; padding:2px 5px; color:#000; font-weight:bold; margin-bottom:12px; margin-top:15px}
+.faq_answer {padding:0 5px }
+
+/* ---------------------------------------------------------------------------------- */
+							/* Newsletter */
+/* ---------------------------------------------------------------------------------- */
+.mktnews_wrap {width:980px; margin:auto; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px}
+.mktnews_letter {background:url(http://images.vietnamworks.com/reg_newsletter/mktnews_letter.gif) top no-repeat; padding:267px 0 80px 114px; height:37px; _height:0px}	
+.letter_ct {float:left; width:210px; margin-right:25px; font-weight:bold; color:#00b9f1; text-align:right}
+
+.mktnews_letter_vn {background:url(http://images.vietnamworks.com/reg_newsletter/mktnews_letter_vn.gif) top no-repeat; padding:267px 0 80px 114px; height:37px; _height:0px}	
+
+.mktnews_box {background:#ebebeb url(http://images.vietnamworks.com/reg_newsletter/mktnews_boxtl.gif) left no-repeat}
+.mktnews_boxcorner {background:url(http://images.vietnamworks.com/reg_newsletter/mktnews_boxtr.gif) right no-repeat; height:31px; color:#f7931d; font-size:18px; font-weight:bold; padding:6px 0 0 10px}
+.mktnews_box_content {background:#f4f4f4; padding:10px 0 0 40px; height:1%}
+
+.mktnews_boxct {float:left}
+#mktnews_freeweek {width:200px; margin-right:90px; background:url(http://images.vietnamworks.com/reg_newsletter/mktnews_pic1.jpg) no-repeat 30px 0; padding-top:111px}
+#mktnews_reg {width:168px; margin-right:80px; _margin-right:50px; margin-top:15px}
+#mktnews_notmem {width:120px; margin-top:15px}
+
+#mktnews_freeweek_vn {width:200px; margin-right:70px; background:url(http://images.vietnamworks.com/reg_newsletter/mktnews_pic1.jpg) no-repeat 30px 0; padding-top:111px}
+#mktnews_reg_vn {width:230px; margin-right:40px; margin-top:15px}
+#mktnews_notmem_vn {width:155px; margin-top:15px}
+
+.mktnews_box_content form {display:block; margin:0; padding:0}
+.mktnews_box_content .input {margin-top:7px; width:168px; color:#7f7f7f}
+.mktnews_btn {background:url(http://images.vietnamworks.com/reg_newsletter/mktnews_btnbg.gif) no-repeat; height:33px; width:95px; color:#6b5d48; font-family:Arial, Helvetica, sans-serif; font-size:18px; border-style:none; cursor:pointer;}
+
+.mktnews_boxbot {background:#f4f4f4 url(http://images.vietnamworks.com/reg_newsletter/mktnews_boxbl.gif) left no-repeat}
+.mktnews_boxbotcorner {background:url(http://images.vietnamworks.com/reg_newsletter/mktnews_boxbr.gif) right no-repeat; height:12px}
+
+/* ---------------------------------------------------------------------------------- */
+							/* JobAlert */
+/* ---------------------------------------------------------------------------------- */
+.wrap_mktjoba {width:980px; margin:auto; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px}
+
+.mktjoba_topbg {background:url(http://images.vietnamworks.com/reg_jobalert/mktjob_topbg.gif) top no-repeat; height:160px}
+.mktjoba_topbg_vn {background:url(http://images.vietnamworks.com/reg_jobalert/mktjob_topbg_vn.gif) top no-repeat; height:160px}
+.mktjoba_botbg {background:url(http://images.vietnamworks.com/reg_jobalert/mktjob_botbg.jpg) top no-repeat; text-align:right; color:#fff; font-weight:bold; padding-right:20px; height:192px; margin-bottom:10px}
+
+.mktjoba_clickbg {background:url(http://images.vietnamworks.com/reg_jobalert/mktjob_clickbg.gif) no-repeat; width:364px; height:101px; text-align:center; padding-top:30px; float:left}
+.mktjoba_spfeature {width:310px; float:right}
+.mktjoba_text { font-weight:bold; text-align:center; padding-right:80px}
+.mktjoba_textbtn {width:115px; float:left; text-align:left; margin-top:15px; margin-right:30px; cursor:pointer;}
+
+.mktjoba_spfeature_vn {width:360px; float:right;}
+.mktjoba_text_vn { font-weight:bold;}
+.mktjoba_textbtn_vn {width:160px; float:left; text-align:left; margin-top:15px; cursor:pointer;} 
+
+.mktnews_btn {background:url(http://images.vietnamworks.com/reg_jobalert/mktnews_btnbg.gif) no-repeat; height:33px; width:95px; color:#6b5d48; font-family:Arial, Helvetica, sans-serif; font-size:18px; border-style:none; margin-top:15px; cursor:pointer;}
+
+.bottom_corner1 { background:#cadff3; height:9px}
+	.bottom_corner1_left, .bottom_corner1_right {display:block; width:9px; height:9px; background:url(http://images.vietnamworks.com/bottom_corner1.gif) no-repeat}
+	.bottom_corner1_left { background-position:0 0; float:left}
+	.bottom_corner1_right { background-position:100% 0; float:right}
+	
+.bottom_corner2 { background:#ccc; height:9px}
+	.bottom_corner2_left, .bottom_corner2_right {display:block; width:9px; height:9px; background:url(http://images.vietnamworks.com/bottom_corner2.gif) no-repeat}
+	.bottom_corner2_left { background-position:0 0; float:left}
+	.bottom_corner2_right { background-position:100% 0; float:right}	
+	.vns_linktoedu {color:#333; padding-left:15px; float:left; line-height:18px }
+	
+	.vns_violet {color:#91278f; font-weight:bold; text-transform:uppercase}
+	.vns_linkgreen {color:#8cc637; font-weight:bold; text-transform:uppercase}
+	.vns_linktoedu_btn {background:url(http://images.vietnamworks.com/edulink_arrow.gif) no-repeat 5px 0; padding-left:25px}
+	.vns_linktoedu_btn a {color:#333; text-decoration:underline; font-weight:bold}
+	.vns_linktoedu_btn a:hover {color:#f90}
+
+.vns_violet {color:#91278f; font-weight:bold; text-transform:uppercase}
+.vns_linkgreen {color:#8cc637; font-weight:bold; text-transform:uppercase}
+.vns_linktoedu_btn {background:url(http://images.vietnamworks.com/edulink_arrow.gif) no-repeat 5px 0; padding-left:25px; cursor:pointer;}
+.vns_linktoedu_btn a {color:#333; text-decoration:underline; font-weight:bold}
+.vns_linktoedu_btn a:hover {color:#f90}
+.list_normal ul {list-style-type:disc !important}	
