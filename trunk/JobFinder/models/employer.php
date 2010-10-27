@@ -11,12 +11,20 @@ class Employer extends AppModel {
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
+				),
+			'isUnique' => array(
+				'rule' => array('isUnique'),
+				'message' => 'This email has already been used.',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				)
 		),
 		'password' => array(
 			'notempty' => array(
-				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
+				'rule' => array('between', 4, 15),
+				'message' => 'Mật khẩu phải từ 4 đến 15 ký tự',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -34,8 +42,8 @@ class Employer extends AppModel {
 			),
 		),
 		'company_size' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
+			'notempty' => array(
+				'rule' => array('notempty'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -94,8 +102,8 @@ class Employer extends AppModel {
 			),
 		),
 		'howknow' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
+			'notempty' => array(
+				'rule' => array('notempty'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,

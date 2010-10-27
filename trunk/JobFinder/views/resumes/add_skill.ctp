@@ -1,5 +1,4 @@
-<div class='container'>
-<?php echo $this->Form->create('Resume');?>
+<div class='container'><?php echo $this->Form->create('Resume');?>
 <h2>Kỹ năng</h2>
 <ul>
 	<li><?php echo $this->Form->input('ResumeSkill.resume_id', array('type'=>'hidden', 'value' => $this->Session->read('resumeID'))); ?></li>
@@ -45,7 +44,8 @@
 	</li>
 </ul>
 <ul>
-	<li><?php if(!empty($resumeSkills)){ echo $this->Html->link(__('Finish', true), array('action' => 'preview')); } ?></li>
+	<li><?php echo $this->Html->link(__('Trở lại', true), array('action' => 'saveTargetJob'));?></li>
+	<li><?php if(!empty($resumeSkills)){ echo $this->Html->link(__('Hoàn tất', true), array('action' => 'view',$this->Session->read('resumeID'))); } ?></li>
 </ul>
 </div>
-<?php echo $ajax->observeField('skillGroups',array('url'=>'getSkills','update'=>'skills'));?>
+		<?php echo $ajax->observeField('skillGroups',array('url'=>'getSkills','update'=>'skills',));?>

@@ -20,7 +20,7 @@
 <ul>
 	<li>
 	<div class="resume educations index">
-	<h2><?php __('Quá trình làm việc');?></h2>
+	<h2><?php __('Học vấn');?></h2>
 	<table cellpadding="0" cellspacing="0">
 		<tr>
 			<th><?php echo ('Trường ');?></th>
@@ -47,6 +47,12 @@
 	</li>
 </ul>
 <ul>
+	<li><?php if($this->Session->read('years_exp') == 0) { 
+		echo $this->Html->link(__('Trở lại', true), array('action' => 'modifyResume',$this->Session->read('resumeID')));
+	}
+	else {
+		echo $this->Html->link(__('Trở lại', true), array('action' => 'addJobExp'));
+	}?></li>
 	<li><?php if(!empty($resumeEducations)){ echo $this->Html->link(__('Continue', true), array('action' => 'saveTargetJob')); } ?></li>
 </ul>
 </div>

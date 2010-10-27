@@ -1,9 +1,7 @@
-<?php echo $this->element('job_menu'); ?>
-
 <div class='container'><?php echo $this->Form->create('Resume');?>
 <h2>Quá trình làm việc</h2>
 <ul>
-	<li><?php echo $this->Form->input('ResumeJobExp.resume_work_exp_id', array('type'=>'hidden', 'value' => $this->Session->read('workID'))); ?></li>
+	<li><?php echo $this->Form->input('ResumeJobExp.resume_id', array('type'=>'hidden', 'value' => $this->Session->read('resumeID'))); ?></li>
 	<li><?php echo $this->Form->input('ResumeJobExp.job_title', array('label'=>'Chức danh: ')); ?></li>
 	<li><?php echo $this->Form->input('ResumeJobExp.job_level_id', array('label'=>'Cấp bậc: ', 'empty' => 'Vui lòng chọn...')); ?></li>
 	<li><?php echo $this->Form->input('ResumeJobExp.job_category_id', array('label'=>'Ngành nghề: ', 'empty' => 'Vui lòng chọn...')); ?></li>
@@ -50,6 +48,7 @@
 	</li>
 </ul>
 <ul>
-	<li><?php if(!empty($jobExps)){ echo $this->Html->link(__('Continue', true), array('action' => 'addEducation')); }?></li>
+	<li><?php echo $this->Html->link(__('Trở lại', true), array('action' => 'modifyResume',$this->Session->read('resumeID')));?></li>
+	<li><?php if(!empty($jobExps)){ echo $this->Html->link(__('Tiếp tục', true), array('action' => 'addEducation')); }?></li>
 </ul>
 </div>

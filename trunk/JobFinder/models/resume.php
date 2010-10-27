@@ -122,6 +122,16 @@ class Resume extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
+		'years_exp' => array(
+			'numeric' => array(
+				'rule' => array('range', -1, 11),
+				'message' => 'Số năm kinh nghiệm từ 0 đến 10 năm',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
 		'status' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
@@ -160,6 +170,19 @@ class Resume extends AppModel {
 	);
 
 	var $hasMany = array(
+		'ResumeJobExp' => array(
+			'className' => 'ResumeJobExp',
+			'foreignKey' => 'resume_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
 		'ResumeEducation' => array(
 			'className' => 'ResumeEducation',
 			'foreignKey' => 'resume_id',
@@ -214,19 +237,6 @@ class Resume extends AppModel {
 		),
 		'ResumeViewLog' => array(
 			'className' => 'ResumeViewLog',
-			'foreignKey' => 'resume_id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		),
-		'ResumeWorkExp' => array(
-			'className' => 'ResumeWorkExp',
 			'foreignKey' => 'resume_id',
 			'dependent' => false,
 			'conditions' => '',
