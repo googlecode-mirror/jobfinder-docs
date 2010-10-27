@@ -17,12 +17,11 @@ class SkillsController extends AppController {
 			$this->Session->setFlash(__('Invalid skill', true));
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->set('skill', $this->Skill->findById($id));
+		$this->set('skill', $this->Skill->read(null,$id));
 	}
 
 	function admin_add() {
 		$this->set('skillGroups', $this->Skill->SkillGroup->find('list'));
-		
 		if(!empty($this->data)) {
 			$this->Skill->create();
 			if ($this->Skill->save($this->data)) {

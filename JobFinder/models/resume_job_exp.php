@@ -2,7 +2,7 @@
 class ResumeJobExp extends AppModel {
 	var $name = 'ResumeJobExp';
 	var $validate = array(
-		'resume_work_exp_id' => array(
+		'resume_id' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
 				//'message' => 'Your custom message here',
@@ -97,9 +97,9 @@ class ResumeJobExp extends AppModel {
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 	var $belongsTo = array(
-		'ResumeWorkExp' => array(
-			'className' => 'ResumeWorkExp',
-			'foreignKey' => 'resume_work_exp_id',
+		'Resume' => array(
+			'className' => 'Resume',
+			'foreignKey' => 'resume_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''

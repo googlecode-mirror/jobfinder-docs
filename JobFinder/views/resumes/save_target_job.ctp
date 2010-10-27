@@ -20,8 +20,8 @@
 	<li><label>Bạn có thể đi công tác? ?</label> <?php echo $this->Form->radio('ResumeTargetJob.can_travel', array(0 => 'Không', 1 => 'Có'), array('legend'=>false)); ?></li>
 </ul>
 <ul>
-	<li>
-	<div class="actions"><?php echo $this->Form->submit('Continue');?></div>
-	</li>
+	<li><?php echo $this->Html->link(__('Trở lại', true), array('action' => 'addSkill'));?></li>
+	<li><div class="actions"><?php echo $this->Form->submit('Tiếp tục');?></div></li>
 </ul>
+
 </div>

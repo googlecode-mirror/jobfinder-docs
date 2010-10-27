@@ -30,8 +30,8 @@ class Jobseeker extends AppModel {
 	),
 		'password' => array(
 			'notempty' => array(
-				'rule' => array('notempty'),
-	//'message' => 'Your custom message here',
+				'rule' => array('between', 4, 15),
+				'message' => 'Mật khẩu phải từ 4 đến 15 ký tự',
 	//'allowEmpty' => false,
 	//'required' => false,
 	//'last' => false, // Stop validation after this rule

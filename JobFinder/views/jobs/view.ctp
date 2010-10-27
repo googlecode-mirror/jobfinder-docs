@@ -116,6 +116,6 @@
     	
     </fieldset>
     <br clear="all"/>
-    <?php echo $this->Html->link(__('Nộp đơn', true), array('action' => 'apply', $job['Job']['id'])); ?>
-    <?php echo $this->Html->link(__('Lưu việc làm này', true), array('action' => 'save', $job['Job']['id'])); ?>
+    <?php echo $this->Html->link(__('Nộp đơn', true), array('action' => 'applyJob', $job['Job']['id'])); ?>
+    <?php echo $this->Html->link(__('Lưu việc làm này', true), array('action' => 'saveJob', $job['Job']['id'])); ?>
 </div>

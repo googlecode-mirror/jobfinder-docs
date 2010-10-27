@@ -12,10 +12,9 @@
         <li><?php echo $this->Form->input('gender', array('label'=>'Giới tính:', 'options' => array(0 => 'Nam', 1 =>'Nữ'), 'empty' => '...','value'=> $jobseeker['Jobseeker']['gender'], 'disabled'=> true));?></li>
         <li><?php echo $this->Form->input('martial_status', array('label'=>'Tình trạng hôn nhân:', 'options' => array(0 => 'Độc thân', 1 =>'Đã kết hôn'), 'empty' => '...'));?></li>
         <li><?php echo $this->Form->input('nationality', array('label'=>'Quốc tịch:', 'empty' => '...'));?></li>
-        
         <li><?php echo $this->Form->input('picture', array('label'=>'Đăng hình:','type' => 'file'));?></li>
     </ul>
-     <h2>Thông tin liên lạc</h2>
+    <h2>Thông tin liên lạc</h2>
     <ul>
        <li><?php echo $this->Form->input('address', array('label'=>'Địa chỉ:'));?></li>
        <li><?php echo $this->Form->input('country_id', array('label'=>'Quốc gia:','empty' => 'Vui lòng chọn..','value'=> $jobseeker['Jobseeker']['country_id'], 'id'=>'countries'));?></li>
@@ -24,8 +23,12 @@
        <li><?php echo $this->Form->input('mobile', array('label'=>'Số di động:'));?></li>
        <li><?php echo $this->Form->input('email', array('label'=>'Địa chỉ Email:','value'=> $jobseeker['Jobseeker']['email']));?></li>
     </ul>
+    <h2>Kinh nghiệm làm việc</h2>
+    <ul>
+       <li><?php echo $this->Form->input('years_exp', array('label'=>'Tổng số năm kinh nghiệm:'));?></li>
+    </ul>
     <?php echo $ajax->observeField('countries',array('url'=>'getProvinces','update'=>'provinces'));?>
     <div class="actions">
-        <?php echo $this->Form->submit('Continue');?>
+        <?php echo $this->Form->submit('Tiếp tục');?>
     </div>
 </div>

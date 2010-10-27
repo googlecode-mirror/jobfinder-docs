@@ -3,7 +3,7 @@ class ResumesController extends AppController {
 	var $name = 'Resumes';
 	var $helpers = array('Html','Form','Ajax','Javascript');
 	var $components = array('RequestHandler');
-	var $uses = array('Resume', 'ResumeWorkExp','ResumeJobExp','Job','ResumeSkill', 'Skill');
+	var $uses = array('Resume','ResumeJobExp','Job','ResumeSkill', 'Skill');
 
 	function view($id = null) {
 		if (!$id) {
@@ -30,7 +30,13 @@ class ResumesController extends AppController {
 			if ($this->Resume->save($this->data)) {
 				$this->Session->setFlash(__('The resume has been saved', true));
 				$this->Session->write('resumeID', $this->Resume->id);
-				$this->redirect(array('action' => 'saveResumeWorkExp'));
+				$this->Session->write('years_exp', $this->data['Resume']['years_exp']);
+				if($this->data['Resume']['years_exp'] == 0){
+					$this->redirect(array('action' => 'addEducation'));
+				}
+				else{
+					$this->redirect(array('action' => 'addJobExp'));
+				}
 			} else {
 				$this->Session->setFlash(__('The resume could not be saved. Please, try again.', true));
 			}
@@ -55,7 +61,19 @@ class ResumesController extends AppController {
 			if ($this->Resume->save($this->data)) {
 				$this->Session->setFlash(__('The resume has been saved', true));
 				$this->Session->write('resumeID', $this->Resume->id);
-				$this->redirect(array('action' => 'saveResumeWorkExp'));
+				$this->Session->write('years_exp', $this->data['Resume']['years_exp']);
+				if($this->data['Resume']['years_exp'] == 0){
+					if($this->Resume->ResumeJobExp->find('list', 
+							array('conditions' => array('ResumeJobExp.resume_id' => $this->Resume->id)))){
+						$this->Session->setFlash(__('Bạn có quá trình làm việc, số năm kinh nghiệm không thể nhập 0', true));
+					}
+					else{
+						$this->redirect(array('action' => 'addEducation'));
+					}
+				}
+				else{
+					$this->redirect(array('action' => 'addJobExp'));
+				}
 			} else {
 				$this->Session->setFlash(__('The resume could not be saved. Please, try again.', true));
 			}
@@ -65,45 +83,18 @@ class ResumesController extends AppController {
 		}
 	}
 
-	function saveResumeWorkExp(){
-		$jobseeker = $this->checkJobSeekerSession();
-		if (!empty($this->data)) {
-			$resumeWorkExp =  $this->ResumeWorkExp->findByResume_id($this->Session->read('resumeID'));
-			if(!empty($resumeWorkExp)){
-				$this->data['ResumeWorkExp']['id'] = $resumeWorkExp['ResumeWorkExp']['id'];
-			}
-			if ($this->ResumeWorkExp->save($this->data)) {
-				$this->Session->write('workID', $this->ResumeWorkExp->id);
-				$this->Session->setFlash(__('The work experience has been saved', true));
-				if($this->data['ResumeWorkExp']['years_work'] == 0){
-					$this->redirect(array('action' => 'addEducation'));
-				}
-				else{
-					$this->redirect(array('action' => 'addJobExp'));
-				}
-			}
-			else {
-				$this->Session->setFlash(__('The work experience could not be saved. Please, try again.', true));
-			}
-		}
-		if (empty($this->data)) {
-			$this->ResumeWorkExp->recursive = -1;
-			$resumeWorkExp =  $this->ResumeWorkExp->findByResume_id($this->Session->read('resumeID'));
-			$this->data = $this->ResumeWorkExp->read(null, $resumeWorkExp['ResumeWorkExp']['id']);
-		}
-	}
-
 	function addJobExp(){
 		$jobseeker = $this->checkJobSeekerSession();
 		$provinces = array();
-		$this->set('jobLevels', $this->ResumeWorkExp->ResumeJobExp->JobLevel->find('list'));
-		$this->set('jobCategories', $this->ResumeWorkExp->ResumeJobExp->JobCategory->find('list'));
+		$this->set('jobLevels', $this->Resume->ResumeJobExp->JobLevel->find('list'));
+		$this->set('jobCategories', $this->Resume->ResumeJobExp->JobCategory->find('list'));
 		$this->set('countries', $this->Jobseeker->Country->find('list'));
-		$this->set('jobExps', $this->ResumeWorkExp->ResumeJobExp->find('all', array('contain' => false, 'conditions' =>
-		array('ResumeJobExp.resume_work_exp_id' => $this->Session->read('workID')))));
+		$this->set('jobExps', $this->Resume->ResumeJobExp->find('all', array('contain' => false, 'conditions' =>
+		array('ResumeJobExp.resume_id' => $this->Session->read('resumeID')))));
 
 		if (!empty($this->data)) {
-			if ($this->ResumeWorkExp->ResumeJobExp->save($this->data)) {
+			//pr($this->data);
+			if ($this->Resume->ResumeJobExp->save($this->data)) {
 				$this->Session->setFlash(__('The job exp has been saved', true));
 				$this->redirect(array('action' => 'addJobExp'));
 			}
@@ -115,19 +106,19 @@ class ResumesController extends AppController {
 
 	function editJobExp($id = null){
 		$jobseeker = $this->checkJobSeekerSession();
-		$this->set('jobLevels', $this->ResumeWorkExp->ResumeJobExp->JobLevel->find('list'));
-		$this->set('jobCategories', $this->ResumeWorkExp->ResumeJobExp->JobCategory->find('list'));
+		$this->set('jobLevels', $this->Resume->ResumeJobExp->JobLevel->find('list'));
+		$this->set('jobCategories', $this->Resume->ResumeJobExp->JobCategory->find('list'));
 		$this->set('countries', $this->Jobseeker->Country->find('list'));
 		$this->set('provinces', $this->Jobseeker->Province->find('list'));
-		$this->set('jobExps', $this->ResumeWorkExp->ResumeJobExp->find('all', array('contain' => false, 'conditions' =>
-		array('ResumeJobExp.resume_work_exp_id' => $this->Session->read('workID')))));
+		$this->set('jobExps', $this->Resume->ResumeJobExp->find('all', array('contain' => false, 'conditions' =>
+		array('ResumeJobExp.resume_id' => $this->Session->read('resumeID')))));
 
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid job exp', true));
 			$this->redirect(array('action' => 'addJobExp'));
 		}
 		if (!empty($this->data)) {
-			if ($this->ResumeWorkExp->ResumeJobExp->save($this->data)) {
+			if ($this->Resume->ResumeJobExp->save($this->data)) {
 				$this->Session->setFlash(__('The job exp has been saved', true));
 				$this->redirect(array('action' => 'addJobExp'));
 			} else {
@@ -135,7 +126,7 @@ class ResumesController extends AppController {
 			}
 		}
 		if (empty($this->data)) {
-			$this->data = $this->ResumeWorkExp->ResumeJobExp->read(null, $id);
+			$this->data = $this->Resume->ResumeJobExp->read(null, $id);
 		}
 	}
 
@@ -144,7 +135,7 @@ class ResumesController extends AppController {
 			$this->Session->setFlash(__('Invalid id for Job exp', true));
 			$this->redirect(array('action'=>'addJobExp'));
 		}
-		if ($this->ResumeWorkExp->ResumeJobExp->delete($id)) {
+		if ($this->Resume->ResumeJobExp->delete($id)) {
 			$this->Session->setFlash(__('Job exp deleted', true));
 			$this->redirect(array('action'=>'addJobExp'));
 		}
@@ -209,7 +200,7 @@ class ResumesController extends AppController {
 
 	function saveTargetJob(){
 		$jobseeker = $this->checkJobSeekerSession();
-		$this->set('jobLevels', $this->ResumeWorkExp->ResumeJobExp->JobLevel->find('list'));
+		$this->set('jobLevels', $this->Resume->ResumeJobExp->JobLevel->find('list'));
 		$this->set('jobTypes', $this->Job->JobType->find('list'));
 		$this->set('jobLocations', $this->Jobseeker->Province->find('list'));
 		$this->set('jobCategories', $this->Job->JobCategory->find('list'));
