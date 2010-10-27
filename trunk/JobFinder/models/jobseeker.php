@@ -132,19 +132,6 @@ class Jobseeker extends AppModel {
 			'finderQuery' => '',
 			'counterQuery' => ''
 			),
-		'JobViewLog' => array(
-			'className' => 'JobViewLog',
-			'foreignKey' => 'jobseeker_id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-			),
 		'Resume' => array(
 			'className' => 'Resume',
 			'foreignKey' => 'jobseeker_id',
