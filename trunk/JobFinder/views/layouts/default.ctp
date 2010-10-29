@@ -24,7 +24,7 @@
 	echo $this->Html->css('cake.generic');
 	echo $scripts_for_layout;
 	echo $html->charset('UTF-8');
-    //echo $javascript->link(array('prototype'));
+    echo $javascript->link(array('prototype'));
     
 ?>
 
@@ -80,6 +80,7 @@
 <!--Phần body -> home-->
 <div id="job_contentbg">
 <div class="job_wrap">
+	<?php echo $this->Session->flash(); ?>
     <?php echo $content_for_layout; ?>
     </div>
 </div>
