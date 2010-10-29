@@ -17,7 +17,7 @@
         <label for="input1"><strong>Tìm Việc Nhanh:</strong></label> 
         <input type="text" onblur="if( this.value == '' ) this.value = 'từ khóa'" 
                 onfocus="if(this.value == 'từ khóa') this.value='';" 
-                value="từ khóa" name="keyword">
+                value="từ khóa" name="keyword"/>
             <select class="comboType02" name="city">
                 <option selected="" value="">Tất cả địa điểm</option>
                 <option value="29">Hồ Chí Minh</option>
@@ -26,15 +26,14 @@
             </select>
         <input type="submit" class="job_btn1" 
                 onclick="if( document.search.keyword.value == 'từ khóa' ) document.search.keyword.value = ''" 
-                value="Tìm việc" name="search">
-        <input type="hidden" value="true" name="search">	
+                value="Tìm việc" name="search"/>
+        <input type="hidden" value="true" name="search"/>	
     </form>			
     <br clear="all"/>
 </div>
 <!--End search-->
 
-<div class="job_botbannel">
-    
+<div class="job_botbannel">    
     <span class="job_botbannel_left"><!-- --></span>
     <span class="job_botbannel_right"><!-- --></span>
 </div>
@@ -49,38 +48,66 @@
     </div>
     <h2 class="job_boxtitle">Việc Làm Với Nhà <br/>Tuyển Dụng Hàng Đầu</h2>
     <div class="job_conrer_ct job_fe_ct">
+        <!--Left Logo-->
 	    <div style="clear: both;" id="ads_TOP_COMPANIES">
 	    <div style="position: relative;">
 	        <table class="logo_feature" id="adc_TOP_COMPANIES">
-	            <tbody><tr>
-                    <td> <a target="_blank" href="###">
-	                <?php echo $html->image('mekong_88x43.gif', 
-	                	  array('alt' => 'Mekong ', 'width' => '88', 'height' => '43', 
-                                    'border'=>'0', 'title'=>''))  ?>
-	                </a></td>
-                    <td> <a target="_blank" href="###">
-	                <?php echo $html->image('mekong_88x43.gif', 
-	                	  array('alt' => 'Mekong ', 'width' => '88', 'height' => '43', 
-                                    'border'=>'0', 'title'=>''))  ?>
-	                </a></td>
-                    <td> <a target="_blank" href="###">
-	                <?php echo $html->image('mekong_88x43.gif', 
-	                	  array('alt' => 'Mekong ', 'width' => '88', 'height' => '43', 
-                                    'border'=>'0', 'title'=>''))  ?>
-	                </a></td>
-                    <td> <a target="_blank" href="###">
-	                <?php echo $html->image('mekong_88x43.gif', 
-	                	  array('alt' => 'Mekong ', 'width' => '88', 'height' => '43', 
-                                    'border'=>'0', 'title'=>''))  ?>
-	                </a></td>                    
-                 </tr> </tbody>
+	            <tbody>
+                    <tr>
+                        <td> <a target="_blank" href="###">
+    	                   <?php echo $html->image('../img/banner_logo/intel_88x43.gif', 
+    	                	  array('alt' => 'Intel Corporation', 'width' => '88', 'height' => '43', 
+                                        'border'=>'0', 'title'=>'Intel Corporation'))  ?>
+    	                </a></td>
+                        <td> <a target="_blank" href="###">
+    	                   <?php echo $html->image('../img/banner_logo/intel_88x43.gif', 
+    	                	  array('alt' => 'Intel Corporation', 'width' => '88', 'height' => '43', 
+                                        'border'=>'0', 'title'=>'Intel Corporation'))  ?>
+    	                </a></td>                    
+                    </tr>
+                    <tr>
+                        <td> <a target="_blank" href="###">
+    	                   <?php echo $html->image('../img/banner_logo/intel_88x43.gif', 
+    	                	  array('alt' => 'Intel Corporation', 'width' => '88', 'height' => '43', 
+                                        'border'=>'0', 'title'=>'Intel Corporation'))  ?>
+    	                </a></td>
+                        <td> <a target="_blank" href="###">
+    	                   <?php echo $html->image('../img/banner_logo/intel_88x43.gif', 
+    	                	  array('alt' => 'Intel Corporation', 'width' => '88', 'height' => '43', 
+                                        'border'=>'0', 'title'=>'Intel Corporation'))  ?>
+    	                </a></td>
+                    </tr>
+                    <tr>
+                        <td> <a target="_blank" href="###">
+    	                   <?php echo $html->image('../img/banner_logo/intel_88x43.gif', 
+    	                	  array('alt' => 'Intel Corporation', 'width' => '88', 'height' => '43', 
+                                        'border'=>'0', 'title'=>'Intel Corporation'))  ?>
+    	                </a></td>
+                        <td> <a target="_blank" href="###">
+    	                   <?php echo $html->image('../img/banner_logo/intel_88x43.gif', 
+    	                	  array('alt' => 'Intel Corporation', 'width' => '88', 'height' => '43', 
+                                        'border'=>'0', 'title'=>'Intel Corporation'))  ?>
+    	                </a></td>
+                    </tr>
+                    <tr>
+                        <td> <a target="_blank" href="###">
+    	                   <?php echo $html->image('../img/banner_logo/intel_88x43.gif', 
+    	                	  array('alt' => 'Intel Corporation', 'width' => '88', 'height' => '43', 
+                                        'border'=>'0', 'title'=>'Intel Corporation'))  ?>
+    	                </a></td>
+                        <td> <a target="_blank" href="###">
+    	                   <?php echo $html->image('../img/banner_logo/intel_88x43.gif', 
+    	                	  array('alt' => 'Intel Corporation', 'width' => '88', 'height' => '43', 
+                                        'border'=>'0', 'title'=>'Intel Corporation'))  ?>
+    	                </a></td>
+                    </tr> 
+                 </tbody>
             </table>
          </div></div>
          <a title="Xem tất cả nhà tuyển dụng" class="job_viewall" href="#Link to view all">
             Xem tất cả nhà tuyển dụng
          </a>
     </div>
-    <!--Lấy hình logo cho bên trái-->
     <!--endjob_conrer_ct -->
     
     <div class="job_conrer_bot">
@@ -105,18 +132,57 @@
 	   <div id="job_vipLogo">
             <div style="clear: both;" id="ads_TOP_COMPANIES_HORISONTAL">
             <div class="salesLogosContainer" id="adc_TOP_COMPANIES_HORISONTAL">
+            
+            <!--4  Vip Logo-->
             <div class="salesLogo">
-                <a class="salesLogoLink" href="##Link" target="_blank">
-                    <img width="88" height="43" border="0" title="Canon Vietnam Co., Ltd." 
-                    alt="Exporting Smiles" src="http://images.vietnamworks.com/banner_logo/canon1_88x43.gif" 
-                    class="salesLogoImage">
+                <a class="salesLogoLink" target="_blank" href="##LinkVipLogo">
+	                <?php echo $html->image('../img/banner_logo/canon1_88x43.gif', 
+	                	  array('class'=>'salesLogoImage',
+                                'alt' => 'Exporting Smiles ', 
+                                'width' => '88', 'height' => '43',
+                                'border'=>'0', 'title'=>'Canon Vietnam Co., Ltd.'));  ?>
                     <span class="salesLogoTitle">Canon Vietnam Co., Ltd. </span>
                     <span class="salesLogoDesc">Exporting Smiles</span>
                 </a>
             </div>
-            <div class="salesLogo"><a class="salesLogoLink" href="http://ads.vietnamworks.com/adclick.php?bannerid=2378&amp;zoneid=89&amp;source=&amp;dest=http%3A%2F%2Fwww.vietnamworks.com%2Ffeatured_employers%2Fadidas2.php" target="_blank"><img width="88" height="43" border="0" title="adidas Sourcing Limited" alt="Impossible is Nothing" src="http://images.vietnamworks.com/banner_logo/adidas-88x43.gif" class="salesLogoImage"><span class="salesLogoTitle">adidas Sourcing Limited </span><span class="salesLogoDesc">Impossible is Nothing</span></a></div><div class="salesLogo"><a class="salesLogoLink" href="http://ads.vietnamworks.com/adclick.php?bannerid=2210&amp;zoneid=89&amp;source=&amp;dest=http%3A%2F%2Fpanasonic.com.vn%2Fweb%2Faboutpanasonic%2Fcareers%2Fcareeropportunities+" target="_blank"><img width="88" height="43" border="0" title="Panasonic Vietnam Group" alt="People Before Products" src="http://images.vietnamworks.com/banner_logo/logo_88x43_panasonic_3.gif" class="salesLogoImage"><span class="salesLogoTitle">Panasonic Vietnam Group </span><span class="salesLogoDesc">People Before Products</span></a></div><div class="salesLogo"><a class="salesLogoLink" href="http://ads.vietnamworks.com/adclick.php?bannerid=1524&amp;zoneid=89&amp;source=&amp;dest=http%3A%2F%2Fwww.navigosgroup.com%2F" target="_blank"><img width="88" height="43" border="0" title="Click for Opportunities" alt="Build the best winning team" src="http://images.vietnamworks.com/banner_logo/navigosgroup_88x43_2.gif" class="salesLogoImage"><span class="salesLogoTitle">Click for Opportunities </span><span class="salesLogoDesc">Build the best winning team</span></a></div></div></div><script type="text/javascript">ajaxAds('TOP_COMPANIES_HORISONTAL','YTo0OntzOjQ6Imhvc3QiO3M6MjA6Ind3dy52aWV0bmFtd29ya3MuY29tIjtzOjQ6InBhZ2UiO3M6MTA6Ii9pbmRleC5waHAiO3M6ODoia2V5d29yZHMiO3M6MzI6Imxhbjo6MSwraW5kOjplLCt1c3I6OjIsK3Byb21vOjplIjtzOjEyOiJwYW5fcmVnaXN0ZXIiO3M6Mjoibm8iO30');</script>		<br class="clear">
+            <div class="salesLogo">
+                <a class="salesLogoLink" href="##LinkViplogo" target="_blank">
+                    <?php echo $html->image('../img/banner_logo/adidas-88x43.gif', 
+	                	  array('class'=>'salesLogoImage',
+                                'alt' => 'Impossible is Nothing', 
+                                'width' => '88', 'height' => '43',
+                                'border'=>'0', 'title'=>'adidas Sourcing Limited'));  ?>
+                    <span class="salesLogoTitle">adidas Sourcing Limited </span>
+                    <span class="salesLogoDesc">Impossible is Nothing</span>
+                </a>
+            </div>
+            <div class="salesLogo">
+                <a class="salesLogoLink" href="##LinkVipLogo" target="_blank">
+                    <?php echo $html->image('../img/banner_logo/logo_88x43_panasonic_3.gif', 
+	                	  array('class'=>'salesLogoImage',
+                                'alt' => 'People Before Products', 
+                                'width' => '88', 'height' => '43',
+                                'border'=>'0', 'title'=>'Panasonic Vietnam Group'));  ?>
+                    <span class="salesLogoTitle">Panasonic Vietnam Group </span>
+                    <span class="salesLogoDesc">People Before Products</span>
+                </a>
+            </div>
+            <div class="salesLogo">
+                <a class="salesLogoLink" href="##LinkVipLogo" target="_blank">
+                    <?php echo $html->image('../img/banner_logo/navigosgroup_88x43_2.gif', 
+	                	  array('class'=>'salesLogoImage',
+                                'alt' => 'Build the best winning team', 
+                                'width' => '88', 'height' => '43',
+                                'border'=>'0', 'title'=>'Click for Opportunities'));  ?>
+                    <span class="salesLogoTitle">Click for Opportunities </span>
+                    <span class="salesLogoDesc">Build the best winning team</span>
+                </a>
+            </div>
+            </div>
             
-            <!-- Lấy hình cho 4 viplogo-->
+            </div>
+            <script type="text/javascript">ajaxAds('TOP_COMPANIES_HORISONTAL','YTo0OntzOjQ6Imhvc3QiO3M6MjA6Ind3dy52aWV0bmFtd29ya3MuY29tIjtzOjQ6InBhZ2UiO3M6MTA6Ii9pbmRleC5waHAiO3M6ODoia2V5d29yZHMiO3M6MzI6Imxhbjo6MSwraW5kOjplLCt1c3I6OjIsK3Byb21vOjplIjtzOjEyOiJwYW5fcmVnaXN0ZXIiO3M6Mjoibm8iO30');</script>		
+        <br class="clear"/>
 	   </div>
     </div>
 <!-- endjob_conrer_ct -->
