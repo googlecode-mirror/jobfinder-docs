@@ -23,8 +23,8 @@ class Employer extends AppModel {
 		),
 		'password' => array(
 			'notempty' => array(
-				'rule' => array('between', 4, 15),
-				'message' => 'Mật khẩu phải từ 4 đến 15 ký tự',
+				'rule' => array('notempty'),
+				//'message' => 'Mật khẩu phải từ 4 đến 15 ký tự',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule

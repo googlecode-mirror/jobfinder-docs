@@ -4,7 +4,7 @@
  		<legend><?php __('Admin Edit Country'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
-		echo $this->Form->input('country_name');
+		echo $this->Form->input('name');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit', true));?>
