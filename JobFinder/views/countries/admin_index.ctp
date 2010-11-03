@@ -3,7 +3,7 @@
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id');?></th>
-			<th><?php echo $this->Paginator->sort('country_name');?></th>
+			<th><?php echo $this->Paginator->sort('name');?></th>
 			<th><?php echo $this->Paginator->sort('created');?></th>
 			<th><?php echo $this->Paginator->sort('modified');?></th>
 			<th class="actions"><?php __('Actions');?></th>
@@ -18,7 +18,7 @@
 	?>
 	<tr<?php echo $class;?>>
 		<td><?php echo $country['Country']['id']; ?>&nbsp;</td>
-		<td><?php echo $country['Country']['country_name']; ?>&nbsp;</td>
+		<td><?php echo $country['Country']['name']; ?>&nbsp;</td>
 		<td><?php echo $country['Country']['created']; ?>&nbsp;</td>
 		<td><?php echo $country['Country']['modified']; ?>&nbsp;</td>
 		<td class="actions">

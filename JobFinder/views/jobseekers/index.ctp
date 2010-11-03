@@ -3,10 +3,10 @@
 	<h2><?php __('Job saved');?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php echo $this->Paginator->sort('id');?></th>
-			<th><?php echo $this->Paginator->sort('job_id');?></th>
-			<th><?php echo $this->Paginator->sort('created');?></th>
-			<th class="actions"><?php __('Actions');?></th>
+			<th><?php echo $this->Paginator->sort('Chức danh');?></th>
+			<th><?php echo $this->Paginator->sort('Ngày lưu');?></th>
+			<th><?php echo $this->Paginator->sort('Tình trạng');?></th>
+			<th class="actions"><?php __('Chức năng');?></th>
 	</tr>
 	<?php
 	$i = 0;
@@ -18,12 +18,17 @@
 		}
 	?>
 	<tr <?php echo $class;?>>
-		<td><?php echo $jobsaved['JobSaved']['id']; ?>&nbsp;</td>
 		<td><?php echo $this->Html->Link($jobsaved['Job']['job_title'], array('controller' => 'jobs', 'action' => 'view', $jobsaved['JobSaved']['job_id'])); ?></td>
-		<td><?php echo $jobsaved['JobSaved']['created']; ?>&nbsp;</td>
+		<td><?php echo $jobsaved['JobSaved']['created']; ?></td>
+		<td><?php if(empty($jobsaved['JobSaved']['applied'])){ 
+			echo $this->Html->Link('Ứng tuyển', array('controller' => 'jobseeker', 'action' => 'apply_job', $jobsaved['JobSaved']['job_id']));
+		}
+		else {
+			echo 'Đã ứng tuyển '. $html->tag('br') .$jobsaved['JobSaved']['applied'];
+		} ?></td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('View', true), array('controller'=> 'jobs','action' => 'view', $jobsaved['JobSaved']['job_id'])); ?>
-			<?php echo $this->Html->link(__('Delete', true), array('action' => 'delete_jobsaved', $jobsaved['JobSaved']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $jobsaved['JobSaved']['id'])); ?>
+			<?php echo $this->Html->link(__('Xem', true), array('controller'=> 'jobs','action' => 'view', $jobsaved['JobSaved']['job_id'])); ?>
+			<?php if(empty($jobsaved['JobSaved']['applied'])){ echo $this->Html->link(__('Xóa', true), array('action' => 'delete_jobsaved', $jobsaved['JobSaved']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $jobsaved['JobSaved']['id']));} ?>
 		</td>
 	</tr>
 	<?php endforeach; ?>

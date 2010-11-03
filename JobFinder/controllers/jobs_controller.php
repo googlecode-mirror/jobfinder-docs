@@ -3,10 +3,10 @@ class JobsController extends AppController {
 	var $name = 'Jobs';
 	var $helpers = array('Html','Form','Ajax','Javascript');
 	var $uses = array('Job','Province');
-	
+
 	function index()
 	{
-		$jobs = $this->Job->find('all', array('contain' => array('JobContactInformation'))); 
+		$jobs = $this->Job->find('all', array('contain' => array('JobContactInformation')));
 		$this->set('jobs', $jobs);
 	}
 
@@ -18,7 +18,7 @@ class JobsController extends AppController {
 		}
 		$this->set('job', $this->Job->read(null,$id));
 	}
-	
+
 	function saveJob($id = null)
 	{
 		$jobseeker = $this->checkJobSeekerSession();
@@ -41,16 +41,11 @@ class JobsController extends AppController {
 		$this->Session->setFlash(__('Lưu công việc không thành công', true));
 		$this->redirect(array('action'=>'view',$id));
 	}
-	
-	function applyJob($id = null)
-	{
-	
-	}
-	
+
 	function admin_index()
 	{
 		$this->checkAdminSession();
-		$jobs = $this->Job->find('all', array('contain' => array('JobContactInformation'))); 
+		$jobs = $this->Job->find('all', array('contain' => array('JobContactInformation')));
 		$this->set('jobs', $jobs);
 	}
 
@@ -62,11 +57,11 @@ class JobsController extends AppController {
 		}
 		$this->set('job', $this->Job->read(null,$id));
 	}
-	
+
 	function admin_approve($id = null) {
-		//Status: 0 => "Chờ duyệt", 
-		//1=> "Đã duyệt", 
-		//2 => "Không đạt", 
+		//Status: 0 => "Chờ duyệt",
+		//1=> "Đã duyệt",
+		//2 => "Không đạt",
 		//3 => "Đã chỉnh sửa chờ duyệt"
 		$this->checkAdminSession();
 		if (!$id && empty($this->data)) {

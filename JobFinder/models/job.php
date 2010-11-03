@@ -115,6 +115,19 @@ class Job extends AppModel {
 	);
 
 	var $hasMany = array(
+		'JobApply' => array(
+				'className' => 'JobApply',
+				'foreignKey' => 'job_id',
+				'dependent' => false,
+				'conditions' => '',
+				'fields' => '',
+				'order' => '',
+				'limit' => '',
+				'offset' => '',
+				'exclusive' => '',
+				'finderQuery' => '',
+				'counterQuery' => ''
+		),
 		'JobContactInformation' => array(
 			'className' => 'JobContactInformation',
 			'foreignKey' => 'job_id',

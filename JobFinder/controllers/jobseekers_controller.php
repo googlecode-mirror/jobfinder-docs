@@ -5,6 +5,7 @@ class JobseekersController extends AppController {
 	var $components = array('RequestHandler','Email','Recaptcha.Captcha' => array(
                 'private_key' => '6LeP2r0SAAAAAPYU1WQUkoj9IyVljJVQiBVshL1x',  
                 'public_key' => '6LeP2r0SAAAAAN8qyexGrxfP-6cMh6vWGuFAOL3K'));
+	var $uses = array('Jobseeker','Job');
 
 	function login(){
 		$jobseeker = $this->Session->read('Jobseeker');
@@ -59,24 +60,33 @@ class JobseekersController extends AppController {
 		$provinces = array();
 		$this->set('captchaError', null);
 		if (!empty($this->data)) {
-			if ($this->Captcha->validate()) {
-				$this->set('captchaError', null);
-				$this->data['Jobseeker']['password'] = md5($this->data['Jobseeker']['password']);
-				//active user
-				$this->data['Jobseeker']['actived'] = 1;
-				if ($this->Jobseeker->save($this->data)) {
-					//$this->__sendActivationEmail($this->Jobseeker->getLastInsertID());
-					$this->Session->setFlash(__('The account has been created', true));
-					$this->redirect('/jobseekers/login');
-				}
-				else {
-					$this->Session->setFlash(__('The account could not be created. Please, try again.', true));
-					$this->data['Jobseeker']['password'] = null;
-				}
+			if($this->data['Jobseeker']['password'] != $this->data['Jobseeker']['confirm_password']){
+				$this->Session->setFlash('Mật khẩu xác nhận không hợp lệ');
+				$this->data['Jobseeker']['password'] = null;
+				$this->data['Jobseeker']['confirm_password'] = null;
 			}
 			else {
-				$this->Session->setFlash('Captcha code invalid');
-				$this->data['Jobseeker']['password'] = null;
+				if ($this->Captcha->validate()) {
+					$this->set('captchaError', null);
+					$this->data['Jobseeker']['password'] = md5($this->data['Jobseeker']['password']);
+					//active user
+					$this->data['Jobseeker']['actived'] = 1;
+					if ($this->Jobseeker->save($this->data)) {
+						//$this->__sendActivationEmail($this->Jobseeker->getLastInsertID());
+						$this->Session->setFlash(__('The account has been created', true));
+						$this->redirect('/jobseekers/login');
+					}
+					else {
+						$this->Session->setFlash(__('The account could not be created. Please, try again.', true));
+						$this->data['Jobseeker']['password'] = null;
+						$this->data['Jobseeker']['confirm_password'] = null;
+					}
+				}
+				else {
+					$this->Session->setFlash('Captcha code invalid');
+					$this->data['Jobseeker']['password'] = null;
+					$this->data['Jobseeker']['confirm_password'] = null;
+				}
 			}
 		}
 	}
@@ -133,7 +143,7 @@ class JobseekersController extends AppController {
 		$request_params = Router::getParams();
 		$this->Session->write('auth_redirect','/'.$request_params['url']['url']);
 		$jobseeker = $this->checkJobSeekerSession();
-		
+
 		$this->paginate['JobSaved'] =  array('conditions' => array('jobseeker_id' => $jobseeker['Jobseeker']['id']));
 		$this->paginate['Resume'] =  array('conditions' => array('jobseeker_id' => $jobseeker['Jobseeker']['id']));
 		$this->Jobseeker->Resume->recursive = -1;
@@ -168,10 +178,57 @@ class JobseekersController extends AppController {
 
 	}
 
+	function apply_job($jobID = null)
+	{
+		$jobseeker = $this->checkJobSeekerSession();
+		if (!$jobID && empty($this->data)) {
+			$this->Session->setFlash(__('Invalid job', true));
+			$this->redirect(array('action' => 'index'));
+		}
+		$this->set('job', $this->Job->read(null, $jobID));
+		$this->set('resumes', $this->Jobseeker->Resume->find('list',array('conditions' => array('jobseeker_id' => $jobseeker['Jobseeker']['id']))));
+
+		if (!empty($this->data)) {
+			$jobApply = $this->Jobseeker->JobApply->find('all',array('conditions' => array(array('JobApply.jobseeker_id' => $this->data['JobApply']['jobseeker_id']),
+					'AND' => array('job_id' => $this->data['JobApply']['job_id']))));
+			if(empty($jobApply)){
+				$this->Jobseeker->JobApply->create();
+				if ($this->Jobseeker->JobApply->save($this->data)) {
+					//add new job save, if avaiable update job saved status
+					$jobSaved = array('JobSaved' => array('jobseeker_id' => $this->data['JobApply']['jobseeker_id'],
+											'job_id' => $this->data['JobApply']['job_id'], 'status' => 1, 'applie' => date('Y-m-d H:i:s')));
+					$this->Jobseeker->JobSaved->set($jobSaved);
+					if(!$this->Jobseeker->JobSaved->validates())
+					{
+						//update status 0: not apply 1: applied
+						$jobSaveds = $this->Jobseeker->JobSaved->find('all',array('conditions' => array(array('JobSaved.jobseeker_id' => $this->data['JobApply']['jobseeker_id']),
+											'AND' => array('job_id' => $this->data['JobApply']['job_id']))));
+						$jobSaved = $jobSaveds[0]['JobSaved'];
+						$jobSaved['status'] = 1;
+						$jobSaved['applied'] = date('Y-m-d H:i:s');
+						$this->Jobseeker->JobSaved->save($jobSaved);
+					}
+					else{
+						$this->Jobseeker->JobSaved->save($jobSaved);
+					}
+					$this->redirect(array('action' => 'index'));
+				}
+				else {
+					$this->Session->setFlash(__('Tiêu đề và hồ sơ đính kèm không hợp lệ', true));
+					$this->redirect(array('action' => 'apply_job', $this->data['JobApply']['job_id']));
+				}
+			}
+			else {
+				$this->Session->setFlash(__('Bạn đã nộp đơn công việc này.', true));
+				$this->redirect(array('action' => 'index'));
+			}
+		}
+	}
+
 	function admin_index()
 	{
 		$this->Jobseeker->recursive = 0;
-        $this->set('jobseekers', $this->paginate());
+		$this->set('jobseekers', $this->paginate());
 	}
 
 	function admin_view($id = null) {
@@ -181,9 +238,9 @@ class JobseekersController extends AppController {
 		}
 		$this->set('jobseekers', $this->Jobseeker->read(null,$id));
 	}
-	
+
 	function admin_edit($id = null) {
-	
+
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid actived', true));
 			$this->redirect(array('action' => 'admin_index'));
@@ -200,7 +257,7 @@ class JobseekersController extends AppController {
 			$this->data = $this->Jobseeker->read(null, $id);
 		}
 	}
-	
+
 	function getProvinces() {
 		if(!empty($this->data['Jobseeker']['country_id'])) {
 			$this->set('options',$this->Jobseeker->Province->find('list',array(

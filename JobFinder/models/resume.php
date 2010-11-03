@@ -1,6 +1,7 @@
 <?php
 class Resume extends AppModel {
 	var $name = 'Resume';
+	var $displayField = 'resume_title';
 	var $validate = array(
 		'jobseeker_id' => array(
 			'notempty' => array(
@@ -170,6 +171,19 @@ class Resume extends AppModel {
 	);
 
 	var $hasMany = array(
+		'JobApply' => array(
+			'className' => 'JobApply',
+			'foreignKey' => 'resume_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
 		'ResumeJobExp' => array(
 			'className' => 'ResumeJobExp',
 			'foreignKey' => 'resume_id',

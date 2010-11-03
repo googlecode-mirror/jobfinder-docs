@@ -37,7 +37,7 @@ class AdminsController extends AppController {
     }
     
 	function index() {
-        
+        $this->checkAdminSession();
     }
 }
 ?>

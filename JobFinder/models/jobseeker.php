@@ -30,8 +30,8 @@ class Jobseeker extends AppModel {
 	),
 		'password' => array(
 			'notempty' => array(
-				'rule' => array('between', 4, 15),
-				'message' => 'Mật khẩu phải từ 4 đến 15 ký tự',
+				'rule' => array('notempty'),
+				//'message' => 'Mật khẩu phải từ 4 đến 15 ký tự',
 	//'allowEmpty' => false,
 	//'required' => false,
 	//'last' => false, // Stop validation after this rule
@@ -119,6 +119,19 @@ class Jobseeker extends AppModel {
 			);
 
 	var $hasMany = array(
+		'JobApply' => array(
+			'className' => 'JobApply',
+			'foreignKey' => 'jobseeker_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
 		'JobSaved' => array(
 			'className' => 'JobSaved',
 			'foreignKey' => 'jobseeker_id',
