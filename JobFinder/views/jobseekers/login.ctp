@@ -2,7 +2,6 @@
     <div id="content_cr">
 		<div id="right_cr">	
 		<?php echo $this->Form->create('Jobseeker', array('action' => 'login','class'=>'form_field')); ?>
-		 	<form class="form_field" onsubmit="return checkForm();" method="post" action="/jobseekers/signup.php" name="frm">
                 <?php echo $this->Session->flash(); ?>
  			<div class="box_corner">				
                 <b class="xtop">
@@ -36,7 +35,6 @@
             	<?php echo $this->Form->submit('Login',array('class'=>'btn_back','div'=>false)); ?>
                 
             </div>
-        </form>
         </div>
     </div>
 </div>    

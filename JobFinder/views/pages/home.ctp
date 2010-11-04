@@ -19,9 +19,6 @@
                 onfocus="if(this.value == 'từ khóa') this.value='';" 
                 value="từ khóa" name="keyword"/>
             <select class="comboType02" name="city">
-                <option selected="" value="">Tất cả địa điểm</option>
-                <option value="29">Hồ Chí Minh</option>
-                <option value="24">Hà Nội</option>
                
             </select>
         <input type="submit" class="job_btn1" 
@@ -202,8 +199,10 @@
             <h2 class="job_boxtitle">Việc Làm Tốt Nhất</h2>
         <div class="job_conrer_ct">
             <ul class="job_topjobslist floatLeft">
-                <li><a href="/jobseekers/jobdetail.php?jobid=252032" 
-                        target="_blank">General Manager</a><span>Fifth Ocean</span></li>
+                <li><?php echo $this->Html->link(__($jobs[0]['Job']['job_title'], true), 
+                        array('controller'=> 'jobs','action' => 'view', $jobs[0]['Job']['id'])); ?>
+					<span><?php echo $jobs[0]['JobContactInformation'][0]['company_name']; ?></span>
+				</li>
         		<li><a href="/jobseekers/jobdetail.php?jobid=253609" 
                         target="_blank">Expatriate Construction Foreman</a><span>TH Project Management</span></li>
         		<li><a href="/jobseekers/jobdetail.php?jobid=253606" 
@@ -231,10 +230,6 @@
                     </a><span>Viện nghiên cứu TK Hoa Đông</span></li>
         	</ul>
         <br clear="all"/>
-            <div class="job_topjobs_view">  
-                <a class="job_viewall" title="View more Top Jobs in Vietnam" 
-                    href="moretopjob.php">Nhấp vào để xem thêm việc làm tốt nhất</a>
-            </div>
         </div>
         <!-- endjob_conrer_ct -->
         <div class="job_conrer_bot">
@@ -252,9 +247,8 @@
 
 <!-- end wrap -->
 
-</div>
 <!-- end content -->
-<div style="clear: both;">
+
 
 
 

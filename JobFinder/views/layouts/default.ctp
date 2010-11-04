@@ -24,12 +24,11 @@
 	echo $this->Html->css('cake.generic');
 	echo $scripts_for_layout;
 	echo $html->charset('UTF-8');
-    echo $javascript->link(array('prototype'));
+	echo $javascript->link(array('prototype'));
     
 ?>
 
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>JobFinder</title>	
 </head>
 
@@ -88,28 +87,16 @@
 
 <div class="job_footer2">
 	<div style="text-align: center;" class="job_wrap">
-     	<a href="/about_us.php">Về JobFinder</a>
+     	<a href="#About Us">Về JobFinder</a>
             <span class="job_spacemenu">|</span>
-		<a href="/contact_us.php">Liên Hệ</a>
+		<a href="#Contact Us">Liên Hệ</a>
             <span class="job_spacemenu">|</span>
-		<a href="/press_center/">Góc Báo Chí</a>
-            <span class="job_spacemenu">|</span>
-		<a href="/faq.php">Trợ Giúp</a>
-            <span class="job_spacemenu">|</span>
-		<a href="/terms_of_use.php">Thỏa Thuận Sử Dụng</a>
-            <span class="job_spacemenu">|</span>
-		<a href="/privacy_policy.php">Quy Định Bảo Mật</a>
-            <span class="job_spacemenu">|</span>
-		<a href="/site_map.php">Sơ Đồ Trang Web</a>
-		<p align="center"> Đồ án chuyên nghành A Đại học Hoa Sen: Website tuyển dụng
-					</p>
+		<a href="#SiteMap">Sơ Đồ Trang Web</a>
+		<p align="center"> Đồ án chuyên nghành A Đại học Hoa Sen: Website tuyển dụng</p>
 	</div><!-- end job_wrap -->	
-    <!--[if IE 6]><div><img src="http://images.vietnamworks.com/spacer.gif" alt="" width="980" height="1" /></div><![endif]--> 
 </div><!-- end job_footer2 -->
 <!-- end footer -->
 
-
 </body>
-
 
 </html>

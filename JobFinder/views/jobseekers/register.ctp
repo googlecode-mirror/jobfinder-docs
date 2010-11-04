@@ -1,25 +1,3 @@
-
-
-<?php
-/*
-echo $form->create('Jobseeker', array('action' => 'register'));
-echo $form->input('email');
-echo $form->input('password', array('type' => 'password', 'label' => 'Password'));
-echo $form->input('first_name');
-echo $form->input('last_name');
-echo $form->input('birthday', array('dateFormat' => 'DMY', 'minYear' => date('Y') - 70, 'maxYear' => date('Y') - 15));
-echo $form->input('gender', array('options' => array(0=> 'Nam', 1 =>'Nữ'), 'empty' => '...'));
-echo $form->input('country_id', array('empty' => 'Vui lòng chọn..','id'=>'countries'));
-echo $form->input('province_id', array('empty' => 'Vui lòng chọn..','id'=>'provinces'));
-echo $form->input('howknow', array('label' => 'How do you know ?', 'empty' => 'Vui lòng chọn...'));
-echo $captchaTool->show();
-echo $captchaError;
-echo $form->submit('Create Account');
-echo $ajax->observeField('countries',array('url'=>'update_province_select','update'=>'provinces'));
-echo $form->end();
-*/?>
-
-
 <div class="wrap_cr">
    <div id="content_cr">
 		 <!-- begin right col -->
@@ -58,6 +36,7 @@ echo $form->end();
 		<p style="height: 30px;">
 			<label><span class="require">*</span> Ngày sinh:</label> 
 			<?php echo $form->input('birthday', array('dateFormat' => 'DMY','monthNames' => false, 'minYear' => date('Y') - 70, 'maxYear' => date('Y') - 15,'label'=>false,'div'=>false,'separator' => false, 'class'=>'field_list'));?>		
+		</p>
 		<p>
 		  	<label><span class="require">*</span> Giới tính:</label> 
 		  	<?php echo $this->Form->input('gender',array('label'=>false,'options' => array(0=> 'Nam', 1 =>'Nữ'), 'empty' => '...', 'class'=>'field_list','div'=>false)); ?>
@@ -75,7 +54,7 @@ echo $form->end();
 		  	<label><span class="require">*</span> Làm thế nào bạn biết đến chúng tôi?</label>
 		  	<?php echo $this->Form->input('howknow',array('label'=>false, 'empty' => 'Vui lòng chọn...', 'class'=>'field_list','div'=>false)); ?>
 		</p>
-		<div style="display:block;	margin-left:250px; float:left;"><?php echo $captchaTool->show();?></div>
+		<div style="display:block;	margin-left:170px; float:left;"><?php echo $captchaTool->show();?></div>
 	<div class="line_h"><!-- --></div><br>							
 		
 	<div class="more"><input type="checkbox" class="checkm" id="chkIAgree" value="1" name="chkIAgree"> 
