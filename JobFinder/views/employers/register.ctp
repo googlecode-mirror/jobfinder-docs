@@ -24,12 +24,13 @@ echo $this->Form->end(__('Tạo tài khoản', true));
 echo $ajax->observeField('countries',array('url'=>'getProvinces','update'=>'provinces'));
 */
 ?>
+<br clear="all"/>
 
 <div id="body_content">
     <div class="step_postjob">
         <img width="300" height="30" alt="" 
             src="http://images.vietnamworks.com/post_job_signup_vn.gif"/>
-        </div>
+    </div>
     <!-- begin wrap -->
     <div class="wrap_cr_emp">
     <!-- begin content -->

@@ -9,6 +9,16 @@ class JobsController extends AppController {
 		$jobs = $this->Job->find('all', array('contain' => array('JobContactInformation')));
 		$this->set('jobs', $jobs);
 	}
+    
+    function search()
+	{
+		
+	}
+    
+    function adv_search()
+	{
+		
+	}
 
 	function view($id = null) {
 		$this->set('provinces',$this->Province->find('list'));

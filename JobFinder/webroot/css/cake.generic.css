@@ -86,7 +86,7 @@ p {padding:0; margin:10px 0}
 	
 	.job_login {float:right; padding-top:8px}
 	
-#job_nav_sub {background:url(../img/home/job_subnavbg.gif) repeat-x 0 0; height:30px; min-width:980px}
+#job_nav_sub {background:url(../img/home/job_subnavbg.gif) repeat 0 0; height:30px; min-width:980px}
 	ul.job_subnav {margin:0; padding:6px 0 0 0}
 	ul.job_subnav li {float:left; margin-right:5px}
 	ul.job_subnav li a { display:block; float:left; font-weight:bold; color:#fff; text-decoration:none; padding:0 0 4px 4px; height:15px}	
@@ -438,7 +438,7 @@ form .required label:before {
 .field_green{margin:0px;padding:0px 0px 5px 170px;display:block;color:#009900;font-weight:bold;}
 
 /* my account new update */
-.line_title {background:url(../img/home/dot_line_cr.gif) bottom repeat-x}
+
 .pos_btn1 {	margin-left:260px;clear:both}
 
 .sub_title {font-weight:bold;color:#ff9900;padding-bottom:10px;float:left; width:150px; padding-top:10px}
@@ -1365,7 +1365,7 @@ body{ font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px; margin:
 #search_contentpage {padding-top:10px;}
 .leftcol_search {float:left;width:230px;}
 .rightcol_search {float:right;width:740px;}	
-.line_title {background:url(http://images.vietnamworks.com/dot_line_cr.gif) bottom repeat-x}
+
 .clear{clear:both; line-height:0;}
 .link {	color:#555555;text-decoration:underline}
 
@@ -1426,8 +1426,8 @@ ul.refine div a:hover { color:#ff9900; text-decoration:underline}
 	fieldset { border:none}
 	.labelType01{width:200px; text-align:right; float:left; padding:0 10px 15px 0;}
 			
-	.inputType01{border:1px solid #336666; width:242px; float:left; padding:2px 3px;}
-	.comboType01{border:1px solid #336666; width:250px; float:left;}		
+	.inputType01{border:1px solid #336666; width:302px; float:left; padding:2px 3px;}
+	.comboType01{border:1px solid #336666; width:310px; float:left;}		
 	.listType01{float:left; padding:3px 0 10px 0;}
 		.listType01 li{padding:0 0 5px 0; clear:left;}
 			.listType01 li *{float:left;}
@@ -1439,9 +1439,9 @@ ul.refine div a:hover { color:#ff9900; text-decoration:underline}
 	.listType03{width:350px; float:left; padding:0 0 5px 0;}
 		.listType03 li{float:left; margin-right:4px !important;}
 		.listType03 .language{width:123px; border:1px solid #336666;}
-		.listType03 .price{width:35px; border:1px solid #336666;}		
+		.listType03 .price{width:85px; border:1px solid #336666;}		
 	.divType01{float:left;}
-		.divType01 .wrapper{height:100px; width:243px; background:#CCC; border:1px solid #666; overflow:none; overflow-y:auto; padding:2px;}
+		.divType01 .wrapper{height:200px; width:303px; background:#CCC; border:1px solid #666; overflow:none; overflow-y:auto; padding:2px;}
 			.divType01 .wrapper ul{background:#FFF; padding:5px;}			
 	.btnType01{height:29px; margin-left:5px; font-weight:bold; padding:0 0 0 204px; cursor:pointer;}
 	.btnType01 .bkgC{background:url(http://images.vietnamworks.com/btn_c_emp.gif); height:29px; font-weight:bold; color:#fff; border-style:none; float:left; padding-bottom:4px;}
@@ -1633,8 +1633,8 @@ ul.companyleftcol li.comprofile { background:#cceffc url(http://images.vietnamwo
 	.jobsearch_byindustry .quick_list{width:257px;}
 .jobsearch_byfunction {width:220px; height:630px; float:left; background:url(http://images.vietnamworks.com/dot_line_col_cr.gif) right repeat-y;}
 .jobsearch_bytype {width:220px; height:630px; float:left;}
-.jobsearch_bykeyword { width:450px; height:110px; float:left;}
-.jobsearch_byday { width:270px; height:110px; float:left;}
+.jobsearch_bykeyword { width:550px; height:110px; float:left;}
+.jobsearch_byday { width:300px; height:110px; float:left;}
 
 /***********************************************************************************************/
 /***********************************************************************************************/
@@ -1830,7 +1830,7 @@ ul.companyleftcol li.comprofile { background:#cceffc url(http://images.vietnamwo
 .summary_pr_l2 td{text-align:left;padding-bottom:5px;}
 .bg_title {font-size:1.2em}
 
-.line_title {background:url(http://images.vietnamworks.com/dot_line_cr.gif) bottom repeat-x}
+
 .pos_btn1 {margin-left:170px;clear:both}
 
 .sub_title {font-weight:bold;color:#ff9900;padding-bottom:10px;float:left; width:150px; padding-top:10px}
