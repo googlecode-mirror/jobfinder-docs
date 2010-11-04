@@ -5,7 +5,7 @@ class EmployersController extends AppController {
 	var $components = array('RequestHandler','Email','Recaptcha.Captcha' => array(
                 'private_key' => '6LeP2r0SAAAAAPYU1WQUkoj9IyVljJVQiBVshL1x',  
                 'public_key' => '6LeP2r0SAAAAAN8qyexGrxfP-6cMh6vWGuFAOL3K'));
-
+	
 	function login() {
 		$employer = $this->Session->read('Employer');
 		if ($employer){
@@ -136,7 +136,7 @@ class EmployersController extends AppController {
 
 	function index(){
 		//save user visit url
-		$request_params = Router::getParams();
+		/*$request_params = Router::getParams();
 		$this->Session->write('auth_redirect','/'.$request_params['url']['url']);
 		$jobseeker = $this->checkJobSeekerSession();
 
@@ -144,7 +144,7 @@ class EmployersController extends AppController {
 		$this->paginate['Resume'] =  array('conditions' => array('jobseeker_id' => $jobseeker['Jobseeker']['id']));
 		$this->Jobseeker->Resume->recursive = -1;
 		$this->set('jobsaveds', $this->paginate('JobSaved'));
-		$this->set('resumes', $this->paginate('Resume'));
+		$this->set('resumes', $this->paginate('Resume'));*/
 	}
 
 	function admin_index()

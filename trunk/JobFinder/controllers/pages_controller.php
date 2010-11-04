@@ -78,8 +78,11 @@ class PagesController extends AppController {
 		if (!empty($path[$count - 1])) {
 			$title_for_layout = Inflector::humanize($path[$count - 1]);
 		}
-		
-		$this->set(compact('page', 'subpage', 'title_for_layout'));
+		$jobs = $this->Job->find('all', array('contain' => array('JobContactInformation'),
+											'conditions'=>array('Job.status' => 1),
+											'order' => array('Job.priority DESC', 'Job.approved DESC'),
+											'limit' => 10));
+		$this->set(compact('page', 'subpage', 'title_for_layout','jobs'));
 		$this->render(implode('/', $path));
 	}
 	
