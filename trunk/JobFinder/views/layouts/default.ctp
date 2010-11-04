@@ -77,12 +77,10 @@
     <?php echo $this->element('job_menu');?>
     
 <!--Phần body -> home-->
-<div id="job_contentbg">
-<div class="job_wrap">
+
 	<?php echo $this->Session->flash(); ?>
     <?php echo $content_for_layout; ?>
-    </div>
-</div>
+
 <!-- Phần Footer -->
 
 <div class="job_footer2">

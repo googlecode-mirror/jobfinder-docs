@@ -11,6 +11,9 @@
     $("#MapSearchJob").mouseover( function() { setTimeout("mouseMoveTab(1)",3000); } );
 </script>	
 
+<div id="job_contentbg">
+<div class="job_wrap">
+
 	
 <div class="job_conrer_panel">			
 	<form class="job_formquicksearch" action="http://www.vietnamworks.com/jobseekers/searchresults.php" method="get" name="search">
@@ -250,6 +253,6 @@
 <!-- end content -->
 
 
-
+</div></div>
 
 
