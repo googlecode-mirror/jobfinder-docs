@@ -12,6 +12,9 @@ class ResumesController extends AppController {
 		}
 		$this->set('nationalities', $this->Category->find('list', array(
 					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'Nationality'))))));
+		$this->set('companySizes', $this->Category->find('list', array(
+					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'CompanySize'))))));
+		$this->set('jobLevels', $this->Job->JobLevel->find('list'));
 		$this->set('resume', $this->Resume->read(null,$id));
 	}
 
@@ -25,8 +28,6 @@ class ResumesController extends AppController {
 		if (!empty($this->data)) {
 			$this->Resume->create();
 			$this->data['Resume']['jobseeker_id'] = $jobseeker['Jobseeker']['id'];
-			$this->data['Resume']['birthday'] = $jobseeker['Jobseeker']['birthday'];
-			$this->data['Resume']['gender'] = $jobseeker['Jobseeker']['gender'];
 			if ($this->Resume->save($this->data)) {
 				$this->Session->setFlash(__('The resume has been saved', true));
 				$this->Session->write('resumeID', $this->Resume->id);
@@ -56,8 +57,6 @@ class ResumesController extends AppController {
 		}
 		if (!empty($this->data)) {
 			$this->data['Resume']['jobseeker_id'] = $jobseeker['Jobseeker']['id'];
-			$this->data['Resume']['birthday'] = $jobseeker['Jobseeker']['birthday'];
-			$this->data['Resume']['gender'] = $jobseeker['Jobseeker']['gender'];
 			if ($this->Resume->save($this->data)) {
 				$this->Session->setFlash(__('The resume has been saved', true));
 				$this->Session->write('resumeID', $this->Resume->id);

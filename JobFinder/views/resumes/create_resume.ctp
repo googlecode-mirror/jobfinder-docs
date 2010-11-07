@@ -6,8 +6,8 @@
     </ul>
     <h2>Thông tin cá nhân</h2>
     <ul>
-        <li><?php echo $this->Form->input('first_name', array('label'=>'Tên:','value'=> $jobseeker['Jobseeker']['first_name'], 'readonly'=> true));?></li>
-        <li><?php echo $this->Form->input('last_name', array('label'=>'Họ:','value'=> $jobseeker['Jobseeker']['last_name'], 'readonly'=> true));?></li>
+        <li><?php echo $this->Form->input('first_name', array('label'=>'Tên:','value'=> $jobseeker['Jobseeker']['first_name'], 'disabled'=> true));?></li>
+        <li><?php echo $this->Form->input('last_name', array('label'=>'Họ:','value'=> $jobseeker['Jobseeker']['last_name'], 'disabled'=> true));?></li>
         <li><?php echo $this->Form->input('birthday', array('label'=>'Ngày sinh:', 'dateFormat' => 'DMY', 'minYear' => date('Y') - 70, 'maxYear' => date('Y') - 15,'monthNames' => false ,'value'=> $jobseeker['Jobseeker']['birthday'], 'disabled'=> true));?></li>
         <li><?php echo $this->Form->input('gender', array('label'=>'Giới tính:', 'options' => array(0 => 'Nam', 1 =>'Nữ'), 'empty' => '...','value'=> $jobseeker['Jobseeker']['gender'], 'disabled'=> true));?></li>
         <li><?php echo $this->Form->input('martial_status', array('label'=>'Tình trạng hôn nhân:', 'options' => array(0 => 'Độc thân', 1 =>'Đã kết hôn'), 'empty' => '...'));?></li>

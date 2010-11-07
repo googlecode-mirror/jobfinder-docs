@@ -1,3 +1,6 @@
+<div id="job_contentbg">
+<div class="job_wrap">
+
 <div class='container'><?php echo $this->Form->create('Resume');?>
 <h2>Học vấn</h2>
 <ul>
@@ -53,4 +56,6 @@
 	}?></li>
 	<li><?php if(!empty($resumeEducations)){ echo $this->Html->link(__('Continue', true), array('action' => 'saveTargetJob')); } ?></li>
 </ul>
+</div>
+</div>
 </div>
