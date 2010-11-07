@@ -1732,7 +1732,7 @@ ul.companyleftcol li.comprofile { background:#cceffc url(http://images.vietnamwo
 		/* ------------- MARS PROJECT END ------------*/
         
 /* content */
-.wrap_cr_emp {width:800px;margin:auto }
+.wrap_cr_emp {width:980px;margin:auto }
         /*Have already*/
 
 /* right col */
@@ -2082,7 +2082,12 @@ div.error-message {
 	font-weight: bold;
 }
 
-
+.table_info {
+border:medium none;
+margin-top:10px;
+padding:0;
+width:100%;
+}
 
 
 

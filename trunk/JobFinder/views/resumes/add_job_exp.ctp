@@ -1,3 +1,6 @@
+<div id="job_contentbg">
+<div class="job_wrap">
+
 <div class='container'><?php echo $this->Form->create('Resume');?>
 <h2>Quá trình làm việc</h2>
 <ul>
@@ -51,4 +54,6 @@
 	<li><?php echo $this->Html->link(__('Trở lại', true), array('action' => 'modifyResume',$this->Session->read('resumeID')));?></li>
 	<li><?php if(!empty($jobExps)){ echo $this->Html->link(__('Tiếp tục', true), array('action' => 'addEducation')); }?></li>
 </ul>
+</div>
+</div>
 </div>

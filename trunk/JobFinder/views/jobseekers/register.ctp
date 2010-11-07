@@ -31,8 +31,9 @@
                 		<p>
                 		  	<label><span class="require">*</span> Xác nhận mật khẩu:</label> 
                 		  	<?php echo $this->Form->input('confirm_password',array('label'=>false,'type' => 'password','class'=>'field','div'=>false)); ?>
-                		</p>                        
-                    </table></td></tr>	
+                		</p>   
+                		</td></tr>	                     
+                    </table>
                 </div>
                 <b class="xbottom">
                     <b class="xb3 blue_curve blue_bg_bottom"><!-- --></b>
@@ -49,7 +50,7 @@
                     <b class="xb2 blue_curve blue_title"><!-- --></b>
                     <b class="xb3 blue_curve blue_title"><!-- --></b>
                 </b>
-                <div class="blue_bg_title"><strong>Thông Tin Đăng Nhập</strong></div>
+                <div class="blue_bg_title"><strong>Thông Tin Đăng Ký</strong></div>
                 <div class="white_content">
                     <table><tr><td>
                         <p>
@@ -90,8 +91,8 @@
                             <span class="require">*</span> Tôi đã đọc và đồng ý với các thỏa thuận sử dụng.
                             </span>
                         </div>
-                        <div class="both">                      
-                    </table></td></tr>	
+                        </td></tr>	                  
+                    </table>
                 </div>                
                 <b class="xbottom">
                     <b class="xb3 blue_curve blue_bg_bottom"><!-- --></b>

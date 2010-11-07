@@ -1,3 +1,5 @@
+<div id="job_contentbg">
+<div class="job_wrap">
 <div class='container'><?php echo $this->Form->create('Resume');?>
 <h2>Kỹ năng</h2>
 <ul>
@@ -47,5 +49,7 @@
 	<li><?php echo $this->Html->link(__('Trở lại', true), array('action' => 'saveTargetJob'));?></li>
 	<li><?php if(!empty($resumeSkills)){ echo $this->Html->link(__('Hoàn tất', true), array('action' => 'view',$this->Session->read('resumeID'))); } ?></li>
 </ul>
+</div>
+</div>
 </div>
 		<?php echo $ajax->observeField('skillGroups',array('url'=>'getSkills','update'=>'skills',));?>
