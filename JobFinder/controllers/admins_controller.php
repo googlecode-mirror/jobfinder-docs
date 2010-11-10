@@ -3,6 +3,10 @@ class AdminsController extends AppController {
 	var $name = 'Admins';
 	var $helpers = array('Html','Form','Ajax','Javascript');    
 	
+	function beforeFilter(){
+		$this->layout='default_admin';
+	}
+	
 	function login() {
 		$admin = $this->Session->read('Admin');
 		if ($admin){
