@@ -83,6 +83,7 @@
 		<div align="center">
 	    	<?php echo $this->Html->link(__('Chỉnh sửa', true), array('action' => 'edit', $this->data['JobCategory']['id'])); ?>
 	    </div>
+	    <?php echo $this->Form->end();?>
 	</div>
 	</div>
 </div>
