@@ -3,7 +3,7 @@ class ResumesController extends AppController {
 	var $name = 'Resumes';
 	var $helpers = array('Html','Form','Ajax','Javascript');
 	var $components = array('RequestHandler');
-	var $uses = array('Resume','ResumeJobExp','Job','ResumeSkill', 'Skill');
+	var $uses = array('Resume','ResumeJobExp','ResumeEducation','Job','ResumeSkill', 'Skill');
 
 	function view($id = null) {
 		if (!$id) {
@@ -15,6 +15,14 @@ class ResumesController extends AppController {
 		$this->set('companySizes', $this->Category->find('list', array(
 					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'CompanySize'))))));
 		$this->set('jobLevels', $this->Job->JobLevel->find('list'));
+		$this->set('jobCategories', $this->Job->JobCategory->find('list'));
+		$this->set('jobTypes', $this->Job->JobType->find('list'));
+		$this->set('degreeLevels', $this->ResumeEducation->DegreeLevel->find('list'));
+		$this->set('countries', $this->Jobseeker->Country->find('list'));
+		$this->set('provinces', $this->Jobseeker->Province->find('list'));
+		$this->set('skills', $this->Skill->find('list'));
+		$this->set('proficiencies', $this->Category->find('list', array(
+					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'Proficiency'))))));
 		$this->set('resume', $this->Resume->read(null,$id));
 	}
 
@@ -79,6 +87,7 @@ class ResumesController extends AppController {
 		}
 		if (empty($this->data)) {
 			$this->data = $this->Resume->read(null, $id);
+			$this->Session->write('resumeID', $this->data['Resume']['id']);
 		}
 	}
 
@@ -109,8 +118,6 @@ class ResumesController extends AppController {
 		$this->set('jobCategories', $this->Resume->ResumeJobExp->JobCategory->find('list'));
 		$this->set('countries', $this->Jobseeker->Country->find('list'));
 		$this->set('provinces', $this->Jobseeker->Province->find('list'));
-		$this->set('jobExps', $this->Resume->ResumeJobExp->find('all', array('contain' => false, 'conditions' =>
-		array('ResumeJobExp.resume_id' => $this->Session->read('resumeID')))));
 
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid job exp', true));
@@ -126,7 +133,10 @@ class ResumesController extends AppController {
 		}
 		if (empty($this->data)) {
 			$this->data = $this->Resume->ResumeJobExp->read(null, $id);
+			$this->Session->write('resumeID', $this->data['ResumeJobExp']['resume_id']);
 		}
+		$this->set('jobExps', $this->Resume->ResumeJobExp->find('all', array('contain' => false, 'conditions' =>
+		array('ResumeJobExp.resume_id' => $this->Session->read('resumeID')))));
 	}
 
 	function deleteJobExp($id = null) {
@@ -164,9 +174,7 @@ class ResumesController extends AppController {
 		$jobseeker = $this->checkJobSeekerSession();
 		$this->set('degreeLevels', $this->Resume->ResumeEducation->DegreeLevel->find('list'));
 		$this->set('countries', $this->Jobseeker->Country->find('list'));
-		$this->set('resumeEducations', $this->Resume->ResumeEducation->find('all', array('contain' => false, 'conditions' =>
-		array('ResumeEducation.resume_id' => $this->Session->read('resumeID')))));
-
+		
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid education', true));
 			$this->redirect(array('action' => 'addEducation'));
@@ -181,7 +189,11 @@ class ResumesController extends AppController {
 		}
 		if (empty($this->data)) {
 			$this->data = $this->Resume->ResumeEducation->read(null, $id);
+			$this->Session->write('resumeID', $this->data['ResumeEducation']['resume_id']);
 		}
+		$this->set('resumeEducations', $this->Resume->ResumeEducation->find('all', array('contain' => false, 'conditions' =>
+		array('ResumeEducation.resume_id' => $this->Session->read('resumeID')))));
+		
 	}
 
 	function deleteEducation($id = null) {
@@ -312,8 +324,6 @@ class ResumesController extends AppController {
 		$this->set('skillGroups', $this->Skill->SkillGroup->find('list'));
 		$this->set('proficiencies', $this->Category->find('list', array(
 					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'Proficiency'))))));
-		$this->set('resumeSkills', $this->Resume->ResumeSkill->find('all', array('conditions' =>
-		array('ResumeSkill.resume_id' => $this->Session->read('resumeID')))));
 		$this->set('listSkills', $this->Skill->find('list'));
 
 		if (!$id && empty($this->data)) {
@@ -330,7 +340,10 @@ class ResumesController extends AppController {
 		}
 		if (empty($this->data)) {
 			$this->data = $this->Resume->ResumeSkill->read(null, $id);
+			$this->Session->write('resumeID', $this->data['ResumeSkill']['resume_id']);
 		}
+		$this->set('resumeSkills', $this->Resume->ResumeSkill->find('all', array('conditions' =>
+		array('ResumeSkill.resume_id' => $this->Session->read('resumeID')))));
 	}
 
 	function deleteSkill($id = null) {

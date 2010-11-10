@@ -5,6 +5,7 @@ class SkillsController extends AppController {
 		
 	function beforeFilter(){
 		$this->checkAdminSession();
+		$this->layout = 'default_admin';
 	}
 	
 	function admin_index() {
