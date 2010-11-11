@@ -1,76 +1,90 @@
-<div class="countries view">
-<h2><?php  __('Country');?></h2>
-	<dl><?php $i = 0; $class = ' class="altrow"';?>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Id'); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $country['Country']['id']; ?>
-			&nbsp;
-		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Country Name'); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $country['Country']['name']; ?>
-			&nbsp;
-		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Created'); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $country['Country']['created']; ?>
-			&nbsp;
-		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Modified'); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $country['Country']['modified']; ?>
-			&nbsp;
-		</dd>
-	</dl>
+<div id="header">
+	<h2>CakePHP: the rapid development php framework</h2>
+	<div id="topmenu">
+    	<ul>
+        	<li><a href="index.html">Dashboard</a></li>
+            <li class="current"><a href="#">Danh mục</a></li>
+            <li><a href="users.html">Users</a></li>
+            <li><a href="#">Manage</a></li>
+            <li><a href="#">CMS</a></li>
+            <li><a href="#">Statistics</a></li>
+            <li><a href="#">Settings</a></li>
+    	</ul>
+	</div>
 </div>
-<div class="actions">
-	<h3><?php __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Edit Country', true), array('action' => 'edit', $country['Country']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('Delete Country', true), array('action' => 'delete', $country['Country']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $country['Country']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Countries', true), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Country', true), array('action' => 'add')); ?> </li>
-	</ul>
-</div>
-<div class="related">
-	<h3><?php __('Related Provinces');?></h3>
-	<?php if (!empty($country['Province'])):?>
-	<table cellpadding = "0" cellspacing = "0">
-	<tr>
-		<th><?php __('Id'); ?></th>
-		<th><?php __('Country Id'); ?></th>
-		<th><?php __('Name'); ?></th>
-		<th><?php __('Created'); ?></th>
-		<th><?php __('Modified'); ?></th>
-		<th class="actions"><?php __('Actions');?></th>
-	</tr>
-	<?php
-		$i = 0;
-		foreach ($country['Province'] as $province):
-			$class = null;
-			if ($i++ % 2 == 0) {
-				$class = ' class="altrow"';
-			}
-		?>
-		<tr<?php echo $class;?>>
-			<td><?php echo $province['id'];?></td>
-			<td><?php echo $province['country_id'];?></td>
-			<td><?php echo $province['name'];?></td>
-			<td><?php echo $province['created'];?></td>
-			<td><?php echo $province['modified'];?></td>
-			<td class="actions">
-				<?php echo $this->Html->link(__('View', true), array('controller' => 'provinces', 'action' => 'view', $province['id'])); ?>
-				<?php echo $this->Html->link(__('Edit', true), array('controller' => 'provinces', 'action' => 'edit', $province['id'])); ?>
-				<?php echo $this->Html->link(__('Delete', true), array('controller' => 'provinces', 'action' => 'delete', $province['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $province['id'])); ?>
-			</td>
-		</tr>
-	<?php endforeach; ?>
-	</table>
-<?php endif; ?>
-
-	<div class="actions">
+<div id="top-panel">
+	<div id="panel">
 		<ul>
-			<li><?php echo $this->Html->link(__('New province', true), array('controller' => 'provinces', 'action' => 'add'));?> </li>
+			<li><?php echo $this->Html->link(__('Ngành nghề', true), array('controller' => 'job_categories', 'action' => 'index', 'admin'=> true)); ?></li>
+			<li><?php echo $this->Html->link(__('Loại hình công việc', true), array('controller' => 'job_types', 'action' => 'index', 'admin'=> true)); ?></li>
+			<li><?php echo $this->Html->link(__('Cấp bậc', true), array('controller' => 'job_levels', 'action' => 'index', 'admin'=> true)); ?></li>
+			<li><?php echo $this->Html->link(__('Bằng cấp', true), array('controller' => 'degree_levels', 'action' => 'index', 'admin'=> true)); ?></li>
+			<li><?php echo $this->Html->link(__('Nhóm kỹ năng', true), array('controller' => 'skillGroups', 'action' => 'index', 'admin'=> true)); ?></li>
+			<li><?php echo $this->Html->link(__('Kỹ năng', true), array('controller' => 'skills', 'action' => 'index', 'admin'=> true)); ?></li>
+			<li><?php echo $this->Html->link(__('Quốc gia', true), array('controller' => 'countries', 'action' => 'index', 'admin'=> true)); ?></li>
+			<li><?php echo $this->Html->link(__('Tỉnh thành', true), array('controller' => 'provinces', 'action' => 'index', 'admin'=> true)); ?></li>
+			<li><?php echo $this->Html->link(__('Loại danh mục khác', true), array('controller' => 'category_types', 'action' => 'index', 'admin'=> true)); ?></li>
+			<li><?php echo $this->Html->link(__('Danh mục khác', true), array('controller' => 'categories', 'action' => 'index', 'admin'=> true));?></li>
 		</ul>
 	</div>
+</div>
+<div id="wrapper">
+<?php echo $this->element('admin_sidebar'); ?>
+	<div id="content">
+    <div id="box">
+	<h3><?php __('Quốc gia');?></h3>
+	<table width="100%">
+		<thead>
+        <tr>
+			<th><?php echo $this->Paginator->sort('Tên quốc gia');?></th>
+			<th width="130"><?php echo $this->Paginator->sort('Ngày tạo');?></th>
+			<th width="130"><?php echo $this->Paginator->sort('Ngày cập nhật');?></th>
+			<th width="130"></th>
+	    </tr> 
+		</thead>
+<?php
+	$i = 0;
+	foreach ($countries as $country):
+		$class = null;
+		if ($i++ % 2 == 0) {
+			$class = ' class="altrow"';
+		}
+	?>
+	<tr<?php echo $class;?>>
+		<td><?php echo $country['Country']['name']; ?>&nbsp;</td>
+		<td><?php echo $country['Country']['created']; ?>&nbsp;</td>
+		<td><?php echo $country['Country']['modified']; ?>&nbsp;</td>
+		<td class="actions">
+			<?php echo $this->Html->link(__('View', true), array('action' => 'view', $country['Country']['id'])); ?>
+			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $country['Country']['id'])); ?>
+			<?php echo $this->Html->link(__('Delete', true), array('action' => 'delete', $country['Country']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $country['Country']['id'])); ?>
+		</td>
+	</tr>
+<?php endforeach; ?>
+	</table>
+	<p>
+		<?php echo $this->Paginator->counter(array('format' => __('Trang %page%/%pages%, tổng cộng %count% records', true)));?>	
+	</p>
+	<div class="paging">
+		<?php echo $this->Paginator->prev('<< ' . __('Trước', true), array(), null, array('class'=>'disabled'));?>
+	 	|<?php echo $this->Paginator->numbers();?>
+ 		| <?php echo $this->Paginator->next(__('Kế tiếp', true) . ' >>', array(), null, array('class' => 'disabled'));?>
+	</div>
+	</div>
+	<br/>
+	<div id="box">
+		<h3>Quốc gia</h3>
+        <?php echo $this->Session->flash(); ?>
+        <?php echo $this->Form->create('Country',array('div'=>false,'id'=>'form'));?>
+		<?php echo $this->Form->Input('name',array('label'=>'Tên quốc gia:','div'=>false,'disabled'=>true));?>
+		<div align="center">
+        <br />
+        	<?php echo $this->Html->link(__('Thêm mới', true),array('action' => 'index'));?>
+	    	<?php echo $this->Html->link(__('Chỉnh sửa', true), array('action' => 'edit', $this->data['Country']['id'])); ?>
+	    </div>
+	    <?php echo $this->Form->end();?>
+	</div>
+        
+</div>
+    
 </div>
