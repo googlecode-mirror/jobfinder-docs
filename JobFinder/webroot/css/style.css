@@ -290,6 +290,8 @@ thead{
 form{
 	padding:10px;
 	margin:0 auto;
+	display:block;
+	line-height:20px;
 }
 form fieldset {
 	display:block;
