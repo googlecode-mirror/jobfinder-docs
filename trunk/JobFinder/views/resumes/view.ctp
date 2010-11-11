@@ -2,7 +2,6 @@
 	$gender =  array(0 => 'Nam', 1 =>'Nữ');
 	$yesno = array(0=> 'Không', 1=> 'Có');
 	$martial =  array(0 => 'Độc thân', 1 =>'Đã kết hôn');
-	pr($resume);
 ?>
 <div id="body_content">
     <!-- begin wrap -->
@@ -115,14 +114,20 @@
 							<td><strong><?php echo $jobLevels[$resume['ResumeTargetJob'][0]['job_level_id']]; ?></strong></td>
 						  </tr>
 						  <tr>
-			
 							<td align="right" valign="top">&nbsp;</td>
 							<td valign="top">&nbsp;</td>
-							<td valign="top">Loại công việc:</td>
+							<td valign="top">Loại hình công việc:</td>
 							<td valign="top">&nbsp;</td>
 							<td valign="top">
-								<strong>Toàn thời gian cố định</strong><br /><strong>Toàn thời gian tạm thời</strong><br /><strong>Bán thời gian cố định</strong><br /><strong>Bán thời gian tạm thời</strong><br /><strong>Theo hợp đồng/tư vấn</strong><br /><strong>Thực tập</strong><br /><strong>Khác</strong><br />							</td>
-			
+								<?php            			
+                                	$string = $resume['ResumeTargetJob'][0]['job_types'];
+                        			$token = strtok($string, "|");                        
+                        			while ($token != false)
+                        			{
+                                		echo "<strong>$jobTypes[$token]</strong><br />";
+                        				$token = strtok("|");
+                        		}?>
+							</td>
 						  </tr>
 						  <tr>
 							<td >&nbsp;</td>
@@ -153,21 +158,34 @@
 							<td>Ngành nghề:</td>
 							<td>&nbsp;</td>
 							<td>
-								- Kế toán/Tài chính<br />				</td>
+								<?php            			
+                                	$string = $resume['ResumeTargetJob'][0]['job_categories'];
+                        			$token = strtok($string, "|");                        
+                        			while ($token != false)
+                        			{
+                                		echo "- $jobCategories[$token]<br />";
+                        				$token = strtok("|");
+                        		}?>
+							</td>
 						  </tr>
 						  <tr>
-			
 							<td>&nbsp;</td>
 							<td>&nbsp;</td>
 							<td>Nơi làm việc:</td>
 							<td>&nbsp;</td>
 							<td>
-								- Hồ Chí Minh<br />				</td>
+								<?php            			
+                                	$string = $resume['ResumeTargetJob'][0]['job_locations'];
+                        			$token = strtok($string, "|");                        
+                        			while ($token != false)
+                        			{
+                                		echo "- $provinces[$token]<br />";
+                        				$token = strtok("|");
+                        		}?>
+							</td>
 						 </tr>
-			
-						  
 						  <tr><td colspan="5">&nbsp;</td></tr>
-						  
+  
 						  <tr>
 							<td align="right" valign="top" class="txt_tilte_lv2" style="text-align:right">Mục Tiêu Nghề Nghiệp</td>
 							<td>&nbsp;</td>
@@ -182,7 +200,7 @@
 							<td>&nbsp;</td>
 							<td>Mức lương hiện tại:</td>
 							<td>&nbsp;</td>
-							<td>N/A</td>
+							<td><?php echo $resume['ResumeTargetJob'][0]['current_salary'];?></td>
 			
 						 </tr>
 						  <tr>
@@ -190,9 +208,8 @@
 							<td>&nbsp;</td>
 							<td>Mức lương mong muốn:</td>
 							<td>&nbsp;</td>
-							<td>N/A</td>
+							<td><?php echo $resume['ResumeTargetJob'][0]['desired_salary'];?></td>
 						 </tr>
-			
 						  <tr>
 							<td align="right" >&nbsp;</td>
 							<td>&nbsp;</td>
@@ -210,72 +227,109 @@
                 </b>
             </div>
             <!--end Summary-->
+            
+            <!-- begin Resume Information -->
+            <div class="box_corner">
+                <b class="xtop">
+                    <b class="xb1 blue_top"><!-- --></b>
+                    <b class="xb2 blue_curve blue_title"><!-- --></b>
+                    <b class="xb3 blue_curve blue_title"><!-- --></b>
+                </b>
+                <div class="blue_bg_title"><strong>Hồ sơ</strong></div>
+                <div class="white_content">
+                    <table class="table_info">
+                   		<tr>
+							<td width="22%" valign="top">
+								<p class="txt_tilte_lv2">Kinh Nghiệm Làm Việc</p>
+								<p><strong>Tổng cộng: <?php echo $resume['Resume']['years_exp'];?> năm</strong></p>
+							</td>
+							<td width="78%">
+								<div>
+								<?php foreach ($resume['ResumeJobExp'] as $resumeJobExp):?>
+								<p class="txt_tilte_lv2"><?php echo $resumeJobExp['job_title'];?></p>
+								<p><strong>
+									<?php echo $resumeJobExp['company_name'] .' - ' .$jobCategories[$resumeJobExp['job_category_id']] ;?>
+								</strong></p>
+								<p><strong>
+									<?php echo $jobLevels[$resumeJobExp['job_level_id']] .' - ' . 'Tháng ' .date('m Y', strtotime($resumeJobExp['start_date'])) .' đến '; if($resumeJobExp['end_date'] == null){ echo __('Hiện tại'); } else { echo date('m Y', strtotime($resumeJobExp['end_date'])); };?>
+								</strong></p>
+								<p><?php echo $countries[$resumeJobExp['country_id']] .' - ' .$provinces[$resumeJobExp['province_id']] ;?></p>
+								<dl>
+									<dt>Thông tin liên quan:</dt>
+									<dd><?php echo $resumeJobExp['responsibilities_achievements']; ?></dd>
+								</dl>
+								</div>	
+								<?php endforeach;?>					
+						</td>
+					  </tr>
+					</table>
+					<!-- end Work experience-->
+					
+					<div class="line_dotted"></div>
+					
+					<!--Education-->
+					<table class="table_info">
+					  <tr class="field_cp">
+						<td width="22%" valign="top">
+								<p class="txt_tilte_lv2">Học Vấn</p>
+						</td>
+						<td width="78%">
+							<?php foreach ($resume['ResumeEducation'] as $resumeEducation):?>
+							<div>
+							<p class="txt_tilte_lv2"><?php echo $resumeEducation['program'];?></p>
+							<p><strong><?php echo $resumeEducation['major'];?></strong></p>
+							<p><strong><?php echo $degreeLevels[$resumeEducation['degree_level_id']];?> </strong></p>
+							<p><strong><?php echo 'Tháng ' .date('m Y', strtotime($resumeEducation['start_date'])) .' đến '; if($resumeEducation['end_date'] == null){ echo __('Hiện tại'); } else { echo date('m Y', strtotime($resumeEducation['end_date'])); };?></strong></p>
+							<p><?php echo $countries[$resumeEducation['country_id']]; ?></p>
+							<dl>
+								<dt>Thông tin liên quan:</dt>
+								<dd><?php echo $resumeEducation['related_information']; ?></dd>
+							</dl>
+							</div>
+							<?php endforeach;?>		
+						</td>
+					  </tr>
+					</table>
+					<!-- end Education-->
+					
+					<div class="line_dotted"></div>					
+					
+					<!--Skill-->
+
+					<table class="table_info">
+					  <tr class="field_cp">
+						<td width="22%" valign="top">
+							<p class="txt_tilte_lv2">Kỹ Năng</p>
+						</td>
+						<td width="78%">
+							<?php foreach ($resume['ResumeSkill'] as $resumeSkill):?>
+							<div>
+								<p class="txt_tilte_lv2"><?php echo $skills[$resumeSkill['skill_id']];?></p>
+								<p><?php echo $proficiencies[$resumeSkill['proficiency']];?></p>
+								<p><?php echo $resumeSkill['year_use']. ' năm';?></p>
+								<p>Mô tả: <?php echo $resumeSkill['description'];?></p>
+							</div>
+							<?php endforeach;?>
+						</td>
+					  </tr>
+					  <tr>
+					  	<td width="22%" valign="top">
+						</td>
+						<td width="78%">
+							<div style="text-align:right; margin-bottom:10px">[ <a  class="link" href="#">Trở về đầu</a> ]</div></td>
+						</tr>
+					</table>
+                </div>                
+                <b class="xbottom">
+                    <b class="xb3 blue_curve blue_bg_bottom"><!-- --></b>
+                    <b class="xb2 blue_curve blue_bg_bottom"><!-- --></b>
+                    <b class="xb1 blue_top"><!-- --></b>
+                </b>
+            </div>
+            <!--end Summary-->
         </div>
         <div style="text-align: right;">
     	   <?php echo $this->Html->Link('Đóng', '#', array('onClick'=>'window.close()','div'=>false)); ?>
     	</div>
     </div>
-</div>
-
-
-
-
-
-<div class="resume_detail">
-    <h2><?php  __('Resume Detail');?></h2>
-    <fieldset>
-    <legend>Hồ sơ</legend>
-    <table>
-    	<tr>
-    		<td><?php __('Tên hồ sơ: '); ?></td>
-    		<td><?php echo $resume['Resume']['resume_title']; ?></td>
-    	</tr>
-    	<tr>
-    		<td><?php __('Họ tên: '); ?></td>
-    		<td><?php echo $resume['Jobseeker']['last_name'].' '. $resume['Jobseeker']['first_name']; ?></td>
-    	</tr>
-    	<tr>
-    		<td><?php __('Ngày sinh: '); ?></td>
-    		<td><?php echo date('d/m/Y', strtotime($resume['Jobseeker']['birthday']));    ?>
-    		</td>
-    	</tr>
-    	<tr>
-    		<td><?php __('Giới tính: '); ?></td>
-    		<td><?php echo $gender[$resume['Jobseeker']['gender']]; ?></td>
-    	</tr>
-		<tr>
-    		<td><?php __('Tình trạng hôn nhân: '); ?></td>
-    		<td><?php echo $martial[$resume['Resume']['martial_status']]; ?></td>
-    	</tr>
-		<tr>
-    		<td><?php __('Quốc tịch: '); ?></td>
-    		<td><?php echo $nationalities[$resume['Resume']['nationality']]; ?></td>
-    	</tr>
-		<tr>
-    		<td><?php __('Ðịa chỉ liên lạc: '); ?></td>
-    		<td><?php echo $resume['Resume']['address']; ?></td>
-    	</tr>
-		<tr>
-    		<td><?php __('Quốc gia: '); ?></td>
-    		<td><?php echo $resume['Country']['name']; ?></td>
-    	</tr>
-		<tr>
-    		<td><?php __('Tỉnh/Thành phố: '); ?></td>
-    		<td><?php echo $resume['Province']['name']; ?></td>
-    	</tr>
-		<tr>
-    		<td><?php __('Ðiện thoại liên lạc: '); ?></td>
-    		<td><?php echo $resume['Resume']['telephone']; ?></td>
-    	</tr>
-		<tr>
-    		<td><?php __('Di động: '); ?></td>
-    		<td><?php echo $resume['Resume']['mobile']; ?></td>
-    	</tr>
-		<tr>
-    		<td><?php __('Địa chỉ Email: '); ?></td>
-    		<td><?php echo $resume['Resume']['email']; ?></td>
-    	</tr>
-		
-    </table>
-    </fieldset>   
 </div>
