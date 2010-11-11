@@ -4,23 +4,13 @@ class CountriesController extends AppController {
 	var $helpers = array('Html','Form','Ajax','Javascript');    
 	
 	function beforeFilter(){
+		$this->layout='default_admin';
 		$this->checkAdminSession();
 	}
 
 	function admin_index() {
 		$this->Country->recursive = 0;
 		$this->set('countries', $this->paginate());
-	}
-
-	function admin_view($id = null) {
-		if (!$id) {
-			$this->Session->setFlash(__('Invalid country', true));
-			$this->redirect(array('action' => 'index'));
-		}
-		$this->set('country', $this->Country->read(null, $id));
-	}
-
-	function admin_add() {
 		if (!empty($this->data)) {
 			$this->Country->create();
 			if ($this->Country->save($this->data)) {
@@ -32,7 +22,21 @@ class CountriesController extends AppController {
 		}
 	}
 
+	function admin_view($id = null) {
+		$this->Country->recursive = 0;
+		$this->set('countries', $this->paginate());
+		if (!$id) {
+			$this->Session->setFlash(__('Invalid country', true));
+			$this->redirect(array('action' => 'index'));
+		}
+		if (empty($this->data)) {
+			$this->data = $this->Country->read(null, $id);
+		}
+	}
+
 	function admin_edit($id = null) {
+		$this->Country->recursive = 0;
+		$this->set('countries', $this->paginate());
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid country', true));
 			$this->redirect(array('action' => 'index'));
