@@ -5,23 +5,13 @@ class DegreeLevelsController extends AppController {
 	var $helpers = array('Html','Form','Ajax','Javascript');    
 	
 	function beforeFilter(){
+		$this->layout='default_admin';
 		$this->checkAdminSession();
 	}
 
 	function admin_index() {
 		$this->DegreeLevel->recursive = 0;
 		$this->set('degreeLevel', $this->paginate());
-	}
-
-	function admin_view($id = null) {
-		if (!$id) {
-			$this->Session->setFlash(__('Invalid level', true));
-			$this->redirect(array('action' => 'index'));
-		}
-		$this->set('degreeLevel', $this->DegreeLevel->read(null, $id));
-	}
-
-	function admin_add() {
 		if (!empty($this->data)) {
 			$this->DegreeLevel->create();
 			if ($this->DegreeLevel->save($this->data)) {
@@ -33,7 +23,21 @@ class DegreeLevelsController extends AppController {
 		}
 	}
 
+	function admin_view($id = null) {
+		$this->DegreeLevel->recursive = 0;
+		$this->set('degreeLevel', $this->paginate());
+		if (!$id) {
+			$this->Session->setFlash(__('Invalid level', true));
+			$this->redirect(array('action' => 'index'));
+		}
+		if (empty($this->data)) {
+			$this->data = $this->DegreeLevel->read(null, $id);
+		}
+	}
+
 	function admin_edit($id = null) {
+		$this->DegreeLevel->recursive = 0;
+		$this->set('degreeLevel', $this->paginate());
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid Degree level', true));
 			$this->redirect(array('action' => 'index'));
