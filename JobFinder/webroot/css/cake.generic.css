@@ -392,9 +392,9 @@ form .required label:before {
 .form_field .day {width:45px}
 .form_field .price {width:50px}
 .form_field .year {width:60px}
-.form_field .gender {width:90px}
-.form_field .marial {width:90px}
-.form_field .nationality {width:90px}
+.form_field .gender {width:120px}
+.form_field .marial {width:120px}
+.form_field .nationality {width:120px}
 .form_field .exper {width:100px}
 .form_field .sub_note {padding-left:260px; padding-top:5px; clear:both}
 .form_field .jobtitle {width:60px}
@@ -1793,9 +1793,9 @@ ul.companyleftcol li.comprofile { background:#cceffc url(http://images.vietnamwo
 .form_field .day {width:45px}
 .form_field .price {width:50px}
 .form_field .year {width:60px}
-.form_field .gender {width:90px}
-.form_field .marial {width:90px}
-.form_field .nationality {width:90px}
+.form_field .gender {width:120px}
+.form_field .marial {width:120px}
+.form_field .nationality {width:120px}
 .form_field .exper {width:100px}
 .form_field .sub_note {padding-left:170px; padding-top:5px; padding-bottom:10px; clear:both}
 .form_field .jobtitle {width:60px}
