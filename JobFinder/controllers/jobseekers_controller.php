@@ -228,11 +228,15 @@ class JobseekersController extends AppController {
 
 	function admin_index()
 	{
+		$this->layout='default_admin';
+		$this->checkAdminSession();
 		$this->Jobseeker->recursive = 0;
 		$this->set('jobseekers', $this->paginate());
 	}
 
 	function admin_view($id = null) {
+		$this->layout='default_admin';
+		$this->checkAdminSession();
 		$this->Jobseeker->recursive = 0;
 		$this->set('jobseekers', $this->paginate());
 		if (!$id) {
@@ -245,6 +249,8 @@ class JobseekersController extends AppController {
 	}
 
 	function admin_edit($id = null) {
+		$this->layout='default_admin';
+		$this->checkAdminSession();
 		$this->Jobseeker->recursive = 0;
 		$this->set('jobseekers', $this->paginate());
 		if (!$id && empty($this->data)) {
