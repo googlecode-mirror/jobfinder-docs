@@ -1,97 +1,116 @@
-<div class='container'>
-<div class="jobsaveds index">
-	<h2><?php __('Job saved');?></h2>
-	<table cellpadding="0" cellspacing="0">
-	<tr>
-			<th><?php echo $this->Paginator->sort('Chức danh');?></th>
-			<th><?php echo $this->Paginator->sort('Ngày lưu');?></th>
-			<th><?php echo $this->Paginator->sort('Tình trạng');?></th>
-			<th class="actions"><?php __('Chức năng');?></th>
-	</tr>
-	<?php
-	$i = 0;
-	//pr($jobsaveds);
-	foreach ($jobsaveds as $jobsaved):
-		$class = null;
-		if ($i++ % 2 == 0) {
-			$class = ' class="altrow"';
-		}
-	?>
-	<tr <?php echo $class;?>>
-		<td><?php echo $this->Html->Link($jobsaved['Job']['job_title'], array('controller' => 'jobs', 'action' => 'view', $jobsaved['JobSaved']['job_id'])); ?></td>
-		<td><?php echo $jobsaved['JobSaved']['created']; ?></td>
-		<td><?php if(empty($jobsaved['JobSaved']['applied'])){ 
-			echo $this->Html->Link('Ứng tuyển', array('controller' => 'jobseeker', 'action' => 'apply_job', $jobsaved['JobSaved']['job_id']));
-		}
-		else {
-			echo 'Đã ứng tuyển '. $html->tag('br') .$jobsaved['JobSaved']['applied'];
-		} ?></td>
-		<td class="actions">
-			<?php echo $this->Html->link(__('Xem', true), array('controller'=> 'jobs','action' => 'view', $jobsaved['JobSaved']['job_id'])); ?>
-			<?php if(empty($jobsaved['JobSaved']['applied'])){ echo $this->Html->link(__('Xóa', true), array('action' => 'delete_jobsaved', $jobsaved['JobSaved']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $jobsaved['JobSaved']['id']));} ?>
-		</td>
-	</tr>
-	<?php endforeach; ?>
-	</table>
-	<p>
-	<?php
-		echo $this->Paginator->counter(array(
-		'format' => __('Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%', true)
-		));
-	?>	</p>
-
-	<div class="paging">
-		<?php echo $this->Paginator->prev('<< ' . __('previous', true), array(), null, array('class'=>'disabled'));?>
-	 | 	<?php echo $this->Paginator->numbers();?>
- |
-		<?php echo $this->Paginator->next(__('next', true) . ' >>', array(), null, array('class' => 'disabled'));?>
-	</div>
+<div id="job_nav_sub">
+	<div class="job_wrapmenu">
+		<ul class="job_subnav">
+			<li><?php echo $html->link($html->tag('span', 'Tài khoản'), 
+					array('controller' => 'jobseekers', 'action' => 'profile'),array('escape' => false)); ?>
+			</li>	
+		</ul>	
+		<br clear="all"/>
+	</div><!-- end wrap -->		
 </div>
-
-<div class="resumes index">
-	<h2><?php __('Your resumes');?></h2>
-	<table cellpadding="0" cellspacing="0">
-	<tr>
-			<th><?php echo $this->Paginator->sort('id');?></th>
-			<th><?php echo $this->Paginator->sort('resume_title');?></th>
-			<th><?php echo $this->Paginator->sort('created');?></th>
-			<th><?php echo $this->Paginator->sort('modified');?></th>
-			<th class="actions"><?php __('Actions');?></th>
-	</tr>
-	<?php
-	$i = 0;
-	//pr($resumes);
-	foreach ($resumes as $resume):
-		$class = null;
-		if ($i++ % 2 == 0) {
-			$class = ' class="altrow"';
-		}
-	?>
-	<tr <?php echo $class;?>>
-		<td><?php echo $resume['Resume']['id']; ?>&nbsp;</td>
-		<td><?php echo $this->Html->Link($resume['Resume']['resume_title'], array('controller' => 'resumes', 'action' => 'view', $resume['Resume']['id'])); ?></td>
-		<td><?php echo $resume['Resume']['created']; ?>&nbsp;</td>
-		<td><?php echo $resume['Resume']['modified']; ?>&nbsp;</td>
-		<td class="actions">
-			<?php echo $this->Html->link(__('View', true), array('controller'=> 'resumes','action' => 'view', $resume['Resume']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit', true), array('controller'=> 'resumes','action' => 'modifyResume', $resume['Resume']['id'])); ?>
-			<?php echo $this->Html->link(__('Delete', true), array('action' => 'delete_resume', $resume['Resume']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $resume['Resume']['id'])); ?>
-		</td>
-	</tr>
-	<?php endforeach; ?>
-	</table>
-	<p>
-	<?php
-		echo $this->Paginator->counter(array(
-		'format' => __('Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%', true)
-		));
-	?>	</p>
-
-	<div class="paging">
-		<?php echo $this->Paginator->prev('<< ' . __('previous', true), array(), null, array('class'=>'disabled'));?>
-	 | 	<?php echo $this->Paginator->numbers();?>
- |
-		<?php echo $this->Paginator->next(__('next', true) . ' >>', array(), null, array('class' => 'disabled'));?>
-	</div>
-</div>
+<div class="wrap_cr">
+    <!-- begin content -->
+    <div id="content_cr">
+    <?php echo $this->Session->flash(); ?>
+        <!-- begin right col -->
+        <div id="right_cr">
+        	<h2>Quản lý nghề nghiệp</h2>     
+            <div class="box_corner">
+                <b class="xtop">
+                    <b class="xb1 blue_top"></b>
+                    <b class="xb2 blue_curve blue_title"></b>
+                    <b class="xb3 blue_curve blue_title"></b>
+                </b>
+				<div class="blue_bg_title"><strong>Việc làm đã lưu</strong></div>
+				<div class="white_content1" id="divContent">
+				   <table width="100%" cellspacing="0" cellpadding="0" border="0" class="tb_list">
+					  <tbody><tr bgcolor="#e2e2e2" class="tb_title">
+						<td width="35%"><?php echo $this->Paginator->sort('Chức danh');?></td>
+						<td width="20%"><?php echo $this->Paginator->sort('Ngày lưu');?></td>
+						<td width="20%"><?php echo $this->Paginator->sort('Tình trạng');?></td>
+						<td width="25%"><?php __('Chức năng');?></td>
+					  </tr>
+						<?php foreach ($jobsaveds as $jobsaved):?>
+						<tr>
+							<td><strong><?php echo $this->Html->Link($jobsaved['Job']['job_title'], array('controller' => 'jobs', 'action' => 'view', $jobsaved['JobSaved']['job_id'])); ?></strong></td>
+							<td><?php echo date('d-m-Y H:i:s', strtotime($jobsaved['JobSaved']['created'])); ?></td>
+							<td><?php if($jobsaved['JobSaved']['status'] == 0){ 
+								echo $this->Html->Link('Ứng tuyển', array('controller' => 'jobseekers', 'action' => 'applyJob', $jobsaved['JobSaved']['job_id']));
+							}
+							else if($jobsaved['JobSaved']['status'] == 1){
+								echo 'Đã ứng tuyển '. $html->tag('br') .date('d-m-Y H:i:s', strtotime($jobsaved['JobSaved']['applied']));
+							} ?></td>
+							<td>
+								<?php echo $this->Html->link(__('Xem', true), array('controller'=> 'jobs','action' => 'view', $jobsaved['JobSaved']['job_id'])); ?> | 
+								<?php echo $this->Html->link(__('Xóa', true), array('action' => 'delete_jobsaved', $jobsaved['JobSaved']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $jobsaved['JobSaved']['id'])); ?>
+							</td>
+						</tr>
+						<?php endforeach; ?>
+					  </tbody></table>
+					<div class="paging">
+						<?php echo $this->Paginator->prev('<< ' . __('Trước', true), array(), null, array('class'=>'disabled'));?>
+					 	|<?php echo $this->Paginator->numbers();?>
+				 		| <?php echo $this->Paginator->next(__('Kế tiếp', true) . ' >>', array(), null, array('class' => 'disabled'));?>
+					</div>					
+                </div>
+                <!--end xboxcontent-->
+				<b class="xbottom">
+                <b class="xb3 blue_curve blue_bg_bottom"></b>
+                <b class="xb2 blue_curve blue_bg_bottom"></b>
+                <b class="xb1 blue_top"></b>
+                </b>				
+			</div>
+            <div style="text-align: left;">
+                <?php echo $this->Html->link(__('Tìm việc', true), 
+                        array('controller'=>'jobs','action' => 'search'));?>
+            </div>
+            <br/>
+            <div class="box_corner">
+                <b class="xtop">
+                    <b class="xb1 blue_top"></b>
+                    <b class="xb2 blue_curve blue_title"></b>
+                    <b class="xb3 blue_curve blue_title"></b>
+                </b>
+				<div class="blue_bg_title"><strong>Hồ Sơ Của Tôi</strong></div>
+				<div class="white_content1" id="divContent">
+				   <table width="100%" cellspacing="0" cellpadding="0" border="0" class="tb_list">
+					  <tbody><tr bgcolor="#e2e2e2" class="tb_title">
+						<td width="35%"><?php echo $this->Paginator->sort('Tiêu đề');?></td>
+						<td width="20%"><?php echo $this->Paginator->sort('Ngày cập nhật');?></td>
+						<td width="20%"><?php echo $this->Paginator->sort('Số lần xem');?></td>
+						<td width="25%"><?php __('Chức năng');?></td>
+					  </tr>
+					  <?php foreach ($resumes as $resume):?>
+						<tr>
+							<td><strong><?php echo $this->Html->Link($resume['Resume']['resume_title'], array('controller' => 'resumes', 'action' => 'view', $resume['Resume']['id'])); ?></strong></td>
+							<td><?php echo date('d-m-Y H:i:s', strtotime($resume['Resume']['modified'])); ?>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>
+								<?php echo $this->Html->link(__('Xem', true), array('controller'=> 'resumes','action' => 'view', $resume['Resume']['id'])); ?> |
+								<?php echo $this->Html->link(__('Cập nhật', true), array('controller'=> 'resumes','action' => 'preview', $resume['Resume']['id'])); ?> | 
+								<?php echo $this->Html->link(__('Xóa', true), array('action' => 'delete_resume', $resume['Resume']['id']), null, sprintf(__('Bạn có chắc muốn xóa hồ sơ %s?', true), $resume['Resume']['resume_title'])); ?>
+							</td>
+						</tr>
+						<?php endforeach; ?>
+					  </tbody></table>
+					<div class="paging">
+						<?php echo $this->Paginator->prev('<< ' . __('Trước', true), array(), null, array('class'=>'disabled'));?>
+					 	|<?php echo $this->Paginator->numbers();?>
+				 		| <?php echo $this->Paginator->next(__('Kế tiếp', true) . ' >>', array(), null, array('class' => 'disabled'));?>
+					</div>					
+                </div>
+                <!--end xboxcontent-->
+				<b class="xbottom">
+                <b class="xb3 blue_curve blue_bg_bottom"></b>
+                <b class="xb2 blue_curve blue_bg_bottom"></b>
+                <b class="xb1 blue_top"></b>
+                </b>				
+			</div>
+            <div style="text-align: left;">
+                <?php echo $this->Html->link(__('Tạo hồ sơ', true), 
+                        array('controller'=>'resumes','action' => 'createResume'));?>
+            </div>
+            
+        </div>
+    </div>
 </div>

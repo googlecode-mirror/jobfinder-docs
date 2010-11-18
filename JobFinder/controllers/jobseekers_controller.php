@@ -178,7 +178,7 @@ class JobseekersController extends AppController {
 
 	}
 
-	function apply_job($jobID = null)
+	function applyJob($jobID = null)
 	{
 		$jobseeker = $this->checkJobSeekerSession();
 		if (!$jobID && empty($this->data)) {
@@ -194,21 +194,22 @@ class JobseekersController extends AppController {
 			if(empty($jobApply)){
 				$this->Jobseeker->JobApply->create();
 				if ($this->Jobseeker->JobApply->save($this->data)) {
+					
 					//add new job save, if avaiable update job saved status
-					$jobSaved = array('JobSaved' => array('jobseeker_id' => $this->data['JobApply']['jobseeker_id'],
-											'job_id' => $this->data['JobApply']['job_id'], 'status' => 1, 'applie' => date('Y-m-d H:i:s')));
-					$this->Jobseeker->JobSaved->set($jobSaved);
-					if(!$this->Jobseeker->JobSaved->validates())
+					$existJobSaved = $this->Jobseeker->JobSaved->find('all',array('conditions' => array(array('JobSaved.jobseeker_id' => $this->data['JobApply']['jobseeker_id']),
+											'AND' => array('job_id' => $this->data['JobApply']['job_id']))));
+					
+					if(!empty($existJobSaved))
 					{
 						//update status 0: not apply 1: applied
-						$jobSaveds = $this->Jobseeker->JobSaved->find('all',array('conditions' => array(array('JobSaved.jobseeker_id' => $this->data['JobApply']['jobseeker_id']),
-											'AND' => array('job_id' => $this->data['JobApply']['job_id']))));
-						$jobSaved = $jobSaveds[0]['JobSaved'];
+						$jobSaved = $existJobSaved[0]['JobSaved'];
 						$jobSaved['status'] = 1;
 						$jobSaved['applied'] = date('Y-m-d H:i:s');
 						$this->Jobseeker->JobSaved->save($jobSaved);
 					}
 					else{
+						$jobSaved = array('JobSaved' => array('jobseeker_id' => $this->data['JobApply']['jobseeker_id'],
+											'job_id' => $this->data['JobApply']['job_id'], 'status' => 1, 'applies' => date('Y-m-d H:i:s')));
 						$this->Jobseeker->JobSaved->save($jobSaved);
 					}
 					$this->redirect(array('action' => 'index'));

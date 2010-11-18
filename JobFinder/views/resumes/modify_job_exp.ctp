@@ -90,7 +90,7 @@
             
             </div>
             <div style="text-align: right;">
-                <?php echo $this->Form->submit('Thêm', array('class'=>'btn_cont','div'=>false));?>            
+                <?php echo $this->Form->submit('Thêm & Lưu', array('class'=>'btn_cont','div'=>false));?>            
             </div>
             
             <div class="box_corner">
@@ -127,12 +127,71 @@
 			</div>
             <?php echo $ajax->observeField('countries',array('url'=>'getProvinces','update'=>'provinces'));?>
             <div style="text-align: right;">
-                <?php echo $this->Html->link(__('Trở lại', true), array('action' => 'modifyResume',
+                <?php echo $this->Html->link(__('Trở lại', true), array('action' => 'preview',
                         $this->Session->read('resumeID')));?>
-                <?php if(!empty($jobExps)){ echo $this->Html->link(__('Tiếp tục', true), 
-                        array('action' => 'addEducation')); }?>
             </div>
             
         </div>
     </div>
 </div>
+
+
+
+<!--
+
+
+<div class='container'><?php echo $this->Form->create('Resume');?>
+<h2>Quá trình làm vi?c</h2>
+<ul>
+	<li><?php echo $this->Form->input('ResumeJobExp.resume_id', array('type'=>'hidden', 'value' => $this->Session->read('resumeID'))); ?></li>
+	<li><?php echo $this->Form->input('ResumeJobExp.job_title', array('label'=>'Ch?c danh: ')); ?></li>
+	<li><?php echo $this->Form->input('ResumeJobExp.job_level_id', array('label'=>'C?p b?c: ', 'empty' => 'Vui lòng ch?n...')); ?></li>
+	<li><?php echo $this->Form->input('ResumeJobExp.job_category_id', array('label'=>'Ngành ngh?: ', 'empty' => 'Vui lòng ch?n...')); ?></li>
+	<li><?php echo $this->Form->input('ResumeJobExp.company_name', array('label'=>'Tên công ty: ')); ?></li>
+	<li><?php echo $this->Form->input('ResumeJobExp.country_id', array('label'=>'Qu?c gia: ', 'empty' => 'Vui lòng ch?n...','id'=>'countries')); ?></li>
+	<li><?php echo $this->Form->input('ResumeJobExp.province_id', array('label'=>'T?nh/Thành ph?: ', 'empty' => 'Vui lòng ch?n...','id'=>'provinces')); ?></li>
+	<li><?php echo $this->Form->input('ResumeJobExp.start_date', array('label'=>'Ngày b?t d?u: ', 'dateFormat' => 'DMY', 'minYear' => date('Y') - 70, 'maxYear' => date('Y'), 'monthNames' => false, 'empty' => '...')); ?></li>
+	<li><?php echo $this->Form->input('ResumeJobExp.end_date', array('label'=>'Ngày k?t thúc: ','dateFormat' => 'DMY', 'minYear' => date('Y') - 70, 'maxYear' => date('Y'), 'monthNames' => false, 'empty' => 'Hi?n t?i')); ?></li>
+	<li><?php echo $this->Form->input('ResumeJobExp.responsibilities_achievements', array('label'=>'Nhi?m v? chính & Thành tích n?i b?t: ')); ?></li>
+</ul>
+<?php echo $ajax->observeField('countries',array('url'=>'getProvinces','update'=>'provinces'));?>
+<ul>
+	<li>
+	<div class="actions"><?php echo $this->Form->submit('Thêm');?></div>
+	</li>
+</ul>
+<ul>
+	<li>
+	<div class="job experiences index">
+	<h2><?php __('Quá trình làm vi?c');?></h2>
+	<table cellpadding="0" cellspacing="0">
+		<tr>
+			<th><?php echo ('Công ty');?></th>
+			<th><?php echo ('V? trí');?></th>
+		</tr>
+		<?php
+		$i = 0;
+		foreach ($jobExps as $jobExp):
+		$class = null;
+		if ($i++ % 2 == 0) {
+			$class = ' class="altrow"';
+		}
+		?>
+		<tr <?php echo $class;?>>
+			<td><?php echo $jobExp['ResumeJobExp']['company_name']; ?>&nbsp;</td>
+			<td><?php echo $jobExp['ResumeJobExp']['job_title']; ?>&nbsp;</td>
+			<td class="actions"><?php echo $this->Html->link(__('Edit', true), array('action' => 'editJobExp', $jobExp['ResumeJobExp']['id'])); ?>
+			<?php echo $this->Html->link(__('Delete', true), array('action' => 'deleteJobExp', $jobExp['ResumeJobExp']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $jobExp['ResumeJobExp']['id'])); ?>
+			</td>
+		</tr>
+		<?php endforeach; ?>
+	</table>
+	</div>
+	</li>
+</ul>
+<ul>
+	<li><?php echo $this->Html->link(__('Tr? l?i', true), array('action' => 'modifyResume',$this->Session->read('resumeID')));?></li>
+	<li><?php if(!empty($jobExps)){ echo $this->Html->link(__('Ti?p t?c', true), array('action' => 'addEducation')); }?></li>
+</ul>
+</div>
+-->

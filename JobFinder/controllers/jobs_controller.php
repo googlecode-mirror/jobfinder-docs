@@ -2,7 +2,7 @@
 class JobsController extends AppController {
 	var $name = 'Jobs';
 	var $helpers = array('Html','Form','Ajax','Javascript');
-	var $uses = array('Job','Province');
+	var $uses = array('Job','Province','DegreeLevel','JobLevel');
 
 	function index()
 	{
@@ -12,16 +12,24 @@ class JobsController extends AppController {
     
     function search()
 	{
-		
+		$this->set('jobCategories', $this->Job->JobCategory->find('list'));
+		$this->set('listJobCategories', $this->Job->JobCategory->find('all',array('contain'=>'Job', 'fields'=>array('JobCategory.id','JobCategory.name'))));
+		//$this->set('listJobCategories', $this->Job->JobCategory->query('Select job_categories.id, job_categories.name from job_categories, jobs where jobs.job_category_id == job_categories.id and jobs.status = 1'
 	}
     
-    function adv_search()
+    function advanceSearch()
 	{
+		
+	}
+	
+	function searchResults(){
 		
 	}
 
 	function view($id = null) {
 		$this->set('provinces',$this->Province->find('list'));
+		$this->set('jobLevels',$this->JobLevel->find('list'));
+		$this->set('degreeLevels',$this->DegreeLevel->find('list'));
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid job', true));
 			$this->redirect(array('action' => 'index'));

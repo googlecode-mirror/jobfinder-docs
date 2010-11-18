@@ -7,7 +7,7 @@
         
     <!-- begin content -->
     <div id="content_cr">
-    <?php echo $this->Form->create('Resume');?>
+    <?php echo $this->Form->create('Resume',array('action'=>'editTargetJob'));?>
         <!-- begin right col -->
         <div id="right_cr">
             <div class="box_corner">
@@ -21,6 +21,7 @@
                     <table width="100%" border="0"><tbody><tr><td>
                         <div style="position: relative;">
                         <div class="form_field">
+                        	<?php echo $this->Form->input('ResumeTargetJob.id');?>
                             <?php echo $this->Form->input('ResumeTargetJob.resume_id', array('type'=>'hidden', 
                                     'div'=>false,'value' => $this->Session->read('resumeID'))); ?>                               
                             <p>
@@ -114,8 +115,8 @@
             </div>       
             
             <div style="text-align: right;">
-                <?php echo $this->Html->link(__('Trở lại', true), array('action' => 'addSkill'));?>
-                <?php echo $this->Form->submit('Tiếp tục', array('div' => false, 'class'=>'btn_cont' ));?>               
+                <?php echo $this->Html->link(__('Trở lại', true), array('action' => 'preview', $this->Session->read('resumeID') ));?>
+                <?php echo $this->Form->submit('Lưu', array('div' => false, 'class'=>'btn_cont' ));?>               
             </div>
             
         </div>

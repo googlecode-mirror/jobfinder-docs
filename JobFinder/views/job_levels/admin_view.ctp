@@ -73,15 +73,13 @@
 	</div>
 	<br/>
 	<div id="box">
-		<h3>Cấp bậc công việc</h3>
+		<h3>Thông tin Cấp bậc công việc</h3>
         <?php echo $this->Session->flash(); ?>
         <?php echo $this->Form->create('JobLevel',array('div'=>false,'id'=>'form'));?>	
-    	<fieldset>
-	 		<legend>Thông tin cấp bậc</legend>
-			<?php echo $this->Form->Input('level',array('label'=>'Cấp bậc:','div'=>false,'disabled'=>true));?>
-		</fieldset>
+		<?php echo $this->Form->Input('level',array('label'=>'Cấp bậc:','div'=>false,'disabled'=>true));?>
 		<div align="center">
-        	<?php echo $this->Html->link(__('Thêm mới', true),array('div'=>false));?>
+			<br/>
+        	<?php echo $this->Html->link(__('Thêm mới', true),array('action' => 'index'));?>
 	    	<?php echo $this->Html->link(__('Chỉnh sửa', true), array('action' => 'edit', $this->data['JobLevel']['id'])); ?>
 	    </div>
 	    <?php echo $this->Form->end();?>

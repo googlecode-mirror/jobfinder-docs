@@ -76,11 +76,10 @@
 		<h3>Thông tin Ngành nghề</h3>
 		<?php echo $this->Session->flash(); ?>
 		<?php echo $this->Form->create('JobCategory',array('div'=>false,'id'=>'form'));?>
-		<fieldset>
-	 		<legend>Thông tin</legend>
-			<?php echo $this->Form->Input('name',array('label'=>'Tên ngành nghề:','div'=>false,'disabled'=>true));?>
-		</fieldset>
+		<?php echo $this->Form->Input('name',array('label'=>'Tên ngành nghề:','div'=>false,'disabled'=>true));?>
 		<div align="center">
+			<br/>
+			<?php echo $this->Html->link(__('Thêm mới', true),array('action' => 'index'));?>
 	    	<?php echo $this->Html->link(__('Chỉnh sửa', true), array('action' => 'edit', $this->data['JobCategory']['id'])); ?>
 	    </div>
 	    <?php echo $this->Form->end();?>

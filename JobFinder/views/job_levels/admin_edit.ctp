@@ -32,11 +32,11 @@
 <?php echo $this->element('admin_sidebar'); ?>
 	<div id="content">
     <div id="box">
-	<h3><?php __('Loại hình công việc');?></h3>
+	<h3><?php __('Cấp bậc công việc');?></h3>
 		<table width="100%">
 		<thead>
         <tr>
-			<th><?php echo $this->Paginator->sort('Loại hình công việc');?></th>
+			<th><?php echo $this->Paginator->sort('Cấp bậc');?></th>
 			<th width="130"><?php echo $this->Paginator->sort('Ngày tạo');?></th>
 			<th width="130"><?php echo $this->Paginator->sort('Ngày cập nhật');?></th>
 			<th width="130"></th>
@@ -73,18 +73,15 @@
 	</div>
 	<br/>
 	<div id="box">
-		<h3>Chỉnh sửa cấp bậc công việc</h3>
+		<h3>Chỉnh sửa Cấp bậc công việc</h3>
 		<?php echo $this->Session->flash(); ?>
 	    <?php echo $this->Form->create('JobLevel',array('div'=>false,'id'=>'form'));?>
-	<fieldset>
- 		<legend><?php __('Cập nhật cấp bậc công việc'); ?></legend>
-	<?php
+		<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('level',array('label'=>'Cấp bậc:','div'=>false));
-	?>
-	</fieldset>
-        
+		?>
 		<div align="center">
+			<br/>
 	    	<?php echo $this->Form->Submit(__('Cập nhật', true),array('div'=>false));?>
 	        <?php echo $this->Form->button('Reset', array('type'=>'reset','div'=>false));?>
 	    </div>

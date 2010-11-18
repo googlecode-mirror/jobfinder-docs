@@ -1,28 +1,169 @@
+
+
+<div class="wrap_cr">
+    <img width="300" height="30" alt="create_resume_tit_vn"
+        style="margin-left: 115px;" 
+        src="../img/home/btxt_edit_resume_vn.gif" />
+        
+    <!-- begin content -->
+    <div id="content_cr">
+    <?php echo $this->Form->create('Resume');?>
+        <!-- begin right col -->
+        <div id="right_cr">
+            <div class="box_corner">
+                <b class="xtop">
+                    <b class="xb1 blue_top"></b>
+                    <b class="xb2 blue_curve blue_title"></b>
+                    <b class="xb3 blue_curve blue_title"></b>
+                </b>
+                
+                <div class="blue_bg_title"><strong>Kinh nghiệm làm việc</strong></div>
+                <div class="white_content">
+                    <table width="100%" border="0"><tbody><tr><td>
+                        <div style="position: relative;">
+                        <div class="form_field">
+                            <?php echo $this->Form->input('ResumeJobExp.id'); ?>                                
+                            <p>
+                                <label class="labels"><span class="require">*</span> Chức danh: </label>
+                                <?php echo $this->Form->input('ResumeJobExp.job_title', array('label'=>false,
+                                        'class'=>'field', 'div'=>false)); ?>
+                            </p>
+                            <p>
+                                <label class="labels"><span class="require">*</span> Cấp bậc: </label>
+                                <?php echo $this->Form->input('ResumeJobExp.job_level_id', array('label'=>false,
+                                        'class'=>'field_list field_list_w', 'div'=>false, 
+                                        'empty' => 'Vui lòng chọn...')); ?>                                
+                            </p> 
+                            <p>
+                                <label class="labels"><span class="require">*</span> Ngành nghề: </label>
+                                <?php echo $this->Form->input('ResumeJobExp.job_category_id', array('label'=>false,
+                                        'class'=>'field_list field_list_w', 'div'=>false, 
+                                        'empty' => 'Vui lòng chọn...')); ?>
+                            </p>
+                            <p>
+                                <label class="labels"><span class="require">*</span> Tên công ty: </label>
+                                <?php echo $this->Form->input('ResumeJobExp.company_name', array('label'=>false,
+                                        'class'=>'field', 'div'=>false)); ?>
+                            </p>
+                            <p>
+                                <label class="labels"><span class="require">*</span> Quốc gia: </label>
+                                <?php echo $this->Form->input('ResumeJobExp.country_id', array('label'=>false,
+                                        'class'=>'field_list field_list_w', 'div'=>false, 
+                                        'empty' => 'Vui lòng chọn...','id'=>'countries')); ?>
+                            </p>
+                            <p>
+                                <label class="labels"><span class="require">*</span> Tỉnh / Thành phố: </label>
+                                <?php echo $this->Form->input('ResumeJobExp.province_id', array('label'=>false,
+                                        'class'=>'field_list field_list_w', 'div'=>false, 
+                                        'empty' => 'Vui lòng chọn...','id'=>'provinces')); ?>
+                            </p>
+                            <p>
+                                <label class="labels"><span class="require">*</span> Ngày bắt đầu:</label>    
+                                <?php echo $this->Form->input('ResumeJobExp.start_date', array('label'=>false, 'div'=>false, 
+                                        'class'=>'field_list','separator'=>false, 'dateFormat' => 'DMY', 'minYear' => date('Y') - 70, 'maxYear' => date('Y'), 
+                                        'monthNames' => false, 'empty' => '...')); ?>
+                            </p>
+                            <p>
+                                <label class="labels"><span class="require">*</span> Ngày kết thúc:</label>    
+                                 <?php echo $this->Form->input('ResumeJobExp.end_date', array('label'=>false,'div'=>false,
+                                        'class'=>'field_list','separator'=>false,'dateFormat' => 'DMY', 'minYear' => date('Y') - 70, 'maxYear' => date('Y'), 
+                                        'monthNames' => false, 'empty' => 'Hiện tại')); ?>
+                            </p>
+                            <p>
+                                <label class="labels"><span class="require">*</span> Nhiệm vụ chính và Thành tích nổi bật:</label>
+                                <?php echo $this->Form->input('ResumeJobExp.responsibilities_achievements', array('label'=>false,
+                                        'class'=>'form_field text_area', 'div'=>false,'rows'=> 5, 'style'=>'width: 325px')); ?>                                
+                            </p>                             
+                        </div>
+                        </div>
+                    </td></tr></tbody>
+                    </table>                
+                </div>
+                
+                <b class="xbottom">
+                    <b class="xb3 blue_curve blue_bg_bottom"></b>
+                    <b class="xb2 blue_curve blue_bg_bottom"></b>
+                    <b class="xb1 blue_top"></b>
+                </b>    
+            
+            </div>
+            <div style="text-align: right;">
+                <?php echo $this->Form->submit('Lưu', array('class'=>'btn_cont','div'=>false));?>            
+            </div>
+            
+            <div class="box_corner">
+                <b class="xtop">
+                    <b class="xb1 blue_top"></b>
+                    <b class="xb2 blue_curve blue_title"></b>
+                    <b class="xb3 blue_curve blue_title"></b>
+                </b>
+				<div class="blue_bg_title"><strong>Quá trình làm việc</strong></div>
+				<div class="white_content1" id="divContent">
+				   <table width="100%" cellspacing="0" cellpadding="0" border="0" class="tb_list">
+					  <tbody><tr bgcolor="#e2e2e2" class="tb_title">
+						<td width="40%"><?php echo ('Công ty ');?></td>
+                        <td width="40%"><?php echo ('Vị trí ');?></td>
+						<td width="30%"><?php echo ('Chỉnh sửa ');?></td>
+					  </tr>
+					  <?php foreach ($jobExps as $jobExp):?>
+					  <tr>
+						<td><?php echo $jobExp['ResumeJobExp']['company_name']; ?>&nbsp;</td>
+						<td><?php echo $jobExp['ResumeJobExp']['job_title']; ?>&nbsp;</td>
+						<td class="actions"><?php echo $this->Html->link(__('Sửa', true), array('action' => 'editJobExp', $jobExp['ResumeJobExp']['id'])); ?>
+						<?php echo $this->Html->link(__('Xóa', true), array('action' => 'deleteJobExp', $jobExp['ResumeJobExp']['id']), null, sprintf(__('Bạn có chắc muốn xóa quá trình làm việc tại %s?', true), $jobExp['ResumeJobExp']['company_name'])); ?>
+						</td>
+					</tr>
+					<?php endforeach; ?>
+					  </tbody></table>					
+                </div>
+                <!--end xboxcontent-->
+				<b class="xbottom">
+                <b class="xb3 blue_curve blue_bg_bottom"></b>
+                <b class="xb2 blue_curve blue_bg_bottom"></b>
+                <b class="xb1 blue_top"></b>
+                </b>				
+			</div>            
+            
+            <?php echo $ajax->observeField('countries',array('url'=>'getProvinces','update'=>'provinces'));?>
+            
+            <div style="text-align: right;">
+                <?php echo $this->Html->link(__('Trở lại', true), array('action' => 'modifyResume'));?>
+                <?php if(!empty($resumeEducations)) { echo $this->Html->link(__('Tiếp tục', true), 
+                        array('action' => 'addEducation')); }?>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+
+<!--
+
 <div class='container'><?php echo $this->Form->create('Resume');?>
-<h2>Quá trình làm việc</h2>
+<h2>Quá trình làm vi?c</h2>
 <ul>
 	<li><?php echo $this->Form->input('ResumeJobExp.id'); ?></li>
 	<li><?php echo $this->Form->input('ResumeJobExp.resume_id', array('type'=>'hidden', 'value' => $this->Session->read('resumeID'))); ?></li>
-	<li><?php echo $this->Form->input('ResumeJobExp.job_title', array('label'=>'Chức danh: ')); ?></li>
-	<li><?php echo $this->Form->input('ResumeJobExp.job_level_id', array('label'=>'Cấp bậc: ', 'empty' => 'Vui lòng chọn...')); ?></li>
-	<li><?php echo $this->Form->input('ResumeJobExp.job_category_id', array('label'=>'Ngành nghề: ', 'empty' => 'Vui lòng chọn...')); ?></li>
+	<li><?php echo $this->Form->input('ResumeJobExp.job_title', array('label'=>'Ch?c danh: ')); ?></li>
+	<li><?php echo $this->Form->input('ResumeJobExp.job_level_id', array('label'=>'C?p b?c: ', 'empty' => 'Vui lòng ch?n...')); ?></li>
+	<li><?php echo $this->Form->input('ResumeJobExp.job_category_id', array('label'=>'Ngành ngh?: ', 'empty' => 'Vui lòng ch?n...')); ?></li>
 	<li><?php echo $this->Form->input('ResumeJobExp.company_name', array('label'=>'Tên công ty: ')); ?></li>
-	<li><?php echo $this->Form->input('ResumeJobExp.country_id', array('label'=>'Quốc gia: ', 'empty' => 'Vui lòng chọn...','id'=>'countries')); ?></li>
-	<li><?php echo $this->Form->input('ResumeJobExp.province_id', array('label'=>'Tỉnh/Thành phố: ', 'empty' => 'Vui lòng chọn...','id'=>'provinces')); ?></li>
-	<li><?php echo $this->Form->input('ResumeJobExp.start_date', array('label'=>'Ngày bắt đầu: ', 'dateFormat' => 'DMY', 'minYear' => date('Y') - 70, 'maxYear' => date('Y'), 'monthNames' => false, 'empty' => '...')); ?></li>
-	<li><?php echo $this->Form->input('ResumeJobExp.end_date', array('label'=>'Ngày kết thúc: ','dateFormat' => 'DMY', 'minYear' => date('Y') - 70, 'maxYear' => date('Y'), 'monthNames' => false, 'empty' => 'Hiện tại')); ?></li>
-	<li><?php echo $this->Form->input('ResumeJobExp.responsibilities_achievements', array('label'=>'Nhiệm vụ chính & Thành tích nổi bật: ')); ?></li>
+	<li><?php echo $this->Form->input('ResumeJobExp.country_id', array('label'=>'Qu?c gia: ', 'empty' => 'Vui lòng ch?n...','id'=>'countries')); ?></li>
+	<li><?php echo $this->Form->input('ResumeJobExp.province_id', array('label'=>'T?nh/Thành ph?: ', 'empty' => 'Vui lòng ch?n...','id'=>'provinces')); ?></li>
+	<li><?php echo $this->Form->input('ResumeJobExp.start_date', array('label'=>'Ngày b?t d?u: ', 'dateFormat' => 'DMY', 'minYear' => date('Y') - 70, 'maxYear' => date('Y'), 'monthNames' => false, 'empty' => '...')); ?></li>
+	<li><?php echo $this->Form->input('ResumeJobExp.end_date', array('label'=>'Ngày k?t thúc: ','dateFormat' => 'DMY', 'minYear' => date('Y') - 70, 'maxYear' => date('Y'), 'monthNames' => false, 'empty' => 'Hi?n t?i')); ?></li>
+	<li><?php echo $this->Form->input('ResumeJobExp.responsibilities_achievements', array('label'=>'Nhi?m v? chính & Thành tích n?i b?t: ')); ?></li>
 </ul>
 <?php echo $ajax->observeField('countries',array('url'=>'getProvinces','update'=>'provinces'));?>
 <ul>
 	<li>
-	<div class="actions"><?php echo $this->Form->submit('Lưu');?></div>
+	<div class="actions"><?php echo $this->Form->submit('Luu');?></div>
 	</li>
 </ul>
 <ul>
 	<li>
 	<div class="job experiences index">
-	<h2><?php __('Quá trình làm việc');?></h2>
+	<h2><?php __('Quá trình làm vi?c');?></h2>
 	<table cellpadding="0" cellspacing="0">
 		<tr>
 			<th><?php echo ('Công ty');?></th>
@@ -49,7 +190,8 @@
 	</li>
 </ul>
 <ul>
-	<li><?php echo $this->Html->link(__('Trở lại', true), array('action' => 'modifyResume'));?></li>
+	<li><?php echo $this->Html->link(__('Tr? l?i', true), array('action' => 'modifyResume'));?></li>
 	<li><?php if(!empty($resumeEducations)) { echo $this->Html->link(__('Continue', true), array('action' => 'addEducation')); }?></li>
 </ul>
 </div>
+-->

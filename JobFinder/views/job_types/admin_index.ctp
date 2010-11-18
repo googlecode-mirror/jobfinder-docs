@@ -74,15 +74,13 @@
 	</div>
 	<br/>
 	<div id="box">
-		<h3>Thêm mới Loại công việc</h3>
+		<h3>Thêm mới Loại hình công việc</h3>
 		<?php echo $this->Session->flash(); ?>
         <?php echo $this->Form->create('JobType',array('div'=>false,'id'=>'form'));?>
-    	<fieldset>
-	 		<legend>Thông tin Loại hình công việc</legend>
-			<?php echo $this->Form->Input('type',array('label'=>'Tên loại hình:','div'=>false));?>
-		</fieldset>
+		<?php echo $this->Form->Input('type',array('label'=>'Tên loại hình:','div'=>false));?>
 		<div align="center">
-	    	<?php echo $this->Form->Submit(__('Thêm mới', true),array('div'=>false));?>
+			<br/>
+	    	<?php echo $this->Form->Submit(__('Lưu', true),array('div'=>false));?>
 	        <?php echo $this->Form->button('Reset', array('type'=>'reset','div'=>false));?>
 	    </div>
 	</div>
