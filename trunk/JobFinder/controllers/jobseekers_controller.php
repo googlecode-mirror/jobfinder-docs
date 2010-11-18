@@ -233,15 +233,20 @@ class JobseekersController extends AppController {
 	}
 
 	function admin_view($id = null) {
+		$this->Jobseeker->recursive = 0;
+		$this->set('jobseekers', $this->paginate());
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid jobseeker', true));
 			$this->redirect(array('action' => 'admin_index'));
 		}
-		$this->set('jobseekers', $this->Jobseeker->read(null,$id));
+		if (empty($this->data)) {
+			$this->data = $this->Jobseeker->read(null, $id);
+		}
 	}
 
 	function admin_edit($id = null) {
-
+		$this->Jobseeker->recursive = 0;
+		$this->set('jobseekers', $this->paginate());
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid actived', true));
 			$this->redirect(array('action' => 'admin_index'));
