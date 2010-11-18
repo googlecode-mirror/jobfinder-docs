@@ -149,11 +149,15 @@ class EmployersController extends AppController {
 
 	function admin_index()
 	{
+		$this->layout='default_admin';
+		$this->checkAdminSession();
 		$employers = $this->Employer->find('all');
 		$this->set('employers', $this->paginate());
 	}
 
 	function admin_view($id = null) {
+		$this->layout='default_admin';
+		$this->checkAdminSession();
 		$employers = $this->Employer->find('all');
 		$this->set('employers', $this->paginate());
 		if (!$id) {
@@ -166,6 +170,8 @@ class EmployersController extends AppController {
 	}
 
 	function admin_edit($id = null) {
+		$this->layout='default_admin';
+		$this->checkAdminSession();
 		$employers = $this->Employer->find('all');
 		$this->set('employers', $this->paginate());
 		if (!$id && empty($this->data)) {
