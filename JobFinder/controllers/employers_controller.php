@@ -151,19 +151,23 @@ class EmployersController extends AppController {
 	{
 		$employers = $this->Employer->find('all');
 		$this->set('employers', $this->paginate());
-
 	}
 
 	function admin_view($id = null) {
+		$employers = $this->Employer->find('all');
+		$this->set('employers', $this->paginate());
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid employer', true));
 			$this->redirect(array('action' => 'admin_index'));
 		}
-		$this->set('employers', $this->Employer->findAllById($id));
+		if (empty($this->data)) {
+			$this->data = $this->Employer->read(null, $id);
+		}
 	}
 
 	function admin_edit($id = null) {
-
+		$employers = $this->Employer->find('all');
+		$this->set('employers', $this->paginate());
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid actived', true));
 			$this->redirect(array('action' => 'admin_index'));
