@@ -1,7 +1,8 @@
-﻿<?php
+<?php
 	$gender =  array(0 => 'Nam', 1 =>'Nữ');
 	$yesno = array(0=> 'Không', 1=> 'Có');
 	$martial =  array(0 => 'Độc thân', 1 =>'Đã kết hôn');
+	$privacy =  array(0 => 'Hồ sơ ẩn', 1 =>'Cho phép tìm kiếm');
 ?>
 <div id="body_content">
     <!-- begin wrap -->
@@ -15,7 +16,8 @@
                     <b class="xb2 blue_curve blue_title"><!-- --></b>
                     <b class="xb3 blue_curve blue_title"><!-- --></b>
                 </b>
-                <div class="blue_bg_title"><strong>Thông Tin Hồ Sơ</strong></div>
+                <div class="blue_bg_title"><strong>Thông Tin Hồ Sơ </strong><span class="link_bgtitle"><?php echo $html->link('[Chỉnh sửa]', 
+					array('controller' => 'resumes', 'action' => 'editResume',$resume['Resume']['id'] )); ?></span></div>
                 <div class="white_content">
                     <table width="100%">					  
                     	<tr class="field_cp">
@@ -24,7 +26,7 @@
 					  	</tr>
 					  	<tr class="field_cp">
 					    	<td><strong>Tình trạng hồ sơ:</strong></td>
-					    	<td>Hồ sơ ẩn</td>
+					    	<td><?php echo $privacy[$resume['Resume']['privacy_status']]; ?></td>
 				      	</tr> 
                     </table>
                 </div>
@@ -43,7 +45,8 @@
                     <b class="xb2 blue_curve blue_title"><!-- --></b>
                     <b class="xb3 blue_curve blue_title"><!-- --></b>
                 </b>
-                <div class="blue_bg_title"><strong>Thông Tin Cá Nhân</strong></div>
+                <div class="blue_bg_title"><strong>Thông Tin Cá Nhân </strong><span class="link_bgtitle"><?php echo $html->link('[Chỉnh sửa]', 
+					array('controller' => 'resumes', 'action' => 'editPersonalInformation',$resume['Resume']['id'] )); ?></span></div>
                 <div class="white_content">
                     <table class="table_info">
                     	<tr class="field_cp">
@@ -95,7 +98,8 @@
                     <b class="xb2 blue_curve blue_title"><!-- --></b>
                     <b class="xb3 blue_curve blue_title"><!-- --></b>
                 </b>
-                <div class="blue_bg_title"><strong>Tóm lược</strong></div>
+                <div class="blue_bg_title"><strong>Tóm lược </strong><span class="link_bgtitle"><?php echo $html->link('[Chỉnh sửa]', 
+					array('controller' => 'resumes', 'action' => 'editTargetJob',$resume['Resume']['id'] )); ?></span></div>
                 <div class="white_content">
                     <table class="table_info">
                    		<tr>
@@ -241,6 +245,8 @@
 							<td width="22%" valign="top">
 								<p class="txt_tilte_lv2">Kinh Nghiệm Làm Việc</p>
 								<p><strong>Tổng cộng: <?php echo $resume['Resume']['years_exp'];?> năm</strong></p>
+								<p>[<?php echo $html->link('Cập nhật số năm kinh nghiệm', array('controller' => 'resumes', 'action' => 'editWorkExp',$resume['Resume']['id'] )); ?>]</p>
+								<p><?php if($resume['Resume']['years_exp']>0){ echo '['.$html->link('Cập nhật quá trình làm việc', array('controller' => 'resumes', 'action' => 'modifyJobExp',$resume['Resume']['id'] )).']'; }?></p>
 							</td>
 							<td width="78%">
 								<div>
@@ -255,7 +261,7 @@
 								</strong></p>
 								<p><?php echo $countries[$resumeJobExp['country_id']] .' - ' .$provinces[$resumeJobExp['province_id']] ;?></p>
 								<dl>
-									<dt>Thông tin liên quan:</dt>
+									<dd>Thông tin liên quan:</dd>
 									<dd><?php echo $resumeJobExp['responsibilities_achievements']; ?></dd>
 								</dl>
 								</div>	
@@ -272,6 +278,7 @@
 					  <tr class="field_cp">
 						<td width="22%" valign="top">
 								<p class="txt_tilte_lv2">Học Vấn</p>
+								<p>[<?php echo $html->link('Chỉnh sửa', array('controller' => 'resumes', 'action' => 'modifyEducation',$resume['Resume']['id'] )); ?>]</p>
 						</td>
 						<td width="78%">
 							<?php if(empty($resume['ResumeEducation'])){ echo __('Bạn chưa cung cấp thông tin về trường đã học.'); }?>
@@ -283,7 +290,7 @@
 							<p><strong><?php echo 'Tháng ' .date('m Y', strtotime($resumeEducation['start_date'])) .' đến '; if($resumeEducation['end_date'] == null){ echo __('Hiện tại'); } else { echo date('m Y', strtotime($resumeEducation['end_date'])); };?></strong></p>
 							<p><?php echo $countries[$resumeEducation['country_id']]; ?></p>
 							<dl>
-								<dt>Thông tin liên quan:</dt>
+								<dd>Thông tin liên quan:</dd>
 								<dd><?php echo $resumeEducation['related_information']; ?></dd>
 							</dl>
 							</div>
@@ -301,6 +308,7 @@
 					  <tr class="field_cp">
 						<td width="22%" valign="top">
 							<p class="txt_tilte_lv2">Kỹ Năng</p>
+							<p>[<?php echo $html->link('Chỉnh sửa', array('controller' => 'resumes', 'action' => 'modifySkill',$resume['Resume']['id'] )); ?>]</p>
 						</td>
 						<td width="78%">
 							<?php if(empty($resume['ResumeSkill'])){ echo __('Bạn chưa cung cấp thông tin về kỹ năng.'); }?>

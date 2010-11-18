@@ -106,11 +106,8 @@
             <?php echo $ajax->observeField('skillGroups',array('url'=>'getSkills','update'=>'skills',));?>
             
             <div style="text-align: right;">
-                <?php echo $this->Html->link(__('Trở lại', true), 
-                        array('action' => 'saveTargetJob'));?>
-                
-                <?php if(!empty($resumeSkills)){ echo $this->Html->link(__('Hoàn tất', true), 
-                        array('action' => 'view',$this->Session->read('resumeID'))); } ?>
+                <?php echo $this->Html->link(__('Trở lại', true), array('action' => 'preview',
+                        $this->Session->read('resumeID')));?>
             
             </div>
             

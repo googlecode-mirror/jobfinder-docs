@@ -1,12 +1,10 @@
-<br clear="all"/>
-
 <div id="body_content">
     <div class="step_postjob">
         <img width="300" height="30" alt="" 
             src="../img/home/create_resume_signup_vn.gif"/>
     </div>
     <!-- begin wrap -->
-    <div class="wrap_cr_emp">
+    <div class="wrap_cr">
         <!-- begin content -->
         <div id="content_cr">
             <?php echo $this->Form->create('Jobseeker', array('action' => 'register','class'=>'form_field')); ?>
@@ -22,7 +20,7 @@
                     <table><tr><td>
                         <p>
                 		  	<label><span class="require">*</span> Email đăng nhập:</label> 
-                		  	<?php echo $this->Form->input('email',array('label'=>false,'class'=>'field','div'=>false)); ?> 
+                		  	<?php echo $this->Form->input('email',array('label'=>false,'class'=>'field','div'=>false,'error' => array('wrap' => 'span'))); ?> 
                 		</p>
                 		<p>
                 		  	<label><span class="require">*</span> Nhập mật khẩu:</label> 
@@ -103,7 +101,7 @@
         </div>
         <!--end Registration Information-->
         <div style="text-align: right;">
-    	   <?php echo $this->Form->submit('Đăng ký',array('class'=>'btn_back','div'=>false)); ?>
+    	   <?php echo $this->Form->submit('Đăng ký',array('class'=>'btn_cont','div'=>false)); ?>
     	</div>
     </div>
 </div>

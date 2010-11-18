@@ -75,7 +75,7 @@
             </b>
             </div>
             <div style="text-align: right;">
-                <?php echo $this->Form->submit('Thêm', array('class'=>'btn_cont','div'=>false));?>            
+                <?php echo $this->Form->submit('Thêm & Lưu', array('class'=>'btn_cont','div'=>false));?>            
             </div>
             
             <div class="box_corner">
@@ -114,17 +114,8 @@
                     
 
             <div style="text-align: right;">
-                <?php if($this->Session->read('years_exp') == 0) { 
-            		echo $this->Html->link(__('Trở lại', true), array('action' => 'modifyResume',
-                        $this->Session->read('resumeID')));		
-            	}
-            	else {
-            		echo $this->Html->link(__('Trở lại', true), array('action' => 'addJobExp'));
-            	}?>
-            
-                <?php if(!empty($resumeEducations))
-                    { echo $this->Html->link(__('Tiếp tục', true),                         
-                    array('action' => 'saveTargetJob','class'=>'btn_cont','name'=>'btn_cont','div'=>false,)); } ?>
+                <?php echo $this->Html->link(__('Trở lại', true), array('action' => 'preview',
+                        $this->Session->read('resumeID')));?>
             </div>
         </div>
         <!-- end right col -->
