@@ -1,7 +1,67 @@
-<div class="employers view">
-<h2><?php  __('Quản lý Employers');?></h2>
-	<dl><?php $i = 0; $class = ' class="altrow"';?>
-		<?php
+<div id="header">
+	<h2>CakePHP: the rapid development php framework</h2>
+	<div id="topmenu">
+    	<ul>
+        	<li><a href="index.html">Dashboard</a></li>
+            <li class="current"><a href="#">Danh mục</a></li>
+            <li><a href="users.html">Users</a></li>
+            <li><a href="#">Manage</a></li>
+            <li><a href="#">CMS</a></li>
+            <li><a href="#">Statistics</a></li>
+            <li><a href="#">Settings</a></li>
+    	</ul>
+	</div>
+</div>
+<div id="top-panel">
+	<div id="panel">
+	   <ul>
+            <li><?php echo $this->Html->link(__('Người tìm việc', true), array('controller' => 'jobseekers', 'action' => 'index', 'admin'=> true)); ?></li>
+			<li><?php echo $this->Html->link(__('Nhà tuyển dụng', true), array('controller' => 'employers', 'action' => 'index', 'admin'=> true));?></li>
+			<li><?php echo $this->Html->link(__('Ngành nghề', true), array('controller' => 'job_categories', 'action' => 'index', 'admin'=> true)); ?></li>
+			<li><?php echo $this->Html->link(__('Loại hình công việc', true), array('controller' => 'job_types', 'action' => 'index', 'admin'=> true)); ?></li>
+			<li><?php echo $this->Html->link(__('Cấp bậc', true), array('controller' => 'job_levels', 'action' => 'index', 'admin'=> true)); ?></li>
+			<li><?php echo $this->Html->link(__('Bằng cấp', true), array('controller' => 'degree_levels', 'action' => 'index', 'admin'=> true)); ?></li>
+			<li><?php echo $this->Html->link(__('Nhóm kỹ năng', true), array('controller' => 'skillGroups', 'action' => 'index', 'admin'=> true)); ?></li>
+			<li><?php echo $this->Html->link(__('Kỹ năng', true), array('controller' => 'skills', 'action' => 'index', 'admin'=> true)); ?></li>
+			<li><?php echo $this->Html->link(__('Quốc gia', true), array('controller' => 'countries', 'action' => 'index', 'admin'=> true)); ?></li>
+			<li><?php echo $this->Html->link(__('Tỉnh thành', true), array('controller' => 'provinces', 'action' => 'index', 'admin'=> true)); ?></li>
+			<li><?php echo $this->Html->link(__('Loại danh mục khác', true), array('controller' => 'category_types', 'action' => 'index', 'admin'=> true)); ?></li>
+			<li><?php echo $this->Html->link(__('Danh mục khác', true), array('controller' => 'categories', 'action' => 'index', 'admin'=> true));?></li>    
+    	</ul>
+	</div>
+</div>
+<div id="wrapper">
+<?php echo $this->element('admin_sidebar'); ?>
+	<div id="content">
+    <div id="box">
+	<h3><?php __('Thông tin chi tiết Nhà tuyển dụng');?></h3>
+	<table width="100%">
+		<thead>
+            <tr>
+		      	<th><?php echo $this->Paginator->sort('Email');?></th>
+    			<th><?php echo $this->Paginator->sort('Tên công ty');?></th>
+    			<th><?php echo $this->Paginator->sort('Quy mô công ty');?></th>
+                <th><?php echo $this->Paginator->sort('Sơ lược công ty');?></th>
+    			<th><?php echo $this->Paginator->sort('Logo công ty');?></th>
+    			<th><?php echo $this->Paginator->sort('Địa chỉ');?></th>
+    			<th><?php echo $this->Paginator->sort('Quận/Huyện');?></th>
+                <th><?php echo $this->Paginator->sort('Quốc gia');?></th>
+    			<th><?php echo $this->Paginator->sort('Tỉnh/Thành phố');?></th>
+                <th><?php echo $this->Paginator->sort('Website');?></th>
+               	<th><?php echo $this->Paginator->sort('Người đại diện');?></th>
+    			<th><?php echo $this->Paginator->sort('Vị trí');?></th>
+                <th><?php echo $this->Paginator->sort('Điện thoại');?></th>
+    			<th><?php echo $this->Paginator->sort('Di động');?></th>
+                <th><?php echo $this->Paginator->sort('Fax');?></th>
+                <th><?php echo $this->Paginator->sort('Làm thế nào bạn biết đến chúng tôi?');?></th>
+    			<th width="110"><?php echo $this->Paginator->sort('Đăng nhập gần nhất');?></th>
+               	<th width="110"><?php echo $this->Paginator->sort('Ngày tạo');?></th>
+    			<th width="110"><?php echo $this->Paginator->sort('Ngày cập nhật');?></th>
+                <th><?php echo $this->Paginator->sort('Trạng thái');?></th>            
+    			<th width="130" class="actions"><?php __('');?></th>
+	    </tr> 
+		</thead>
+<?php
 	$i = 0;
 	foreach ($employers as $employer):
 		$class = null;
@@ -10,104 +70,41 @@
 		}
 	?>
 	<tr<?php echo $class;?>>
-        
-       	<dt>
-            <td><?php if ($i % 2 == 0) echo $class;?><?php __('Id'); ?></td>
-            <dd><?php echo $employer['Employer']['id']; ?>&nbsp;</dd>
-        </dt>
-        <dt>
-            <td><?php if ($i % 2 == 0) echo $class;?><?php __('email'); ?></td>
-            <dd><?php echo $employer['Employer']['email']; ?>&nbsp;</dd>	
-        </dt>
-        <dt>
-            <td><?php if ($i % 2 == 0) echo $class;?><?php __('company_name'); ?></td>
-            <dd><?php echo $employer['Employer']['company_name']; ?>&nbsp;</dd>		
-        </dt>
-        <dt>
-            <td><?php if ($i % 2 == 0) echo $class;?><?php __('company_size'); ?></td>
-            <dd><?php echo $employer['Employer']['company_size']; ?>&nbsp;</dd>		
-        </dt><dt>
-            <td><?php if ($i % 2 == 0) echo $class;?><?php __('company_profile'); ?></td>
-            <dd><?php echo $employer['Employer']['company_profile']; ?>&nbsp;</dd>		
-        </dt>
-        <dt>
-            <td><?php if ($i % 2 == 0) echo $class;?><?php __('company_logo'); ?></td>
-            <dd><?php echo $employer['Employer']['company_logo']; ?>&nbsp;</dd>	
-        </dt>
-        <dt>
-            <td><?php if ($i % 2 == 0) echo $class;?><?php __('address'); ?></td>
-            <dd><?php echo $employer['Employer']['address']; ?>&nbsp;</dd>		
-        </dt>
-        <dt>
-            <td><?php if ($i % 2 == 0) echo $class;?><?php __('district'); ?></td>
-            <dd><?php echo $employer['Employer']['district']; ?>&nbsp;</dd>	
-        </dt>
-        <dt>
-            <td><?php if ($i % 2 == 0) echo $class;?><?php __('country'); ?></td>
-            <dd><?php echo $employer['Country']['country_name']; ?>&nbsp;</dd>	
-        </dt>
-        <dt>
-            <td><?php if ($i % 2 == 0) echo $class;?><?php __('province'); ?></td>
-            <dd><?php echo $employer['Province']['name']; ?>&nbsp;</dd>
-        </dt>
-        <dt>
-            <td><?php if ($i % 2 == 0) echo $class;?><?php __('website'); ?></td>
-           	<dd><?php echo $employer['Employer']['website']; ?>&nbsp;</dd>
-        </dt>
-        <dt>
-            <td><?php if ($i % 2 == 0) echo $class;?><?php __('contact_name'); ?></td>
-            <dd><?php echo $employer['Employer']['contact_name']; ?>&nbsp;</dd>	
-        </dt>
-       	<dt>
-            <td><?php if ($i % 2 == 0) echo $class;?><?php __('contact_position'); ?></td>
-            <dd><?php echo $employer['Employer']['contact_position']; ?>&nbsp;</dd>
-        </dt>
-              <dt>
-            <td><?php if ($i % 2 == 0) echo $class;?><?php __('telephone'); ?></td>
-            <dd><?php echo $employer['Employer']['telephone']; ?>&nbsp;</dd>		
-        </dt>
-        <dt>
-            <td><?php if ($i % 2 == 0) echo $class;?><?php __('mobile'); ?></td>
-            <dd><?php echo $employer['Employer']['mobile']; ?>&nbsp;</dd>	
-        </dt>
-        <dt>
-            <td><?php if ($i % 2 == 0) echo $class;?><?php __('fax'); ?></td>
-            <dd><?php echo $employer['Employer']['fax']; ?>&nbsp;</dd>	
-        </dt>
-        <dt>
-            <td><?php if ($i % 2 == 0) echo $class;?><?php __('howknow'); ?></td>
-            <dd><?php echo $employer['Employer']['howknow']; ?>&nbsp;</dd>
-        </dt>
-        <dt>
-            <td><?php if ($i % 2 == 0) echo $class;?><?php __('last_login'); ?></td>
-           	<dd><?php echo $employer['Employer']['last_login']; ?>&nbsp;</dd>
-        </dt>
-        <dt>
-            <td><?php if ($i % 2 == 0) echo $class;?><?php __('actived'); ?></td>
-            <dd><?php echo $employer['Employer']['actived']; ?>&nbsp;</dd>	
-        </dt>
-       	<dt>
-            <td><?php if ($i % 2 == 0) echo $class;?><?php __('created'); ?></td>
-            <dd><?php echo $employer['Employer']['created']; ?>&nbsp;</dd>
-        </dt>	 
-        <dt>
-            <td><?php if ($i % 2 == 0) echo $class;?><?php __('modified'); ?></td>
-            <dd><?php echo $employer['Employer']['modified']; ?>&nbsp;</dd>
-        </dt>
- 
+
+        <td><?php echo $employer['Employer']['email']; ?>&nbsp;</td>
+		<td><?php echo $employer['Employer']['company_name']; ?>&nbsp;</td>
+		<td><?php echo $employer['Employer']['company_size']; ?>&nbsp;</td>
+        <td><?php echo $employer['Employer']['company_profile']; ?>&nbsp;</td>
+		<td><?php echo $employer['Employer']['company_logo']; ?>&nbsp;</td>
+		<td><?php echo $employer['Employer']['address']; ?>&nbsp;</td>
+		<td><?php echo $employer['Employer']['district']; ?>&nbsp;</td>
+        <td><?php echo $employer['Employer']['country_id']; ?>&nbsp;</td>
+		<td><?php echo $employer['Employer']['province_id']; ?>&nbsp;</td>
+        <td><?php echo $employer['Employer']['website']; ?>&nbsp;</td>
+       	<td><?php echo $employer['Employer']['contact_name']; ?>&nbsp;</td>
+		<td><?php echo $employer['Employer']['contact_position']; ?>&nbsp;</td>
+        <td><?php echo $employer['Employer']['telephone']; ?>&nbsp;</td>
+		<td><?php echo $employer['Employer']['mobile']; ?>&nbsp;</td>
+        <td><?php echo $employer['Employer']['fax']; ?>&nbsp;</td>
+        <td><?php echo $employer['Employer']['howknow']; ?>&nbsp;</td>   
+        <td><?php echo date('d-m-y h:i:s',strtotime($employer['Employer']['last_login'])); ?>&nbsp;</td>
+        <td><?php echo date('d-m-y h:i:s',strtotime($employer['Employer']['created'])); ?>&nbsp;</td>
+        <td><?php echo date('d-m-y h:i:s',strtotime($employer['Employer']['modified'])); ?>&nbsp;</td>
+	    <td><?php echo $employer['Employer']['actived']; ?>&nbsp;</td>
+        <td class="actions"
+    	    <?php echo $this->Html->link(__('Cập nhật trạng thái', true), array('action' => 'edit', $employer['Employer']['id'])); ?> </li>
+            <?php echo $this->Html->link(__('Danh sách nhà tuyển dụng', true), array('action' => 'index')); ?> </li>
+        </td>
 	</tr>
+    <?php endforeach; ?>
+	</table>
+	<p>
+		<?php echo $this->Paginator->counter(array('format' => __('Trang %page%/%pages%, tổng cộng %count% records', true)));?>	
+	</p>
+	<div class="paging">
+		<?php echo $this->Paginator->prev('<< ' . __('Trước', true), array(), null, array('class'=>'disabled'));?>
+	 	|<?php echo $this->Paginator->numbers();?>
+ 		| <?php echo $this->Paginator->next(__('Kế tiếp', true) . ' >>', array(), null, array('class' => 'disabled'));?>
+	</div> 
     
-<?php endforeach; ?>
-	</dl>
 </div>
-<div class="actions">
-	<h3><?php __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Edit Employer', true), array('action' => 'edit', $employer['Employer']['id'])); ?> </li>
-        <li><?php echo $this->Html->link(__('List Employers', true), array('action' => 'index')); ?> </li>
-	</ul>
- 
- </div>
-
-
-
