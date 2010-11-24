@@ -25,9 +25,9 @@
 				<div class="white_content1" id="divContent">
 				   <table width="100%" cellspacing="0" cellpadding="0" border="0" class="tb_list">
 					  <tbody><tr bgcolor="#e2e2e2" class="tb_title">
-						<td width="35%"><?php echo $this->Paginator->sort('Chức danh');?></td>
-						<td width="20%"><?php echo $this->Paginator->sort('Ngày lưu');?></td>
-						<td width="20%"><?php echo $this->Paginator->sort('Tình trạng');?></td>
+						<td width="35%"><?php echo $this->Paginator->sort('Chức danh','job_title');?></td>
+						<td width="20%"><?php echo $this->Paginator->sort('Ngày lưu','created');?></td>
+						<td width="20%"><?php echo $this->Paginator->sort('Tình trạng','status');?></td>
 						<td width="25%"><?php __('Chức năng');?></td>
 					  </tr>
 						<?php foreach ($jobsaveds as $jobsaved):?>
@@ -75,8 +75,8 @@
 				<div class="white_content1" id="divContent">
 				   <table width="100%" cellspacing="0" cellpadding="0" border="0" class="tb_list">
 					  <tbody><tr bgcolor="#e2e2e2" class="tb_title">
-						<td width="35%"><?php echo $this->Paginator->sort('Tiêu đề');?></td>
-						<td width="20%"><?php echo $this->Paginator->sort('Ngày cập nhật');?></td>
+						<td width="35%"><?php echo $this->Paginator->sort('Tiêu đề','resume_title');?></td>
+						<td width="20%"><?php echo $this->Paginator->sort('Ngày cập nhật','modified');?></td>
 						<td width="20%"><?php echo $this->Paginator->sort('Số lần xem');?></td>
 						<td width="25%"><?php __('Chức năng');?></td>
 					  </tr>
@@ -86,8 +86,8 @@
 							<td><?php echo date('d-m-Y H:i:s', strtotime($resume['Resume']['modified'])); ?>&nbsp;</td>
 							<td>&nbsp;</td>
 							<td>
-								<?php echo $this->Html->link(__('Xem', true), array('controller'=> 'resumes','action' => 'view', $resume['Resume']['id'])); ?> |
-								<?php echo $this->Html->link(__('Cập nhật', true), array('controller'=> 'resumes','action' => 'preview', $resume['Resume']['id'])); ?> | 
+								<?php echo $this->Html->link(__('Xem', true), array('controller'=> 'resumes','action' => 'view', $resume['Resume']['id']), array('target'=>'_blank')); ?> |
+								<?php echo $this->Html->link(__('Cập nhật', true), array('controller'=> 'resumes','action' => 'preview', $resume['Resume']['id']), array('target'=>'_blank')); ?> | 
 								<?php echo $this->Html->link(__('Xóa', true), array('action' => 'delete_resume', $resume['Resume']['id']), null, sprintf(__('Bạn có chắc muốn xóa hồ sơ %s?', true), $resume['Resume']['resume_title'])); ?>
 							</td>
 						</tr>
