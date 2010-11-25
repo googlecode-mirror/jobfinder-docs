@@ -39,13 +39,11 @@
 	<table width="100%">
 		<thead>
         <tr>
-  
-			<th><?php echo $this->Paginator->sort('Email');?></th>
-			<th><?php echo $this->Paginator->sort('Tên');?></th>
-			<th><?php echo $this->Paginator->sort('Họ');?></th>
-			<th width="110"><?php echo $this->Paginator->sort('Đăng nhập gần nhất');?></th>
-           	<th width="110"><?php echo $this->Paginator->sort('Ngày tạo');?></th>
-			<th width="110"><?php echo $this->Paginator->sort('Ngày cập nhật');?></th>
+			<th><?php echo $this->Paginator->sort('Email','Email');?></th>
+			<th><?php echo $this->Paginator->sort('Tên','first_name');?></th>
+			<th><?php echo $this->Paginator->sort('Họ','last_name');?></th>
+			<th width="110"><?php echo $this->Paginator->sort('Ngày tạo','created');?></th>
+			<th width="110"><?php echo $this->Paginator->sort('Đăng nhập gần nhất','last_login');?></th>
             <th><?php echo $this->Paginator->sort('Trạng thái');?></th>
 			<th class="actions"><?php __('');?></th>
 	    </tr> 
@@ -62,13 +60,12 @@
     	<td><?php echo $jobseeker['Jobseeker']['email']; ?>&nbsp;</td>		               		
 	    <td><?php echo $jobseeker['Jobseeker']['first_name']; ?>&nbsp;</td>			
 	    <td><?php echo $jobseeker['Jobseeker']['last_name']; ?>&nbsp;</td>			
-        <td><?php echo date('d-m-y h:i:s',strtotime($jobseeker['Jobseeker']['last_login'])); ?>&nbsp;</td>
         <td><?php echo date('d-m-y h:i:s',strtotime($jobseeker['Jobseeker']['created'])); ?>&nbsp;</td>
-    	<td><?php echo date('d-m-y h:i:s',strtotime($jobseeker['Jobseeker']['modified'])); ?>&nbsp;</td>
+    	<td><?php echo date('d-m-y h:i:s',strtotime($jobseeker['Jobseeker']['last_login'])); ?>&nbsp;</td>
     	<td><?php echo $jobseeker['Jobseeker']['actived']; ?>&nbsp;</td>
         <td class="actions">
-		<?php echo $this->Html->link(__('Xem chi tiết', true), array('action' => 'view', $jobseeker['Jobseeker']['id'])); ?>
-		<?php echo $this->Html->link(__('Cập nhật trạng thái', true), array('action' => 'edit', $jobseeker['Jobseeker']['id'])); ?>
+		<?php echo $this->Html->link(__('Xem', true), array('action' => 'view', $jobseeker['Jobseeker']['id'])); ?>
+		<?php echo $this->Html->link(__('Cập nhật', true), array('action' => 'edit', $jobseeker['Jobseeker']['id'])); ?>
 	   </td>
 	</tr>
     
@@ -84,4 +81,6 @@
  		| <?php echo $this->Paginator->next(__('Kế tiếp', true) . ' >>', array(), null, array('class' => 'disabled'));?>
 	</div>
 
+</div>
+</div>
 </div>

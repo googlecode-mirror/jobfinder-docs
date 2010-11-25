@@ -1,7 +1,7 @@
 <?php
 class EmployersController extends AppController {
 	var $name = 'Employers';
-	var $helpers = array('Html','Form','Ajax','Javascript','Recaptcha.CaptchaTool');
+	var $helpers = array('Recaptcha.CaptchaTool');
 	var $components = array('RequestHandler','Email','Recaptcha.Captcha' => array(
                 'private_key' => '6LeP2r0SAAAAAPYU1WQUkoj9IyVljJVQiBVshL1x',  
                 'public_key' => '6LeP2r0SAAAAAN8qyexGrxfP-6cMh6vWGuFAOL3K'));
@@ -29,6 +29,11 @@ class EmployersController extends AppController {
 					$this->Employer->save($dbuser, false, array('last_login'));
 					// redirect the user
 					$this->Session->setFlash('You have successfully logged in.');
+					$auth_redirect = $this->Session->read('auth_redirect');
+					if(!empty($auth_redirect)){
+						$this->Session->delete('auth_redirect');
+						$this->redirect($auth_redirect);
+					}
 					$this->redirect('/employers/index/');
 				}
 			}
@@ -52,7 +57,7 @@ class EmployersController extends AppController {
 					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'HowKnow'))))));
 		$this->set('companySizes', $this->Category->find('list', array(
 					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'CompanySize'))))));
-		$this->set('countries', $this->Jobseeker->Country->find('list'));
+		$this->set('countries', $this->Employer->Country->find('list'));
 		$provinces = array();
 		$this->set('captchaError', null);
 		if (!empty($this->data)) {
@@ -151,6 +156,8 @@ class EmployersController extends AppController {
 	{
 		$this->layout='default_admin';
 		$this->checkAdminSession();
+		$this->set('countries', $this->Employer->Country->find('list'));
+		$this->set('provinces', $this->Employer->Province->find('list'));
 		$employers = $this->Employer->find('all');
 		$this->set('employers', $this->paginate());
 	}
@@ -158,6 +165,8 @@ class EmployersController extends AppController {
 	function admin_view($id = null) {
 		$this->layout='default_admin';
 		$this->checkAdminSession();
+		$this->set('countries', $this->Employer->Country->find('list'));
+		$this->set('provinces', $this->Employer->Province->find('list'));
 		$employers = $this->Employer->find('all');
 		$this->set('employers', $this->paginate());
 		if (!$id) {
@@ -172,6 +181,8 @@ class EmployersController extends AppController {
 	function admin_edit($id = null) {
 		$this->layout='default_admin';
 		$this->checkAdminSession();
+		$this->set('countries', $this->Employer->Country->find('list'));
+		$this->set('provinces', $this->Employer->Province->find('list'));
 		$employers = $this->Employer->find('all');
 		$this->set('employers', $this->paginate());
 		if (!$id && empty($this->data)) {

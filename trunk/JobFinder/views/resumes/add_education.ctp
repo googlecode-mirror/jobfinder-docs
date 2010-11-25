@@ -124,7 +124,7 @@
             
                 <?php if(!empty($resumeEducations))
                     { echo $this->Html->link(__('Tiếp tục', true),                         
-                    array('action' => 'saveTargetJob','class'=>'btn_cont','name'=>'btn_cont','div'=>false,)); } ?>
+                    array('action' => 'saveTargetJob'),array('div'=>false)); } ?>
             </div>
         </div>
         <!-- end right col -->

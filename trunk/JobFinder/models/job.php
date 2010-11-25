@@ -13,10 +13,90 @@ class Job extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'job_title' => array(
+		'company_name' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
 				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'company_size' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'company_address' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'country_id' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'province_id' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'contact_name' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'telephone' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'email' => array(
+			'email' => array(
+				'rule' => array('email'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'job_title' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				'message' => 'Vui lòng nhập chức danh',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -43,7 +123,18 @@ class Job extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'job_locations' => array(
+		'job_categories' => array(
+			'multiple' => array(
+				'rule' => array('multiple', array('min'=>1, 'max'=>3)),
+       			'message' => 'Please select at least one and maximum 3 option',
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'degree_level_id' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
 				//'message' => 'Your custom message here',
@@ -53,9 +144,10 @@ class Job extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'salary_range' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
+		'job_locations' => array(
+			'multiple' => array(
+				'rule' => array('multiple', array('min'=>1, 'max'=>3)),
+       			'message' => 'Please select at least one and maximum 3 option',
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -63,7 +155,17 @@ class Job extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'job_category_id' => array(
+		'salary_range' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'application_language' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
 				//'message' => 'Your custom message here',
@@ -84,6 +186,20 @@ class Job extends AppModel {
 			'fields' => '',
 			'order' => ''
 		),
+		'Country' => array(
+			'className' => 'Country',
+			'foreignKey' => 'country_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
+		'Province' => array(
+			'className' => 'Province',
+			'foreignKey' => 'province_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
 		'JobLevel' => array(
 			'className' => 'JobLevel',
 			'foreignKey' => 'job_level_id',
@@ -98,16 +214,9 @@ class Job extends AppModel {
 			'fields' => '',
 			'order' => ''
 		),
-		'JobCategory' => array(
-			'className' => 'JobCategory',
-			'foreignKey' => 'job_category_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
-		'Category' => array(
-			'className' => 'Category',
-			'foreignKey' => 'salary_range',
+		'DegreeLevel' => array(
+			'className' => 'DegreeLevel',
+			'foreignKey' => 'degree_level_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
@@ -116,46 +225,7 @@ class Job extends AppModel {
 
 	var $hasMany = array(
 		'JobApply' => array(
-				'className' => 'JobApply',
-				'foreignKey' => 'job_id',
-				'dependent' => false,
-				'conditions' => '',
-				'fields' => '',
-				'order' => '',
-				'limit' => '',
-				'offset' => '',
-				'exclusive' => '',
-				'finderQuery' => '',
-				'counterQuery' => ''
-		),
-		'JobContactInformation' => array(
-			'className' => 'JobContactInformation',
-			'foreignKey' => 'job_id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		),
-		'JobLanguage' => array(
-			'className' => 'JobLanguage',
-			'foreignKey' => 'job_id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		),
-		'JobRequirement' => array(
-			'className' => 'JobRequirement',
+			'className' => 'JobApply',
 			'foreignKey' => 'job_id',
 			'dependent' => false,
 			'conditions' => '',
@@ -207,7 +277,6 @@ class Job extends AppModel {
 			'counterQuery' => ''
 		)
 	);
-
 
 }
 ?>

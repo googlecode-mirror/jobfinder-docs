@@ -17,19 +17,6 @@ class JobLevel extends AppModel {
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 	var $hasMany = array(
-		'JobRequirement' => array(
-			'className' => 'JobRequirement',
-			'foreignKey' => 'job_level_id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		),
 		'Job' => array(
 			'className' => 'Job',
 			'foreignKey' => 'job_level_id',

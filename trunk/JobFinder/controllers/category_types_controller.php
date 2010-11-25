@@ -1,7 +1,6 @@
 <?php
 class CategoryTypesController extends AppController {
-	var $name = 'CategoryTypes';
-	var $helpers = array('Html','Form','Ajax','Javascript');    
+	var $name = 'CategoryTypes';   
 	
 	function beforeFilter(){
 		$this->checkAdminSession();

@@ -2,6 +2,7 @@
 class Resume extends AppModel {
 	var $name = 'Resume';
 	var $displayField = 'resume_title';
+	
 	var $validate = array(
 		'jobseeker_id' => array(
 			'notempty' => array(

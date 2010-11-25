@@ -14,8 +14,7 @@ class JobType extends AppModel {
 			),
 		),
 	);
-	//The Associations below have been created with all possible keys, those that are not needed can be removed
-
+	
 	var $hasMany = array(
 		'Job' => array(
 			'className' => 'Job',
@@ -31,6 +30,5 @@ class JobType extends AppModel {
 			'counterQuery' => ''
 		)
 	);
-
 }
 ?>

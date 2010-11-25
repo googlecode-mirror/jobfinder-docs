@@ -1,8 +1,7 @@
 <?php
 
 class DegreeLevelsController extends AppController {
-	var $name = 'DegreeLevels';
-	var $helpers = array('Html','Form','Ajax','Javascript');    
+	var $name = 'DegreeLevels';   
 	
 	function beforeFilter(){
 		$this->layout='default_admin';

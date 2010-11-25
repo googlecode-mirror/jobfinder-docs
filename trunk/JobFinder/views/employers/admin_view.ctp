@@ -38,25 +38,13 @@
 	<table width="100%">
 		<thead>
             <tr>
-		      	<th><?php echo $this->Paginator->sort('Email');?></th>
-    			<th><?php echo $this->Paginator->sort('Tên công ty');?></th>
-    			<th><?php echo $this->Paginator->sort('Quy mô công ty');?></th>
-                <th><?php echo $this->Paginator->sort('Sơ lược công ty');?></th>
-    			<th><?php echo $this->Paginator->sort('Logo công ty');?></th>
-    			<th><?php echo $this->Paginator->sort('Địa chỉ');?></th>
-    			<th><?php echo $this->Paginator->sort('Quận/Huyện');?></th>
-                <th><?php echo $this->Paginator->sort('Quốc gia');?></th>
-    			<th><?php echo $this->Paginator->sort('Tỉnh/Thành phố');?></th>
-                <th><?php echo $this->Paginator->sort('Website');?></th>
-               	<th><?php echo $this->Paginator->sort('Người đại diện');?></th>
-    			<th><?php echo $this->Paginator->sort('Vị trí');?></th>
-                <th><?php echo $this->Paginator->sort('Điện thoại');?></th>
-    			<th><?php echo $this->Paginator->sort('Di động');?></th>
-                <th><?php echo $this->Paginator->sort('Fax');?></th>
-                <th><?php echo $this->Paginator->sort('Làm thế nào bạn biết đến chúng tôi?');?></th>
-    			<th width="110"><?php echo $this->Paginator->sort('Đăng nhập gần nhất');?></th>
-               	<th width="110"><?php echo $this->Paginator->sort('Ngày tạo');?></th>
-    			<th width="110"><?php echo $this->Paginator->sort('Ngày cập nhật');?></th>
+		      	<th><?php echo $this->Paginator->sort('Email','Email');?></th>
+    			<th><?php echo $this->Paginator->sort('Tên công ty','company_name');?></th>
+                <th><?php echo $this->Paginator->sort('Quốc gia','country_id');?></th>
+    			<th><?php echo $this->Paginator->sort('Tỉnh/Thành phố','province_id');?></th>
+                <th><?php echo $this->Paginator->sort('Website','Website');?></th>
+                <th width="110"><?php echo $this->Paginator->sort('Ngày tạo','created');?></th>
+    			<th width="110"><?php echo $this->Paginator->sort('Đăng nhập gần nhất','last_login');?></th>
                 <th><?php echo $this->Paginator->sort('Trạng thái');?></th>            
     			<th width="130" class="actions"><?php __('');?></th>
 	    </tr> 
@@ -70,30 +58,17 @@
 		}
 	?>
 	<tr<?php echo $class;?>>
-
         <td><?php echo $employer['Employer']['email']; ?>&nbsp;</td>
 		<td><?php echo $employer['Employer']['company_name']; ?>&nbsp;</td>
-		<td><?php echo $employer['Employer']['company_size']; ?>&nbsp;</td>
-        <td><?php echo $employer['Employer']['company_profile']; ?>&nbsp;</td>
-		<td><?php echo $employer['Employer']['company_logo']; ?>&nbsp;</td>
-		<td><?php echo $employer['Employer']['address']; ?>&nbsp;</td>
-		<td><?php echo $employer['Employer']['district']; ?>&nbsp;</td>
-        <td><?php echo $employer['Employer']['country_id']; ?>&nbsp;</td>
-		<td><?php echo $employer['Employer']['province_id']; ?>&nbsp;</td>
+        <td><?php echo $countries[$employer['Employer']['country_id']]; ?>&nbsp;</td>
+		<td><?php echo $provinces[$employer['Employer']['province_id']]; ?>&nbsp;</td>
         <td><?php echo $employer['Employer']['website']; ?>&nbsp;</td>
-       	<td><?php echo $employer['Employer']['contact_name']; ?>&nbsp;</td>
-		<td><?php echo $employer['Employer']['contact_position']; ?>&nbsp;</td>
-        <td><?php echo $employer['Employer']['telephone']; ?>&nbsp;</td>
-		<td><?php echo $employer['Employer']['mobile']; ?>&nbsp;</td>
-        <td><?php echo $employer['Employer']['fax']; ?>&nbsp;</td>
-        <td><?php echo $employer['Employer']['howknow']; ?>&nbsp;</td>   
-        <td><?php echo date('d-m-y h:i:s',strtotime($employer['Employer']['last_login'])); ?>&nbsp;</td>
         <td><?php echo date('d-m-y h:i:s',strtotime($employer['Employer']['created'])); ?>&nbsp;</td>
-        <td><?php echo date('d-m-y h:i:s',strtotime($employer['Employer']['modified'])); ?>&nbsp;</td>
+        <td><?php echo date('d-m-y h:i:s',strtotime($employer['Employer']['last_login'])); ?>&nbsp;</td>
 	    <td><?php echo $employer['Employer']['actived']; ?>&nbsp;</td>
-        <td class="actions"
-    	    <?php echo $this->Html->link(__('Cập nhật trạng thái', true), array('action' => 'edit', $employer['Employer']['id'])); ?> </li>
-            <?php echo $this->Html->link(__('Danh sách nhà tuyển dụng', true), array('action' => 'index')); ?> </li>
+        <td class="actions">
+        	<?php echo $this->Html->link(__('Xem', true), array('action' => 'view', $employer['Employer']['id'])); ?>
+    	    <?php echo $this->Html->link(__('Cập nhật', true), array('action' => 'edit', $employer['Employer']['id'])); ?>       
         </td>
 	</tr>
     <?php endforeach; ?>
@@ -106,5 +81,6 @@
 	 	|<?php echo $this->Paginator->numbers();?>
  		| <?php echo $this->Paginator->next(__('Kế tiếp', true) . ' >>', array(), null, array('class' => 'disabled'));?>
 	</div> 
-    
+    </div>
+</div>
 </div>

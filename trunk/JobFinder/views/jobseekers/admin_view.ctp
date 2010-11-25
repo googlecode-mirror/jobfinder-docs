@@ -38,19 +38,13 @@
 	<table width="100%">
 		<thead>
         <tr>
-        	<th><?php echo $this->Paginator->sort('Email');?></th>
-			<th><?php echo $this->Paginator->sort('Tên');?></th>
-			<th><?php echo $this->Paginator->sort('Họ');?></th>
-            <th><?php echo $this->Paginator->sort('Ngày sinh');?></th>
-            <th><?php echo $this->Paginator->sort('Giới tính');?></th>
-            <th width="40"><?php echo $this->Paginator->sort('Quốc gia');?></th>
-            <th width="40"><?php echo $this->Paginator->sort('Tỉnh/Thành phố');?></th>
-            <th><?php echo $this->Paginator->sort('Làm thế nào bạn biết đến chúng tôi?');?></th>
-			<th width="110"><?php echo $this->Paginator->sort('Đăng nhập gần nhất');?></th>
-           	<th width="110"><?php echo $this->Paginator->sort('Ngày tạo');?></th>
-			<th width="110"><?php echo $this->Paginator->sort('Ngày cập nhật');?></th>
-            <th><?php echo $this->Paginator->sort('Trạng thái');?></th>            
-			<th width="130" class="actions"><?php __('');?></th>
+        	<th><?php echo $this->Paginator->sort('Email','Email');?></th>
+			<th><?php echo $this->Paginator->sort('Tên','first_name');?></th>
+			<th><?php echo $this->Paginator->sort('Họ','last_name');?></th>
+			<th width="110"><?php echo $this->Paginator->sort('Ngày tạo','created');?></th>
+			<th width="110"><?php echo $this->Paginator->sort('Đăng nhập gần nhất','last_login');?></th>
+	        <th><?php echo $this->Paginator->sort('Trạng thái');?></th>
+			<th class="actions"><?php __('');?></th>
 	    </tr> 
 		</thead>
 		<?php
@@ -62,22 +56,16 @@
 		}
 	?>
 	<tr<?php echo $class;?>>
-           <td><?php echo $jobseeker['Jobseeker']['email']; ?>&nbsp;</td>  
-           <td><?php echo $jobseeker['Jobseeker']['first_name']; ?>&nbsp;</td> 
-           <td><?php echo $jobseeker['Jobseeker']['last_name']; ?>&nbsp;</td>  
-           <td><?php echo $jobseeker['Jobseeker']['birthday']; ?>&nbsp;</td>  
-           <td><?php echo $jobseeker['Jobseeker']['gender']; ?>&nbsp;</td> 
-           <td><?php echo $jobseeker['Country']['country_name']; ?>&nbsp;</td> 
-           <td><?php echo $jobseeker['Province']['name']; ?>&nbsp;</td> 
-           <td><?php echo $jobseeker['Jobseeker']['howknow']; ?>&nbsp;</td>    
-           <td><?php echo date('d-m-y h:i:s',strtotime($jobseeker['Jobseeker']['last_login'])); ?>&nbsp;</td>
-           <td><?php echo date('d-m-y h:i:s',strtotime($jobseeker['Jobseeker']['created'])); ?>&nbsp;</td>
-           <td><?php echo date('d-m-y h:i:s',strtotime($jobseeker['Jobseeker']['modified'])); ?>&nbsp;</td>
-    	   <td><?php echo $jobseeker['Jobseeker']['actived']; ?>&nbsp;</td>
-           <td class="actions">
-        	<?php echo $this->Html->link(__('Cập nhật trạng thái', true), array('action' => 'edit', $jobseeker['Jobseeker']['id'])); ?> </li>
-            <?php echo $this->Html->link(__('Danh sách người tìm việc', true), array('action' => 'index')); ?> </li>
-    	   </td>
+           <td><?php echo $jobseeker['Jobseeker']['email']; ?>&nbsp;</td>		               		
+		    <td><?php echo $jobseeker['Jobseeker']['first_name']; ?>&nbsp;</td>			
+		    <td><?php echo $jobseeker['Jobseeker']['last_name']; ?>&nbsp;</td>			
+	        <td><?php echo date('d-m-y h:i:s',strtotime($jobseeker['Jobseeker']['created'])); ?>&nbsp;</td>
+	        <td><?php echo date('d-m-y h:i:s',strtotime($jobseeker['Jobseeker']['last_login'])); ?>&nbsp;</td>
+	    	<td><?php echo $jobseeker['Jobseeker']['actived']; ?>&nbsp;</td>
+	        <td class="actions">
+			<?php echo $this->Html->link(__('Xem', true), array('action' => 'view', $jobseeker['Jobseeker']['id'])); ?>
+			<?php echo $this->Html->link(__('Cập nhật', true), array('action' => 'edit', $jobseeker['Jobseeker']['id'])); ?>
+		   </td>
 	</tr>
     <?php endforeach; ?>
 	</table>
@@ -89,5 +77,32 @@
 	 	|<?php echo $this->Paginator->numbers();?>
  		| <?php echo $this->Paginator->next(__('Kế tiếp', true) . ' >>', array(), null, array('class' => 'disabled'));?>
 	</div> 
-    
+    </div>
+    <br/>
+	<div id="box">
+		<h3>Thông tin chi tiết</h3>
+		<?php echo $this->Session->flash(); ?>
+	    <?php echo $this->Form->create('Jobseeker',array('div'=>false,'id'=>'form'));?>
+        <?php
+		echo $this->Form->input('id');
+		echo $this->Form->input('email',array('label'=>'Email:','div'=>false,'disabled'=>true));
+		echo $this->Form->input('first_name',array('label'=>'Tên:','div'=>false,'disabled'=>true));
+		echo $this->Form->input('last_name',array('label'=>'Họ:','div'=>false,'disabled'=>true));
+		echo $this->Form->input('birthday', array('label'=>'Ngày sinh:', 'dateFormat' => 'DMY', 'div'=>false,
+                                   		'minYear' => date('Y') - 70, 'maxYear' => date('Y') - 15,'monthNames' => false , 'disabled'=> true));
+		echo $this->Form->input('gender',array('label'=>'Giới tính:','options' => array(0 => 'Nam', 1 =>'Nữ'), 
+                                        'empty' => '...','div'=>false,'class'=>'block','disabled'=>true));
+		echo $this->Form->input('country_id',array('label'=>'Quốc gia:','div'=>false,'class'=>'block' ,'disabled'=>true));
+		echo $this->Form->input('province_id',array('label'=>'Tỉnh/thành:','div'=>false,'class'=>'block' ,'disabled'=>true));
+		echo $this->Form->input('actived',array('label'=>'Trạng thái:','options' => array(0 => 'Inactive', 1 =>'Active',2 => 'Banned'), 
+                                        'empty' => '...','class'=>'block','div'=>false,'disabled'=>true));
+    	?>
+		<div align="center">
+			<br/>
+			Some function here
+	    	<?php echo $this->Form->Submit(__('Cập nhật', true),array('div'=>false));?>
+	        <?php echo $this->Form->button('Reset', array('type'=>'reset','div'=>false));?>
+	    </div>
+	</div>
+</div>
 </div>
