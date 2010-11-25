@@ -1,8 +1,7 @@
 <?php
 
 class JobCategoriesController extends AppController {
-	var $name = 'JobCategories';
-	var $helpers = array('Html','Form','Ajax','Javascript');    
+	var $name = 'JobCategories';   
 	
 	function beforeFilter(){
 		$this->layout='default_admin';

@@ -25,8 +25,8 @@
         	<!-- begin left menu -->
             <h3 class="boxTitle02">CÔNG CỤ</h3>
             <ul class="listType04">
-				<li class="icon10"><a href="##">Nộp đơn</a></li>
-                <li class="icon03"><a title="Luu Viec Lam Nay" href="##">Lưu việc làm này</a></li>
+				<li class="icon10"><?php echo $this->Html->link('Nộp đơn', array('controller'=> 'jobseekers', 'action' => 'applyJob', $job['Job']['id'])); ?></li>
+                <li class="icon03"><?php echo $this->Html->link('Lưu việc làm này', array('controller'=> 'jobs', 'action' => 'saveJob', $job['Job']['id'])); ?></li>
                 <li class="icon07"><a title="Ban Viec Lam De In" target="_blank" href="##">Bản để in</a></li>
                 <li class="icon01"><a title="Gui Cho Toi Viec Lam Tuong Tu" href="##">Gửi cho tôi việc làm tương tự</a></li>
                 <li class="icon08"><a title="Gui Viec Lam Cho Ban Be" href="##">Gửi cho bạn bè</a></li>
@@ -60,30 +60,30 @@
                                 </a>
                             </div>
 							<div class="box_right">
-                                <span class="comp_name"><?php echo $job['JobContactInformation'][0]['company_name']; ?></span> 
+                                <span class="comp_name"><?php if(!empty($job['JobContactInformation'])){ echo $job['JobContactInformation'][0]['company_name']; }?></span> 
                                 <br/> 
                             </div>
                         </div>
 					  
 					    <div style="" class="box_pre">
 						    <div class="box_left">Sơ lược về công ty:</div>
-							<div class="box_right"><?php echo $job['JobContactInformation'][0]['company_profile']; ?> 
+							<div class="box_right"><?php if(!empty($job['JobContactInformation'])){ echo $job['JobContactInformation'][0]['company_profile']; }?> 
                                 <br/>
                             </div>
 					    </div>
 					  
     					<div style="" class="box_pre">
     					    <div class="box_left">Quy mô công ty:</div>
-    						<div class="box_right"><?php echo $company_size[$job['JobContactInformation'][0]['company_size']]; ?></div>
+    						<div class="box_right"><?php if(!empty($job['JobContactInformation'])){ echo $company_size[$job['JobContactInformation'][0]['company_size']]; }?></div>
     					</div>
 		  			
                         <div style="" class="box_pre">
                             <div class="box_left">Địa chỉ công ty:</div>
-                            <div class="box_right"><?php echo $job['JobContactInformation'][0]['company_address']; ?></div>
+                            <div class="box_right"><?php if(!empty($job['JobContactInformation'])){ echo $job['JobContactInformation'][0]['company_address']; }?></div>
                         </div>
                         <div style="" class="box_pre">
                             <div class="box_left">Website công ty:</div>
-                            <div class="box_right"><?php echo $job['JobContactInformation'][0]['company_website']; ?></div>
+                            <div class="box_right"><?php if(!empty($job['JobContactInformation'])){ echo $job['JobContactInformation'][0]['company_website']; }?></div>
                         </div>
 					</td> </tr> </tbody>
                 </table>
@@ -119,21 +119,16 @@
                                 <div style="padding-bottom: 5px;" class="box_right">
                                     <?php echo $job['Job']['job_description']; ?>
                                 </div>
-                            </div>
-                            
-                            <!--div style="display: none;" class="box_pre">
-                                <div class="box_left">Mã số công việc:</div>
-                                <div class="box_right"></div>
-                            </div-->                      
+                            </div>                                           
                             
                             <div class="box_pre">
                                 <div class="box_left">Yêu cầu chung:</div>
                                 <div class="box_right">
                                 	<div class="box_pre">
-                                		<div>Số năm kinh nghiệm: <?php echo $job['JobRequirement'][0]['year_experience']; ?></div>
-                                		<div>Cấp bậc tối thiểu: <?php echo $jobLevels[$job['JobRequirement'][0]['job_level_id']]; ?></div>
-                                		<div>Bằng cấp tối thiểu: <?php echo $degreeLevels[$job['JobRequirement'][0]['degree_level_id']]; ?></div>
-                                		<div style="width:450px; display:block;" ><?php echo $job['JobRequirement'][0]['requirement']; ?></div>
+                                		<div>Số năm kinh nghiệm: <?php if(!empty($job['JobRequirement'])){ echo $job['JobRequirement'][0]['year_experience']; }?></div>
+                                		<div>Cấp bậc tối thiểu: <?php if(!empty($job['JobRequirement'])){ echo $jobLevels[$job['JobRequirement'][0]['job_level_id']]; }?></div>
+                                		<div>Bằng cấp tối thiểu: <?php if(!empty($job['JobRequirement'])){ echo $degreeLevels[$job['JobRequirement'][0]['degree_level_id']]; }?></div>
+                                		<div style="width:450px; display:block;" ><?php if(!empty($job['JobRequirement'])){ echo $job['JobRequirement'][0]['requirement']; }?></div>
                                 	</div>
                             	</div>
                             </div>
@@ -141,7 +136,15 @@
                             <div style="" class="box_pre">
                                 <div class="box_left">Loại hình làm việc:</div>
                                 <div style="padding-bottom: 5px;" class="box_right">
-                                    <?php echo $job['JobType']['type']; ?>
+                                	<?php echo $jobTypes[$job['Job']['job_type_id']] ?>
+                                	<?php            			
+                                			$string = $job['Job']['job_types'];
+                        					$token = strtok($string, "|");                        
+                        					while ($token != false)
+                        					{
+                                				echo "$jobTypes[$token]<br />";
+                        						$token = strtok("|");
+                        			}?>
                                 </div>
                             </div>
                             
@@ -162,7 +165,14 @@
                             <div style="" class="box_pre">
                                 <div class="box_left">Ngành nghề:</div>
                                 <div style="padding-bottom: 5px;" class="box_right">
-                                    <?php echo $job['JobCategory']['name']; ?>
+                                	 <?php            			
+                                			$string = $job['Job']['job_categories'];
+                        					$token = strtok($string, "|");                        
+                        					while ($token != false)
+                        					{
+                                				echo "$jobCategories[$token]<br />";
+                        						$token = strtok("|");
+                        			}?>
                                 </div>
                             </div>
                             
@@ -193,21 +203,50 @@
                     </b>
             </div><!-- end Job detail -->			           
         
-            <div style="height: 1%;" class="pos_btn">
+            <div style="height: 1%;">
     	        <div class="pos_btn">
-                    <?php echo $this->Html->link(__('Nộp đơn', true), 
-                            array('controller'=> 'jobseekers', 'action' => 'applyJob', $job['Job']['id'])); ?>
-                    <?php echo $this->Html->link(__('Lưu việc làm này', true), 
-                            array('action' => 'saveJob','type'=>'button','class'=>'btn_save', $job['Job']['id'])); ?>
-                </div>			
-                <div style="height: 1%;" class="page_view">
+                    <?php echo $this->Html->link($html->tag('span', 'Nộp đơn'), 
+                            array('controller'=> 'jobseekers', 'action' => 'applyJob', $job['Job']['id']),array('escape' => false, 'class'=>'button')); ?>
+                    <?php echo $this->Html->link($html->tag('span', 'Lưu việc làm này'), 
+                            array('action' => 'saveJob', $job['Job']['id']),array('escape' => false, 'class'=>'button')); ?>
+                </div>
+                <br/>
+                <div style="height: 1%;">
                     <strong>Số lần xem</strong>: xxx | 
                     <strong>Ngày hết hạn</strong>: xx-xx-2010
                 </div>   
-            </div><!-- end right col -->
+                <br/>
+           	</div>		
+            <div class="box_corner">				
+	        <div class="blue_bg_title"><strong>Tìm việc nhanh</strong></div>
+	        <div class="blue_content">
+	            <table width="100%" cellspacing="0" cellpadding="0" border="0">
+	                <tbody>
+	                	<?php echo $this->Form->create('Job',array('action'=>'searchResults'));?>
+	                    <tr>
+	                    <td><?php echo $this->Form->Input('keyword',array('class'=>'text_box','maxlength'=>'80','label'=>false,'div'=>false));?></td>
+	                    <td>
+	                        <?php echo $this->Form->Input('jobCategory',array('class'=>'comboType02_industry','label'=>false,'div'=>false,'empty'=>'Bất kỳ ngành nghề'));?>  
+	                    </td>
+	                    <td>
+	                        <?php echo $this->Form->Input('province',array('class'=>'comboType02','label'=>false,'div'=>false,'empty'=>'Tất cả địa điểm'));?>    
+	                    </td>
+	                    <td><?php echo $this->Form->Submit('Tìm việc',array('class'=>'btn_searchbox','div'=>false));?></td>
+	                    </tr>
+	                    <tr>
+	                        <td colspan="4"><div><?php echo $html->link($html->tag('span', 'Tìm Kiếm Nâng Cao'), 
+									array('controller' => 'jobs', 'action' => 'advanceSearch'),array('escape' => false));?></div></td>
+	                    </tr>            
+	                </tbody>
+	            </table>
+		    </div><!--end xboxcontent-->		
+       		</div>   
+           <!-- end right col -->
         </div>     <!-- end page-->
         <!-- end wrap -->
-        <div style="clear: both;"></div>
+        <div style="clear: both;">
+        <br/>
+        </div>
     </div>
 </div>
 

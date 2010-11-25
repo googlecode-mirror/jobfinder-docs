@@ -32,7 +32,10 @@
  */
 class AppController extends Controller {
 	var $uses = array('Jobseeker','Employer','Admin','Category','CategoryType'); 
-
+	var $namedArgs = FALSE;
+    var $argSeparator = ":"; 
+    var $helpers = array('Html','Form','Ajax','Javascript','Session');   
+    	
 	function checkJobSeekerSession(){	
 		// fill $jobseeker with session data
 		$jobseeker = $this->Session->read('Jobseeker');
@@ -73,7 +76,7 @@ class AppController extends Controller {
 		else {
         	// if $employer is not empty,
             // check to make sure it's correct
-            $results = $this->Employer->findByEmail($jobseeker['Employer']['email']);
+            $results = $this->Employer->findByEmail($employer['Employer']['email']);
             // if not correct, send to login page
             if(!$results){
 	            $this->Session->delete('Employer');
@@ -111,4 +114,24 @@ class AppController extends Controller {
             }
         }
 	}
+	
+	function getNamedArgs() {
+        if ($this->namedArgs)
+        {
+            $this->namedArgs = array();
+            if (!empty($this->params['pass']))
+            {
+                foreach ($this->params['pass'] as $param)
+                {
+                    if (strpos($param, $this->argSeparator))
+                    {
+                        list($name, $val) = split($this->argSeparator,
+                                                   $param );
+                        $this->namedArgs[$name] = $val;
+                    }
+                }
+            }
+        }
+        return TRUE;
+    } 
 }

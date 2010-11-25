@@ -43,6 +43,19 @@ class Country extends AppModel {
 			'finderQuery' => '',
 			'counterQuery' => ''
 		),
+		'Job' => array(
+			'className' => 'Job',
+			'foreignKey' => 'country_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
 		'Province' => array(
 			'className' => 'Province',
 			'foreignKey' => 'country_id',

@@ -1,7 +1,6 @@
 <?php
 class JobAppliesController extends AppController {
 	var $name = 'JobApplies';
-	var $helpers = array('Html','Form','Ajax','Javascript');
 	var $components = array('RequestHandler');
 	
 	function index() {

@@ -63,6 +63,19 @@ class Province extends AppModel {
 			'finderQuery' => '',
 			'counterQuery' => ''
 		),
+		'Job' => array(
+			'className' => 'Job',
+			'foreignKey' => 'province_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
 		'ResumeJobExp' => array(
 			'className' => 'ResumeJobExp',
 			'foreignKey' => 'province_id',

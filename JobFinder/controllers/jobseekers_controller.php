@@ -1,7 +1,7 @@
 <?php
 class JobseekersController extends AppController {
 	var $name = 'Jobseekers';
-	var $helpers = array('Html','Form','Ajax','Javascript','Recaptcha.CaptchaTool');
+	var $helpers = array('Recaptcha.CaptchaTool');
 	var $components = array('RequestHandler','Email','Recaptcha.Captcha' => array(
                 'private_key' => '6LeP2r0SAAAAAPYU1WQUkoj9IyVljJVQiBVshL1x',  
                 'public_key' => '6LeP2r0SAAAAAN8qyexGrxfP-6cMh6vWGuFAOL3K'));
@@ -237,6 +237,8 @@ class JobseekersController extends AppController {
 	function admin_view($id = null) {
 		$this->layout='default_admin';
 		$this->checkAdminSession();
+		$this->set('countries', $this->Jobseeker->Country->find('list'));
+		$this->set('provinces', $this->Jobseeker->Province->find('list'));
 		$this->Jobseeker->recursive = 0;
 		$this->set('jobseekers', $this->paginate());
 		if (!$id) {

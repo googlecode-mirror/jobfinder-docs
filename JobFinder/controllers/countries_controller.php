@@ -1,7 +1,6 @@
 <?php
 class CountriesController extends AppController {
-	var $name = 'Countries';
-	var $helpers = array('Html','Form','Ajax','Javascript');    
+	var $name = 'Countries';  
 	
 	function beforeFilter(){
 		$this->layout='default_admin';

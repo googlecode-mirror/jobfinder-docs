@@ -43,8 +43,7 @@ class PagesController extends AppController {
  *
  * @var array
  * @access public
- */
-	var $helpers = array('Html','Form','Ajax','Javascript');    
+ */ 
 
 /**
  * This controller does not use a model
@@ -78,11 +77,12 @@ class PagesController extends AppController {
 		if (!empty($path[$count - 1])) {
 			$title_for_layout = Inflector::humanize($path[$count - 1]);
 		}
-		$jobs = $this->Job->find('all', array('contain' => array('JobContactInformation'),
+		$jobs = $this->Job->find('all', array('contain' => false,
 											'conditions'=>array('Job.status' => 1),
 											'order' => array('Job.priority DESC', 'Job.approved DESC'),
 											'limit' => 10));
-		$this->set(compact('page', 'subpage', 'title_for_layout','jobs'));
+		$provinces = $this->Job->Province->find('list');
+		$this->set(compact('page', 'subpage', 'title_for_layout','jobs','provinces'));
 		$this->render(implode('/', $path));
 	}
 	

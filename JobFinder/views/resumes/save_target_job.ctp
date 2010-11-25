@@ -7,7 +7,7 @@
         
     <!-- begin content -->
     <div id="content_cr">
-    <?php echo $this->Form->create('Resume');?>
+    <?php echo $this->Form->create('Resume',array('action'=>'saveTargetJob'));?>
         <!-- begin right col -->
         <div id="right_cr">
             <div class="box_corner">
@@ -22,7 +22,7 @@
                         <div style="position: relative;">
                         <div class="form_field">
                             <?php echo $this->Form->input('ResumeTargetJob.resume_id', array('type'=>'hidden', 
-                                    'div'=>false,'value' => $this->Session->read('resumeID'))); ?>                               
+                                    'div'=>false, 'value'=>$this->Session->read('resumeID'))); ?>                               
                             <p>
                                 <label class="labels"><span class="require">*</span> Vị trí mong muốn: </label>
                                 <?php echo $this->Form->input('ResumeTargetJob.job_title', array('label'=>false,
@@ -114,7 +114,7 @@
             </div>       
             
             <div style="text-align: right;">
-                <?php echo $this->Html->link(__('Trở lại', true), array('action' => 'addSkill'));?>
+                <?php echo $this->Html->link(__('Trở lại', true), array('action' => 'addEducation'));?>
                 <?php echo $this->Form->submit('Tiếp tục', array('div' => false, 'class'=>'btn_cont' ));?>               
             </div>
             

@@ -31,5 +31,6 @@
  * @subpackage    cake.app
  */
 class AppModel extends Model {
-	var $actsAs = array('Bindable'); 
+	var $actsAs = array('Containable');
+	
 }

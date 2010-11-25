@@ -103,14 +103,14 @@
 							<td width="1%">&nbsp;</td>
 							<td width="16%">Vị trí:</td>
 							<td width="2%">&nbsp;</td>
-							<td width="60%"><strong><?php echo $resume['ResumeTargetJob'][0]['job_title']; ?></strong></td>
+							<td width="60%"><strong><?php if(!empty($resume['ResumeTargetJob'])) { echo $resume['ResumeTargetJob'][0]['job_title']; }?></strong></td>
 						</tr>
 						  <tr>
 							<td>&nbsp;</td>
 							<td>&nbsp;</td>
 							<td>Cấp bậc:</td>
 							<td>&nbsp;</td>
-							<td><strong><?php echo $jobLevels[$resume['ResumeTargetJob'][0]['job_level_id']]; ?></strong></td>
+							<td><strong><?php if(!empty($resume['ResumeTargetJob'])) { echo $jobLevels[$resume['ResumeTargetJob'][0]['job_level_id']]; }?></strong></td>
 						  </tr>
 						  <tr>
 							<td align="right" valign="top">&nbsp;</td>
@@ -118,13 +118,15 @@
 							<td valign="top">Loại hình công việc:</td>
 							<td valign="top">&nbsp;</td>
 							<td valign="top">
-								<?php            			
+								<?php
+								if(!empty($resume['ResumeTargetJob'])) {            			
                                 	$string = $resume['ResumeTargetJob'][0]['job_types'];
                         			$token = strtok($string, "|");                        
                         			while ($token != false)
                         			{
                                 		echo "<strong>$jobTypes[$token]</strong><br />";
                         				$token = strtok("|");
+                        			}
                         		}?>
 							</td>
 						  </tr>
@@ -133,7 +135,7 @@
 							<td valign="top">&nbsp;</td>
 							<td valign="top">Có thể đổi chỗ ở vì yêu cầu công việc:</td>
 							<td valign="top">&nbsp;</td>
-							<td valign="top"><?php echo $yesno[$resume['ResumeTargetJob'][0]['can_relocate']]; ?></td>
+							<td valign="top"><?php if(!empty($resume['ResumeTargetJob'])) { echo $yesno[$resume['ResumeTargetJob'][0]['can_relocate']]; }?></td>
 						  </tr>
 			
 						  <tr>
@@ -141,7 +143,7 @@
 							<td>&nbsp;</td>
 							<td>Có thể đi công tác:</td>
 							<td>&nbsp;</td>
-							<td><?php echo $yesno[$resume['ResumeTargetJob'][0]['can_travel']]; ?></td>
+							<td><?php if(!empty($resume['ResumeTargetJob'])) { echo $yesno[$resume['ResumeTargetJob'][0]['can_travel']]; }?></td>
 						  </tr>
 						  <tr>
 			
@@ -149,7 +151,7 @@
 							<td>&nbsp;</td>
 							<td>Quy mô công ty:</td>
 							<td>&nbsp;</td>
-							<td><?php echo $companySizes[$resume['ResumeTargetJob'][0]['company_size']]; ?></td>
+							<td><?php if(!empty($resume['ResumeTargetJob'])) { echo $companySizes[$resume['ResumeTargetJob'][0]['company_size']]; }?></td>
 						 </tr>
 						 <tr>
 							<td>&nbsp;</td>
@@ -157,13 +159,15 @@
 							<td>Ngành nghề:</td>
 							<td>&nbsp;</td>
 							<td>
-								<?php            			
+								<?php        
+								if(!empty($resume['ResumeTargetJob'])) {    			
                                 	$string = $resume['ResumeTargetJob'][0]['job_categories'];
                         			$token = strtok($string, "|");                        
                         			while ($token != false)
                         			{
                                 		echo "- $jobCategories[$token]<br />";
                         				$token = strtok("|");
+                        			}
                         		}?>
 							</td>
 						  </tr>
@@ -173,13 +177,15 @@
 							<td>Nơi làm việc:</td>
 							<td>&nbsp;</td>
 							<td>
-								<?php            			
+								<?php 
+								if(!empty($resume['ResumeTargetJob'])) {           			
                                 	$string = $resume['ResumeTargetJob'][0]['job_locations'];
                         			$token = strtok($string, "|");                        
                         			while ($token != false)
                         			{
                                 		echo "- $provinces[$token]<br />";
                         				$token = strtok("|");
+                        			}
                         		}?>
 							</td>
 						 </tr>
@@ -188,18 +194,17 @@
 						  <tr>
 							<td align="right" valign="top" class="txt_tilte_lv2" style="text-align:right">Mục Tiêu Nghề Nghiệp</td>
 							<td>&nbsp;</td>
-							<td colspan="3">123</td>
+							<td colspan="3"><?php if(!empty($resume['ResumeTargetJob'])) { echo $resume['ResumeTargetJob'][0]['career_objective']; }?></td>
 						 </tr>
 						 <tr>
 							<td colspan="5">&nbsp;</td>
-			
 						 </tr>
 						  <tr>
 							<td class="txt_tilte_lv2" style="text-align:right">Mức Lương</td>
 							<td>&nbsp;</td>
 							<td>Mức lương hiện tại:</td>
 							<td>&nbsp;</td>
-							<td><?php echo $resume['ResumeTargetJob'][0]['current_salary'];?></td>
+							<td><?php if(!empty($resume['ResumeTargetJob'])) { echo $resume['ResumeTargetJob'][0]['current_salary']; }?></td>
 			
 						 </tr>
 						  <tr>
@@ -207,7 +212,7 @@
 							<td>&nbsp;</td>
 							<td>Mức lương mong muốn:</td>
 							<td>&nbsp;</td>
-							<td><?php echo $resume['ResumeTargetJob'][0]['desired_salary'];?></td>
+							<td><?php if(!empty($resume['ResumeTargetJob'])) { echo $resume['ResumeTargetJob'][0]['desired_salary']; }?></td>
 						 </tr>
 						  <tr>
 							<td align="right" >&nbsp;</td>
@@ -331,7 +336,7 @@
             <!--end Summary-->
         </div>
         <div style="text-align: right;">
-    	   <?php echo $this->Html->Link('Đóng', '#', array('onClick'=>'window.close()','div'=>false)); ?>
+        	<a href="#" onclick="window.close()">Đóng</a>
     	</div>
     </div>
 </div>

@@ -16,19 +16,11 @@
 
 	
 <div class="job_conrer_panel">			
-	<form class="job_formquicksearch" action="http://www.vietnamworks.com/jobseekers/searchresults.php" method="get" name="search">
+	<?php echo $this->Form->create('Job',array('action'=>'searchResults','class'=>'job_formquicksearch'));?>
         <label for="input1"><strong>Tìm Việc Nhanh:</strong></label> 
-        <input type="text" onblur="if( this.value == '' ) this.value = 'từ khóa'" 
-                onfocus="if(this.value == 'từ khóa') this.value='';" 
-                value="từ khóa" name="keyword"/>
-            <select class="comboType02" name="city">
-               
-            </select>
-        <input type="submit" class="job_btn1" 
-                onclick="if( document.search.keyword.value == 'từ khóa' ) document.search.keyword.value = ''" 
-                value="Tìm việc" name="search"/>
-        <input type="hidden" value="true" name="search"/>	
-    </form>			
+        <?php echo $this->Form->Input('keyword',array('label'=>false,'div'=>false));?>
+        <?php echo $this->Form->Input('province',array('class'=>'comboType02','label'=>false,'div'=>false,'empty'=>'Tất cả địa điểm'));?>
+        <?php echo $this->Form->Submit('Tìm việc',array('div'=>false,'class'=>'job_btn1'));?>	
     <br clear="all"/>
 </div>
 <!--End search-->
@@ -204,7 +196,7 @@
             <ul class="job_topjobslist floatLeft">
                 <li><?php echo $this->Html->link(__($jobs[0]['Job']['job_title'], true), 
                         array('controller'=> 'jobs','action' => 'view', $jobs[0]['Job']['id'])); ?>
-					<span><?php echo $jobs[0]['JobContactInformation'][0]['company_name']; ?></span>
+					<span><?php echo $jobs[0]['Job']['company_name']; ?></span>
 				</li>
         		<li><a href="/jobseekers/jobdetail.php?jobid=253609" 
                         target="_blank">Expatriate Construction Foreman</a><span>TH Project Management</span></li>

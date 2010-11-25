@@ -1,9 +1,8 @@
 <?php
 class ResumesController extends AppController {
 	var $name = 'Resumes';
-	var $helpers = array('Html','Form','Ajax','Javascript');
 	var $components = array('RequestHandler');
-	var $uses = array('Resume','ResumeJobExp','ResumeEducation','Job','ResumeSkill', 'Skill');
+	var $uses = array('Resume','ResumeJobExp','ResumeEducation','Job','ResumeSkill', 'Skill','JobLevel','JobCategory','JobType');
 
 	function view($id = null) {
 		if (!$id) {
@@ -14,9 +13,9 @@ class ResumesController extends AppController {
 					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'Nationality'))))));
 		$this->set('companySizes', $this->Category->find('list', array(
 					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'CompanySize'))))));
-		$this->set('jobLevels', $this->Job->JobLevel->find('list'));
-		$this->set('jobCategories', $this->Job->JobCategory->find('list'));
-		$this->set('jobTypes', $this->Job->JobType->find('list'));
+		$this->set('jobLevels', $this->JobLevel->find('list'));
+		$this->set('jobCategories', $this->JobCategory->find('list'));
+		$this->set('jobTypes', $this->JobType->find('list'));
 		$this->set('degreeLevels', $this->ResumeEducation->DegreeLevel->find('list'));
 		$this->set('countries', $this->Jobseeker->Country->find('list'));
 		$this->set('provinces', $this->Jobseeker->Province->find('list'));
@@ -35,9 +34,9 @@ class ResumesController extends AppController {
 					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'Nationality'))))));
 		$this->set('companySizes', $this->Category->find('list', array(
 					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'CompanySize'))))));
-		$this->set('jobLevels', $this->Job->JobLevel->find('list'));
-		$this->set('jobCategories', $this->Job->JobCategory->find('list'));
-		$this->set('jobTypes', $this->Job->JobType->find('list'));
+		$this->set('jobLevels', $this->JobLevel->find('list'));
+		$this->set('jobCategories', $this->JobCategory->find('list'));
+		$this->set('jobTypes', $this->JobType->find('list'));
 		$this->set('degreeLevels', $this->ResumeEducation->DegreeLevel->find('list'));
 		$this->set('countries', $this->Jobseeker->Country->find('list'));
 		$this->set('provinces', $this->Jobseeker->Province->find('list'));
@@ -170,7 +169,6 @@ class ResumesController extends AppController {
 			$this->redirect(array('controller'=> 'jobseeker', 'action' => 'index'));
 		}
 		if (!empty($this->data)) {
-			//pr($this->data);
 			$this->data['Resume']['jobseeker_id'] = $jobseeker['Jobseeker']['id'];
 			if($this->data['Resume']['years_exp'] == 0 && $this->Resume->ResumeJobExp->find('list',
 			array('conditions' => array('ResumeJobExp.resume_id' => $this->data['Resume']['id'])))){
@@ -361,12 +359,12 @@ class ResumesController extends AppController {
 		}
 	}
 
-	function saveTargetJob($id = null){
+	function saveTargetJob(){
 		$jobseeker = $this->checkJobSeekerSession();
 		$this->set('jobLevels', $this->Resume->ResumeJobExp->JobLevel->find('list'));
-		$this->set('jobTypes', $this->Job->JobType->find('list'));
+		$this->set('jobTypes', $this->JobType->find('list'));
 		$this->set('jobLocations', $this->Jobseeker->Province->find('list'));
-		$this->set('jobCategories', $this->Job->JobCategory->find('list'));
+		$this->set('jobCategories', $this->JobCategory->find('list'));
 		$this->set('companySizes', $this->Category->find('list', array(
 					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'CompanySize'))))));
 
@@ -405,56 +403,14 @@ class ResumesController extends AppController {
 				$this->Session->setFlash(__('The resume target job could not be saved. Please, try again.', true));
 			}
 		}
-		if (empty($this->data)) {
-			$this->Resume->ResumeTargetJob->recursive = -1;
-			$resumeTargetJob =  $this->Resume->ResumeTargetJob->findByResume_id($id);
-			$this->Session->write('resumeID', $id);
-			if(!empty($resumeTargetJob)){
-				$temp = $this->Resume->ResumeTargetJob->read(null, $resumeTargetJob['ResumeTargetJob']['id']);
-				//Convert string id of JobTypes to array
-				$jobTypes = $temp['ResumeTargetJob']['job_types'];
-				$token = strtok($jobTypes, "|");
-				$i=0;
-				while ($token != false)
-				{
-					$arrJobTypes[$i] = $token;
-					$token = strtok("|");
-					$i++;
-				}
-				$temp['ResumeTargetJob']['job_types'] = $arrJobTypes;
-				//Convert string id of JobLocations to array
-				$jobLocations = $temp['ResumeTargetJob']['job_locations'];
-				$token = strtok($jobLocations, "|");
-				$i=0;
-				while ($token != false)
-				{
-					$arrJobLocations[$i] = $token;
-					$token = strtok("|");
-					$i++;
-				}
-				$temp['ResumeTargetJob']['job_locations'] = $arrJobLocations;
-				//Convert string id of JobCategories to array
-				$jobCategories = $temp['ResumeTargetJob']['job_categories'];
-				$token = strtok($jobCategories, "|");
-				$i=0;
-				while ($token != false)
-				{
-					$arrJobCategories[$i] = $token;
-					$token = strtok("|");
-					$i++;
-				}
-				$temp['ResumeTargetJob']['job_categories'] = $arrJobCategories;
-				$this->data = $temp;
-			}
-		}
 	}
 
 	function editTargetJob($id = null){
 		$jobseeker = $this->checkJobSeekerSession();
 		$this->set('jobLevels', $this->Resume->ResumeJobExp->JobLevel->find('list'));
-		$this->set('jobTypes', $this->Job->JobType->find('list'));
+		$this->set('jobTypes', $this->JobType->find('list'));
 		$this->set('jobLocations', $this->Jobseeker->Province->find('list'));
-		$this->set('jobCategories', $this->Job->JobCategory->find('list'));
+		$this->set('jobCategories', $this->JobCategory->find('list'));
 		$this->set('companySizes', $this->Category->find('list', array(
 					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'CompanySize'))))));
 
