@@ -20,11 +20,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <?php
-	echo $html->charset('UTF-8');
-	echo $javascript->link(array('prototype'));
 	echo $this->Html->meta('icon');
 	echo $this->Html->css('cake.generic');
 	echo $scripts_for_layout;
+	echo $html->charset('UTF-8');
+	echo $javascript->link(array('prototype'));
+    
 ?>
 
 <head>
@@ -35,32 +36,23 @@
 	<!-- begin header -->
     <div id="job_header">
         <div class="job_wrap_header">
-		<div class="job_tophead"><strong>Thống kê: Số việc đăng tuyển 
-            <span class="text_yellow">xxxx</span></strong> 
-            <script type="text/javascript">makeYourHomePage();</script>
-            <span class="job_spacemenu">|</span>
-            <a href="Link to contact">Liên hệ</a>
+		<div class="job_tophead"><strong>Thống kê:</strong> Số việc đăng tuyển 
+            <span><?php echo $total;?></span>
         </div>            
     		<div class="job_foremp">
-    			<span class="job_forempleft"><!-- --></span>
     			<div class="job_forempct">
-    				Bạn tìm người tài?
-                    <br />
                     <a href="#/?lang=2">» Cho nhà tuyển dụng</a>
                 </div>
                 <!-- end job_forempct -->
-                
-    			<span class="job_forempright"><!-- --></span>
             </div>
             <!-- end job_foremp -->            
 	        <br clear="all" />
-        
 		<!-- begin logo - banner -->
 		<div class="job_toplogobanner">
 			<div class="floatLeft">
                 <a href="#/">
-                        <img width="235" height="85" alt="" 
-                        src="../img/vnw_logo_vn.gif" />
+                    <?php echo $html->image('../img/home/banner.jpg', 
+    	                	  array('alt' => '', 'width' => '980', 'height' => '173'))  ?>
                 </a>
             </div>
 			
@@ -81,7 +73,7 @@
     <?php echo $content_for_layout; ?>
 
 <!-- Phần Footer -->
-
+<div > <br clear="all"/> </div>
 <div class="job_footer2">
 	<div style="text-align: center;" class="job_wrap">
      	<a href="#About Us">Về JobFinder</a>

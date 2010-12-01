@@ -1,5 +1,3 @@
-
-
 <div class="wrap_cr">
     <img width="300" height="30" alt="create_resume_tit_vn"
         style="margin-left: 115px;" 
@@ -11,106 +9,90 @@
         <!-- begin right col -->
         <div id="right_cr">
             <div class="box_corner">
-                <b class="xtop">
-                    <b class="xb1 blue_top"></b>
-                    <b class="xb2 blue_curve blue_title"></b>
-                    <b class="xb3 blue_curve blue_title"></b>
-                </b>
                 <div class="blue_bg_title"><strong>Công việc mong muốn</strong></div>
                 <div class="white_content">
                     <table width="100%" border="0"><tbody><tr><td>
                         <div style="position: relative;">
                         <div class="form_field">
                             <?php echo $this->Form->input('ResumeTargetJob.resume_id', array('type'=>'hidden', 
-                                    'div'=>false, 'value'=>$this->Session->read('resumeID'))); ?>                               
+                                    'div'=>false, 'value'=>$this->Session->read('resumeID'),'error'=>array('wrap'=>'span'))); ?>                               
                             <p>
                                 <label class="labels"><span class="require">*</span> Vị trí mong muốn: </label>
                                 <?php echo $this->Form->input('ResumeTargetJob.job_title', array('label'=>false,
-                                        'class'=>'field', 'div'=>false)); ?>
+                                        'class'=>'field', 'div'=>false,'error'=>array('wrap'=>'span'))); ?>
                             </p>
                             <p>
                                 <label class="labels"><span class="require">*</span> Cấp bậc mong muốn: </label>
                                 <?php echo $this->Form->input('ResumeTargetJob.job_level_id', array('label'=>false, 
                                         'class'=>'field_list field_list_w', 'div'=>false,
-                                        'empty' => 'Vui lòng chọn...')); ?>                              
+                                        'empty' => 'Vui lòng chọn...','error'=>array('wrap'=>'span'))); ?>                              
                             </p> 
                             <p>
-                                <label class="labels"><span class="require">*</span> Mục tiên nghề nghiệp: </label>
+                                <label class="labels"><span class="require">*</span> Mục tiêu nghề nghiệp: </label>
                                 <?php echo $this->Form->input('ResumeTargetJob.career_objective', array('label'=>false,
-                                        'class'=>'form_field text_area', 'div'=>false,'rows'=> 5, 'style'=>'width: 325px')); ?>
+                                        'class'=>'form_field text_area', 'div'=>false,'rows'=> 5, 'style'=>'width: 325px','error'=>array('wrap'=>'span'))); ?>
                             </p>
                             <p>
                             	<br/>
                                 <label class="labels">Mức lương hiện tại (USD): </label>
                                 <?php echo $this->Form->input('ResumeTargetJob.current_salary', array('label'=>false,
-                                        'class'=>'field', 'div'=>false)); ?>                                
+                                        'class'=>'field', 'div'=>false,'error'=>array('wrap'=>'span'))); ?>                                
                             </p>
                             <p>
                             	<br/>
                                 <label class="labels">Mức lương mong muốn (USD): </label>
                                 <?php echo $this->Form->input('ResumeTargetJob.desired_salary', array('label'=>false,
-                                        'class'=>'field', 'div'=>false)); ?>                                
+                                        'class'=>'field', 'div'=>false,'error'=>array('wrap'=>'span'))); ?>                                
                             </p>
                             
                             <div class="line_dotted"></div>
                             
-                            <p>
+                            <p style="margin-bottom:75px;">
                                 <label class="labels"><span class="require">*</span> Loại hình công việc: </label>                               
                                 <?php echo $this->Form->input('ResumeTargetJob.job_types', array('label'=> false,
-                                        'class'=>'field_list', 'div'=>false ,
-                                        'type' => 'select', 'multiple' => true)); ?>&nbsp;
-                                <span>Tips: Nhấn giữ Ctrl để chọn nhiều loại.</span>                              
+                                        'class'=>'field', 'div'=>false,
+                                        'type' => 'select', 'multiple' => true,'error'=>array('wrap'=>'span'))); ?>&nbsp;                           
                             </p>
-                            
-                            <div class="line_dotted"></div>
-                            
                             <p>
                                 <label class="labels"><span class="require">*</span> Quy mô công ty: </label>
                                 <?php echo $this->Form->input('ResumeTargetJob.company_size', array('label'=> false,
                                         'class'=>'field_list field_list_w', 'div'=>false,
-                                        'empty'=>'Vui lòng chọn...')); ?>                             
+                                        'empty'=>'Vui lòng chọn...','error'=>array('wrap'=>'span'))); ?>                             
                             </p>
                             <p>
                                 <label class="labels"><span class="require">*</span> Nơi làm việc mong muốn: </label>
                                 <?php echo $this->Form->input('ResumeTargetJob.job_locations', array('label'=> false,
-                                        'class'=>'field_list', 'div'=>false,
-                                        'type' => 'select', 'multiple' => true)); ?>&nbsp;
-                                <span>Tips: Nhấn giữ Ctrl để chọn nhiều nơi.</span>                               
+                                        'class'=>'field', 'div'=>false,'size'=>'6',
+                                        'type' => 'select', 'multiple' => true,'error'=>array('wrap'=>'span'))); ?>&nbsp;                               
                             </p>
                             <p>
                             	<br/>
                                 <label class="labels"><span class="require">*</span> Ngành nghề mong muốn: </label>
                                 <?php echo $this->Form->input('ResumeTargetJob.job_categories', array('label'=> false,
-                                        'class'=>'field_list', 'div'=>false,
-                                        'type' => 'select', 'multiple' => true)); ?>&nbsp;
-                                <span>Tips: Nhấn giữ Ctrl để chọn nhiều ngành.</span>                                                           
+                                        'class'=>'field', 'div'=>false, 'size'=>'6',
+                                        'type' => 'select', 'multiple' => true,'error'=>array('wrap'=>'span'))); ?>&nbsp;                                                         
                             </p>
                             <p>
                             	<br/>   
                                 <label class="labels">Bạn có thể đổi chỗ ở vì yêu cầu công việc ?</label> 
                                 <?php echo $this->Form->Input('ResumeTargetJob.can_relocate',array('options'=> array(1 => 'Có', 0 => 'Không'),'label'=> false,
-                                        'class'=>'field_list', 'div'=>false,'empty'=>'Vui lòng chọn...')); ?>
+                                        'class'=>'field_list', 'div'=>false,'empty'=>'Vui lòng chọn...','error'=>array('wrap'=>'span'))); ?>
                             </p>
                             <p>
                             	<br/>
                                 <label class="labels">Bạn có thể đi công tác ?</label> 
                                 <?php echo $this->Form->Input('ResumeTargetJob.can_travel',array('options'=> array(1 => 'Có', 0 => 'Không'),'label'=> false,
-                                        'class'=>'field_list', 'div'=>false,'empty'=>'Vui lòng chọn...')); ?>
+                                        'class'=>'field_list', 'div'=>false,'empty'=>'Vui lòng chọn...','error'=>array('wrap'=>'span'))); ?>
                             </p>
-                            
-                                                       
+                            <p style="font-style:italic;"> 
+                            	<br/>
+                            	Hướng dẫn: Nhấn giữ Ctrl để chọn nhiều mục.
+                            </p>                        
                         </div>
                         </div>
                     </td></tr></tbody>
                     </table>                
                 </div>
-                
-                <b class="xbottom">
-                    <b class="xb3 blue_curve blue_bg_bottom"></b>
-                    <b class="xb2 blue_curve blue_bg_bottom"></b>
-                    <b class="xb1 blue_top"></b>
-                </b>    
-            
             </div>       
             
             <div style="text-align: right;">
@@ -121,36 +103,3 @@
         </div>
     </div>
 </div>
-
-
-
-
-<!--
-
-<div class='container'><?php echo $this->Form->create('Resume');?>
-<h2>Công vi?c mong mu?n</h2>
-<ul>
-	<li><?php echo $this->Form->input('ResumeTargetJob.resume_id', array('type'=>'hidden', 'value' => $this->Session->read('resumeID'))); ?></li>
-	<li><?php echo $this->Form->input('ResumeTargetJob.job_title', array('label'=>'V? trí mong mu?n: ')); ?></li>
-	<li><?php echo $this->Form->input('ResumeTargetJob.job_level_id', array('label'=>'C?p b?c mong mu?n: ', 'empty' => 'Vui lòng ch?n...')); ?></li>
-	<li><?php echo $this->Form->input('ResumeTargetJob.career_objective', array('label'=>'M?c tiêu ngh? nghi?p: ')); ?></li>
-	<li><?php echo $this->Form->input('ResumeTargetJob.current_salary', array('label'=>'M?c luong hi?n t?i (USD): ')); ?></li>
-	<li><?php echo $this->Form->input('ResumeTargetJob.desired_salary', array('label'=>'M?c luong mong mu?n (USD): ')); ?></li>
-</ul>
-<ul>
-	<li><?php echo $this->Form->input('ResumeTargetJob.job_types', array('label'=> 'Lo?i hình công vi?c: ','type' => 'select', 'multiple' => 'checkbox')); ?></li>
-</ul>
-<ul>
-	<li><?php echo $this->Form->input('ResumeTargetJob.company_size', array('label'=> 'Quy mô công ty: ','empty'=>'Vui lòng ch?n...')); ?></li>
-	<li><?php echo $this->Form->input('ResumeTargetJob.job_locations', array('label'=> 'Noi làm vi?c mong mu?n: ','type' => 'select', 'multiple' => true)); ?></li>
-	<li><?php echo $this->Form->input('ResumeTargetJob.job_categories', array('label'=> 'Ngành ngh? mong mu?n: ','type' => 'select', 'multiple' => true)); ?></li>
-	<li><label>B?n có th? d?i ch? ? vì yêu c?u công vi?c ?</label> <?php echo $this->Form->radio('ResumeTargetJob.can_relocate', array(0 => 'Không', 1 => 'Có'), array('legend'=>false)); ?></li>
-	<li><label>B?n có th? di công tác? ?</label> <?php echo $this->Form->radio('ResumeTargetJob.can_travel', array(0 => 'Không', 1 => 'Có'), array('legend'=>false)); ?></li>
-</ul>
-<ul>
-	<li><?php echo $this->Html->link(__('Tr? l?i', true), array('action' => 'addSkill'));?></li>
-	<li><div class="actions"><?php echo $this->Form->submit('Ti?p t?c');?></div></li>
-</ul>
-
-</div>
--->

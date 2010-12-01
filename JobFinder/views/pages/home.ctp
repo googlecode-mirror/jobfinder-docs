@@ -1,20 +1,5 @@
-<!-- begin content -->
-
-	
-	
-<!--end job_bgpanel_1-->
-
-<script src="/js/homepage_jobkit.js" type="text/javascript"></script>
-<script type="text/javascript">
-    var _curTab = 1;
-    changeTabs(_curTab);	// Keep current tab for user
-    $("#MapSearchJob").mouseover( function() { setTimeout("mouseMoveTab(1)",3000); } );
-</script>	
-
 <div id="job_contentbg">
-<div class="job_wrap">
-
-	
+<div class="job_wrap">	
 <div class="job_conrer_panel">			
 	<?php echo $this->Form->create('Job',array('action'=>'searchResults','class'=>'job_formquicksearch'));?>
         <label for="input1"><strong>Tìm Việc Nhanh:</strong></label> 
@@ -24,21 +9,12 @@
     <br clear="all"/>
 </div>
 <!--End search-->
-
-<div class="job_botbannel">    
-    <span class="job_botbannel_left"><!-- --></span>
-    <span class="job_botbannel_right"><!-- --></span>
-</div>
+<div > <br clear="all"/> </div>
 	
 <!-- Begin left col -->	
 <div id="job_leftcol">
 	<!--begin box corner-->
-	<!-- begin Jobs With Featured Employers -->
-    <div class="job_conrertop_t">
-        <span class="job_conrertopt_left"><!-- --></span>
-        <span class="job_conrertopt_right"><!-- --></span>
-    </div>
-    <h2 class="job_boxtitle">Việc Làm Với Nhà <br/>Tuyển Dụng Hàng Đầu</h2>
+    <h2 align="center" class="job_boxtitle">Việc Làm Với Nhà <br/>Tuyển Dụng Hàng Đầu</h2>
     <div class="job_conrer_ct job_fe_ct">
         <!--Left Logo-->
 	    <div style="clear: both;" id="ads_TOP_COMPANIES">
@@ -101,13 +77,6 @@
          </a>
     </div>
     <!--endjob_conrer_ct -->
-    
-    <div class="job_conrer_bot">
-        <span class="job_conrer_bot_left"><!-- --></span>
-        <span class="job_conrer_bot_right"><!-- --></span>
-    </div>
-    <!-- end Jobs With Featured Employers -->
-    
 	
 </div>
 <!-- end left col -->
@@ -116,11 +85,7 @@
 <div id="job_rightcol">
 
 <!-- begin top featured -->
-    <div class="job_conrertop">
-        <span class="job_conrer_top_left"><!-- --></span>
-        <span class="job_conrer_top_right"><!-- --></span>
-    </div>
-    <div align="center" class="job_conrer_ct nopadding">
+    <div align="center">
 	   <div id="job_vipLogo">
             <div style="clear: both;" id="ads_TOP_COMPANIES_HORISONTAL">
             <div class="salesLogosContainer" id="adc_TOP_COMPANIES_HORISONTAL">
@@ -173,78 +138,45 @@
             </div>
             
             </div>
-            <script type="text/javascript">ajaxAds('TOP_COMPANIES_HORISONTAL','YTo0OntzOjQ6Imhvc3QiO3M6MjA6Ind3dy52aWV0bmFtd29ya3MuY29tIjtzOjQ6InBhZ2UiO3M6MTA6Ii9pbmRleC5waHAiO3M6ODoia2V5d29yZHMiO3M6MzI6Imxhbjo6MSwraW5kOjplLCt1c3I6OjIsK3Byb21vOjplIjtzOjEyOiJwYW5fcmVnaXN0ZXIiO3M6Mjoibm8iO30');</script>		
+            		
         <br class="clear"/>
 	   </div>
+        
     </div>
+     <div><br clear="all"/></div>
 <!-- endjob_conrer_ct -->
-    <div class="job_conrer_bot">
-        <span class="job_conrer_bot_left"><!-- --></span>
-        <span class="job_conrer_bot_right"><!-- --></span>
-    </div>            			
-	<!-- end top featured -->
-            
             
 	<div id="job_rightcol_left">
-    <!-- begin top jobs -->
-        <div class="job_conrertop_t">
-            <span class="job_conrertopt_left"><!-- --></span>   
-            <span class="job_conrertopt_right"><!-- --></span>  
-        </div>
-            <h2 class="job_boxtitle">Việc Làm Tốt Nhất</h2>
-        <div class="job_conrer_ct">
+        <!-- begin top jobs -->
+			<div class="blue_bg_title"> <strong>Công Việc Nổi Bật</strong> </div>
+			<div class="white_content">
+
             <ul class="job_topjobslist floatLeft">
-                <li><?php echo $this->Html->link(__($jobs[0]['Job']['job_title'], true), 
-                        array('controller'=> 'jobs','action' => 'view', $jobs[0]['Job']['id'])); ?>
-					<span><?php echo $jobs[0]['Job']['company_name']; ?></span>
+            	<?php $i=0;
+            		foreach ($jobs as $job):
+            		$i++;?>
+                <li><?php echo $this->Html->link(__($job['Job']['job_title'], true), 
+                        array('controller'=> 'jobs','action' => 'view', $job['Job']['id'])); ?>
+					<span><?php echo $job['Job']['company_name']; ?></span>
 				</li>
-        		<li><a href="/jobseekers/jobdetail.php?jobid=253609" 
-                        target="_blank">Expatriate Construction Foreman</a><span>TH Project Management</span></li>
-        		<li><a href="/jobseekers/jobdetail.php?jobid=253606" 
-                        target="_blank">Expatriate Construction Manager</a><span>TH Project Management</span></li>
-        		<li><a href="/jobseekers/jobdetail.php?jobid=253608" 
-                        target="_blank">Expatriate Construction Mgr-M&amp;E</a><span>TH Project Management</span></li>
-        		<li class="nobackground"><a href="/jobseekers/jobdetail.php?jobid=254745" 
-                        target="_blank">Kỹ Sư Thiết Kế Phần Mềm</a><span>VIETTEL GROUP</span></li>
-            </ul>
-            <ul class="job_topjobslist floatRight">
-        	    <li><a href="/jobseekers/jobdetail.php?jobid=254743" target="_blank">Kỹ Sư Thiết Kế Phần Cứng
-                    </a><span>VIETTEL GROUP</span></li>
-        	    <li><a href="/jobseekers/jobdetail.php?jobid=254748" 
-                    target="_blank">KS TK Kiểu Dáng Công Nghiệp
-                    </a><span>VIETTEL GROUP</span></li>
-        	    <li><a href="/jobseekers/jobdetail.php?jobid=254739" 
-                    target="_blank">Trưởng Phòng Pháp Lý
-                    </a><span>VIETTEL GROUP</span></li>
-        	    <li><a href="/jobseekers/jobdetail.php?jobid=254735" 
-                    target="_blank">Phó Giám Đốc Kinh Doanh
-                    </a><span>VIETTEL GROUP</span></li>
-        	    <li class="nobackground">
-                    <a href="/jobseekers/jobdetail.php?jobid=253927" 
-                    target="_blank">Phiên Dịch Tiếng Trung
-                    </a><span>Viện nghiên cứu TK Hoa Đông</span></li>
-        	</ul>
+				<?php if($i==5):?>
+					</ul>
+					<ul class="job_topjobslist floatRight">
+				<?php endif;?>
+				<?php endforeach; ?>
+				</ul>
+				
         <br clear="all"/>
         </div>
         <!-- endjob_conrer_ct -->
-        <div class="job_conrer_bot">
-            <span class="job_conrer_bot_left"><!-- --></span>
-            <span class="job_conrer_bot_right"><!-- --></span>
-        </div>
-        <!-- end top jobs -->
     </div>
+      <div><br /></div>
     <!-- end job_rightcol_right -->
 
 </div>
+  <div><br clear="all"/></div>
 <!-- end right col -->
-<br clear="all"/>
-
-
 <!-- end wrap -->
-
 <!-- end content -->
-
-
 </div></div>
-
 

@@ -6,7 +6,11 @@ class JobseekersController extends AppController {
                 'private_key' => '6LeP2r0SAAAAAPYU1WQUkoj9IyVljJVQiBVshL1x',  
                 'public_key' => '6LeP2r0SAAAAAN8qyexGrxfP-6cMh6vWGuFAOL3K'));
 	var $uses = array('Jobseeker','Job');
-
+	
+	function beforeFilter(){
+		$this->set('total',$this->Job->find('count', array('conditions'=>array('Job.status' => 1))));
+	}
+	
 	function login(){
 		$jobseeker = $this->Session->read('Jobseeker');
 		if ($jobseeker){
@@ -187,42 +191,41 @@ class JobseekersController extends AppController {
 		}
 		$this->set('job', $this->Job->read(null, $jobID));
 		$this->set('resumes', $this->Jobseeker->Resume->find('list',array('conditions' => array('jobseeker_id' => $jobseeker['Jobseeker']['id']))));
-
-		if (!empty($this->data)) {
-			$jobApply = $this->Jobseeker->JobApply->find('all',array('conditions' => array(array('JobApply.jobseeker_id' => $this->data['JobApply']['jobseeker_id']),
-					'AND' => array('job_id' => $this->data['JobApply']['job_id']))));
-			if(empty($jobApply)){
-				$this->Jobseeker->JobApply->create();
-				if ($this->Jobseeker->JobApply->save($this->data)) {
-					
-					//add new job save, if avaiable update job saved status
-					$existJobSaved = $this->Jobseeker->JobSaved->find('all',array('conditions' => array(array('JobSaved.jobseeker_id' => $this->data['JobApply']['jobseeker_id']),
-											'AND' => array('job_id' => $this->data['JobApply']['job_id']))));
-					
-					if(!empty($existJobSaved))
-					{
-						//update status 0: not apply 1: applied
-						$jobSaved = $existJobSaved[0]['JobSaved'];
-						$jobSaved['status'] = 1;
-						$jobSaved['applied'] = date('Y-m-d H:i:s');
-						$this->Jobseeker->JobSaved->save($jobSaved);
-					}
-					else{
-						$jobSaved = array('JobSaved' => array('jobseeker_id' => $this->data['JobApply']['jobseeker_id'],
-											'job_id' => $this->data['JobApply']['job_id'], 'status' => 1, 'applies' => date('Y-m-d H:i:s')));
-						$this->Jobseeker->JobSaved->save($jobSaved);
-					}
-					$this->redirect(array('action' => 'index'));
-				}
-				else {
-					$this->Session->setFlash(__('Tiêu đề và hồ sơ đính kèm không hợp lệ', true));
-					$this->redirect(array('action' => 'apply_job', $this->data['JobApply']['job_id']));
-				}
-			}
-			else {
+		
+		if ($jobID && empty($this->data)) {
+			$jobApply = $this->Jobseeker->JobApply->find('all',array('conditions' => array(array('JobApply.jobseeker_id' => $jobseeker['Jobseeker']['id']),
+					'AND' => array('job_id' => $jobID))));
+			if(!empty($jobApply)){
 				$this->Session->setFlash(__('Bạn đã nộp đơn công việc này.', true));
 				$this->redirect(array('action' => 'index'));
 			}
+		}
+		
+		if (!empty($this->data)) {
+			$this->Jobseeker->JobApply->create();
+			if (!$this->Jobseeker->JobApply->save($this->data)) {
+					$this->Session->setFlash(__('Tiêu đề hoặc hồ sơ đính kèm không hợp lệ', true));
+					$this->redirect(array('action' => 'applyJob', $this->data['JobApply']['job_id']));
+			}
+
+			//add new job save, if avaiable update job saved status
+			$existJobSaved = $this->Jobseeker->JobSaved->find('all',array('conditions' => array(array('JobSaved.jobseeker_id' => $this->data['JobApply']['jobseeker_id']),
+									'AND' => array('job_id' => $this->data['JobApply']['job_id']))));
+			
+			if(!empty($existJobSaved))
+			{
+				//update status 0: not apply 1: applied
+				$jobSaved = $existJobSaved[0]['JobSaved'];
+				$jobSaved['status'] = 1;
+				$jobSaved['applied'] = date('Y-m-d H:i:s', time());
+				$this->Jobseeker->JobSaved->save($jobSaved);
+			}
+			else{
+				$jobSaved = array('JobSaved' => array('jobseeker_id' => $this->data['JobApply']['jobseeker_id'],
+									'job_id' => $this->data['JobApply']['job_id'], 'status' => 1, 'applied' => date('Y-m-d H:i:s',time())));
+				$this->Jobseeker->JobSaved->save($jobSaved);
+			}
+			$this->redirect(array('action' => 'index'));
 		}
 	}
 

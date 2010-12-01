@@ -140,16 +140,9 @@ class EmployersController extends AppController {
 	}
 
 	function index(){
-		//save user visit url
-		/*$request_params = Router::getParams();
+		$request_params = Router::getParams();
 		$this->Session->write('auth_redirect','/'.$request_params['url']['url']);
-		$jobseeker = $this->checkJobSeekerSession();
-
-		$this->paginate['JobSaved'] =  array('conditions' => array('jobseeker_id' => $jobseeker['Jobseeker']['id']));
-		$this->paginate['Resume'] =  array('conditions' => array('jobseeker_id' => $jobseeker['Jobseeker']['id']));
-		$this->Jobseeker->Resume->recursive = -1;
-		$this->set('jobsaveds', $this->paginate('JobSaved'));
-		$this->set('resumes', $this->paginate('Resume'));*/
+		$employer = $this->checkEmployerSession();
 	}
 
 	function admin_index()

@@ -22,10 +22,14 @@ p {padding:0; margin:10px 0}
 .nobackground {background:none !important}
 .nomargin {margin:0 !important}
 .nopadding {padding:0 !important}
-
-.job_wrap {width:950px; margin:auto}
-.job_wrapmenu {width:980px; margin:auto}
-
+.job_wrap {width:965px; margin:auto}
+.job_wrapmenu {width:950px; margin:auto; background: #FED415;
+                -moz-border-radius: 5px; -webkit-border-radius: 5px; 
+                border: 1.5px solid #CCCCCC; padding: 5px;}
+.job_wrapsubmenu {width:950px; margin:auto; background:#fff url(../img/home/job_corner_panel_bg.gif) repeat-x 0 100%;
+                -moz-border-radius: 5px; -webkit-border-radius: 5px; 
+                border: 1.5px solid #CCCCCC; padding: 3px;}
+                
 .job_viewall { background:url(../img/home/job_bulletarrow.gif) no-repeat 0 -32px; display:block; font-weight:bold; padding-left:10px; color:#333}
 .job_viewall:hover {background-position:0 4px}
 
@@ -35,9 +39,9 @@ p {padding:0; margin:10px 0}
 .job_title2 {color:#f90; font-size:14px; font-weight:bold; margin:0}
 .job_title3 {color:#f90; font-weight:bold; text-transform:uppercase; margin:0; font-size:11px}
 .job_title4 {color:#0cf; font-weight:bold}
+
 /* ------------ header --------------------- */
-#job_header { background:url(../img/home/job_topheadbg.gif) repeat-x; height:130px; min-width:980px; color:#fff}
-#job_header a {color:#fff;}
+#job_header { background:url(../img/home/job_topheadbg.gif) repeat-x; height:226px; min-width:980px; color:#333333}
 #job_header a:hover {color:#f90;}
 		
 	.job_wrap_header {width:980px; margin:auto; position:relative}	
@@ -51,22 +55,22 @@ p {padding:0; margin:10px 0}
 	.job_btnlang:hover {color:#fff !important; text-decoration:none}
 	.job_btnlang_vn:hover {color:#fff !important; text-decoration:none}
 	
-	.job_foremp {position:absolute; height:52px; top:0; right:0; text-align:right}
-		.job_forempct {background:url(../img/home/job_bgforemp.gif) repeat-x 0 100%; height:37px; float:left; padding:5px 0 10px 0; line-height:18px; text-align:right;}
+	.job_foremp {position:absolute; height:52px; top:0; right:0; text-align:right;}
+		.job_forempct {background:url(../img/home/job_bgforemp.gif) repeat-x 0 100%; height:20px; float:left; padding:5px 0 10px 0; line-height:18px; text-align:right;}
 		.job_forempct a {color:#ff0 !important; text-decoration:none; font-weight:bold}
 		.job_forempct a:hover {color:#ff0; text-decoration:underline}
     	.job_forempleft {background:url(../img/home/job_bgforemp.gif) no-repeat 0 0; width:9px; float:left; display:block; height:52px}
 		.job_forempright {background:url(../img/home/job_bgforemp.gif) no-repeat 100% 0; width:9px; float:left; display:block; height:52px}
 		
-	.job_toplogobanner {width:980px; padding:7px 5px 5px 5px;}
+	.job_toplogobanner {width:980px; height: 200px; padding:10px 5px 5px 5px;}
 		.job_topbanner {margin-top:10px; width:550px; height:71px}	
 		.job_topbanner table {width:550px}
 		.job_topbanner table td {text-align:right}
 /* ------------ end header ----------------- */
 
 /* ------------- main navigation new ------------*/
-#job_nav {background:#FE9900; height:30px; min-width:980px}
-	ul.job_mainnav {margin:0; padding:5px 0 0 0; float:left}
+#job_nav { height:35px; min-width:950px; margin: auto;}
+	ul.job_mainnav {margin:0; padding:1px 0 0 0; float:left}
 	ul.job_mainnav li { float:left; margin-right:5px}
 	
 	ul.job_mainnav li a,
@@ -76,23 +80,27 @@ p {padding:0; margin:10px 0}
 		ul.job_mainnav li a.vsredirect:hover { background: url(../img/home/job_vs_nav_s.gif) no-repeat 0 -19px; color: #fff; }
 	ul.job_mainnav li a.vsredirect:hover span { background: url(../img/home/job_vs_nav_s.gif) no-repeat 100% -19px; }
 
-	ul.job_mainnav li a:hover {background:url(../img/home/job_mainnav_over.gif) no-repeat 0 0; color:#0cf; text-decoration:none}
-	ul.job_mainnav li a:hover span {background:url(../img/home/job_mainnav_over.gif) no-repeat 100% 0}
+	ul.job_mainnav li a:hover { color:#2E77B4; text-decoration:none;}
+	ul.job_mainnav li a:hover span {-moz-border-radius: 5px; -webkit-border-radius: 5px; 
+                border: 1px solid #CCCCCC; background: white;}
 	ul.job_mainnav li a.menuactive {background:url(../img/home/job_mainnav_over.gif) no-repeat 0 -24px}
 	ul.job_mainnav li a.menuactive span{background:url(../img/home/job_mainnav_over.gif) no-repeat 100% -24px}
 	
-	ul.job_mainnav li a.menuactive:hover {background:url(../img/home/job_mainnav_over.gif) no-repeat 0 0; color:#0cf; text-decoration:none}
-	ul.job_mainnav li a.menuactive:hover span {background:url(../img/home/job_mainnav_over.gif) no-repeat 100% 0}
+	ul.job_mainnav li a.menuactive:hover { 
+                    color:#ffffff; text-decoration:none}
+	ul.job_mainnav li a.menuactive:hover span {}
 	
-	.job_login {float:right; padding-top:8px}
+	.job_login {float:right; padding-top:8px;margin-right: 20px;}
+    .job_login a:hover {color: blue;}
 	
-#job_nav_sub {background:url(../img/home/job_subnavbg.gif) repeat 0 0; height:30px; min-width:980px}
-	ul.job_subnav {margin:0; padding:6px 0 0 0}
+#job_nav_sub { height:30px; min-width:980px;}
+	ul.job_subnav {margin:0;}
 	ul.job_subnav li {float:left; margin-right:5px}
-	ul.job_subnav li a { display:block; float:left; font-weight:bold; color:#fff; text-decoration:none; padding:0 0 4px 4px; height:15px}	
+	ul.job_subnav li a { display:block; float:left; font-weight:bold; color:#333333; text-decoration:none; padding:0 0 4px 4px; height:15px}	
 	ul.job_subnav li a span {display:block; padding:3px 11px 3px 7px}
-	ul.job_subnav li a:hover {background:url(../img/home/job_mainnav_over.gif) no-repeat 0 -48px; color:#fff}
-	ul.job_subnav li a:hover span {background:url(../img/home/job_mainnav_over.gif) no-repeat 100% -48px}
+	ul.job_subnav li a:hover { color:#fff}
+	ul.job_subnav li a:hover span {-moz-border-radius: 5px; -webkit-border-radius: 5px; 
+                border: 1px solid #f93; background: #f93;}
 	
 	ul.job_subnav li a.subactive {background:url(../img/home/job_mainnav_over.gif) no-repeat 0 -48px; color:#fff}
 	ul.job_subnav li a.subactive span {background:url(../img/home/job_mainnav_over.gif) no-repeat 100% -48px}
@@ -103,7 +111,7 @@ p {padding:0; margin:10px 0}
 	ul.job_navigation { margin:0; padding:6px 0 0 0; float:left}
 	ul.job_navigation li {border-right:#ccc 1px solid; float:left; padding:0 5px} 
 	ul.job_navigation li a {display:block; float:left; color:#333; font-weight:bold; text-decoration:none; text-transform:uppercase; padding:3px 10px}
-	ul.job_navigation li a:hover {background:#0cf; color:#fff}
+	ul.job_navigation li a:hover {background:#0cf; color:#fff;}
 	ul.job_navigation li a.menuactive {background:#0cf; color:#fff}
 	
 	.job_login {float:right; padding-top:8px}
@@ -116,10 +124,12 @@ p {padding:0; margin:10px 0}
 /* ------------- end main navigation --------*/
 
 /* ------------- content -------------------*/
-#job_contentbg {padding-top:10px; min-width:980px}
-	#job_leftcol {width:220px; float:left}
+#job_contentbg {padding-top:2px; min-width:980px}
+	#job_leftcol {width:220px; float:left; -moz-border-radius: 4px; -webkit-border-radius: 4px; 
+                border: 2px solid #999; background: #999}
 	#job_rightcol {width:720px; float:right; height:1%}
-		#job_rightcol_left {width:720px; float:left}
+		#job_rightcol_left {width:720px; float:left;  -moz-border-radius: 4px; -webkit-border-radius: 4px; 
+                border: 2px solid #999; background: #999}
 		#job_rightcol_right {width:180px; float:right}		
 /* ------------- end content ---------------*/
 
@@ -131,7 +141,9 @@ p {padding:0; margin:10px 0}
 .job_conrertop_t {background:url(../img/home/job_boxbg.gif) repeat-x 0 -48px; height:6px}
 	.job_conrertopt_left {background:url(../img/home/job_boxbg.gif) no-repeat 0 -36px; width:6px; height:6px; display:block; float:left}
 	.job_conrertopt_right {background:url(../img/home/job_boxbg.gif) no-repeat -12px -36px; width:6px; height:6px; display:block; float:right}
-h2.job_boxtitle {background:#00bcf3 url(../img/home/job_boxbg.gif) repeat-x 0 -55px; color:#fff; font-weight:bold; font-size:16px; margin:0; padding:5px; border:#ccc 1px solid; border-top:none; line-height:20px}
+h2.job_boxtitle { background: #999;
+            color:#fff; font-weight:bold; font-size:15px; margin:0; padding:0; border:#ccc 0px solid; border-top:none; 
+            line-height:20px}
 .job_conrer_ct {background:#fff url(../img/home/job_boxbg_ct.gif) repeat-x 0 100%; border-left:#ccc 1px solid; border-right:#ccc 1px solid; padding:10px; height:1%}
 .job_conrer_bot {background:url(../img/home/job_boxbg.gif) repeat-x 0 -117px; height:6px; margin-bottom:10px}
 	.job_conrer_bot_left {background:url(../img/home/job_boxbg.gif) repeat-x -24px -36px; height:6px; width:6px; display:block; float:left}
@@ -139,7 +151,9 @@ h2.job_boxtitle {background:#00bcf3 url(../img/home/job_boxbg.gif) repeat-x 0 -5
 /* ------------- end box corner ---------------*/
 
 /*  bottom panel -- */
-.job_conrer_panel {background:#fff url(../img/home/job_corner_panel_bg.gif) repeat-x 0 100%; height:36px}
+.job_conrer_panel {background:#fff url(../img/home/job_corner_panel_bg.gif) repeat-x 0 100%; height:36px;
+                -moz-border-radius: 5px; -webkit-border-radius: 5px; 
+                border: 1px solid #CCCCCC;}
 .job_botbannel {background:#dfdfdf; height:6px; margin-bottom:10px}
 	.job_botbannel_left { background:url(../img/home/job_corner_panel.gif) no-repeat -6px 0; width:6px; height:6px; display:block; float:left}
 	.job_botbannel_right { background:url(../img/home/job_corner_panel.gif) no-repeat 0 0; width:6px; height:6px; display:block; float:right}
@@ -192,7 +206,7 @@ ul.job_catgorysearch li a.searchmore:hover {text-decoration:underline}
 
 .job_gettingahead { margin-top:10px; }
 
-.job_liststar {margin:0 0 0 90px; padding:0; width:200px; _margin-left:45px}
+.job_liststar {margin:0 0 0 90px; padding:0; width:200px; margin-left:45px}
 .job_liststar li { margin-bottom:5px}
 .job_liststar  li a {background:url(../img/home/job_bulletarrow4.gif) no-repeat 0 -43px; font-style:italic; padding-left:20px}
 .job_liststar  li a:hover {background-position:0 1px}
@@ -251,7 +265,8 @@ ul.job_topjobslist li span {padding-left:12px; display:block}
 #job_featureLogos .salesLogoLink:hover{border:2px solid #F93;}
 #job_featureLogos .salesLogoTitle, #job_featureLogos .salesLogoDesc{display:none; width:0; height:0;}
 /* ------------------- VIP Logos -----------------*/
-#job_vipLogo{ padding:5px 5px 5px 8px;}
+#job_vipLogo{ padding:5px 5px 5px 8px;-moz-border-radius: 5px; -webkit-border-radius: 5px; 
+                border: 2px solid #CCCCCC;background: white;}
 	#job_vipLogo .salesLogo{width:165px; height:113px; overflow:hidden; float:left; padding:0 5px;}
 		#job_vipLogo .salesLogo .salesLogoImage{border:2px solid #FFF; margin:0; padding:0;}
 		#job_vipLogo .salesLogo .salesLogoTitle{color:#0CF; font-weight:bold; display:block; padding:10px 2px 5px 2px;}
@@ -268,7 +283,7 @@ ul.job_topjobslist li span {padding-left:12px; display:block}
 .job_tabctPanel_dj02 { background:url(../img/home/job_panel_bg02.gif) no-repeat; position:absolute; top:30px; left:369px; z-index:0; width:532px; height:162px; padding-top:4px}
 .job_tabctPanel_dj02Bg {background:url(../img/home/job_panel_dj02.jpg) no-repeat 0 0; width:502px; height:48px; padding:110px 0 0 30px}
 ul.job_paneltab li .dj_iconNew { position:absolute; width:25px; height:17px; top:-7px; right:15px}
-* html .pngIE { behavior: url("css/pngbehavior.htc");}
+* html .pngIE {behavior: url("css/pngbehavior.htc");}
 
 ul.job_paneltab li a.djPromote { position:absolute; z-index:10; top:-8px; width:120px; background:url(../img/home/job_tab_panel2.gif) no-repeat 0 -93px; float:left; height:32px; padding-left:20px; color:#fff; font-weight:bold; text-decoration:none; text-align:center; text-transform:uppercase}
 ul.job_paneltab li a.djPromote span {background:url(../img/home/job_tab_panel2.gif) no-repeat 100% -31px; display:block; padding:14px 20px 4px 0; cursor:pointer}
@@ -325,7 +340,7 @@ form .required label:before {
 .left_box .optional {clear:both;font-weight:bold}
 
 /* right col */
-#right_cr {	width:740px; padding-left: 120px;}
+#right_cr {	width:760px; padding-left: 100px;}
 
 .require {color:#ff9900;}
 
@@ -344,12 +359,12 @@ form .required label:before {
 .form_field {display:inline;}
 .form_field p {display:block;clear:both;margin:0px;	height:28px}
 .form_field .text_row {height:60px}
-
+.form_field .text {display:block;margin-left:10px;float:left;padding-top:2px}
 .form_field label {width:250px;padding-top:2px;	text-align:right;float:left}
 .form_field .lb_hide {color:#939598}
 .form_field .field {width:210px;display:block;margin-left:25px;float:left}
 
-.form_field .co_pro_area {width:400px;display:block;margin-left:10px; font-family:Verdana, Arial, Helvetica, sans-serif;font-size:11px;float:left}
+.form_field .co_pro_area {width:350px;display:block;margin-left:10px; font-family:Verdana, Arial, Helvetica, sans-serif;font-size:11px;float:left}
 .form_field .field_dis {background:#f4f4f4;	border-style:none;border:#7f9db9 solid 1px;color:#939598;width:212px;height:15px}
 .form_field .field1 {width:100px;display:block;margin-left:10px;float:left}
 
@@ -403,9 +418,6 @@ form .required label:before {
 .tip_anchor{ cursor: help;margin: 3px 8px;}
 .tip_anchor1{ cursor: help;}
 .tip_anchor:hover {	background:url(../img/home/icon_q_over.gif)}
-
-.white_content1 {BORDER-RIGHT: #3399cc 1px solid; BORDER-TOP: #3399cc 0px solid; 
-                DISPLAY: block; BACKGROUND: #fff; BORDER-LEFT: #3399cc 1px solid; BORDER-BOTTOM: #3399cc 0px solid;}
 
 .tb_list {}
 .tb_list a {color:#555555;text-decoration:none}
@@ -627,7 +639,7 @@ ul.worstcv_list li a:hover {text-decoration:underline}
 .worstcvbox_ct {background:url(../img/home/worst_box_bg.gif) repeat-y; width:484px; padding:10px 18px}
 
 /*------------------------------------------------------------------------------------------------------------------------------------------------*/
-/*Style25*/
+
 body table{font-size: 11px;text-align: left;}
 body div{}
 input, textarea{color: #222222;}
@@ -679,8 +691,8 @@ a.txt_normal:hover{	color:#F7931D; text-decoration: underline;}
 .txt_error{	/*TXT error*/color:#FF0000; font-weight:100;}
 .txt_title{color:#FFFFFF;background:url(../img/home/bar_title.gif) no-repeat left 50% #07aaef;
 	padding-left: 30px;	padding-top: 5px;padding-bottom: 5px;text-align:left;font-size: 12px;font-weight: bold;}
-.title_bg{PADDING-LEFT: 30px; FONT-WEIGHT: bold; FONT-SIZE: 12px; 
-        BACKGROUND:#00aeef url(../img/home/tn_bg_title_left.gif) no-repeat left; COLOR: #ffffff; TEXT-ALIGN: left}
+.title_bg{padding-left: 30px; FONT-WEIGHT: bold; FONT-SIZE: 12px; 
+        background:#00aeef url(../img/home/tn_bg_title_left.gif) no-repeat left; COLOR: #ffffff; TEXT-ALIGN: left}
 .title_bg a{color:#ffffff;}
 .title_bg div{ display:block;background:url(../img/home/tn_bg_title_right.gif) right no-repeat; height:20px; padding-top:5px}
 
@@ -866,22 +878,18 @@ td.rs_search_check{background:#e5e5e5;padding:2px;text-align:center;}
 	cursor: help;margin: 3px 8px;}
 
 .tab_boder_body_left{border-left: 1px solid #00AEEF;}
-
 .tab_boder_body_right{border-right: 1px solid #00AEEF;}
-
-.tab_boder_head{background-image:url(../img/home/tab_border_bg_top.gif);background-position:bottom;background-repeat:repeat-x;}
-
+.tab_boder_head{background-image:url(../img/home/tab_border_bg_top.gif);
+                background-position:bottom;background-repeat:repeat-x;}
 .tab_boder_foot{border-bottom: 1px solid #00AEEF;}
-
 .blueSubTitle {color:#FF9900; font-size:12px;}
 .blueSubTitle {font-size: 12px;font-weight: bold;text-decoration: none;color: #003399;}
-
 .e_border_upgrade{background: url(../img/home/border_1.gif) no-repeat center;padding: 15px;}
 
 
 /* Head Bar */
 #div_head_bar{clear:both;font-family:Arial, Helvetica, sans-serif;}
-.head_bar_select{background:url(http://images.vietnamworks.com/bullet_7.gif) no-repeat left;padding-left: 22px;	
+.head_bar_select{background:url(../img/home/bullet_7.gif) no-repeat left;padding-left: 22px;	
 	color:#FFFFFF;font-weight: bold;float:left;}
 .head_bar_select .left{	background:url(http://images.vietnamworks.com/head_bar_select_l.gif) no-repeat left;width:5px;height:25px;float:left;}
 .head_bar_select .main_text{float:left;background: #00aaef;padding: 5px 0px 5px 0px;font-size: 12px;}
@@ -944,7 +952,7 @@ body{ font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px; margin:
 .mannav_pos{width:980px;margin:0px auto 0px;clear:both;height:22px;	position:absolute;top:120px;left:0px}
 .mannav{float:left; margin-right:2px; font-weight:bold}
 .mannav a,
-.mannav a span { display:block;background: #96979b url(http://images.vietnamworks.com/right_corner.gif) no-repeat right top; padding-right:5px; text-decoration:none; color:#fff}
+.mannav a span { display:block;background: #96979b no-repeat right top; padding-right:5px; text-decoration:none; color:#fff}
 .mannav a span { display:block;background: url(http://images.vietnamworks.com/left_corner.gif) no-repeat left top; padding-left:10px; padding-top:5px; padding-bottom:5px}
 .mannav a:hover{background-color:#00aeef}
 
@@ -1001,12 +1009,12 @@ body{ font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px; margin:
 
 /* featured logo box style ------------------------*/
 .logo_in_line{height:48px; margin-top:10px; margin-left:4px}
-.logo_in_line .logo_left, .logo_right{float:left; background:#fff url(http://images.vietnamworks.com/bg_featured_logo.png); width:91px; height:47px; padding:1px 0px 0px 1px}
+.logo_in_line .logo_left, .logo_right{float:left; background:#fff url(../img/home/bg_featured_logo.png); width:91px; height:47px; padding:1px 0px 0px 1px}
 .logo_in_line .logo_left{margin-right:7px;}
 
 .logo_feature{margin-top:10px; margin-left:2px;	border:0px;}
 
-.logo_feature td{vertical-align: top;background: url(http://images.vietnamworks.com/bg_featured_logo.png)  0px 1px no-repeat; 
+.logo_feature td{vertical-align: top;background: url(../img/home/bg_featured_logo.png)  0px 1px no-repeat; 
 	width:98px;height:55px;padding-left:1px;padding-top:2px;}
     
 /* adv banner style --------------------------------*/
@@ -1015,7 +1023,8 @@ body{ font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px; margin:
 
 
 /*style for box shadow, categoty search --------------------------------------------------------------------------*/
-.cat_search_box{background:#f5f5f5 url(http://images.vietnamworks.com/img_homepage.gif) no-repeat 5px bottom;}
+/*
+.cat_search_box{background:#f5f5f5 url(../img/home/img_homepage.gif) no-repeat 5px bottom;}
 .content_catsearch{margin-left:150px}
 .content_catsearch a{text-decoration:underline; }
 
@@ -1027,9 +1036,10 @@ body{ font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px; margin:
 .content_catsearch em {color:#999; font-style:normal}
 .content_catsearch .padding_cat a{color:#333333}
 .content_catsearch .padding_cat a:hover{color:#ff9900}
-
+*/
 /*style for corner box -----------------------------------------------------------------------------------------*/
-.box_corner {margin-bottom:10px}
+.box_corner {margin-bottom:10px; -moz-border-radius: 5px; 
+                -webkit-border-radius: 5px; border: 1px solid #999; background: #999;}
 .xtop {DISPLAY: block; FONT-SIZE: 1px; BACKGROUND: none transparent scroll repeat 0% 0%}
 .xbottom {DISPLAY: block; FONT-SIZE: 1px; BACKGROUND: none transparent scroll repeat 0% 0%}
 .xb1, .xb2, .xb3 {DISPLAY: block; OVERFLOW: hidden; HEIGHT: 1px}
@@ -1054,11 +1064,10 @@ body{ font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px; margin:
 .blue_content a{color:#555;}
 .blue_content a:hover{color:#F7931D;}
 .blue_title{BACKGROUND: #00adef;}/*color of box title*/ 
-.blue_bg_title{margin:0; font-size:1.2em; padding:0 10px 5px 10px; background:#00adef; color:#fff; height:15px}
+.blue_bg_title{margin:0; font-size:1.1em; padding:5px 10px 5px 10px; background:#999; color:#fff; height:15px}
 .blue_bg_title a{color:#fff; text-decoration:underline; font-size:10px}
 .blue_bg_title a:hover{color:#ff9900; text-decoration:underline; font-size:10px}
 .blue_bg_bottom{background:#eaf5f9}
-.white_content {BORDER-RIGHT: #3399cc 1px solid; BORDER-TOP: #3399cc 0px solid; DISPLAY: block; BACKGROUND: #fff; BORDER-LEFT: #3399cc 1px solid; BORDER-BOTTOM: #3399cc 0px solid; padding:10px}
 
 
 /* style for navigation -------------------------------- */
@@ -1101,7 +1110,7 @@ body{ font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px; margin:
 .form_login{display:block; margin-top:10px; margin-bottom:10px}
 .form_login label{display:block; margin-top:5px}
 .text_box{border-style:none; border:#7f9db9 1px solid; width:200px; padding-left:2px}
-.pos_btn{text-align:right; padding-top:10px; clear:both}
+.pos_btn{text-align:right; padding-top:10px; clear:both; float: right;}
 .button1{ border-style:none; border:#dedede 1px solid}
 .btn_js1{ font-size:11px; font-weight: bold; background-color: #FF9900; background-position:center; color:#FFFFFF; border-top: 1px solid #f9ab4f; border-left: 1px solid #f9ab4f; border-right: 1px solid #b66c15; border-bottom: 1px solid #b66c15; height:22px; cursor:pointer}
 .btn_js2{ font-size:12px; font-weight: bold; color:#FFFFFF; cursor:pointer; background:url(http://images.vietnamworks.com/bg_btn.gif); width:93px; height:25px; border-style:none; cursor:pointer;}
@@ -1254,6 +1263,7 @@ body{ font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px; margin:
 /* -----------------------------------------------------------------------------------------*/
 							/* stye for FAQ */
 /* -----------------------------------------------------------------------------------------*/
+/*
 .line_title_faq {
 	background:url(http://images.vietnamworks.com/faq_dotted.gif) bottom repeat-x; margin-bottom:15px; padding-bottom:2px
 }
@@ -1276,10 +1286,11 @@ body{ font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px; margin:
 .faq_title span {float:right; display:block}
 .faqtitle_answer {background:#dfdfdf; padding:2px 5px; color:#000; font-weight:bold; margin-bottom:12px; margin-top:15px}
 .faq_answer {padding:0 5px }
-
+*/
 /* ---------------------------------------------------------------------------------- */
 							/* Newsletter */
 /* ---------------------------------------------------------------------------------- */
+/*
 .mktnews_wrap {width:980px; margin:auto; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px}
 .mktnews_letter {background:url(http://images.vietnamworks.com/reg_newsletter/mktnews_letter.gif) top no-repeat; padding:267px 0 80px 114px; height:37px; _height:0px}	
 .letter_ct {float:left; width:210px; margin-right:25px; font-weight:bold; color:#00b9f1; text-align:right}
@@ -1305,7 +1316,7 @@ body{ font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px; margin:
 
 .mktnews_boxbot {background:#f4f4f4 url(http://images.vietnamworks.com/reg_newsletter/mktnews_boxbl.gif) left no-repeat}
 .mktnews_boxbotcorner {background:url(http://images.vietnamworks.com/reg_newsletter/mktnews_boxbr.gif) right no-repeat; height:12px}
-
+*/
 /* ---------------------------------------------------------------------------------- */
 							/* JobAlert */
 /* ---------------------------------------------------------------------------------- */
@@ -1361,10 +1372,11 @@ body{ font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px; margin:
 	#jsContainer fieldset{border:none;}
 	#jsContainer input, #jsContainer select{font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px;}
 
-.wrap_search {padding-top:10px;width:980px;margin:auto;}
+.wrap_search {padding-top:10px;width:955px;margin:auto;}
 #search_contentpage {padding-top:10px;}
 .leftcol_search {float:left;width:230px;}
-.rightcol_search {float:right;width:740px;}	
+.rightcol_search {float:right;width:720px;}	
+.result_search {width:800px;margin: auto;}
 
 .clear{clear:both; line-height:0;}
 .link {	color:#555555;text-decoration:underline}
@@ -1804,7 +1816,8 @@ ul.companyleftcol li.comprofile { background:#cceffc url(http://images.vietnamwo
 .tip_anchor1{cursor: help; margin-left:2px}
 .tip_anchor:hover {background:url(http://images.vietnamworks.com/icon_q_over.gif)}
 
-.white_content1 {BORDER-RIGHT: #3399cc 1px solid; BORDER-TOP: #3399cc 0px solid; DISPLAY: block; BACKGROUND: #fff; BORDER-LEFT: #3399cc 1px solid; BORDER-BOTTOM: #3399cc 0px solid;}
+.white_content {padding:5px; BORDER-RIGHT: #999 1px solid; BORDER-TOP: #999 1px solid; DISPLAY: block; BACKGROUND: #fff; BORDER-LEFT: #999 1px solid; BORDER-BOTTOM: #999 1px solid;}
+.white_tablecontent {BORDER-RIGHT: #999 1px solid; BORDER-TOP: #999 1px solid; DISPLAY: block; BACKGROUND: #fff; BORDER-LEFT: #999 1px solid; BORDER-BOTTOM: #999 1px solid;}
 
 .tb_list {}
 .tb_list a {color:#555555;text-decoration:none}
@@ -1896,12 +1909,12 @@ ul.companyleftcol li.comprofile { background:#cceffc url(http://images.vietnamwo
 
 
 /* job posting */
-.dblue_bg_title{margin:0; font-size:1.2em; padding:0 10px 5px 10px; background:#006699; color:#fff; height:15px}
+.dblue_bg_title{margin:0; font-size:1.1em; padding:5px 10px 5px 10px; background:#006699; color:#fff; height:15px}
 .dblue_top{BACKGROUND: #006699;}
 .dblue_curve{BORDER-RIGHT: #006699 1px solid;BORDER-LEFT: #006699 1px solid}
 .dblue_title{BACKGROUND: #006699;}/*color of box title*/ 
-.dwhite_content {BORDER-RIGHT: #006699 1px solid; BORDER-TOP: #006699 0px solid; DISPLAY: block; BACKGROUND: #fff; BORDER-LEFT: #006699 1px solid; BORDER-BOTTOM: #006699 0px solid; padding:10px; height:1%}
-
+.dwhite_content {BORDER-RIGHT: #006699 1px solid; BORDER-TOP: #006699 1px solid; DISPLAY: block; BACKGROUND: #fff; BORDER-LEFT: #006699 1px solid; BORDER-BOTTOM: #006699 1px solid; padding:10px; height:1%}
+.dwhite_tablecontent {BORDER-RIGHT: #006699 1px solid; BORDER-TOP: #006699 1px solid; DISPLAY: block; BACKGROUND: #fff; BORDER-LEFT: #999 1px solid; BORDER-BOTTOM: #006699 1px solid;}
 .require_emp {color:#ff0000;}
 
 .form_field .field_minmax {width:40px;display:block;margin-left:10px;float:left;	text-align:right}
@@ -2082,6 +2095,12 @@ div.error-message {
 	font-weight: bold;
 }
 
+span.error-message {
+	color:#FF0000;
+	padding-left: 5px;
+	font-weight: bold;
+}
+
 .table_info {
 border:medium none;
 margin-top:10px;
@@ -2089,15 +2108,47 @@ padding:0;
 width:100%;
 }
 
+a.button {
+    background: transparent url('../img/home/bg_button_a.gif') no-repeat scroll top right;
+    color: #444;
+    display: block;
+    float: left;
+    font: normal 12px arial, sans-serif;
+    height: 24px;
+    margin-right: 6px;
+    padding-right: 18px; /* sliding doors padding */
+    text-decoration: none;
+}
 
+a.button span {
+    background: transparent url('../img/home/bg_button_span.gif') no-repeat;
+    display: block;
+    line-height: 14px;
+    padding: 5px 0 5px 18px;
+} 
 
+a.button:active {
+    background-position: bottom right;
+    color: #000;
+    outline: none; /* hide dotted outline in Firefox */
+}
 
+a.button:active span {
+    background-position: bottom left;
+    padding: 6px 0 4px 18px; /* push text down 1px */
+} 
 
-
-
-
-
-
+div.paging {
+	clear:both;
+}
+div.paging span.disabled {
+	display: inline;
+}
+div.paging span.current {
+	color: #c73e14;
+}
+div.paging span a {
+}
 
 
 
