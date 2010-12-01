@@ -93,7 +93,7 @@
 					  <tr>
 						<td><?php echo $jobExp['ResumeJobExp']['company_name']; ?>&nbsp;</td>
 						<td><?php echo $jobExp['ResumeJobExp']['job_title']; ?>&nbsp;</td>
-						<td class="actions"><?php echo $this->Html->link(__('Sửa', true), array('action' => 'editJobExp', $jobExp['ResumeJobExp']['id'])); ?>
+						<td class="actions"><?php echo $this->Html->link(__('Sửa', true), array('action' => 'editJobExp', $jobExp['ResumeJobExp']['id'], true)); ?>
 						<?php echo $this->Html->link(__('Xóa', true), array('action' => 'deleteJobExp', $jobExp['ResumeJobExp']['id'], true), null, sprintf(__('Bạn có chắc muốn xóa quá trình làm việc tại %s?', true), $jobExp['ResumeJobExp']['company_name'])); ?>
 						</td>
 					</tr>

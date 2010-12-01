@@ -1,42 +1,16 @@
-<div id="job_nav_sub">
-	<div class="job_wrapsubmenu">
-		<ul class="job_subnav">
-        	<li><?php echo $html->link($html->tag('span', 'Tìm Kiếm Nhanh'), 
-					array('controller' => 'jobs', 'action' => 'search'),array('escape' => false)); ?>
-			</li>
-			<li><?php echo $html->link($html->tag('span', 'Tìm Kiếm Nâng Cao'), 
-					array('controller' => 'jobs', 'action' => 'advanceSearch'),array('escape' => false)); ?>
-			</li>				
-		</ul>	
-		<br clear="all"/>
-	</div>
-    <!-- end submenu -->
-</div>
-<div class="wrap_search">
-	<div class="line_title">
+<br clear="all"/>
+<div id="body_content">
+   <div class="line_title">
         <img width="300" height="30" alt="Chi tiết công việc, việc làm" 
                 src="../img/home/btxt_job_detail_vn.gif"/>
     </div>
+    <!-- begin wrap -->
+    <div class="wrap_cr_emp">
+    <div id="content_cr">
+    <div id="right_cr">
     <?php echo $this->Session->flash(); ?>
-    <div id="search_contentpage">
-    	<!-- begin left col -->
-        <div class="leftcol_search">
-        	<!-- begin left menu -->
-            <h3 class="boxTitle02">CÔNG CỤ</h3>
-            <ul class="listType04">
-				<li class="icon10"><?php echo $this->Html->link('Nộp đơn', array('controller'=> 'jobseekers', 'action' => 'applyJob', $job['Job']['id'])); ?></li>
-                <li class="icon03"><?php echo $this->Html->link('Lưu việc làm này', array('controller'=> 'jobs', 'action' => 'saveJob', $job['Job']['id'])); ?></li>
-                <li class="icon06"><?php echo $this->Html->link('Tìm kiếm', array('controller'=> 'jobs', 'action' => 'search')); ?></li>
-            </ul>							               
-            <!-- end left menu -->
-        </div>
-        <!-- end left col -->
-        
-        <!-- begin right col -->
-        <div class="rightcol_search">
-		<!-- begin Company Profile -->
 	    <div class="box_corner">
-			<div class="blue_bg_title"> <strong>Sơ lược về công ty</strong> </div>
+			<div class="dblue_bg_title"> <strong>Sơ lược về công ty</strong> </div>
 			<div class="white_content">
 				<table width="100%" cellspacing="0" cellpadding="0" border="0">
                     <tbody> <tr> <td>
@@ -77,12 +51,13 @@
 					</td> </tr> </tbody>
                 </table>
 				   
-			</div><!--end xboxcontent-->					
+			</div><!--end xboxcontent-->	
+				
 		</div><!-- end Company Profile -->
 
         <!-- begin Job detail -->
 		<div class="box_corner">
-			<div class="blue_bg_title"> <strong>Chi Tiết Công Việc</strong> </div>
+			<div class="dblue_bg_title"> <strong>Chi Tiết Công Việc</strong> </div>
                 <div class="white_content">
                     <table width="100%" cellspacing="0" cellpadding="0" border="0">
                         <tbody> <tr> <td>
@@ -168,51 +143,19 @@
                     </table>
 				</div><!--end xboxcontent-->
             </div><!-- end Job detail -->			           
-        
-            <div style="height: 1%;">
+        <div style="height: 1%;">
     	        <div class="pos_btn">
-                    <?php echo $this->Html->link($html->tag('span', 'Nộp đơn'), 
-                            array('controller'=> 'jobseekers', 'action' => 'applyJob', $job['Job']['id']),array('escape' => false, 'class'=>'button')); ?>
-                    <?php echo $this->Html->link($html->tag('span', 'Lưu việc làm này'), 
-                            array('action' => 'saveJob', $job['Job']['id']),array('escape' => false, 'class'=>'button')); ?>
+                    <?php echo $this->Html->link($html->tag('span', 'Trở về'), 
+                            array('controller'=> 'employers', 'action' => 'index'),array('escape' => false, 'class'=>'button')); ?>
                 </div>
-                <br/>
-                <div style="height: 1%;">
-                    <strong>Số lần xem</strong>: xxx | 
-                    <strong>Ngày hết hạn</strong>: xx-xx-2010
-                </div>   
-                <br/>
-           	</div>		
-            <div class="box_corner">				
-	        <div class="blue_bg_title"><strong>Tìm việc nhanh</strong></div>
-	        <div class="white_content">
-	            <table width="100%" cellspacing="0" cellpadding="0" border="0">
-	                <tbody>
-	                	<?php echo $this->Form->create('Job',array('action'=>'searchResults'));?>
-	                    <tr>
-	                    <td><?php echo $this->Form->Input('keyword',array('class'=>'text_box','maxlength'=>'80','label'=>false,'div'=>false));?></td>
-	                    <td>
-	                        <?php echo $this->Form->Input('jobCategory',array('class'=>'comboType02_industry','label'=>false,'div'=>false,'empty'=>'Bất kỳ ngành nghề'));?>  
-	                    </td>
-	                    <td>
-	                        <?php echo $this->Form->Input('province',array('class'=>'comboType02','label'=>false,'div'=>false,'empty'=>'Tất cả địa điểm'));?>    
-	                    </td>
-	                    <td><?php echo $this->Form->Submit('Tìm việc',array('class'=>'btn_cont','div'=>false));?></td>
-	                    </tr>
-	                    <tr>
-	                        <td colspan="4"><div><?php echo $html->link($html->tag('span', 'Tìm Kiếm Nâng Cao'), 
-									array('controller' => 'jobs', 'action' => 'advanceSearch'),array('escape' => false));?></div></td>
-	                    </tr>            
-	                </tbody>
-	            </table>
-		    </div><!--end xboxcontent-->		
-       		</div>   
-           <!-- end right col -->
+       	
         </div>     <!-- end page-->
         <!-- end wrap -->
         <div style="clear: both;">
         <br/>
         </div>
+        </div>
     </div>
+</div>
 </div>
 

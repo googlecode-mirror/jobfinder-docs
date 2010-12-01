@@ -3,13 +3,9 @@
     <div class="wrap_cr">
         <!-- begin content -->
         <div id="content_cr">
+        <?php echo $this->Session->flash(); ?>
 		<?php echo $form->create('Jobseeker', array('class'=>'form_field')); ?>
             <div class="box_corner">
-                <b class="xtop">
-                    <b class="xb1 blue_top"><!-- --></b>
-                    <b class="xb2 blue_curve blue_title"><!-- --></b>
-                    <b class="xb3 blue_curve blue_title"><!-- --></b>
-                </b>
                 <div class="blue_bg_title"><strong>Nộp Đơn Ứng Tuyển</strong></div>
                 <div class="white_content">
                     <table><tr><td>
@@ -39,11 +35,6 @@
 					</td></tr>	                     
                     </table>
                 </div>
-                <b class="xbottom">
-                    <b class="xb3 blue_curve blue_bg_bottom"><!-- --></b>
-                    <b class="xb2 blue_curve blue_bg_bottom"><!-- --></b>
-                    <b class="xb1 blue_top"><!-- --></b>
-                </b>
             </div>
             <!-- end Log In Information -->
             <div style="text-align: right;">

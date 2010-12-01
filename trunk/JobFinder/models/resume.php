@@ -35,7 +35,7 @@ class Resume extends AppModel {
 			),
 		),
 		'nationality' => array(
-			'numeric' => array(
+			'notempty' => array(
 				'rule' => array('notempty'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,

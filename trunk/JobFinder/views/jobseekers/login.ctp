@@ -3,12 +3,7 @@
 		<div id="right_cr">	
 		<?php echo $this->Form->create('Jobseeker', array('action' => 'login','class'=>'form_field')); ?>
                 <?php echo $this->Session->flash(); ?>
- 			<div class="box_corner">				
-                <b class="xtop">
-                    <b class="xb1 blue_top"><!----></b>
-                    <b class="xb2 blue_curve blue_title"><!-- --></b>
-                    <b class="xb3 blue_curve blue_title"><!-- --></b>
-                </b>					
+ 			<div class="box_corner">									
 				<div class="blue_bg_title"><strong>Thông Tin Đăng Nhập</strong></div>
 				<div class="white_content">	
                 <table width="100%" border="0">
@@ -25,11 +20,6 @@
                     </td> </tr> </tbody>
                 </table>
                 </div>
-                    <b class="xbottom">
-                    <b class="xb3 blue_curve blue_bg_bottom"><!-- --></b>
-                    <b class="xb2 blue_curve blue_bg_bottom"><!-- --></b>
-                    <b class="xb1 blue_top"><!-- --></b>
-                    </b>
         </div>
             <div style="text-align: right;">
             	<?php echo $this->Form->submit('Đăng nhập',array('class'=>'btn_back','div'=>false)); ?>

@@ -1,5 +1,5 @@
 <div id="job_nav_sub">
-	<div class="job_wrapmenu">
+	<div class="job_wrapsubmenu">
 		<ul class="job_subnav">
 			<li><?php echo $html->link($html->tag('span', 'Tài khoản'), 
 					array('controller' => 'jobseekers', 'action' => 'profile'),array('escape' => false)); ?>
@@ -16,13 +16,8 @@
         <div id="right_cr">
         	<h2>Quản lý nghề nghiệp</h2>     
             <div class="box_corner">
-                <b class="xtop">
-                    <b class="xb1 blue_top"></b>
-                    <b class="xb2 blue_curve blue_title"></b>
-                    <b class="xb3 blue_curve blue_title"></b>
-                </b>
 				<div class="blue_bg_title"><strong>Việc làm đã lưu</strong></div>
-				<div class="white_content1" id="divContent">
+				<div class="white_tablecontent">
 				   <table width="100%" cellspacing="0" cellpadding="0" border="0" class="tb_list">
 					  <tbody><tr bgcolor="#e2e2e2" class="tb_title">
 						<td width="35%"><?php echo $this->Paginator->sort('Chức danh','job_title');?></td>
@@ -53,26 +48,17 @@
 				 		| <?php echo $this->Paginator->next(__('Kế tiếp', true) . ' >>', array(), null, array('class' => 'disabled'));?>
 					</div>					
                 </div>
-                <!--end xboxcontent-->
-				<b class="xbottom">
-                <b class="xb3 blue_curve blue_bg_bottom"></b>
-                <b class="xb2 blue_curve blue_bg_bottom"></b>
-                <b class="xb1 blue_top"></b>
-                </b>				
+                <!--end xboxcontent-->				
 			</div>
             <div style="text-align: left;">
-                <?php echo $this->Html->link(__('Tìm việc', true), 
-                        array('controller'=>'jobs','action' => 'search'));?>
+                <?php echo $this->Html->link($html->tag('span', 'Tìm việc'), 
+                        array('controller'=>'jobs','action' => 'search'),array('escape' => false, 'class'=>'button'));?>
             </div>
             <br/>
+            <br/>
             <div class="box_corner">
-                <b class="xtop">
-                    <b class="xb1 blue_top"></b>
-                    <b class="xb2 blue_curve blue_title"></b>
-                    <b class="xb3 blue_curve blue_title"></b>
-                </b>
 				<div class="blue_bg_title"><strong>Hồ Sơ Của Tôi</strong></div>
-				<div class="white_content1" id="divContent">
+				<div class="white_tablecontent">
 				   <table width="100%" cellspacing="0" cellpadding="0" border="0" class="tb_list">
 					  <tbody><tr bgcolor="#e2e2e2" class="tb_title">
 						<td width="35%"><?php echo $this->Paginator->sort('Tiêu đề','resume_title');?></td>
@@ -99,18 +85,13 @@
 				 		| <?php echo $this->Paginator->next(__('Kế tiếp', true) . ' >>', array(), null, array('class' => 'disabled'));?>
 					</div>					
                 </div>
-                <!--end xboxcontent-->
-				<b class="xbottom">
-                <b class="xb3 blue_curve blue_bg_bottom"></b>
-                <b class="xb2 blue_curve blue_bg_bottom"></b>
-                <b class="xb1 blue_top"></b>
-                </b>				
+                <!--end xboxcontent-->				
 			</div>
             <div style="text-align: left;">
-                <?php echo $this->Html->link(__('Tạo hồ sơ', true), 
-                        array('controller'=>'resumes','action' => 'createResume'));?>
+                <?php echo $this->Html->link($html->tag('span', 'Tạo hồ sơ'), 
+                        array('controller'=>'resumes','action' => 'createResume'),array('escape' => false, 'class'=>'button'));?>
             </div>
-            
+            <br/>
         </div>
     </div>
 </div>

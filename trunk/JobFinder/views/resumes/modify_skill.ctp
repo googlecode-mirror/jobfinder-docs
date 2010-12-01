@@ -55,7 +55,7 @@
                 </div>  
             </div>
             <div style="text-align: right;">
-                <?php echo $this->Form->submit('Thêm', array('class'=>'btn_cont','div'=>false));?>            
+                <?php echo $this->Form->submit('Thêm & Lưu', array('class'=>'btn_cont','div'=>false));?>            
             </div>
             
             <div class="box_corner">
@@ -71,7 +71,7 @@
 						<tr>
 							<td><?php echo $listSkills[$resumeSkill['ResumeSkill']['skill_id']]; ?>&nbsp;</td>
 							<td><?php echo $proficiencies[$resumeSkill['ResumeSkill']['proficiency']]; ?>&nbsp;</td>
-							<td><?php echo $this->Html->link(__('Sửa', true), array('action' => 'editSkill', $resumeSkill['ResumeSkill']['id'])); ?>
+							<td><?php echo $this->Html->link(__('Sửa', true), array('action' => 'editSkill', $resumeSkill['ResumeSkill']['id'], true)); ?>
 							<?php echo $this->Html->link(__('Xóa', true), array('action' => 'deleteSkill', $resumeSkill['ResumeSkill']['id'], true), null, sprintf(__('Bạn có chắc muốn xóa kỹ năng %s?', true), $listSkills[$resumeSkill['ResumeSkill']['skill_id']])); ?>
 							</td>
 						</tr>
