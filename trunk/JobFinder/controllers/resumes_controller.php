@@ -4,6 +4,10 @@ class ResumesController extends AppController {
 	var $components = array('RequestHandler');
 	var $uses = array('Resume','ResumeJobExp','ResumeEducation','Job','ResumeSkill', 'Skill','JobLevel','JobCategory','JobType');
 
+	function beforeFilter(){
+		$this->set('total',$this->Job->find('count', array('conditions'=>array('Job.status' => 1))));
+	}
+	
 	function view($id = null) {
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid resume', true));
@@ -198,6 +202,7 @@ class ResumesController extends AppController {
 		$this->set('jobLevels', $this->Resume->ResumeJobExp->JobLevel->find('list'));
 		$this->set('jobCategories', $this->Resume->ResumeJobExp->JobCategory->find('list'));
 		$this->set('countries', $this->Jobseeker->Country->find('list'));
+		$this->set('provinces', $this->Jobseeker->Province->find('list'));
 		if($id){
 			$this->Session->write('resumeID', $id);
 		}
@@ -242,13 +247,15 @@ class ResumesController extends AppController {
 		array('ResumeJobExp.resume_id' => $this->Session->read('resumeID')))));
 	}
 
-	function deleteJobExp($id = null) {
+	function deleteJobExp($id = null, $isModify = null) {
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid id for Job exp', true));
 			$this->redirect(array('action'=>'addJobExp'));
 		}
 		if ($this->Resume->ResumeJobExp->delete($id)) {
 			$this->Session->setFlash(__('Job exp deleted', true));
+			if($isModify)
+				$this->redirect(array('action'=>'modifyJobExp'));
 			$this->redirect(array('action'=>'addJobExp'));
 		}
 		$this->Session->setFlash(__('Job exp was not deleted', true));
@@ -257,10 +264,10 @@ class ResumesController extends AppController {
 
 	function modifyJobExp($id = null){
 		$jobseeker = $this->checkJobSeekerSession();
-		$provinces = array();
 		$this->set('jobLevels', $this->Resume->ResumeJobExp->JobLevel->find('list'));
 		$this->set('jobCategories', $this->Resume->ResumeJobExp->JobCategory->find('list'));
 		$this->set('countries', $this->Jobseeker->Country->find('list'));
+		$this->set('provinces', $this->Jobseeker->Province->find('list'));
 		if($id){
 			$this->Session->write('resumeID', $id);
 		}
@@ -299,18 +306,22 @@ class ResumesController extends AppController {
 		}
 	}
 
-	function editEducation($id = null){
+	function editEducation($id = null, $isModify = null){
 		$jobseeker = $this->checkJobSeekerSession();
 		$this->set('degreeLevels', $this->Resume->ResumeEducation->DegreeLevel->find('list'));
 		$this->set('countries', $this->Jobseeker->Country->find('list'));
-
+		$this->set('isModify', $isModify);
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid education', true));
-			$this->redirect(array('action' => 'addEducation'));
+			if($isModify)
+				$this->redirect(array('action'=>'modifyEducation'));
+			$this->redirect(array('action'=>'addEducation'));
 		}
 		if (!empty($this->data)) {
 			if ($this->Resume->ResumeEducation->save($this->data)) {
 				$this->Session->setFlash(__('The education has been saved', true));
+				if(isset($this->params['form']['task'])) 
+					$this->redirect(array('action' => 'modifyEducation', $this->data['ResumeEducation']['resume_id']));
 				$this->redirect(array('action' => 'addEducation'));
 			} else {
 				$this->Session->setFlash(__('The education could not be saved. Please, try again.', true));
@@ -319,23 +330,32 @@ class ResumesController extends AppController {
 		if (empty($this->data)) {
 			$this->data = $this->Resume->ResumeEducation->read(null, $id);
 			$this->Session->write('resumeID', $this->data['ResumeEducation']['resume_id']);
+			if(empty($this->data)){
+				//redirect to not found
+			}
 		}
 		$this->set('resumeEducations', $this->Resume->ResumeEducation->find('all', array('contain' => false, 'conditions' =>
 		array('ResumeEducation.resume_id' => $this->Session->read('resumeID')))));
 
 	}
 
-	function deleteEducation($id = null) {
+	function deleteEducation($id = null, $isModify = null) {
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid id for Education', true));
+			if($isModify)
+				$this->redirect(array('action'=>'modifyEducation'));
 			$this->redirect(array('action'=>'addEducation'));
 		}
 		if ($this->Resume->ResumeEducation->delete($id)) {
 			$this->Session->setFlash(__('Education deleted', true));
+			if($isModify)
+				$this->redirect(array('action'=>'modifyEducation'));
 			$this->redirect(array('action'=>'addEducation'));
 		}
 		$this->Session->setFlash(__('Education was not deleted', true));
-		$this->redirect(array('action' => 'addEducation'));
+		if($isModify)
+				$this->redirect(array('action'=>'modifyEducation'));
+		$this->redirect(array('action'=>'addEducation'));
 	}
 
 	function modifyEducation($id = null){
@@ -513,7 +533,6 @@ class ResumesController extends AppController {
 
 	function editSkill($id = null){
 		$jobseeker = $this->checkJobSeekerSession();
-		$jobseeker = $this->checkJobSeekerSession();
 		$this->set('skills', $this->Skill->find('list'));
 		$this->set('skillGroups', $this->Skill->SkillGroup->find('list'));
 		$this->set('proficiencies', $this->Category->find('list', array(
@@ -540,13 +559,15 @@ class ResumesController extends AppController {
 		array('ResumeSkill.resume_id' => $this->Session->read('resumeID')))));
 	}
 
-	function deleteSkill($id = null) {
+	function deleteSkill($id = null, $isModify = null) {
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid id for skill', true));
-			$this->redirect(array('action'=>'addJobExp'));
+			$this->redirect(array('action'=>'addSkill'));
 		}
 		if ($this->Resume->ResumeSkill->delete($id)) {
 			$this->Session->setFlash(__('Skill deleted', true));
+			if($isModify)
+				$this->redirect(array('action'=>'modifySkill'));
 			$this->redirect(array('action'=>'addSkill'));
 		}
 		$this->Session->setFlash(__('Skill was not deleted', true));
@@ -598,6 +619,5 @@ class ResumesController extends AppController {
 				'group' => array('Skill.name'))));
 			$this->render('/resumes/ajax_dropdown');
 		}
-
 	}
 }

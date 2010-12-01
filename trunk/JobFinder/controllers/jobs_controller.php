@@ -1,28 +1,26 @@
 <?php
 class JobsController extends AppController {
 	var $name = 'Jobs';
-	var $uses = array('Job','Province','DegreeLevel','JobLevel','JobType','JobCategory');
-	var $namedArgs = TRUE; 
-	
-	function index()
-	{
-		$jobs = $this->Job->find('all', array('contain' => array('JobContactInformation')));
-		$this->set('jobs', $jobs);
+	var $uses = array('Job','Country','Province','DegreeLevel','JobLevel','JobType','JobCategory','Skill','JobSkill');
+	var $namedArgs = TRUE;
+
+	function beforeFilter(){
+		$this->set('total',$this->Job->find('count', array('conditions'=>array('Job.status' => 1))));
 	}
-    
-    function search()
+	
+	function search()
 	{
 		$this->set('jobCategories', $this->JobCategory->find('list'));
 		$this->set('provinces', $this->Province->find('list'));
 		$this->set('listJobCategories', $this->JobCategory->find('all',array('contain'=>false, 'fields'=>array('JobCategory.id','JobCategory.name'),'order' => array('JobCategory.name'))));
 		$this->set('jobTypes', $this->JobType->find('all',array('contain'=>false, 'fields'=>array('JobType.id','JobType.type'))));
 	}
-	
-    function advanceSearch()
+
+	function advanceSearch()
 	{
-		
+
 	}
-	
+
 	function searchResults(){
 		$this->getNamedArgs();
 		$this->set('jobCategories', $this->JobCategory->find('list'));
@@ -32,7 +30,7 @@ class JobsController extends AppController {
 			$conditions = array('Job.status' => 1,
 								'Job.approved >=' => date('Y-m-d', strtotime('-'.$day. ' days')),
 								'Job.approved <=' => date('Y-m-d')
-								);
+			);
 			$this->paginate['Job'] = array('conditions' => $conditions,'recursive' => -1);
 			$this->set('results', $this->paginate('Job'));
 		}
@@ -60,25 +58,54 @@ class JobsController extends AppController {
 								'Job.company_name LIKE ' => '%'.$this->data['Job']['keyword'].'%',
 								'Job.minimun_salary' => $this->data['Job']['keyword'],
 								'Job.maximun_salary' => $this->data['Job']['keyword'],
-								));
+			));
 			$this->paginate['Job'] = array('conditions' => $conditions,'recursive' => -1);
 			$this->set('results', $this->paginate('Job'));
 		}
 	}
 
 	function view($id = null) {
+		$this->set('countries',$this->Country->find('list'));
 		$this->set('provinces',$this->Province->find('list'));
+		$this->set('companySizes', $this->Category->find('list', array(
+					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'CompanySize'))))));
 		$this->set('jobLevels',$this->JobLevel->find('list'));
 		$this->set('jobTypes',$this->JobType->find('list'));
 		$this->set('jobCategories',$this->JobCategory->find('list'));
 		$this->set('degreeLevels',$this->DegreeLevel->find('list'));
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid job', true));
-			$this->redirect(array('action' => 'index'));
+			$this->redirect(array('action' => 'search'));
 		}
 		$this->set('job', $this->Job->read(null,$id));
 	}
 
+	function preview($id = null) {
+		$request_params = Router::getParams();
+		$this->Session->write('auth_redirect','/'.$request_params['url']['url']);
+		$employer = $this->checkEmployerSession();
+		$this->set('countries',$this->Country->find('list'));
+		$this->set('provinces',$this->Province->find('list'));
+		$this->set('companySizes', $this->Category->find('list', array(
+					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'CompanySize'))))));
+		$this->set('jobLevels',$this->JobLevel->find('list'));
+		$this->set('jobTypes',$this->JobType->find('list'));
+		$this->set('jobCategories',$this->JobCategory->find('list'));
+		$this->set('degreeLevels',$this->DegreeLevel->find('list'));
+		if (!$id) {
+			$this->Session->setFlash(__('Invalid job', true));
+			$this->redirect(array('controller'=>'employers','action' => 'index'));
+		}
+		$job = $this->Job->read(null,$id);
+		if($job['Job']['employer_id'] == $employer['Employer']['id']){
+			$this->set('job', $this->Job->read(null,$id));
+		}
+		else {
+			$this->Session->setFlash(__('Invalid job', true));
+			$this->redirect(array('controller'=>'employers','action' => 'index'));
+		}
+	}
+	
 	function postJob(){
 		$request_params = Router::getParams();
 		$this->Session->write('auth_redirect','/'.$request_params['url']['url']);
@@ -94,6 +121,7 @@ class JobsController extends AppController {
 		$this->set('jobTypes', $this->JobType->find('list'));
 		$this->set('jobLocations', $this->Job->Province->find('list'));
 		$this->set('jobCategories', $this->JobCategory->find('list'));
+		$this->set('degreeLevels', $this->DegreeLevel->find('list'));
 		$this->set('applicationLanguages', $this->Category->find('list', array(
 					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'Language'))))));
 		if (!empty($this->data)) {
@@ -112,7 +140,8 @@ class JobsController extends AppController {
 				$this->data['Job']['status'] = 0;
 				if ($this->Job->save($this->data)) {
 					$this->Session->setFlash(__('The Job has been saved', true));
-					$this->redirect(array('action' => 'index'));
+					$this->Session->write('jobID', $this->Job->id);
+					$this->redirect(array('action' => 'addSkill'));
 				} else {
 					$this->Session->setFlash(__('The Job could not be saved. Please, try again.', true));
 				}
@@ -120,6 +149,72 @@ class JobsController extends AppController {
 		}
 	}
 	
+	function addSkill($id = null){
+		$employer = $this->checkEmployerSession();
+		$skills = array();
+		$this->set('skillGroups', $this->Skill->SkillGroup->find('list'));
+		$this->set('proficiencies', $this->Category->find('list', array(
+					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'Proficiency'))))));
+		if($id){
+			$this->Session->write('jobID', $id);
+		}
+		$this->set('jobSkills', $this->Job->JobSkill->find('all', array('contain' => false, 'conditions' =>
+		array('JobSkill.job_id' => $this->Session->read('jobID')))));
+		$this->set('listSkills', $this->Skill->find('list'));
+		
+		if (!empty($this->data)) {
+			//pr($this->data);
+			if ($this->Job->JobSkill->save($this->data)) {
+				$this->Session->setFlash(__('The skill has been saved', true));
+				$this->redirect(array('action' => 'addSkill'));
+			}
+			else {
+				$this->Session->setFlash(__('The skill could not be saved. Please, try again.', true));
+			}
+		}
+	}
+
+	function editSkill($id = null){
+		$employer = $this->checkEmployerSession();
+		$this->set('skills', $this->Skill->find('list'));
+		$this->set('skillGroups', $this->Skill->SkillGroup->find('list'));
+		$this->set('proficiencies', $this->Category->find('list', array(
+					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'Proficiency'))))));
+		$this->set('listSkills', $this->Skill->find('list'));
+
+		if (!$id && empty($this->data)) {
+			$this->Session->setFlash(__('Invalid skill', true));
+			$this->redirect(array('action' => 'addSkill'));
+		}
+		if (!empty($this->data)) {
+			if ($this->Job->JobSkill->save($this->data)) {
+				$this->Session->setFlash(__('The skill has been saved', true));
+				$this->redirect(array('action' => 'addSkill'));
+			} else {
+				$this->Session->setFlash(__('The skill could not be saved. Please, try again.', true));
+			}
+		}
+		if (empty($this->data)) {
+			$this->data = $this->Job->JobSkill->read(null, $id);
+			$this->Session->write('jobID', $this->data['JobSkill']['job_id']);
+		}
+		$this->set('jobSkills', $this->Job->JobSkill->find('all', array('conditions' =>
+		array('JobSkill.job_id' => $this->Session->read('jobID')))));
+	}
+
+	function deleteSkill($id = null) {
+		if (!$id) {
+			$this->Session->setFlash(__('Invalid id for skill', true));
+			$this->redirect(array('action'=>'addSkill'));
+		}
+		if ($this->Job->JobSkill->delete($id)) {
+			$this->Session->setFlash(__('Skill deleted', true));
+			$this->redirect(array('action'=>'addSkill'));
+		}
+		$this->Session->setFlash(__('Skill was not deleted', true));
+		$this->redirect(array('action' => 'addSkill'));
+	}
+
 	function saveJob($id = null)
 	{
 		$jobseeker = $this->checkJobSeekerSession();
@@ -127,8 +222,16 @@ class JobsController extends AppController {
 			$this->Session->setFlash(__('Invalid job', true));
 			$this->redirect(array('action' => 'index'));
 		}
-		$jobSaved = array('JobSaved' => array('jobseeker_id' => $jobseeker['Jobseeker']['id'],
-											'job_id' => $id));
+		$jobApply = $this->Job->JobApply->find('all',array('conditions' => array(array('JobApply.jobseeker_id' => $jobseeker['Jobseeker']['id']),
+					'AND' => array('job_id' => $id))));
+		if(!empty($jobApply)){
+			$jobSaved = array('JobSaved' => array('jobseeker_id' => $jobseeker['Jobseeker']['id'],
+									'job_id' => $id, 'status' => 1, 'applied' => $jobApply[0]['JobApply']['created'] ));
+		}
+		else {
+			$jobSaved = array('JobSaved' => array('jobseeker_id' => $jobseeker['Jobseeker']['id'],'job_id' => $id));
+		}
+		
 		$this->Job->JobSaved->set($jobSaved);
 		if(!$this->Job->JobSaved->validates())
 		{
@@ -181,7 +284,7 @@ class JobsController extends AppController {
 			$this->data = $this->Job->read(null, $id);
 		}
 	}
-	
+
 	function getProvinces() {
 		if(!empty($this->data['Job']['country_id'])) {
 			$this->set('options',$this->Job->Province->find('list',array(
@@ -189,6 +292,16 @@ class JobsController extends AppController {
 				'group' => array('Province.name'))));
 			$this->render('/jobs/ajax_dropdown');
 		}
+	}
+
+	function getSkills() {
+		if(!empty($this->data['Skill']['skill_group_id'])) {
+			$this->set('options',$this->Skill->find('list',array(
+				'conditions' => array('Skill.skill_group_id' => $this->data['Skill']['skill_group_id']),
+				'group' => array('Skill.name'))));
+			$this->render('/jobs/ajax_dropdown');
+		}
+
 	}
 }
 ?>

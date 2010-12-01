@@ -11,11 +11,6 @@
         <div id="content_cr">
             <!-- begin Resume Information -->
             <div class="box_corner">
-                <b class="xtop">
-                    <b class="xb1 blue_top"><!-- --></b>
-                    <b class="xb2 blue_curve blue_title"><!-- --></b>
-                    <b class="xb3 blue_curve blue_title"><!-- --></b>
-                </b>
                 <div class="blue_bg_title"><strong>Thông Tin Hồ Sơ </strong><span class="link_bgtitle"><?php echo $html->link('[Chỉnh sửa]', 
 					array('controller' => 'resumes', 'action' => 'editResume',$resume['Resume']['id'] )); ?></span></div>
                 <div class="white_content">
@@ -30,21 +25,11 @@
 				      	</tr> 
                     </table>
                 </div>
-                <b class="xbottom">
-                    <b class="xb3 blue_curve blue_bg_bottom"><!-- --></b>
-                    <b class="xb2 blue_curve blue_bg_bottom"><!-- --></b>
-                    <b class="xb1 blue_top"><!-- --></b>
-                </b>
             </div>
             <!-- end Resume Information -->
             
             <!-- begin Personal Information -->
             <div class="box_corner">
-                <b class="xtop">
-                    <b class="xb1 blue_top"><!-- --></b>
-                    <b class="xb2 blue_curve blue_title"><!-- --></b>
-                    <b class="xb3 blue_curve blue_title"><!-- --></b>
-                </b>
                 <div class="blue_bg_title"><strong>Thông Tin Cá Nhân </strong><span class="link_bgtitle"><?php echo $html->link('[Chỉnh sửa]', 
 					array('controller' => 'resumes', 'action' => 'editPersonalInformation',$resume['Resume']['id'] )); ?></span></div>
                 <div class="white_content">
@@ -83,21 +68,11 @@
 					  	</tr>
                     </table>
                 </div>                
-                <b class="xbottom">
-                    <b class="xb3 blue_curve blue_bg_bottom"><!-- --></b>
-                    <b class="xb2 blue_curve blue_bg_bottom"><!-- --></b>
-                    <b class="xb1 blue_top"><!-- --></b>
-                </b>
             </div>
             <!--end Personal Information-->
             
             <!-- begin Summary -->
             <div class="box_corner">
-                <b class="xtop">
-                    <b class="xb1 blue_top"><!-- --></b>
-                    <b class="xb2 blue_curve blue_title"><!-- --></b>
-                    <b class="xb3 blue_curve blue_title"><!-- --></b>
-                </b>
                 <div class="blue_bg_title"><strong>Tóm lược </strong><span class="link_bgtitle"><?php echo $html->link('[Chỉnh sửa]', 
 					array('controller' => 'resumes', 'action' => 'editTargetJob',$resume['Resume']['id'] )); ?></span></div>
                 <div class="white_content">
@@ -229,21 +204,11 @@
 
                     </table>
                 </div>                
-                <b class="xbottom">
-                    <b class="xb3 blue_curve blue_bg_bottom"><!-- --></b>
-                    <b class="xb2 blue_curve blue_bg_bottom"><!-- --></b>
-                    <b class="xb1 blue_top"><!-- --></b>
-                </b>
             </div>
             <!--end Summary-->
             
             <!-- begin Resume Information -->
             <div class="box_corner">
-                <b class="xtop">
-                    <b class="xb1 blue_top"><!-- --></b>
-                    <b class="xb2 blue_curve blue_title"><!-- --></b>
-                    <b class="xb3 blue_curve blue_title"><!-- --></b>
-                </b>
                 <div class="blue_bg_title"><strong>Hồ sơ</strong></div>
                 <div class="white_content">
                     <table class="table_info">
@@ -336,11 +301,6 @@
 						</tr>
 					</table>
                 </div>                
-                <b class="xbottom">
-                    <b class="xb3 blue_curve blue_bg_bottom"><!-- --></b>
-                    <b class="xb2 blue_curve blue_bg_bottom"><!-- --></b>
-                    <b class="xb1 blue_top"><!-- --></b>
-                </b>
             </div>
             <!--end Summary-->
         </div>

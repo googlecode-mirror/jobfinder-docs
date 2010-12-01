@@ -10,11 +10,6 @@
         <div id="right_cr">
             <!-- begin Resume Information -->
             <div class="box_corner">
-                <b class="xtop">
-                    <b class="xb1 blue_top"></b>
-                    <b class="xb2 blue_curve blue_title"></b>
-                    <b class="xb3 blue_curve blue_title"></b>
-                </b>
                 <div class="blue_bg_title"><strong>Thông Tin Hồ Sơ</strong></div>
                 <div class="white_content">
                     <table width="100%" cellspacing="0" cellpadding="0" border="0">
@@ -39,7 +34,7 @@
                                 <td width="82%">
                                     <?php echo $this->Form->radio('privacy_status',
                                     		array(1 => 'Cho phép tìm kiếm', 0 =>'Hồ sơ ẩn'),
-                                            array('legend'=>false)); ?>
+                                            array('legend'=>false,'error'=>array('wrap'=>'span'))); ?>
                                 </td>
                             </tr>
                         </tbody>
@@ -47,11 +42,6 @@
                     <div class="both"></div>
                 </div>
                 <!--end xboxcontent-->
-                <b class="xbottom">
-                    <b class="xb3 blue_curve blue_bg_bottom"></b>
-                    <b class="xb2 blue_curve blue_bg_bottom"></b>
-                    <b class="xb1 blue_top"></b>
-                </b>
             </div>
            
             <div style="text-align: right;">    
