@@ -81,13 +81,20 @@ class ResumeJobExp extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
+			'startBeforeEnd' => array(
+                'rule' => array('startBeforeEnd', 'end_date'),
+                'message' => 'The start time must be before the end time.', 
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
 		),
 		'end_date' => array(
 			'date' => array(
 				'rule' => array('date'),
-				'allowEmpty' => true,
 				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
+				'allowEmpty' => true,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
@@ -104,6 +111,7 @@ class ResumeJobExp extends AppModel {
 			),
 		),
 	);
+	
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 	var $belongsTo = array(
@@ -143,5 +151,21 @@ class ResumeJobExp extends AppModel {
 			'order' => ''
 		)
 	);
+	
+	function startBeforeEnd( $field=array(), $compare_field=null ) {
+        if(empty($this->data[$this->name][$compare_field])){
+        	return true;
+        }
+		foreach( $field as $key => $value ){
+        	$v1 = $value;
+            $v2 = $this->data[$this->name][$compare_field];
+            if($v1 > $v2) {
+                return false;
+           	} else {
+                continue;
+            }
+        }
+   		return TRUE;
+    } 
 }
 ?>

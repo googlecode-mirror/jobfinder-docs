@@ -2,12 +2,10 @@
    <div class="job_wrapmenu">
     	<ul class="job_mainnav">
         	<li><?php echo $html->link($html->tag('span', 'TRANG CHỦ'), 
-					array('controller' => 'jobs', 'action' => 'index'),array('escape' => false)); ?></li>
+					array('controller' => 'pages', 'action' => 'display'),array('escape' => false)); ?></li>
 					
-			<li><a href="#"> <span> Tìm việc</span> </a></li>
-			
-			<li><a href="#"> <span> Tìm hồ sơ</span> </a></li>
-			
+			<li><?php echo $html->link($html->tag('span', 'TÌM VIỆC'), 
+					array('controller' => 'jobs', 'action' => 'search'),array('escape' => false)); ?></li>	
 			<li><?php echo $html->link($html->tag('span', 'QUẢN LÝ NGHỀ NGHIỆP'), 
 					array('controller' => 'jobseekers', 'action' => 'index'),array('escape' => false)); ?></li>
     	</ul>
@@ -16,17 +14,14 @@
 				if(!$session->check('Jobseeker')){
 					echo $html->link('Đăng nhập', array('controller' => 'jobseekers', 'action' => 'login'));
 			?>
-				<span class="job_spacemenu"> | </span> 
-			<?php 
-				echo $html->link('Đăng ký', array('controller' => 'jobseekers', 'action' => 'register')); 
+				<span class="job_spacemenu">|</span> 
+			<?php echo $html->link('Đăng ký', array('controller' => 'jobseekers', 'action' => 'register')); 
 				} 
-				else 
-				{
+				else {
 					echo " Xin chào ". $session->read('Jobseeker.Jobseeker.first_name');
 			?>
-				<span class="job_spacemenu"> | </span> 
-				<?php 
-				echo $html->link('Đăng xuất', array('controller' => 'jobseekers', 'action' => 'logout')); 
+				<span class="job_spacemenu">|</span>
+				<?php echo $html->link('Đăng xuất', array('controller' => 'jobseekers', 'action' => 'logout')); 
 				}
 			?>
 	    </div>

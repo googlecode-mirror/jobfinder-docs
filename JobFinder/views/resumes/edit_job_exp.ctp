@@ -16,7 +16,10 @@
                     <table width="100%" border="0"><tbody><tr><td>
                         <div style="position: relative;">
                         <div class="form_field">
-                            <?php echo $this->Form->input('ResumeJobExp.id'); ?>                                
+                            <?php echo $this->Form->input('ResumeJobExp.id'); ?>
+                            <?php echo $this->Form->input('ResumeJobExp.resume_id', array('label'=> false,
+                                        'type'=>'hidden', 'div'=>false, 
+                                        'value' => $this->Session->read('resumeID'))); ?>                                   
                             <p>
                                 <label class="labels"><span class="require">*</span> Chức danh: </label>
                                 <?php echo $this->Form->input('ResumeJobExp.job_title', array('label'=>false,
@@ -75,7 +78,12 @@
                 </div>
             </div>
             <div style="text-align: right;">
-                <?php echo $this->Form->submit('Lưu', array('class'=>'btn_cont','div'=>false));?>            
+            <?php if(!$isModify):?>
+                <?php echo $this->Form->submit('Lưu', array('class'=>'btn_cont','div'=>false));?>
+            <?php endif;?>
+            <?php if($isModify):?>
+            	<?php echo $this->Form->submit('Lưu', array('class'=>'btn_cont','div'=>false,'name'=>'modify'));?>
+            <?php endif;?>           
             </div>
             
             <div class="box_corner">
@@ -91,9 +99,16 @@
 					  <tr>
 						<td><?php echo $jobExp['ResumeJobExp']['company_name']; ?>&nbsp;</td>
 						<td><?php echo $jobExp['ResumeJobExp']['job_title']; ?>&nbsp;</td>
-						<td class="actions"><?php echo $this->Html->link(__('Sửa', true), array('action' => 'editJobExp', $jobExp['ResumeJobExp']['id'])); ?>
-						<?php echo $this->Html->link(__('Xóa', true), array('action' => 'deleteJobExp', $jobExp['ResumeJobExp']['id']), null, sprintf(__('Bạn có chắc muốn xóa quá trình làm việc tại %s?', true), $jobExp['ResumeJobExp']['company_name'])); ?>
-						</td>
+						<?php if(!$isModify):?>
+							<td class="actions"><?php echo $this->Html->link(__('Sửa', true), array('action' => 'editJobExp', $jobExp['ResumeJobExp']['id'])); ?>
+							<?php echo $this->Html->link(__('Xóa', true), array('action' => 'deleteJobExp', $jobExp['ResumeJobExp']['id']), null, sprintf(__('Bạn có chắc muốn xóa quá trình làm việc tại %s?', true), $jobExp['ResumeJobExp']['company_name'])); ?>
+							</td>
+						<?php endif;?>
+						<?php if($isModify):?>
+							<td class="actions"><?php echo $this->Html->link(__('Sửa', true), array('action' => 'editJobExp', $jobExp['ResumeJobExp']['id'], true)); ?>
+							<?php echo $this->Html->link(__('Xóa', true), array('action' => 'deleteJobExp', $jobExp['ResumeJobExp']['id'], true), null, sprintf(__('Bạn có chắc muốn xóa quá trình làm việc tại %s?', true), $jobExp['ResumeJobExp']['company_name'])); ?>
+							</td>
+						<?php endif;?>
 					</tr>
 					<?php endforeach; ?>
 					  </tbody></table>					
@@ -104,9 +119,14 @@
             <?php echo $ajax->observeField('countries',array('url'=>'getProvinces','update'=>'provinces'));?>
             
             <div style="text-align: right;">
-                <?php echo $this->Html->link(__('Trở lại', true), array('action' => 'modifyResume'));?>
-                <?php if(!empty($resumeEducations)) { echo $this->Html->link(__('Tiếp tục', true), 
-                        array('action' => 'addEducation')); }?>
+            	<?php if(!$isModify):?>
+                	<?php echo $this->Html->link(__('Trở lại', true), array('action' => 'modifyResume'));?>
+                	<?php if(!empty($resumeEducations)) { echo $this->Html->link(__('Tiếp tục', true), 
+                        	array('action' => 'addEducation')); }?>
+                <?php endif;?>
+                <?php if($isModify):?>
+            		<?php echo $this->Html->link(__('Trở lại', true), array('action' => 'preview',$this->Session->read('resumeID')));?>
+                <?php endif;?>
             </div>
         </div>
     </div>

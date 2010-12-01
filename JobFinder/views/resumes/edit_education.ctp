@@ -71,7 +71,7 @@
                 	<?php echo $this->Form->submit('Lưu', array('class'=>'btn_cont','div'=>false));?> 
                 <?php endif;?>
                 <?php if($isModify):?>
-                	<?php echo $this->Form->submit('Lưu', array('class'=>'btn_cont','div'=>false,'name'=>'task'));?>            
+                	<?php echo $this->Form->submit('Lưu', array('class'=>'btn_cont','div'=>false,'name'=>'modify'));?>            
             	<?php endif;?>
             </div>
             

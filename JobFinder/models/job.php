@@ -16,7 +16,7 @@ class Job extends AppModel {
 		'company_name' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
+				'message' => 'Vui lòng nhập tên công ty',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -123,6 +123,16 @@ class Job extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
+		'degree_level_id' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
 		'job_categories' => array(
 			'multiple' => array(
 				'rule' => array('multiple', array('min'=>1, 'max'=>3)),
@@ -217,6 +227,13 @@ class Job extends AppModel {
 		'DegreeLevel' => array(
 			'className' => 'DegreeLevel',
 			'foreignKey' => 'degree_level_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
+		'Category' => array(
+			'className' => 'Category',
+			'foreignKey' => 'salary_range',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''

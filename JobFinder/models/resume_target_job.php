@@ -72,6 +72,28 @@ class ResumeTargetJob extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
+		'current_salary' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
+				'allowEmpty'=> true
+				//'message' => 'Please select at least one and maximum 3 option',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'desired_salary' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
+				'allowEmpty'=> true
+				//'message' => 'Please select at least one and maximum 3 option',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
 	);
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 

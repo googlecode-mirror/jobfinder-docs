@@ -1,5 +1,5 @@
 <div id="job_nav_sub">
-	<div class="job_wrapmenu">
+	<div class="job_wrapsubmenu">
 		<ul class="job_subnav">
 			<li><?php echo $html->link($html->tag('span', 'Tìm Kiếm Nhanh'), 
 					array('controller' => 'jobs', 'action' => 'search'),array('escape' => false)); ?>
@@ -21,11 +21,6 @@
      <?php echo $this->Session->flash(); ?>
     <div id="search_contentpage">
         <div class="box_corner">				
-            <b class="xtop">
-                <b class="xb1 blue_top"><!-- --></b>
-                <b class="xb2 blue_curve blue_title"><!-- --></b>
-                <b class="xb3 blue_curve blue_title"><!-- --></b>
-            </b>
             <div class="blue_bg_title"><strong>Tìm Việc</strong></div>
             <div class="white_content">
             <div style="padding-left: 70px;" id="jsContainer">
@@ -287,8 +282,7 @@
 				<br class="clear"/>
 				</fieldset>
 			</div>
-            </div><!--end xboxcontent-->	
-                    <b class="xbottom"><b class="xb3 blue_curve blue_bg_bottom"><!-- --></b><b class="xb2 blue_curve blue_bg_bottom"><!-- --></b><b class="xb1 blue_top"><!-- --></b></b>				
+            </div><!--end xboxcontent-->				
             </div>
     </div>   
     <div class="pos_btn">

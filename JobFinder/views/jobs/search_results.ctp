@@ -1,3 +1,16 @@
+<div id="job_nav_sub">
+	<div class="job_wrapsubmenu">
+		<ul class="job_subnav">
+			<li><?php echo $html->link($html->tag('span', 'Tìm Kiếm Nhanh'), 
+					array('controller' => 'jobs', 'action' => 'search'),array('escape' => false)); ?>
+			</li>
+			<li><?php echo $html->link($html->tag('span', 'Tìm Kiếm Nâng Cao'), 
+					array('controller' => 'jobs', 'action' => 'advanceSearch'),array('escape' => false)); ?>
+			</li>	
+		</ul>	
+		<br clear="all"/>
+	</div><!-- end wrap -->		
+</div>
 <div class="wrap_search">   
     <div style="height: 5%;margin-left: 90px " class="line_title ">
     	  <?php echo $html->image('../img/home/btxt_search_result_vn.gif', 
@@ -69,7 +82,7 @@
         <!-- end Job detail -->
         <div class="box_corner">				
         <div class="blue_bg_title"><strong>Tìm việc nhanh</strong></div>
-        <div class="blue_content">
+        <div class="white_content">
             <table width="100%" cellspacing="0" cellpadding="0" border="0">
                 <tbody>
                 	<?php echo $this->Form->create('Job',array('action'=>'searchResults'));?>
@@ -81,7 +94,7 @@
                     <td>
                         <?php echo $this->Form->Input('province',array('class'=>'comboType02','label'=>false,'div'=>false,'empty'=>'Tất cả địa điểm'));?>    
                     </td>
-                    <td><?php echo $this->Form->Submit('Tìm việc',array('class'=>'btn_searchbox','div'=>false));?></td>
+                    <td><?php echo $this->Form->Submit('Tìm việc',array('class'=>'btn_cont','div'=>false));?></td>
                     </tr>
                     <tr>
                         <td colspan="4"><div><?php echo $html->link($html->tag('span', 'Tìm Kiếm Nâng Cao'), 

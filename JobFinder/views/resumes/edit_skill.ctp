@@ -14,7 +14,10 @@
                     <table width="100%" border="0"><tbody><tr><td>
                         <div style="position: relative;">
                         <div class="form_field">                            
-                            <?php echo $this->Form->input('ResumeSkill.id', array('type'=>'hidden')); ?>                                                                    
+                            <?php echo $this->Form->input('ResumeSkill.id', array('type'=>'hidden')); ?>
+                            <?php echo $this->Form->input('ResumeSkill.resume_id', array('label'=> false,
+                                        'type'=>'hidden', 'div'=>false, 
+                                        'value' => $this->Session->read('resumeID'))); ?>                                                                     
                             <p>
                                 <label class="labels"><span class="require">*</span> Nhóm kỹ năng: </label>
                                 <?php echo $this->Form->input('Skill.skill_group_id', array('label'=>false,
@@ -53,15 +56,15 @@
                 </div>
             </div>
             <div style="text-align: right;">
-                <?php echo $this->Form->submit('Lưu', array('class'=>'btn_cont','div'=>false));?>            
+            <?php if(!$isModify):?>
+                <?php echo $this->Form->submit('Lưu', array('class'=>'btn_cont','div'=>false));?>
+            <?php endif;?>
+            <?php if($isModify):?>
+                <?php echo $this->Form->submit('Lưu', array('class'=>'btn_cont','div'=>false,'name'=>'modify'));?>
+            <?php endif;?>   
             </div>
             
             <div class="box_corner">
-                <b class="xtop">
-                    <b class="xb1 blue_top"></b>
-                    <b class="xb2 blue_curve blue_title"></b>
-                    <b class="xb3 blue_curve blue_title"></b>
-                </b>
 				<div class="blue_bg_title"><strong>Kỹ năng</strong></div>
 				<div class="white_tablecontent">
 				   <table width="100%" cellspacing="0" cellpadding="0" border="0" class="tb_list">
@@ -74,9 +77,16 @@
 						<tr>
 							<td><?php echo $listSkills[$resumeSkill['ResumeSkill']['skill_id']]; ?>&nbsp;</td>
 							<td><?php echo $proficiencies[$resumeSkill['ResumeSkill']['proficiency']]; ?>&nbsp;</td>
-							<td><?php echo $this->Html->link(__('Sửa', true), array('action' => 'editSkill', $resumeSkill['ResumeSkill']['id'])); ?>
-							<?php echo $this->Html->link(__('Xóa', true), array('action' => 'deleteSkill', $resumeSkill['ResumeSkill']['id']), null, sprintf(__('Bạn có chắc muốn xóa kỹ năng %s?', true), $listSkills[$resumeSkill['ResumeSkill']['skill_id']])); ?>
-							</td>
+							<?php if(!$isModify):?>
+								<td><?php echo $this->Html->link(__('Sửa', true), array('action' => 'editSkill', $resumeSkill['ResumeSkill']['id'])); ?>
+								<?php echo $this->Html->link(__('Xóa', true), array('action' => 'deleteSkill', $resumeSkill['ResumeSkill']['id']), null, sprintf(__('Bạn có chắc muốn xóa kỹ năng %s?', true), $listSkills[$resumeSkill['ResumeSkill']['skill_id']])); ?>
+								</td>
+							<?php endif;?>
+							<?php if($isModify):?>
+								<td><?php echo $this->Html->link(__('Sửa', true), array('action' => 'editSkill', $resumeSkill['ResumeSkill']['id'], true)); ?>
+								<?php echo $this->Html->link(__('Xóa', true), array('action' => 'deleteSkill', $resumeSkill['ResumeSkill']['id'], true), null, sprintf(__('Bạn có chắc muốn xóa kỹ năng %s?', true), $listSkills[$resumeSkill['ResumeSkill']['skill_id']])); ?>
+								</td>
+							<?php endif;?>
 						</tr>
 						<?php endforeach; ?>
 					  </tbody></table>					
@@ -84,11 +94,15 @@
                 <!--end xboxcontent-->			
 			</div>
            <?php echo $ajax->observeField('skillGroups',array('url'=>'getSkills','update'=>'skills'));?>
-           <div style="text-align: right;">                
-                <?php echo $this->Html->link(__('Trở lại', true), array('action' => 'saveTargetJob'));?>
-                <?php if(!empty($resumeSkills)){ echo $this->Html->link(__('Hoàn tất', true), 
+           <div style="text-align: right;">
+           		<?php if(!$isModify):?>         
+                	<?php echo $this->Html->link(__('Trở lại', true), array('action' => 'saveTargetJob'));?>
+                	<?php if(!empty($resumeSkills)){ echo $this->Html->link(__('Hoàn tất', true), 
                         array('action' => 'view',$this->Session->read('resumeID'))); } ?>
-            
+                <?php endif;?>
+            	<?php if($isModify):?>
+            		<?php echo $this->Html->link(__('Trở lại', true), array('action' => 'preview',$this->Session->read('resumeID')));?>
+                <?php endif;?>
            </div>
         </div>
     </div>
