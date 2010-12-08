@@ -10,6 +10,7 @@
         <div id="content_cr">
         <div id="right_cr">
         	<?php echo $this->Form->create('Job', array('action' => 'postJob','class'=>'form_field')); ?>
+                <?php echo $this->Form->input('id');?>
                 <!-- begin Company Information -->
  			    <div class="box_corner">				
 					<div class="dblue_bg_title">
@@ -20,40 +21,40 @@
 					    <tbody> <tr> <td>
                        	<p>
 							<label><span class="require_emp">*</span> Tên công ty:</label>
-							<?php echo $this->Form->input('company_name',array('label'=>false,'class'=>'field','div'=>false,'style'=>'width:350px','value'=>$employer['Employer']['company_name'],'error'=>array('wrap'=>'span'))); ?>
+							<?php echo $this->Form->input('company_name',array('label'=>false,'class'=>'field','div'=>false,'style'=>'width:350px','error'=>array('wrap'=>'span'))); ?>
 						</p>
                         <p>
                           <label><span class="require_emp">*</span> Quy mô (số nhân viên):</label>
-						  <?php echo $this->Form->input('company_size', array('label'=>false,'empty' => 'Vui lòng chọn..','class'=>'field_list','div'=>false,'value'=>$employer['Employer']['company_size'],'error'=>array('wrap'=>'span')));?>
+						  <?php echo $this->Form->input('company_size', array('label'=>false,'empty' => 'Vui lòng chọn..','class'=>'field_list','div'=>false,'error'=>array('wrap'=>'span')));?>
 						</p>
 						<p style="height: 135px;margin-bottom: 30px;">
 						  <label>Sơ lược về công ty:</label>
-						  <?php echo $this->Form->input('company_profile',array('label'=>false,'rows'=>10, 'class'=>'co_pro_area','div'=>false,'value'=>$employer['Employer']['company_profile'],'error'=>array('wrap'=>'span'))); ?>
+						  <?php echo $this->Form->input('company_profile',array('label'=>false,'rows'=>10, 'class'=>'co_pro_area','div'=>false,'error'=>array('wrap'=>'span'))); ?>
 						</p>  
 						<p>
 						  	<label><span class="require_emp">*</span> Địa chỉ công ty:</label>
-						  	<?php echo $this->Form->input('company_address',array('label'=>false,'class'=>'field','div'=>false,'style'=>'width:350px','value'=>$employer['Employer']['address'],'error'=>array('wrap'=>'span'))); ?>
+						  	<?php echo $this->Form->input('company_address',array('label'=>false,'class'=>'field','div'=>false,'style'=>'width:350px','error'=>array('wrap'=>'span'))); ?>
 						</p>
 						<p>
 						  	<label><span class="require_emp">*</span> Quốc gia:</label>
-						  	<?php echo $this->Form->input('country_id',array('label'=>false,'id'=>'countries', 'empty' => 'Vui lòng chọn...', 'class'=>'field','div'=>false,'value'=>$employer['Employer']['country_id'],'error'=>array('wrap'=>'span'))); ?>
+						  	<?php echo $this->Form->input('country_id',array('label'=>false,'id'=>'countries', 'empty' => 'Vui lòng chọn...', 'class'=>'field','div'=>false,'error'=>array('wrap'=>'span'))); ?>
 						</p>					  
 						<p>
 						  	<label><span class="require_emp">*</span> Tỉnh/Thành phố:</label>
-						  	<?php echo $this->Form->input('province_id',array('label'=>false,'id'=>'provinces', 'empty' => 'Vui lòng chọn...', 'class'=>'field','div'=>false,'value'=>$employer['Employer']['province_id'],'error'=>array('wrap'=>'span'))); ?>
+						  	<?php echo $this->Form->input('province_id',array('label'=>false,'id'=>'provinces', 'empty' => 'Vui lòng chọn...', 'class'=>'field','div'=>false,'error'=>array('wrap'=>'span'))); ?>
 						</p>
 						<?php echo $ajax->observeField('countries',array('url'=>'getProvinces','update'=>'provinces'));?>
 						<p>
 						  	<label>Website công ty:</label>
-						  	<?php echo $this->Form->input('company_website',array('label'=>false,'class'=>'field','div'=>false,'value'=>$employer['Employer']['website'],'error'=>array('wrap'=>'span'))); ?>
+						  	<?php echo $this->Form->input('company_website',array('label'=>false,'class'=>'field','div'=>false,'error'=>array('wrap'=>'span'))); ?>
 						</p>
 						<p>
 						  	<label><span class="require_emp">*</span> Số điện thoại:</label>
-						  	<?php echo $this->Form->input('telephone',array('label'=>false,'class'=>'field','div'=>false,'value'=>$employer['Employer']['telephone'],'error'=>array('wrap'=>'span'))); ?>
+						  	<?php echo $this->Form->input('telephone',array('label'=>false,'class'=>'field','div'=>false,'error'=>array('wrap'=>'span'))); ?>
 						</p>
 						<p>
 						  	<label>Số fax:</label>
-						  	<?php echo $this->Form->input('fax',array('label'=>false,'class'=>'field','div'=>false,'value'=>$employer['Employer']['fax'],'error'=>array('wrap'=>'span'))); ?>
+						  	<?php echo $this->Form->input('fax',array('label'=>false,'class'=>'field','div'=>false,'error'=>array('wrap'=>'span'))); ?>
 						</p>
                         </td> </tr> </tbody>
                         </table>
@@ -150,19 +151,19 @@
 					    <tbody> <tr> <td>
                         <p>
 						  	<label><span class="require_emp">*</span> Tên người liên hệ:</label>
-						  	<?php echo $this->Form->input('contact_name',array('label'=>false,'class'=>'field','div'=>false,'value'=>$employer['Employer']['contact_name'],'error'=>array('wrap'=>'span'))); ?>
+						  	<?php echo $this->Form->input('contact_name',array('label'=>false,'class'=>'field','div'=>false,'error'=>array('wrap'=>'span'))); ?>
 						</p>
 						<p>
 						  	<label><span class="require_emp">*</span> Chức vụ:</label> 
-						 	<?php echo $this->Form->input('contact_position',array('label'=>false,'class'=>'field','div'=>false,'value'=>$employer['Employer']['contact_position'],'error'=>array('wrap'=>'span'))); ?>
+						 	<?php echo $this->Form->input('contact_position',array('label'=>false,'class'=>'field','div'=>false,'error'=>array('wrap'=>'span'))); ?>
 						</p>
 						<p>
 						  	<label>Số điện thoại:</label>
-						  	<?php echo $this->Form->input('mobile',array('label'=>false,'class'=>'field','div'=>false,'value'=>$employer['Employer']['mobile'],'error'=>array('wrap'=>'span'))); ?>
+						  	<?php echo $this->Form->input('mobile',array('label'=>false,'class'=>'field','div'=>false,'error'=>array('wrap'=>'span'))); ?>
 						</p>
 						<p>
 						  	<label><span class="require_emp">*</span>Địa chỉ Email nhận hồ sơ:</label>
-						  	<?php echo $this->Form->input('email',array('label'=>false,'class'=>'field','div'=>false,'value'=>$employer['Employer']['email'],'error'=>array('wrap'=>'span'))); ?>
+						  	<?php echo $this->Form->input('email',array('label'=>false,'class'=>'field','div'=>false,'error'=>array('wrap'=>'span'))); ?>
 						</p>
                         </td> </tr> </tbody>
                         </table>

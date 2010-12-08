@@ -88,7 +88,6 @@ class ResumesController extends AppController {
 			$this->redirect(array('controller'=> 'jobseeker', 'action' => 'index'));
 		}
 		if (!empty($this->data)) {
-			$this->data['Resume']['jobseeker_id'] = $jobseeker['Jobseeker']['id'];
 			if($this->data['Resume']['years_exp'] == 0 && $this->Resume->ResumeJobExp->find('list',array('conditions' => array('ResumeJobExp.resume_id' => $this->data['Resume']['id'])))){
 				$this->Session->setFlash(__('Bạn có quá trình làm việc, số năm kinh nghiệm không thể nhập 0', true));
 			}
@@ -123,7 +122,6 @@ class ResumesController extends AppController {
 			$this->redirect(array('controller'=> 'jobseeker', 'action' => 'index'));
 		}
 		if (!empty($this->data)) {
-			$this->data['Resume']['jobseeker_id'] = $jobseeker['Jobseeker']['id'];
 			if ($this->Resume->save($this->data)) {
 				$this->Session->write('resumeID', $this->Resume->id);
 				$this->Session->setFlash(__('The resume has been saved', true));
@@ -138,6 +136,20 @@ class ResumesController extends AppController {
 		}
 	}
 
+	function delete($id=null) {
+		$jobseeker = $this->checkJobSeekerSession();
+		if (!$id) {
+			$this->Session->setFlash(__('Hồ sơ không hợp lệ.', true));
+			$this->redirect(array('controller'=>'jobseekers','action'=>'index'));
+		}
+		if ($this->Resume->delete($id)) {
+			$this->Session->setFlash(__('Hồ sơ đã được xóa.', true));
+			$this->redirect(array('controller'=>'jobseekers','action'=>'index'));
+		}
+		$this->Session->setFlash(__('Không thể xóa hồ sơ.', true));
+		$this->redirect(array('controller'=>'jobseekers','action'=>'index'));
+	}
+	
 	function editPersonalInformation($id = null){
 		$jobseeker = $this->checkJobSeekerSession();
 		$this->set('jobseeker', $jobseeker);
@@ -150,7 +162,6 @@ class ResumesController extends AppController {
 			$this->redirect(array('controller'=> 'jobseeker', 'action' => 'index'));
 		}
 		if (!empty($this->data)) {
-			$this->data['Resume']['jobseeker_id'] = $jobseeker['Jobseeker']['id'];
 			if ($this->Resume->save($this->data)) {
 				$this->Session->write('resumeID', $this->Resume->id);
 				$this->Session->setFlash(__('The resume has been saved', true));
@@ -173,7 +184,6 @@ class ResumesController extends AppController {
 			$this->redirect(array('controller'=> 'jobseeker', 'action' => 'index'));
 		}
 		if (!empty($this->data)) {
-			$this->data['Resume']['jobseeker_id'] = $jobseeker['Jobseeker']['id'];
 			if($this->data['Resume']['years_exp'] == 0 && $this->Resume->ResumeJobExp->find('list',
 			array('conditions' => array('ResumeJobExp.resume_id' => $this->data['Resume']['id'])))){
 				$this->Session->setFlash(__('Bạn có quá trình làm việc, số năm kinh nghiệm không thể nhập 0', true));

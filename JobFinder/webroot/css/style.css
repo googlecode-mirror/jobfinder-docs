@@ -310,7 +310,7 @@ form#form label {
 	clear:left;
 	display:block;
 	float:left;
-	width:100px;
+	width:140px;
 	text-align:right;
 	padding-right:10px;
 	margin-bottom:5px;
@@ -318,9 +318,12 @@ form#form label {
 form#form input {
 	padding:3px;
 	margin-bottom:5px;
+	
 }
-form#form input[type=text]{
-	width:230px 	
+form#form input[type=text],input[type=password] {
+	display:block;
+	width:230px;
+	
 }
 form#form button {
 	padding:3px;
@@ -328,12 +331,19 @@ form#form button {
 }
 form#form select {
 	margin-left:5px;
+	margin-bottom: 5px;
+	
+}
+.block{
+	display: block;
 }
 form#form textarea {
-	width:410px;
-	height:200px;
+	width:350px;
+	height:100px;
 	padding:5px;
 	overflow:auto;
+	display: block;
+	margin-bottom:5px;
 }
 form#form option {
 	background:#FFF;
@@ -358,7 +368,6 @@ form#form input[type=submit]:hover ,form#form button[type=reset]:hover{
 form#form div.error-message {
 	color:#FF0000;
 	display:block;
-	
 	float:right;
 	margin-right:280px;
 	padding-top: 0px;
@@ -366,6 +375,52 @@ form#form div.error-message {
 	font-weight: bold;
 }
 
+form#form span.error-message {
+	color:#FF0000;
+	font-weight: bold;
+	display:block;
+	margin-left:150px;
+	padding-top: 0px;
+	padding-bottom: 5px;
+}
+
+a.button {
+    background: transparent url('../img/home/bg_button_a.gif') no-repeat scroll top right;
+    color: #444;
+    display: block;
+    float: left;
+    font: normal 12px arial, sans-serif;
+    height: 24px;
+    margin-right: 6px;
+    padding-right: 18px; /* sliding doors padding */
+    text-decoration: none;
+}
+
+a.button span {
+    background: transparent url('../img/home/bg_button_span.gif') no-repeat;
+    display: block;
+    line-height: 14px;
+    padding: 5px 0 5px 18px;
+} 
+
+a.button:active {
+    background-position: bottom right;
+    color: #000;
+    outline: none; /* hide dotted outline in Firefox */
+}
+
+a.button:active span {
+    background-position: bottom left;
+    padding: 6px 0 4px 18px; /* push text down 1px */
+} 
+
+.box_pre {clear:both;padding-top:5px}
+.box_left {float:left;width:150px;text-align:right;padding-right:20px;color:#006699}
+.box_right {float:left;width:320px}
+.box_right p {height:auto;margin-bottom:10px;}
+.comp_name {font-weight:bold;text-transform:uppercase}
+.link_bgtitle a{text-decoration:none;font-size:12px}
+.link_bgtitle a:hover {color:activecaption; text-decoration:underline;font-size:12px}
 /*********************
 	Icons
 *********************/

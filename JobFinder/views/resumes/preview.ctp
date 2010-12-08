@@ -60,7 +60,7 @@
 					  	</tr>
 					  	<tr class="field_cp">
 							<td>&nbsp;</td>
-							<td><?php echo $resume['Resume']['telephone']; ?>/<?php echo $resume['Resume']['mobile']; ?></td>
+							<td><?php echo $resume['Resume']['telephone']; ?> / <?php echo $resume['Resume']['mobile']; ?></td>
 					  	</tr>
 					  	<tr class="field_cp">
 							<td>&nbsp;</td>

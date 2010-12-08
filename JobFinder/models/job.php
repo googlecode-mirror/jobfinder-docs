@@ -74,10 +74,20 @@ class Job extends AppModel {
 			),
 		),
 		'telephone' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
+			'phone' => array(
+				'rule' => array('phone','/^[[:space:]\-0-9]{7,}$/i',null),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'mobile' => array(
+			'phone' => array(
+				'rule' => array('phone','/^[[:space:]\-0-9]{7,}$/i',null),
+				//'message' => 'Your custom message here',
+				'allowEmpty' => true,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
@@ -185,6 +195,16 @@ class Job extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
+		'expired' => array(
+			'date' => array(
+				'rule' => array('date'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
 	);
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
@@ -270,7 +290,7 @@ class Job extends AppModel {
 		'JobSkill' => array(
 			'className' => 'JobSkill',
 			'foreignKey' => 'job_id',
-			'dependent' => false,
+			'dependent' => true,
 			'conditions' => '',
 			'fields' => '',
 			'order' => '',
@@ -283,7 +303,7 @@ class Job extends AppModel {
 		'JobViewLog' => array(
 			'className' => 'JobViewLog',
 			'foreignKey' => 'job_id',
-			'dependent' => false,
+			'dependent' => true,
 			'conditions' => '',
 			'fields' => '',
 			'order' => '',

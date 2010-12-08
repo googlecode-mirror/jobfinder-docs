@@ -23,7 +23,8 @@
 <h3><?php __('Đăng tin tuyển dụng');?></h3>
 <br />
 <div id="box">
-<h3><?php __('Thông Tin Công Ty ');?>
+<h3><?php __('Thông Tin Công Ty ');?><span class="link_bgtitle"><?php echo $html->link('[Chỉnh sửa]', 
+array('controller' => 'jobs', 'action' => 'admin_editCompanyInformation',$job['Job']['id'] )); ?></span>
 </h3>
 <table width="100%" cellspacing="0" cellpadding="0" border="0">
 	<tbody>
@@ -71,7 +72,8 @@
 	</tbody>
 </table>
 
-<h3><?php __('Chi Tiết Công Việc ');?>
+<h3><?php __('Chi Tiết Công Việc ');?><span class="link_bgtitle"><?php echo $html->link('[Chỉnh sửa]', 
+array('controller' => 'jobs', 'action' => 'admin_editJobInformation',$job['Job']['id'] )); ?></span>
 </h3>
 <table width="100%" cellspacing="0" cellpadding="0" border="0">
 	<tbody>
@@ -153,7 +155,9 @@
 	</tbody>
 </table>
 
-<h3><?php __('Kỹ Năng Yêu Cầu ');?></h3>
+<h3><?php __('Kỹ Năng Yêu Cầu ');?><span class="link_bgtitle"><?php echo $html->link('[Chỉnh sửa]', 
+array('controller' => 'jobs', 'action' => 'admin_modifySkill',$job['Job']['id'] )); ?></span>
+</h3>
 <table width="100%" cellspacing="0" cellpadding="0" border="0">
 	<tbody>
 		<tr>
@@ -175,7 +179,8 @@
 	</tbody>
 </table>
 
-<h3><?php __('Thông Tin Liên Hệ ');?>
+<h3><?php __('Thông Tin Liên Hệ ');?><span class="link_bgtitle"><?php echo $html->link('[Chỉnh sửa]', 
+array('controller' => 'jobs', 'action' => 'admin_editJobContact',$job['Job']['id'] )); ?></span>
 </h3>
 <table width="100%" cellspacing="0" cellpadding="0" border="0">
 	<tbody>
@@ -202,21 +207,10 @@
 		</tr>
 	</tbody>
 </table>
-</div>
-<br/>
-<div id="box">
-<h3><?php __('Xét duyệt ');?></h3>
-<?php echo $this->Form->Create('Job',array('div'=>false,'id'=>'form'));?>
-<?php echo $this->Form->input('id');?>
-<?php echo $this->Form->input('status', array('label'=>'Tình trạng:','options' => array( 0 => "Chưa duyệt", 1=> "Đạt", 2 => "Không đạt", 3 => "Đã chỉnh sửa chờ duyệt"),'div'=>false,'error'=>array('wrap'=>'span')));?>
-<div align="center">
-	<br/>
-	<?php echo $this->Form->Submit(__('Lưu', true),array('div'=>false));?>
-</div>
-</div>
 
+</div>
 <br/>
 <?php echo $this->Html->link($html->tag('span', 'Trở về'), 
-                            array('controller'=> 'jobs', 'action' => 'admin_approveJob'),array('escape' => false, 'class'=>'button')); ?>
+                            array('controller'=> 'jobs', 'action' => 'admin_index'),array('escape' => false, 'class'=>'button')); ?>
 </div>
 </div>

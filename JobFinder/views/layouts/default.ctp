@@ -25,7 +25,6 @@
 	echo $scripts_for_layout;
 	echo $html->charset('UTF-8');
 	echo $javascript->link(array('prototype'));
-    
 ?>
 
 <head>
@@ -41,7 +40,7 @@
         </div>            
     		<div class="job_foremp">
     			<div class="job_forempct">
-                    <a href="#/?lang=2">» Cho nhà tuyển dụng</a>
+    				<?php echo $this->Html->link('» Cho nhà tuyển dụng', array('controller'=>'employers', 'action' => 'home'));?>
                 </div>
                 <!-- end job_forempct -->
             </div>
@@ -65,7 +64,7 @@
 
 
 <!-- begin navigation -->
-    <?php echo $this->element('job_menu');?>
+    <?php echo $this->element('jobseeker_menu');?>
     
 <!--Phần body -> home-->
 

@@ -38,8 +38,8 @@
             </div>
             <!-- end Log In Information -->
             <div style="text-align: right;">
+            <?php echo $this->Html->link($html->tag('span', 'Hủy'), array('action' => 'index'),array('escape' => false, 'class'=>'button')); ?>
     	   <?php echo $this->Form->submit('Ứng tuyển',array('class'=>'btn_cont','div'=>false)); ?>
-    	   <?php echo $this->Html->link(__('Hủy', true), array('action' => 'index','div'=>false)); ?>
     	</div>
     </div>
 </div>

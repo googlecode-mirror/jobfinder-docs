@@ -48,8 +48,14 @@
 			     </div><!-- end Company Information --> 
 
 			<div class="btn_pos">
+			
 				  <div class="btn_bg_emp"><div class="btn_l_emp"></div>
-				  	<?php echo $this->Form->submit('Lưu',array('class'=>'btn_c_emp','div'=>false)); ?>
+				  	<?php if(!$isModify):?>
+                		<?php echo $this->Form->submit('Lưu',array('class'=>'btn_c_emp','div'=>false)); ?>
+            		<?php endif;?>
+            		<?php if($isModify):?>
+                		<?php echo $this->Form->submit('Lưu',array('class'=>'btn_c_emp','div'=>false,'name'=>'modify'));?>
+            		<?php endif;?>            
                   	<div class="btn_r_emp"></div>
                   </div>
 			</div>
@@ -69,9 +75,16 @@
 						<tr>
 							<td><?php echo $listSkills[$jobSkill['JobSkill']['skill_id']]; ?>&nbsp;</td>
 							<td><?php echo $proficiencies[$jobSkill['JobSkill']['proficiency']]; ?>&nbsp;</td>
+							<?php if(!$isModify):?>
 							<td><?php echo $this->Html->link(__('Sửa', true), array('action' => 'editSkill', $jobSkill['JobSkill']['id'])); ?>
 							<?php echo $this->Html->link(__('Xóa', true), array('action' => 'deleteSkill', $jobSkill['JobSkill']['id']), null, sprintf(__('Bạn có chắc muốn xóa kỹ năng %s?', true), $listSkills[$jobSkill['JobSkill']['skill_id']])); ?>
 							</td>
+							<?php endif;?>
+							<?php if($isModify):?>
+							<td><?php echo $this->Html->link(__('Sửa', true), array('action' => 'editSkill', $jobSkill['JobSkill']['id'], true)); ?>
+							<?php echo $this->Html->link(__('Xóa', true), array('action' => 'deleteSkill', $jobSkill['JobSkill']['id'], true), null, sprintf(__('Bạn có chắc muốn xóa kỹ năng %s?', true), $listSkills[$jobSkill['JobSkill']['skill_id']])); ?>
+							</td>
+							<?php endif;?>
 						</tr>
 						<?php endforeach; ?>
 					  </tbody></table>					
@@ -81,12 +94,14 @@
             <?php echo $ajax->observeField('skillGroups',array('url'=>'getSkills','update'=>'skills',));?>
             
             <div style="text-align: right;">
-                <?php echo $this->Html->link(__('Trở lại', true), 
-                        array('action' => 'saveTargetJob'));?>
-                
-                <?php if(!empty($jobSkills)){ echo $this->Html->link(__('Hoàn tất', true), 
-                        array('action' => 'view', $this->Session->read('jobID'))); } ?>
-            
+            	<?php if(!$isModify):?>         
+                	<?php echo $this->Html->link(__('Trở lại', true), array('action' => 'modifyJob',$this->Session->read('jobID')));?>
+                	<?php echo $this->Html->link(__('Hoàn tất', true), array('action' => 'preview',$this->Session->read('jobID'))); ?>
+                <?php endif;?>
+            	<?php if($isModify):?>
+            		<?php echo $this->Html->link($html->tag('span', 'Trở về'), 
+                            array('action' => 'modifySkill', $this->Session->read('jobID')),array('escape' => false, 'class'=>'button')); ?>
+                <?php endif;?>            
             </div>
    </div>
    </div>

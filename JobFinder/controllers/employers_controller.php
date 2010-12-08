@@ -5,7 +5,24 @@ class EmployersController extends AppController {
 	var $components = array('RequestHandler','Email','Recaptcha.Captcha' => array(
                 'private_key' => '6LeP2r0SAAAAAPYU1WQUkoj9IyVljJVQiBVshL1x',  
                 'public_key' => '6LeP2r0SAAAAAN8qyexGrxfP-6cMh6vWGuFAOL3K'));
+	var $uses = array('Job','Employer');
 	
+	function beforeFilter(){
+		$this->layout = 'default_employer';
+		$this->set('total',$this->Job->find('count', array('conditions'=>array('Job.status' => 1))));
+	}
+	
+	function home(){
+		
+	}
+	
+	function index(){
+		$employer = $this->checkEmployerSession();
+		$this->paginate['Job'] =  array('conditions' => array('employer_id' => $employer['Employer']['id'], 'status'=>1));
+		$this->Employer->Job->recursive = 1;
+		$this->set('jobs', $this->paginate('Job'));
+	}
+
 	function login() {
 		$employer = $this->Session->read('Employer');
 		if ($employer){
@@ -137,12 +154,6 @@ class EmployersController extends AppController {
 		/* Set delivery method */
 		$this->Email->delivery = 'smtp';
 		$this->Email->send();
-	}
-
-	function index(){
-		$request_params = Router::getParams();
-		$this->Session->write('auth_redirect','/'.$request_params['url']['url']);
-		$employer = $this->checkEmployerSession();
 	}
 
 	function admin_index()

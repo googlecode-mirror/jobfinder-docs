@@ -37,7 +37,7 @@
 							} ?></td>
 							<td>
 								<?php echo $this->Html->link(__('Xem', true), array('controller'=> 'jobs','action' => 'view', $jobsaved['JobSaved']['job_id'])); ?> | 
-								<?php echo $this->Html->link(__('Xóa', true), array('action' => 'delete_jobsaved', $jobsaved['JobSaved']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $jobsaved['JobSaved']['id'])); ?>
+								<?php echo $this->Html->link(__('Xóa', true), array('controller'=> 'jobs','action' => 'deleteSavedJob', $jobsaved['JobSaved']['id']), null, sprintf(__('Bạn có chắc muốn xóa %s ?', true), $jobsaved['Job']['job_title'])); ?>
 							</td>
 						</tr>
 						<?php endforeach; ?>
@@ -63,18 +63,18 @@
 					  <tbody><tr bgcolor="#e2e2e2" class="tb_title">
 						<td width="35%"><?php echo $this->Paginator->sort('Tiêu đề','resume_title');?></td>
 						<td width="20%"><?php echo $this->Paginator->sort('Ngày cập nhật','modified');?></td>
-						<td width="20%"><?php echo $this->Paginator->sort('Số lần xem');?></td>
+						<td width="20%"><?php echo __('Số lần xem');?></td>
 						<td width="25%"><?php __('Chức năng');?></td>
 					  </tr>
 					  <?php foreach ($resumes as $resume):?>
 						<tr>
 							<td><strong><?php echo $this->Html->Link($resume['Resume']['resume_title'], array('controller' => 'resumes', 'action' => 'view', $resume['Resume']['id'])); ?></strong></td>
 							<td><?php echo date('d-m-Y H:i:s', strtotime($resume['Resume']['modified'])); ?>&nbsp;</td>
-							<td>&nbsp;</td>
+							<td><?php echo count($resume['ResumeViewLog']); ?></td>
 							<td>
 								<?php echo $this->Html->link(__('Xem', true), array('controller'=> 'resumes','action' => 'view', $resume['Resume']['id']), array('target'=>'_blank')); ?> |
 								<?php echo $this->Html->link(__('Cập nhật', true), array('controller'=> 'resumes','action' => 'preview', $resume['Resume']['id']), array('target'=>'_blank')); ?> | 
-								<?php echo $this->Html->link(__('Xóa', true), array('action' => 'delete_resume', $resume['Resume']['id']), null, sprintf(__('Bạn có chắc muốn xóa hồ sơ %s?', true), $resume['Resume']['resume_title'])); ?>
+								<?php echo $this->Html->link(__('Xóa', true), array('controller'=> 'resumes','action' => 'delete', $resume['Resume']['id']), null, sprintf(__('Bạn có chắc muốn xóa hồ sơ %s?', true), $resume['Resume']['resume_title'])); ?>
 							</td>
 						</tr>
 						<?php endforeach; ?>

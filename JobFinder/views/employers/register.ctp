@@ -1,4 +1,3 @@
-
 <br clear="all"/>
 <div id="body_content">
     <div class="step_postjob">
@@ -6,17 +5,12 @@
             src="http://images.vietnamworks.com/post_job_signup_vn.gif"/>
     </div>
     <!-- begin wrap -->
-    <div class="wrap_cr_emp">
+    <div class="wrap_cr">
     <!-- begin content -->
         <div id="content_cr">
         	<?php echo $this->Form->create('Employer', array('action' => 'register','class'=>'form_field')); ?>
                 <!-- begin Log In Information -->
  			    <div class="box_corner">				
-                    <b class="xtop">
-                        <b class="xb1 dblue_top"><!-- --></b>
-                        <b class="xb2 dblue_curve dblue_title"><!-- --></b>
-                        <b class="xb3 dblue_curve dblue_title"><!-- --></b>
-                    </b>
 					<div class="dblue_bg_title">
 					  <strong>Thông Tin Đăng Nhập</strong>
 					</div>
@@ -37,21 +31,11 @@
     					    </p>
                         </td> </tr> </tbody>
                         </table>
-				    </div><!--end xboxcontent-->	
-					<b class="xbottom">
-                        <b class="xb3 dblue_curve dblue_bg_bottom"><!-- --></b>
-                        <b class="xb2 dblue_curve dblue_bg_bottom"><!-- --></b>
-                        <b class="xb1 dblue_top"><!-- --></b>
-                    </b>				
+				    </div><!--end xboxcontent-->				
 			     </div><!-- end Log In Information -->
 			
 			     <!-- begin Registration Information -->
                  <div class="box_corner">
-                    <b class="xtop">
-                        <b class="xb1 dblue_top"><!-- --></b>
-                        <b class="xb2 dblue_curve dblue_title"><!-- --></b>
-                        <b class="xb3 dblue_curve dblue_title"><!-- --></b>
-                    </b>
 					<div class="dblue_bg_title">
 					  <strong>Thông Tin Đăng Ký</strong>
 					</div>
@@ -125,12 +109,7 @@
                             <br/>
 					</td> </tr> </tbody>
                     </table>
-				</div><!--end xboxcontent-->	
-					<b class="xbottom">
-                        <b class="xb3 dblue_curve dblue_bg_bottom"><!-- --></b>
-                        <b class="xb2 dblue_curve dblue_bg_bottom"><!-- --></b>
-                        <b class="xb1 dblue_top"><!-- --></b>
-                    </b>				
+				</div><!--end xboxcontent-->					
 			</div><!-- end Registration Information -->
 
 			<div class="btn_pos">
