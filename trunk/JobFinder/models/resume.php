@@ -84,6 +84,26 @@ class Resume extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
+		'telephone' => array(
+			'phone' => array(
+				'rule' => array('phone','/^[[:space:]\-0-9]{7,}$/i',null),
+				//'message' => 'Your custom message here',
+				'allowEmpty' => true,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'mobile' => array(
+			'phone' => array(
+				'rule' => array('phone','/^[[:space:]\-0-9]{7,}$/i',null),
+				//'message' => 'Your custom message here',
+				'allowEmpty' => true,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
 		'years_exp' => array(
 			'numeric' => array(
 				'rule' => array('range', -1, 11),

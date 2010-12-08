@@ -57,7 +57,7 @@
 					  	</tr>
 					  	<tr class="field_cp">
 							<td>&nbsp;</td>
-							<td><?php echo $resume['Resume']['telephone']; ?>/<?php echo $resume['Resume']['mobile']; ?></td>
+							<td><?php echo $resume['Resume']['telephone']; ?> / <?php echo $resume['Resume']['mobile']; ?></td>
 					  	</tr>
 					  	<tr class="field_cp">
 							<td>&nbsp;</td>
@@ -214,7 +214,7 @@
 							</td>
 							<td width="78%">
 								<div>
-								<?php if(empty($resume['ResumeJobExp'])){ echo __('Bạn chưa cung cấp thông tin về kinh nghiệm làm việc.'); }?>
+								<?php if(empty($resume['ResumeJobExp'])){ echo __('Chưa có kinh nghiệm làm việc.'); }?>
 								<?php foreach ($resume['ResumeJobExp'] as $resumeJobExp):?>
 								<p class="txt_tilte_lv2"><?php echo $resumeJobExp['job_title'];?></p>
 								<p><strong>
@@ -244,7 +244,7 @@
 								<p class="txt_tilte_lv2">Học Vấn</p>
 						</td>
 						<td width="78%">
-							<?php if(empty($resume['ResumeEducation'])){ echo __('Bạn chưa cung cấp thông tin về trường đã học.'); }?>
+							<?php if(empty($resume['ResumeEducation'])){ echo __('Chưa có thông tin về trường đã học.'); }?>
 							<?php foreach ($resume['ResumeEducation'] as $resumeEducation):?>
 							<div>
 							<p class="txt_tilte_lv2"><?php echo $resumeEducation['program'];?></p>
@@ -273,7 +273,7 @@
 							<p class="txt_tilte_lv2">Kỹ Năng</p>
 						</td>
 						<td width="78%">
-							<?php if(empty($resume['ResumeSkill'])){ echo __('Bạn chưa cung cấp thông tin về kỹ năng.'); }?>
+							<?php if(empty($resume['ResumeSkill'])){ echo __('Chưa có thông tin về kỹ năng.'); }?>
 							<?php foreach ($resume['ResumeSkill'] as $resumeSkill):?>
 							<div>
 								<p class="txt_tilte_lv2"><?php echo $skills[$resumeSkill['skill_id']];?></p>

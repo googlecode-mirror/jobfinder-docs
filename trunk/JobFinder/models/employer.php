@@ -92,10 +92,30 @@ class Employer extends AppModel {
 			),
 		),
 		'telephone' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
+			'phone' => array(
+				'rule' => array('phone','/^[[:space:]\-0-9]{7,}$/i',null),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'mobile' => array(
+			'phone' => array(
+				'rule' => array('phone','/^[[:space:]\-0-9]{7,}$/i',null),
+				//'message' => 'Your custom message here',
+				'allowEmpty' => true,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'fax' => array(
+			'phone' => array(
+				'rule' => array('phone','/^[[:space:]\-0-9]{7,}$/i',null),
+				//'message' => 'Your custom message here',
+				'allowEmpty' => true,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations

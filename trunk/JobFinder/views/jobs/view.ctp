@@ -71,6 +71,14 @@
                             <div class="box_right"><?php echo $job['Job']['company_address'].' '.$provinces[$job['Job']['province_id']].' '.$countries[$job['Job']['country_id']] ; ?></div>
                         </div>
                         <div style="" class="box_pre">
+                            <div class="box_left">Điện thoại công ty:</div>
+                            <div class="box_right"><?php echo $job['Job']['telephone']; ?></div>
+                        </div>
+                        <div style="" class="box_pre">
+                            <div class="box_left">Fax:</div>
+                            <div class="box_right"><?php echo $job['Job']['fax']; ?></div>
+                        </div>
+                        <div style="" class="box_pre">
                             <div class="box_left">Website công ty:</div>
                             <div class="box_right"><?php echo $job['Job']['company_website']; ?></div>
                         </div>
@@ -108,6 +116,21 @@
                                 		<div>Cấp bậc tối thiểu: <?php echo $jobLevels[$job['Job']['job_level_id']]; ?></div>
                                 		<div>Bằng cấp tối thiểu: <?php echo $degreeLevels[$job['Job']['degree_level_id']]; ?></div>
                                 		<div style="width:450px; display:block;" ><?php echo $job['Job']['job_requirement']; ?></div>
+                                	</div>
+                            	</div>
+                            </div>
+                            
+                            <div class="box_pre">
+                                <div class="box_left">Yêu cầu kỹ năng:</div>
+                                <div class="box_right">
+                                	<div class="box_pre">
+	                                	<?php if(empty($job['JobSkill'])){ echo __('Chưa có thông tin về kỹ năng yêu cầu'); }?>
+										<?php foreach ($job['JobSkill'] as $jobSkill):?>
+										<div><?php echo $skills[$jobSkill['skill_id']]; ?></div>
+										<div><?php echo $proficiencies[$jobSkill['proficiency']]; ?></div>
+										<div><?php echo $jobSkill['year_use']. ' năm'; ?></div>
+										<div>Mô tả: <?php echo $jobSkill['description']; ?></div>
+										<?php endforeach;?>
                                 	</div>
                             	</div>
                             </div>
@@ -163,11 +186,48 @@
                                 </tbody></table>
                                 </div>
                             </div>
+                            
+                            <div style="" class="box_pre">
+                                <div class="box_left">Hồ sơ trình bày bằng ngôn ngữ:</div>
+                                <div style="padding-bottom: 5px;" class="box_right">
+                                	<?php echo $languages[$job['Job']['application_language']] ?>
+                                </div>
+                            </div>
                            
                         </td> </tr> </tbody>
                     </table>
 				</div><!--end xboxcontent-->
-            </div><!-- end Job detail -->			           
+            </div><!-- end Job detail -->
+            
+            <div class="box_corner">
+			<div class="blue_bg_title"> <strong>Thông tin liên hệ</strong> </div>
+			<div class="white_content">
+				<table width="100%" cellspacing="0" cellpadding="0" border="0">
+                    <tbody> <tr> <td>
+					    <div style="" class="box_pre">
+						    <div class="box_left">Tên người liên hệ:</div>
+							<div class="box_right"><?php echo $job['Job']['contact_name']; ?> 
+                                <br/>
+                            </div>
+					    </div>					  
+    					<div style="" class="box_pre">
+    					    <div class="box_left">Chức vụ:</div>
+    						<div class="box_right"><?php echo $job['Job']['contact_position']; ?></div>
+    					</div>
+                        <div style="" class="box_pre">
+                            <div class="box_left">Số điện thoại:</div>
+                            <div class="box_right"><?php echo $job['Job']['mobile']; ?></div>
+                        </div>
+                        <div style="" class="box_pre">
+                            <div class="box_left">Địa chỉ Email nhận hồ sơ:</div>
+                            <div class="box_right"><?php echo $job['Job']['email']; ?></div>
+                        </div>
+                        
+					</td> </tr> </tbody>
+                </table>
+				   
+			</div><!--end xboxcontent-->					
+		</div>			           
         
             <div style="height: 1%;">
     	        <div class="pos_btn">
@@ -178,8 +238,8 @@
                 </div>
                 <br/>
                 <div style="height: 1%;">
-                    <strong>Số lần xem</strong>: xxx | 
-                    <strong>Ngày hết hạn</strong>: xx-xx-2010
+                    <strong>Số lần xem</strong>: <?php echo $job['JobViewLog'][0]['views']; ?> | 
+                    <strong>Ngày hết hạn</strong>: <?php echo date('d-m-Y',strtotime($job['Job']['expired'])) ;?>
                 </div>   
                 <br/>
            	</div>		

@@ -4,8 +4,8 @@
 		<?php echo $this->Form->create('Employer', array('action' => 'login','class'=>'form_field')); ?>
                 <?php echo $this->Session->flash(); ?>
  			<div class="box_corner">									
-				<div class="blue_bg_title"><strong>Thông Tin Đăng Nhập</strong></div>
-				<div class="white_content">	
+				<div class="dblue_bg_title"><strong>Thông Tin Đăng Nhập</strong></div>
+				<div class="dwhite_content">	
                 <table width="100%" border="0">
                     <tbody> <tr> <td>
                         <p>

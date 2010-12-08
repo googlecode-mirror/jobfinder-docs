@@ -10,6 +10,7 @@
         <div id="content_cr">
         <div id="right_cr">
         	<?php echo $this->Form->create('Job', array('class'=>'form_field')); ?>
+        	<?php echo $this->Form->input('JobSkill.id', array('type'=>'hidden'));?>
                 <!-- begin Company Information -->
  			    <div class="box_corner">				
 					<div class="dblue_bg_title">
@@ -68,8 +69,8 @@
 						<tr>
 							<td><?php echo $listSkills[$jobSkill['JobSkill']['skill_id']]; ?>&nbsp;</td>
 							<td><?php echo $proficiencies[$jobSkill['JobSkill']['proficiency']]; ?>&nbsp;</td>
-							<td><?php echo $this->Html->link(__('Sửa', true), array('action' => 'editSkill', $jobSkill['JobSkill']['id'])); ?>
-							<?php echo $this->Html->link(__('Xóa', true), array('action' => 'deleteSkill', $jobSkill['JobSkill']['id']), null, sprintf(__('Bạn có chắc muốn xóa kỹ năng %s?', true), $listSkills[$jobSkill['JobSkill']['skill_id']])); ?>
+							<td><?php echo $this->Html->link(__('Sửa', true), array('action' => 'editSkill', $jobSkill['JobSkill']['id'], true)); ?>
+							<?php echo $this->Html->link(__('Xóa', true), array('action' => 'deleteSkill', $jobSkill['JobSkill']['id'], true), null, sprintf(__('Bạn có chắc muốn xóa kỹ năng %s?', true), $listSkills[$jobSkill['JobSkill']['skill_id']])); ?>
 							</td>
 						</tr>
 						<?php endforeach; ?>
@@ -80,8 +81,8 @@
             <?php echo $ajax->observeField('skillGroups',array('url'=>'getSkills','update'=>'skills'));?>
             
             <div style="text-align: right;">
-               <?php echo $this->Html->link(__('Trở lại', true), array('action' => 'modifyJob',$this->Session->read('jobID')));?>
-               <?php echo $this->Html->link(__('Hoàn tất', true), array('action' => 'preview',$this->Session->read('jobID')));  ?>
+                <?php echo $this->Html->link($html->tag('span', 'Trở về'), 
+                            array('action' => 'preview', $this->Session->read('jobID')),array('escape' => false, 'class'=>'button')); ?>
             </div>
    </div>
    </div>

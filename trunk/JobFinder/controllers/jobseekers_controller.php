@@ -143,43 +143,12 @@ class JobseekersController extends AppController {
 	}
 
 	function index(){
-		//save user visit url
-		$request_params = Router::getParams();
-		$this->Session->write('auth_redirect','/'.$request_params['url']['url']);
 		$jobseeker = $this->checkJobSeekerSession();
-
 		$this->paginate['JobSaved'] =  array('conditions' => array('jobseeker_id' => $jobseeker['Jobseeker']['id']));
 		$this->paginate['Resume'] =  array('conditions' => array('jobseeker_id' => $jobseeker['Jobseeker']['id']));
-		$this->Jobseeker->Resume->recursive = -1;
+		$this->Jobseeker->Resume->recursive = 1;
 		$this->set('jobsaveds', $this->paginate('JobSaved'));
 		$this->set('resumes', $this->paginate('Resume'));
-	}
-
-	function delete_jobsaved($id=null) {
-		if (!$id) {
-			$this->Session->setFlash(__('Invalid id for Job', true));
-			$this->redirect(array('action'=>'index'));
-		}
-		if ($this->Jobseeker->JobSaved->delete($id)) {
-			$this->Session->setFlash(__('Job Saved deleted', true));
-			$this->redirect(array('action'=>'index'));
-		}
-		$this->Session->setFlash(__('Job saved was not deleted', true));
-		$this->redirect(array('action' => 'index'));
-	}
-
-	function delete_resume($id=null) {
-		if (!$id) {
-			$this->Session->setFlash(__('Invalid id for resume', true));
-			$this->redirect(array('action'=>'index'));
-		}
-		if ($this->Jobseeker->Resume->delete($id)) {
-			$this->Session->setFlash(__('Resume deleted', true));
-			$this->redirect(array('action'=>'index'));
-		}
-		$this->Session->setFlash(__('Resume was not deleted', true));
-		$this->redirect(array('action' => 'index'));
-
 	}
 
 	function applyJob($jobID = null)
@@ -190,7 +159,7 @@ class JobseekersController extends AppController {
 			$this->redirect(array('action' => 'index'));
 		}
 		$this->set('job', $this->Job->read(null, $jobID));
-		$this->set('resumes', $this->Jobseeker->Resume->find('list',array('conditions' => array('jobseeker_id' => $jobseeker['Jobseeker']['id']))));
+		$this->set('resumes', $this->Jobseeker->Resume->find('list',array('conditions' => array('jobseeker_id' => $jobseeker['Jobseeker']['id'], 'status' => 1))));
 		
 		if ($jobID && empty($this->data)) {
 			$jobApply = $this->Jobseeker->JobApply->find('all',array('conditions' => array(array('JobApply.jobseeker_id' => $jobseeker['Jobseeker']['id']),

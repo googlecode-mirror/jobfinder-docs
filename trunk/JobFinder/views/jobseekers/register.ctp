@@ -10,11 +10,6 @@
             <?php echo $this->Form->create('Jobseeker', array('action' => 'register','class'=>'form_field')); ?>
             <!-- begin Log In Information -->
             <div class="box_corner">
-                <b class="xtop">
-                    <b class="xb1 blue_top"><!-- --></b>
-                    <b class="xb2 blue_curve blue_title"><!-- --></b>
-                    <b class="xb3 blue_curve blue_title"><!-- --></b>
-                </b>
                 <div class="blue_bg_title"><strong>Thông Tin Đăng Nhập</strong></div>
                 <div class="white_content">
                     <table><tr><td>
@@ -33,21 +28,11 @@
                 		</td></tr>	                     
                     </table>
                 </div>
-                <b class="xbottom">
-                    <b class="xb3 blue_curve blue_bg_bottom"><!-- --></b>
-                    <b class="xb2 blue_curve blue_bg_bottom"><!-- --></b>
-                    <b class="xb1 blue_top"><!-- --></b>
-                </b>
             </div>
             <!-- end Log In Information -->
             
             <!-- begin Registration Information -->
             <div class="box_corner">
-                <b class="xtop">
-                    <b class="xb1 blue_top"><!-- --></b>
-                    <b class="xb2 blue_curve blue_title"><!-- --></b>
-                    <b class="xb3 blue_curve blue_title"><!-- --></b>
-                </b>
                 <div class="blue_bg_title"><strong>Thông Tin Đăng Ký</strong></div>
                 <div class="white_content">
                     <table><tr><td>
@@ -92,11 +77,6 @@
                         </td></tr>	                  
                     </table>
                 </div>                
-                <b class="xbottom">
-                    <b class="xb3 blue_curve blue_bg_bottom"><!-- --></b>
-                    <b class="xb2 blue_curve blue_bg_bottom"><!-- --></b>
-                    <b class="xb1 blue_top"><!-- --></b>
-                </b>
             </div>
         </div>
         <!--end Registration Information-->
