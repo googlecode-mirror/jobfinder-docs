@@ -8,7 +8,7 @@ class JobTypesController extends AppController {
 	}
 	
 	function admin_index() {
-		$this->JobTypes->recursive = 0;
+		$this->JobTypes->recursive = -1;
 		$this->set('jobTypes', $this->paginate());
 		if (!empty($this->data)) {
 			$this->JobType->create();
@@ -22,7 +22,7 @@ class JobTypesController extends AppController {
 	}
 
 	function admin_view($id = null) {
-		$this->JobTypes->recursive = 0;
+		$this->JobTypes->recursive = -1;
 		$this->set('jobTypes', $this->paginate());
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Loại hình công việc không hợp lệ.', true));
@@ -34,7 +34,7 @@ class JobTypesController extends AppController {
 	}
 
 	function admin_edit($id = null) {
-		$this->JobTypes->recursive = 0;
+		$this->JobTypes->recursive = -1;
 		$this->set('jobTypes', $this->paginate());
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Loại hình công việc không hợp lệ.', true));

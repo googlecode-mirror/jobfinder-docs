@@ -2,6 +2,7 @@
 
 class ProvincesController extends AppController {
 	var $name = 'Provinces';  
+	var $uses = array('Country','Province');
 	
 	function beforeFilter(){
 		$this->layout='default_admin';
@@ -10,7 +11,10 @@ class ProvincesController extends AppController {
 	
 	function admin_index() {
 		$this->paginate['Province'] = array('contain' => 'Country');
+		$this->Province->recursive = 1;
 		$this->set('provinces', $this->paginate('Province'));
+		$this->Country->recursive = -1;
+		$this->set('listCountries', $this->paginate('Country'));
 		$this->set('countries', $this->Province->Country->find('list'));
 		if(!empty($this->data)) {
 			$this->Province->create();
@@ -25,7 +29,11 @@ class ProvincesController extends AppController {
 
 	function admin_view($id = null) {
 		$this->paginate['Province'] = array('contain' => 'Country');
+		$this->Province->recursive = 1;
 		$this->set('provinces', $this->paginate('Province'));
+		$this->Country->recursive = -1;
+		$this->set('listCountries', $this->paginate('Country'));
+		$this->set('countries', $this->Province->Country->find('list'));
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid province', true));
 			$this->redirect(array('action' => 'index'));
@@ -37,7 +45,10 @@ class ProvincesController extends AppController {
 
 	function admin_edit($id = null) {
 		$this->paginate['Province'] = array('contain' => 'Country');
+		$this->Province->recursive = 1;
 		$this->set('provinces', $this->paginate('Province'));
+		$this->Country->recursive = -1;
+		$this->set('listCountries', $this->paginate('Country'));
 		$this->set('countries', $this->Province->Country->find('list'));
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid Province', true));

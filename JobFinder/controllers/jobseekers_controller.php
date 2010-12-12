@@ -58,8 +58,6 @@ class JobseekersController extends AppController {
 	}
 
 	function register() {
-		$this->set('howknows', $this->Category->find('list', array(
-					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'HowKnow'))))));
 		$this->set('countries', $this->Jobseeker->Country->find('list'));
 		$provinces = array();
 		$this->set('captchaError', null);
@@ -202,7 +200,7 @@ class JobseekersController extends AppController {
 	{
 		$this->layout='default_admin';
 		$this->checkAdminSession();
-		$this->Jobseeker->recursive = 0;
+		$this->Jobseeker->recursive = -1;
 		$this->set('jobseekers', $this->paginate());
 	}
 
@@ -211,7 +209,7 @@ class JobseekersController extends AppController {
 		$this->checkAdminSession();
 		$this->set('countries', $this->Jobseeker->Country->find('list'));
 		$this->set('provinces', $this->Jobseeker->Province->find('list'));
-		$this->Jobseeker->recursive = 0;
+		$this->Jobseeker->recursive = -1;
 		$this->set('jobseekers', $this->paginate());
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid jobseeker', true));
@@ -225,7 +223,7 @@ class JobseekersController extends AppController {
 	function admin_edit($id = null) {
 		$this->layout='default_admin';
 		$this->checkAdminSession();
-		$this->Jobseeker->recursive = 0;
+		$this->Jobseeker->recursive = -1;
 		$this->set('jobseekers', $this->paginate());
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid actived', true));

@@ -1,7 +1,8 @@
 <?php
 class SkillsController extends AppController {
 	var $name = 'Skills';  
-		
+	var $uses = array('Skill','SkillGroup');
+	
 	function beforeFilter(){
 		$this->checkAdminSession();
 		$this->layout = 'default_admin';
@@ -9,18 +10,10 @@ class SkillsController extends AppController {
 	
 	function admin_index() {
 		$this->paginate['Skill'] = array('contain' => 'SkillGroup');
+		$this->Skill->recursive = 1;
 		$this->set('skills', $this->paginate('Skill'));
-	}
-
-	function admin_view($id = null) {
-		if (!$id) {
-			$this->Session->setFlash(__('Invalid skill', true));
-			$this->redirect(array('action' => 'index'));
-		}
-		$this->set('skill', $this->Skill->read(null,$id));
-	}
-
-	function admin_add() {
+		$this->SkillGroup->recursive = -1;
+		$this->set('listSkillGroups', $this->paginate('SkillGroup'));
 		$this->set('skillGroups', $this->Skill->SkillGroup->find('list'));
 		if(!empty($this->data)) {
 			$this->Skill->create();
@@ -33,7 +26,28 @@ class SkillsController extends AppController {
 		}
 	}
 
+	function admin_view($id = null) {
+		$this->paginate['Skill'] = array('contain' => 'SkillGroup');
+		$this->Skill->recursive = 1;
+		$this->set('skills', $this->paginate('Skill'));
+		$this->SkillGroup->recursive = -1;
+		$this->set('listSkillGroups', $this->paginate('SkillGroup'));
+		$this->set('skillGroups', $this->Skill->SkillGroup->find('list'));
+		if (!$id && empty($this->data)) {
+			$this->Session->setFlash(__('Invalid Skill', true));
+			$this->redirect(array('action' => 'index'));
+		}
+		if (empty($this->data)) {
+			$this->data = $this->Skill->read(null, $id);
+		}
+	}
+
 	function admin_edit($id = null) {
+		$this->paginate['Skill'] = array('contain' => 'SkillGroup');
+		$this->Skill->recursive = 1;
+		$this->set('skills', $this->paginate('Skill'));
+		$this->SkillGroup->recursive = -1;
+		$this->set('listSkillGroups', $this->paginate('SkillGroup'));
 		$this->set('skillGroups', $this->Skill->SkillGroup->find('list'));
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid Skill', true));

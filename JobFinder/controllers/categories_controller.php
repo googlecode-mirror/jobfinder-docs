@@ -3,23 +3,14 @@ class CategoriesController extends AppController {
 	var $name = 'Categories';
    
 	function beforeFilter(){
+		$this->layout='default_admin';
 		$this->checkAdminSession();
 	}
 
 	function admin_index() {
-		$this->Category->recursive = 0;
+		$this->Category->recursive = 1;
 		$this->set('categories', $this->paginate());
-	}
-
-	function admin_view($id = null) {
-		if (!$id) {
-			$this->Session->setFlash(__('Invalid category', true));
-			$this->redirect(array('action' => 'index'));
-		}
-		$this->set('category', $this->Category->read(null, $id));
-	}
-
-	function admin_add() {
+		$this->set('category_types',$this->Category->CategoryType->find('list'));
 		if (!empty($this->data)) {
 			$this->Category->create();
 			if ($this->Category->save($this->data)) {
@@ -29,11 +20,25 @@ class CategoriesController extends AppController {
 				$this->Session->setFlash(__('The category could not be saved. Please, try again.', true));
 			}
 		}
-		$categoryTypes = $this->Category->CategoryType->find('list');
-		$this->set(compact('categoryTypes'));
+	}
+
+	function admin_view($id = null) {
+		$this->Category->recursive = 1;
+		$this->set('categories', $this->paginate());
+		$this->set('category_types',$this->Category->CategoryType->find('list'));
+		if (!$id) {
+			$this->Session->setFlash(__('Invalid category', true));
+			$this->redirect(array('action' => 'index'));
+		}
+		if (empty($this->data)) {
+			$this->data = $this->Category->read(null, $id);
+		}
 	}
 
 	function admin_edit($id = null) {
+		$this->Category->recursive = 1;
+		$this->set('categories', $this->paginate());
+		$this->set('category_types',$this->Category->CategoryType->find('list'));
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid category', true));
 			$this->redirect(array('action' => 'index'));
@@ -49,8 +54,6 @@ class CategoriesController extends AppController {
 		if (empty($this->data)) {
 			$this->data = $this->Category->read(null, $id);
 		}
-		$categoryTypes = $this->Category->CategoryType->find('list');
-		$this->set(compact('categoryTypes'));
 	}
 
 	function admin_delete($id = null) {

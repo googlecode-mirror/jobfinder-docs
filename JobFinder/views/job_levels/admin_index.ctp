@@ -2,28 +2,23 @@
 	<h2>CakePHP: the rapid development php framework</h2>
 	<div id="topmenu">
     	<ul>
-        	<li><a href="index.html">Dashboard</a></li>
-            <li class="current"><a href="#">Danh mục</a></li>
-            <li><a href="users.html">Users</a></li>
-            <li><a href="#">Manage</a></li>
-            <li><a href="#">CMS</a></li>
-            <li><a href="#">Statistics</a></li>
-            <li><a href="#">Settings</a></li>
+        	<li><?php echo $this->Html->link(__('Dashboard', true), array('controller' => 'admins', 'action' => 'index', 'admin'=> false)); ?></li>
+            <li class="current"><?php echo $this->Html->link(__('Danh mục', true), array('controller' => 'JobCategories', 'action' => 'index', 'admin'=> true)); ?></li>
+            <li><?php echo $this->Html->link(__('Quản lý hồ sơ', true), array('controller' => 'resumes', 'action' => 'index', 'admin'=> true)); ?></li>
+            <li><?php echo $this->Html->link(__('Quản lý tuyển dụng', true), array('controller' => 'jobs', 'action' => 'index', 'admin'=> true)); ?></li>
+            <li><?php echo $this->Html->link(__('Quản lý tài khoản', true), array('controller' => 'jobseekers', 'action' => 'index', 'admin'=> true)); ?></li>
     	</ul>
 	</div>
 </div>
 <div id="top-panel">
 	<div id="panel">
-	<ul>
+		<ul>
 			<li><?php echo $this->Html->link(__('Ngành nghề', true), array('controller' => 'job_categories', 'action' => 'index', 'admin'=> true)); ?></li>
 			<li><?php echo $this->Html->link(__('Loại hình công việc', true), array('controller' => 'job_types', 'action' => 'index', 'admin'=> true)); ?></li>
 			<li><?php echo $this->Html->link(__('Cấp bậc', true), array('controller' => 'job_levels', 'action' => 'index', 'admin'=> true)); ?></li>
 			<li><?php echo $this->Html->link(__('Bằng cấp', true), array('controller' => 'degree_levels', 'action' => 'index', 'admin'=> true)); ?></li>
-			<li><?php echo $this->Html->link(__('Nhóm kỹ năng', true), array('controller' => 'skillGroups', 'action' => 'index', 'admin'=> true)); ?></li>
 			<li><?php echo $this->Html->link(__('Kỹ năng', true), array('controller' => 'skills', 'action' => 'index', 'admin'=> true)); ?></li>
-			<li><?php echo $this->Html->link(__('Quốc gia', true), array('controller' => 'countries', 'action' => 'index', 'admin'=> true)); ?></li>
-			<li><?php echo $this->Html->link(__('Tỉnh thành', true), array('controller' => 'provinces', 'action' => 'index', 'admin'=> true)); ?></li>
-			<li><?php echo $this->Html->link(__('Loại danh mục khác', true), array('controller' => 'category_types', 'action' => 'index', 'admin'=> true)); ?></li>
+			<li><?php echo $this->Html->link(__('Quốc gia/ Thành phố', true), array('controller' => 'provinces', 'action' => 'index', 'admin'=> true)); ?></li>
 			<li><?php echo $this->Html->link(__('Danh mục khác', true), array('controller' => 'categories', 'action' => 'index', 'admin'=> true));?></li>
 		</ul>
 	</div>
@@ -37,10 +32,10 @@
 	<table width="100%">
 		<thead>
         <tr>
-			<th><?php echo $this->Paginator->sort('Cấp bậc');?></th>
-			<th width="130"><?php echo $this->Paginator->sort('Ngày tạo');?></th>
-			<th width="130"><?php echo $this->Paginator->sort('Ngày cập nhật');?></th>
-			<th width="130" class="actions"><?php __('');?></th>
+			<th><?php echo $this->Paginator->sort('Cấp bậc','level');?></th>
+			<th width="130"><?php echo $this->Paginator->sort('Ngày tạo','created');?></th>
+			<th width="130"><?php echo $this->Paginator->sort('Ngày cập nhật','modified');?></th>
+			<th width="130"></th>
 	    </tr> 
 		</thead>
 		<?php
@@ -55,10 +50,10 @@
 		<td><?php echo $jobLevel['JobLevel']['level']; ?>&nbsp;</td>
 		<td><?php echo $jobLevel['JobLevel']['created']; ?>&nbsp;</td>
 		<td><?php echo $jobLevel['JobLevel']['modified']; ?>&nbsp;</td>
-		<td class="actions">
-			<?php echo $this->Html->link(__('View', true), array('action' => 'view', $jobLevel['JobLevel']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $jobLevel['JobLevel']['id'])); ?>
-			<?php echo $this->Html->link(__('Delete', true), array('action' => 'delete', $jobLevel['JobLevel']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $jobLevel['JobLevel']['id'])); ?>
+		<td class="a-center">
+			<?php echo $this->Html->link(__('Xem', true), array('action' => 'view', $jobLevel['JobLevel']['id'])); ?> |
+			<?php echo $this->Html->link(__('Sửa', true), array('action' => 'edit', $jobLevel['JobLevel']['id'])); ?> |
+			<?php echo $this->Html->link(__('Xóa', true), array('action' => 'delete', $jobLevel['JobLevel']['id']), null, sprintf(__('Bạn có chắc muốn xóa %s ?', true), $jobLevel['JobLevel']['level'])); ?>
 		</td>
 	</tr>
     <?php endforeach; ?>
@@ -78,7 +73,7 @@
 		<h3>Thêm mới Cấp bậc công việc</h3>
 		<?php echo $this->Session->flash(); ?>
         <?php echo $this->Form->create('JobLevel',array('div'=>false,'id'=>'form'));?>
-        <?php echo $this->Form->Input('level',array('label'=>'Cấp bậc:','div'=>false));?>
+        <?php echo $this->Form->Input('level',array('label'=>'Cấp bậc:','div'=>false,'error'=>array('wrap'=>'span')));?>
 		<div align="center">
 			<br/>
 	    	<?php echo $this->Form->Submit(__('Lưu', true),array('div'=>false));?>

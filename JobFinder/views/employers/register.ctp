@@ -95,10 +95,6 @@
 						  	<label class="labels">Số fax:</label>
 						  	<?php echo $this->Form->input('fax',array('label'=>false,'class'=>'field','div'=>false)); ?>
 						</p>
-						<p>
-						  	<label class="labels"><span class="require_emp">*</span> Bạn biết chúng tôi từ?</label>
-						  <?php echo $this->Form->input('howknow',array('label'=>false, 'empty' => 'Vui lòng chọn...', 'class'=>'field','div'=>false)); ?>
-						</p>
 							<div style="display:block;	margin-left:275px; float:left;"><?php echo $captchaTool->show();?></div>
 						<div style="margin: 10px 0px 5px 10px;">
 							<div class="more">
