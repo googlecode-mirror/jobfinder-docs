@@ -61,10 +61,6 @@
                 			<?php echo $this->Form->input('province_id',array('label'=>false,'id'=>'provinces', 'empty' => 'Vui lòng chọn...', 'class'=>'field','div'=>false)); ?>
                 		</p>
                 		<?php echo $ajax->observeField('countries',array('url'=>'getProvinces','update'=>'provinces'));?>					  
-                		<p>
-                		  	<label><span class="require">*</span> Làm thế nào bạn biết đến chúng tôi?</label>
-                		  	<?php echo $this->Form->input('howknow',array('label'=>false, 'empty' => 'Vui lòng chọn...', 'class'=>'field','div'=>false)); ?>
-                		</p>
                         <div style="display:block;	margin-left:170px; float:left;">
                             <?php echo $captchaTool->show();?>
                         </div>

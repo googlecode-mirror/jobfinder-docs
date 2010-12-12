@@ -9,7 +9,7 @@ class JobCategoriesController extends AppController {
 	}
 
 	function admin_index($id = null) {
-		$this->JobCategory->recursive = 0;
+		$this->JobCategory->recursive = -1;
 		$this->set('JobCategories', $this->paginate());
 		if (!empty($this->data)) {
 			$this->JobCategory->create();
@@ -23,7 +23,7 @@ class JobCategoriesController extends AppController {
 	}
 
 	function admin_view($id = null) {
-		$this->JobCategory->recursive = 0;
+		$this->JobCategory->recursive = -1;
 		$this->set('JobCategories', $this->paginate());
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Ngành nghề không hợp lệ.', true));
@@ -35,7 +35,7 @@ class JobCategoriesController extends AppController {
 	}
 
 	function admin_edit($id = null) {
-		$this->JobCategory->recursive = 0;
+		$this->JobCategory->recursive = -1;
 		$this->set('JobCategories', $this->paginate());
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Ngành nghề không hợp lệ.', true));

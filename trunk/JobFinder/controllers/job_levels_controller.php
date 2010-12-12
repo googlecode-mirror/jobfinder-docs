@@ -9,7 +9,7 @@ class JobLevelsController extends AppController {
 	}
 
 	function admin_index() {
-		$this->JobLevel->recursive = 0;
+		$this->JobLevel->recursive = -1;
 		$this->set('jobLevels', $this->paginate());
 		if (!empty($this->data)) {
 			$this->JobLevel->create();
@@ -23,7 +23,7 @@ class JobLevelsController extends AppController {
 	}
 
 	function admin_view($id = null) {
-		$this->JobLevel->recursive = 0;
+		$this->JobLevel->recursive = -1;
 		$this->set('jobLevels', $this->paginate());
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid Job Level', true));
@@ -35,7 +35,7 @@ class JobLevelsController extends AppController {
 	}
 
 	function admin_edit($id = null) {
-		$this->JobLevel->recursive = 0;
+		$this->JobLevel->recursive = -1;
 		$this->set('jobLevels', $this->paginate());
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid Job level', true));

@@ -9,7 +9,7 @@ class DegreeLevelsController extends AppController {
 	}
 
 	function admin_index() {
-		$this->DegreeLevel->recursive = 0;
+		$this->DegreeLevel->recursive = -1;
 		$this->set('degreeLevel', $this->paginate());
 		if (!empty($this->data)) {
 			$this->DegreeLevel->create();
@@ -23,7 +23,7 @@ class DegreeLevelsController extends AppController {
 	}
 
 	function admin_view($id = null) {
-		$this->DegreeLevel->recursive = 0;
+		$this->DegreeLevel->recursive = -1;
 		$this->set('degreeLevel', $this->paginate());
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid level', true));
@@ -35,7 +35,7 @@ class DegreeLevelsController extends AppController {
 	}
 
 	function admin_edit($id = null) {
-		$this->DegreeLevel->recursive = 0;
+		$this->DegreeLevel->recursive = -1;
 		$this->set('degreeLevel', $this->paginate());
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid Degree level', true));

@@ -1,7 +1,8 @@
 <?php
 class CategoryType extends AppModel {
 	var $name = 'CategoryType';
-	var $displayField = 'name';
+	var $displayField = 'description';
+	
 	var $validate = array(
 		'name' => array(
 			'notempty' => array(

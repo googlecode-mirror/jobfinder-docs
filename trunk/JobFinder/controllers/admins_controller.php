@@ -42,5 +42,9 @@ class AdminsController extends AppController {
 	function index() {
         $this->checkAdminSession();
     }
+    
+	function admin_index() {
+        $this->checkAdminSession();
+    }
 }
 ?>

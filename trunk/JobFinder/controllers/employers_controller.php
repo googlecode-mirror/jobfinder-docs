@@ -70,8 +70,6 @@ class EmployersController extends AppController {
 	}
 
 	function register() {
-		$this->set('howknows', $this->Category->find('list', array(
-					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'HowKnow'))))));
 		$this->set('companySizes', $this->Category->find('list', array(
 					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'CompanySize'))))));
 		$this->set('countries', $this->Employer->Country->find('list'));
