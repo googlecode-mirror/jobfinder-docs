@@ -24,17 +24,7 @@ class Employer extends AppModel {
 		'password' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				//'message' => 'Mật khẩu phải từ 4 đến 15 ký tự',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'actived' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
-				//'message' => 'Mật khẩu phải từ 4 đến 15 ký tự',
+				'message' => 'Vui lòng nhập Mật khẩu',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -44,7 +34,7 @@ class Employer extends AppModel {
 		'company_name' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
+				'message' => 'Vui lòng nhập Tên công ty',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -54,7 +44,7 @@ class Employer extends AppModel {
 		'company_size' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
+				'message' => 'Vui lòng nhập Quy mô công ty',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -64,7 +54,7 @@ class Employer extends AppModel {
 		'address' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
+				'message' => 'Vui lòng nhập Địa chỉ liên lạc',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -74,7 +64,7 @@ class Employer extends AppModel {
 		'country_id' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
+				'message' => 'Vui lòng nhập mã Quốc gia',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -84,7 +74,7 @@ class Employer extends AppModel {
 		'province_id' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
+				'message' => 'Vui lòng nhập mã Tỉnh/Thành phố',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -94,7 +84,7 @@ class Employer extends AppModel {
 		'contact_name' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
+				'message' => 'Vui lòng nhập Tên người liên hệ',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -126,6 +116,16 @@ class Employer extends AppModel {
 				'rule' => array('phone','/^[[:space:]\-0-9]{7,}$/i',null),
 				//'message' => 'Your custom message here',
 				'allowEmpty' => true,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'howknow' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				'message' => 'Vui lòng cho biết Làm thế nào bạn biết chúng tôi',
+				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations

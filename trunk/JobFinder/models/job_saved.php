@@ -5,7 +5,7 @@ class JobSaved extends AppModel {
 		'jobseeker_id' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
+				'message' => 'Vui lòng nhập mã người tìm việc',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule

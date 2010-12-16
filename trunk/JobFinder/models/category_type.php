@@ -1,13 +1,12 @@
 <?php
 class CategoryType extends AppModel {
 	var $name = 'CategoryType';
-	var $displayField = 'description';
-	
+	var $displayField = 'name';
 	var $validate = array(
 		'name' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
+				'message' => 'Vui lòng nhập Tên loại danh mục',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule

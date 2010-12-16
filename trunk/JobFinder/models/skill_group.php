@@ -6,7 +6,7 @@ class SkillGroup extends AppModel {
 		'name' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
+				//'message' => 'Vui lòng nhập nhóm kỹ năng ',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
