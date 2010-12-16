@@ -16,12 +16,14 @@
 	<li><?php echo $this->Html->link(__('Việc làm đăng tuyển', true), array('controller' => 'jobs', 'action' => 'index', 'admin'=> true)); ?></li>
 	<li><?php echo $this->Html->link(__('Đăng tin tuyển dụng', true), array('controller' => 'jobs', 'action' => 'postJob', 'admin'=> true)); ?></li>
 	<li><?php echo $this->Html->link(__('Duyệt việc làm', true), array('controller' => 'jobs', 'action' => 'approveJob', 'admin'=> true)); ?></li>
+	<li><?php echo $this->Html->link(__('Hồ sơ ứng tuyển', true), array('controller' => 'jobs', 'action' => 'applyJob', 'admin'=> true)); ?></li>
 </ul>
 </div>
 </div>
 <div id="wrapper"><?php echo $this->element('admin_sidebar'); ?>
 <div id="content">
 <h3><?php __('Đăng tin tuyển dụng');?></h3>
+<?php echo $this->Session->flash(); ?>
 <br />
 <div id="box">
 <h3><?php __('Thông Tin Công Ty ');?><span class="link_bgtitle"><?php echo $html->link('[Chỉnh sửa]', 

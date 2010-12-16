@@ -40,7 +40,7 @@
         </div>            
     		<div class="job_foremp">
     			<div class="job_forempct">
-    				<?php echo $this->Html->link('» Cho nhà tuyển dụng', array('controller'=>'employers', 'action' => 'home'));?>
+    				<?php echo $this->Html->link(' Cho nhà tuyển dụng ', array('controller'=>'employers', 'action' => 'home'));?>
                 </div>
                 <!-- end job_forempct -->
             </div>
@@ -51,7 +51,7 @@
 			<div class="floatLeft">
                 <a href="#/">
                     <?php echo $html->image('../img/home/banner.jpg', 
-    	                	  array('alt' => '', 'width' => '980', 'height' => '173'))  ?>
+    	                	  array('alt' => '', 'width' => '980', 'height' => '198'))  ?>
                 </a>
             </div>
 			

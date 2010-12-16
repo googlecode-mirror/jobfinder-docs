@@ -16,6 +16,7 @@
 			<li><?php echo $this->Html->link(__('Việc làm đăng tuyển', true), array('controller' => 'jobs', 'action' => 'index', 'admin'=> true)); ?></li>
 			<li><?php echo $this->Html->link(__('Đăng tin tuyển dụng', true), array('controller' => 'jobs', 'action' => 'postJob', 'admin'=> true)); ?></li>
 			<li><?php echo $this->Html->link(__('Duyệt việc làm', true), array('controller' => 'jobs', 'action' => 'approveJob', 'admin'=> true)); ?></li>
+			<li><?php echo $this->Html->link(__('Hồ sơ ứng tuyển', true), array('controller' => 'jobs', 'action' => 'applyJob', 'admin'=> true)); ?></li>
 		</ul>
 	</div>
 </div>
@@ -24,9 +25,9 @@
 	<div id="content">
 	<h3><?php __('Đăng tin tuyển dụng');?></h3>
 	<br/>
+	<?php echo $this->Session->flash(); ?>
     <div id="box">
 	<h3><?php __('Thông tin công ty');?></h3>
-	<?php echo $this->Session->flash(); ?>
         <?php echo $this->Form->create('Job',array('div'=>false,'id'=>'form'));?>
         <?php echo $this->Form->input('id');?>
         <?php echo $this->Form->input('contact_name',array('label'=>'Tên người liên hệ:','div'=>false,'error'=>array('wrap'=>'span'))); ?>

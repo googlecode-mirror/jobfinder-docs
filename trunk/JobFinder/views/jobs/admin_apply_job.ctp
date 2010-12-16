@@ -25,41 +25,37 @@
 	<div id="content">
 	<?php echo $this->Session->flash(); ?>
     <div id="box">
-	<h3><?php __('Danh sách việc làm');?></h3>
+	<h3><?php __('Danh sách đơn ứng tuyển');?></h3>
 	<table width="100%">
 		<thead>
         <tr>
-			<th width="250"><?php echo $this->Paginator->sort('Tiêu đề việc làm','job_title');?></th>
-			<th width="200"><?php echo $this->Paginator->sort('Công ty','company_name');?></th>
-			<th width="100"><?php echo $this->Paginator->sort('Số lần xem','job_title');?></th>
-			<th width="100"><?php echo $this->Paginator->sort('Hồ sơ ứng tuyển','job_title');?></th>
-			<th width="130"><?php echo $this->Paginator->sort('Ngày cập nhật','modified');?></th>
-			<th width="130"><?php echo $this->Paginator->sort('Ngày duyệt','approved');?></th>
-			<th width="130"><?php echo $this->Paginator->sort('Trạng thái','status');?></th>
+        	<th width="250"><?php echo $this->Paginator->sort('Tiêu đề','subject');?></th>
+			<th width="200"><?php echo $this->Paginator->sort('Họ tên ứng viên','jobseeker.last_name');?></th>
+			<th width="250"><?php echo $this->Paginator->sort('Chức danh','job.job_title');?></th>
+			<th width="200"><?php echo $this->Paginator->sort('Công ty','job.company_name');?></th>
+			<th width="150"><?php echo $this->Paginator->sort('Hồ sơ đính kèm','resume.resume_title');?></th>
+			<th width="150"><?php echo $this->Paginator->sort('Ngày nộp đơn','created');?></th>
 			<th width="130" class="actions"><?php __('');?></th>
 	    </tr> 
 		</thead>
 		<?php
-			$status =  array(0 => 'Chưa duyệt', 1 =>'Đạt', 2=>'Không đạt', 3=>'Chờ duyệt lại');
 			$i = 0;
-			foreach ($jobs as $job):
+			foreach ($jobApplys as $jobApply):
 				$class = null;
 				if ($i++ % 2 == 0) {
 				$class = ' class="altrow"';
 			}
 		?>
     <tr<?php echo $class;?>>
-		<td><?php echo $this->Html->link($job['Job']['job_title'], array('action' => 'preview', $job['Job']['id'], 'admin'=> true), array('target'=>'_blank')); ?>&nbsp;</td>
-		<td><?php echo $job['Job']['company_name']; ?>&nbsp;</td>
-		<td><?php echo $job['JobViewLog'][0]['views']; ?>&nbsp;</td>
-		<td><?php echo count($job['JobApply']); ?>&nbsp;</td>
-		<td><?php echo $job['Job']['created']; ?>&nbsp;</td>
-		<td><?php echo $job['Job']['approved']; ?>&nbsp;</td>
-		<td><?php echo $status[$job['Job']['status']];?> | 
-			<?php echo $this->Html->link(__('Xét duyệt', true), array('action' => 'approve', $job['Job']['id'], 'admin'=> true), array('target'=>'_blank')); ?>&nbsp;</td>
+    	<td><strong><?php echo $jobApply['JobApply']['subject']; ?>&nbsp;</strong></td>
+    	<td><?php echo $jobApply['Jobseeker']['last_name'].' '.$jobApply['Jobseeker']['first_name']; ?>&nbsp;</td>
+		<td><?php echo $this->Html->link($jobApply['Job']['job_title'], array('action' => 'view', $jobApply['JobApply']['job_id'], 'admin'=> false), array('target'=>'_blank')); ?>&nbsp;</td>
+		<td><?php echo $jobApply['Job']['company_name']; ?>&nbsp;</td>
+		<td><?php echo $this->Html->link($jobApply['Resume']['resume_title'], array('action' => 'viewResume', $jobApply['JobApply']['resume_id'], 'admin'=> true), array('target'=>'_blank')); ?>&nbsp;</td>
+		<td><?php echo $jobApply['JobApply']['created']; ?>&nbsp;</td>
 		<td class="a-center">
-			<?php echo $this->Html->link(__('Cập nhật', true), array('action' => 'preview', $job['Job']['id'], 'admin'=> true), array('target'=>'_blank')); ?> | 
-			<?php echo $this->Html->link(__('Xóa', true), array('action' => 'delete', $job['Job']['id'], 'admin'=> true), null, sprintf(__('Bạn có chắc chắn muốn xóa %s?', true), $job['Job']['job_title'])); ?>
+			<?php echo $this->Html->link(__('Xem', true), array('action' => 'viewApplyJob', $jobApply['JobApply']['id'], 'admin'=> true)); ?> | 
+			<?php echo $this->Html->link(__('Xóa', true), array('action' => 'deleteApplyJob', $jobApply['JobApply']['id'], 'admin'=> true), null, sprintf(__('Bạn có chắc chắn muốn xóa %s?', true), $jobApply['JobApply']['subject'])); ?>
 		</td>
 	</tr>
     <?php endforeach; ?>
@@ -75,7 +71,5 @@
 	</div>
 	</div>
 	<br/>
-	<?php echo $this->Html->link($html->tag('span', 'Đăng việc làm mới'), 
-                            array('controller'=> 'jobs', 'action' => 'admin_postJob'),array('escape' => false, 'class'=>'button')); ?>
 	</div>
 </div>

@@ -17,7 +17,7 @@
                 	</p>
                 	<p>
                 		<label>Công ty ứng tuyển:</label> 
-                		<span class="text"><?php echo $job['Employer']['company_name']; ?></span>
+                		<span class="text"><?php echo $job['Job']['company_name']; ?></span>
                 	</p>
                 	<p>
                 		<label><span class="require">*</span> Tiêu đề hồ sơ:</label> 

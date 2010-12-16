@@ -24,48 +24,40 @@
 	<div id="content">
 	<?php echo $this->Session->flash(); ?>
     <div id="box">
-		<h3><?php __('Danh sách  nhà tuyển dụng');?></h3>
-    
+	<h3><?php __('Tài khoản quản trị');?></h3>
 	<table width="100%">
-			<thead>
-            <tr>
-		      	<th><?php echo $this->Paginator->sort('Email','Email');?></th>
-    			<th><?php echo $this->Paginator->sort('Tên công ty','company_name');?></th>
-                <th><?php echo $this->Paginator->sort('Quốc gia','country_id');?></th>
-    			<th><?php echo $this->Paginator->sort('Tỉnh/Thành phố','province_id');?></th>
-                <th><?php echo $this->Paginator->sort('Website','Website');?></th>
-                <th width="110"><?php echo $this->Paginator->sort('Ngày tạo','created');?></th>
-    			<th width="110"><?php echo $this->Paginator->sort('Đăng nhập gần nhất','last_login');?></th>
-                <th><?php echo $this->Paginator->sort('Trạng thái');?></th>            
-    			<th width="130" class="actions"><?php __('');?></th>
+		<thead>
+        <tr>
+			<th><?php echo $this->Paginator->sort('Username','username');?></th>
+			<th width="120"><?php echo $this->Paginator->sort('Ngày tạo','created');?></th>
+			<th width="120"><?php echo $this->Paginator->sort('Đăng nhập gần nhất','last_login');?></th>
+            <th width="110"><?php echo $this->Paginator->sort('Trạng thái','status');?></th>
+			<th width="110"></th>
 	    </tr> 
 		</thead>
-<?php
+	<?php
+	$status =  array(0 => 'Khóa', 1 =>'Đã kích hoạt');
 	$i = 0;
-	$status =  array(0 => 'Chưa kích hoạt', 1 =>'Đã kích hoạt', 2=>'Khóa');
-	foreach ($employers as $employer):
+	foreach ($admins as $admin):
 		$class = null;
 		if ($i++ % 2 == 0) {
 			$class = ' class="altrow"';
 		}
 	?>
-	<tr<?php echo $class;?>>
-		<td><?php echo $employer['Employer']['email']; ?>&nbsp;</td>
-		<td><?php echo $employer['Employer']['company_name']; ?>&nbsp;</td>
-        <td><?php echo $employer['Country']['name']; ?>&nbsp;</td>
-		<td><?php echo $employer['Province']['name']; ?>&nbsp;</td>
-        <td><?php echo $employer['Employer']['website']; ?>&nbsp;</td>
-        <td><?php echo date('d-m-y h:i:s',strtotime($employer['Employer']['created'])); ?>&nbsp;</td>
-        <td><?php echo date('d-m-y h:i:s',strtotime($employer['Employer']['last_login'])); ?>&nbsp;</td>
-	    <td><?php echo $status[$employer['Employer']['actived']]; ?>&nbsp;</td>
-        <td class="a-center">
-        	<?php echo $this->Html->link(__('Xem', true), array('action' => 'view', $employer['Employer']['id'])); ?> | 
-    	    <?php echo $this->Html->link(__('Sửa', true), array('action' => 'edit', $employer['Employer']['id'])); ?>       
-        </td>
+    <tr<?php echo $class;?>>
+    	<td><?php echo $admin['Admin']['username']; ?>&nbsp;</td>		               			
+        <td><?php echo date('d-m-y h:i:s',strtotime($admin['Admin']['created'])); ?>&nbsp;</td>
+    	<td><?php echo date('d-m-y h:i:s',strtotime($admin['Admin']['last_login'])); ?>&nbsp;</td>
+    	<td><?php echo $status[$admin['Admin']['status']]; ?>&nbsp;</td>
+        <td class="a-center"> 
+		<?php echo $this->Html->link(__('Sửa', true), array('action' => 'edit', $admin['Admin']['id'])); ?> | 
+		<?php echo $this->Html->link(__('Xóa', true), array('action' => 'delete', $admin['Admin']['id']), null, sprintf(__('Bạn có chắc muốn xóa %s ?', true), $admin['Admin']['username'])); ?>
+	   </td>
 	</tr>
     
     <?php endforeach; ?>
 	</table>
+    
 	<p>
 		<?php echo $this->Paginator->counter(array('format' => __('Trang %page%/%pages%, tổng cộng %count% records', true)));?>	
 	</p>
@@ -73,21 +65,27 @@
 		<?php echo $this->Paginator->prev('<< ' . __('Trước', true), array(), null, array('class'=>'disabled'));?>
 	 	|<?php echo $this->Paginator->numbers();?>
  		| <?php echo $this->Paginator->next(__('Kế tiếp', true) . ' >>', array(), null, array('class' => 'disabled'));?>
-	</div>
-	</div>
-	<br/>
+	</div>	
+</div>
+<br/>
 	<div id="box">
-		<h3>Cập nhật</h3>
-	    <?php echo $this->Form->create('Employer',array('div'=>false,'id'=>'form'));?>
-        <?php
-        echo $this->Form->input('id');
-		echo $this->Form->input('actived',array('options'=>$status,'label'=>'Trạng thái:','empty'=>'Vui lòng chọn...','div'=>false));
-    	?>
+		<h3>Cập nhật trạng thái</h3>
+	    <?php echo $this->Form->create('Admin',array('div'=>false,'id'=>'form'));?>
+	    <?php echo $this->Form->input('id');?>
+	    <?php echo $this->Form->input('password',array('type'=>'hidden')); ?>
+        <?php echo $this->Form->input('username',array('label'=>'Tên đăng nhập:','div'=>false,'readonly'=>true,'error'=>array('wrap'=>'span'))); ?>
+        <?php echo $this->Form->input('status',array('label'=>'Trạng thái:','options'=>$status,'empty'=>'Vui lòng chọn...','div'=>false,'error'=>array('wrap'=>'span'))); ?>
+        <h3>Đổi mật khẩu</h3>
+        <br/>
+        <?php echo $this->Form->input('old_password',array('label'=>'Mật khẩu:','type'=>'password','div'=>false,'error'=>array('wrap'=>'span'))); ?>
+        <?php echo $this->Form->input('new_password',array('label'=>'Mật khẩu mới:','type'=>'password','div'=>false,'error'=>array('wrap'=>'span'))); ?>
+        <?php echo $this->Form->input('confirm_new_password',array('label'=>'Xác nhận mật khẩu mới:','type'=>'password','div'=>false,'error'=>array('wrap'=>'span'))); ?>
+        
 		<div align="center">
 			<br/>
 	    	<?php echo $this->Form->Submit(__('Cập nhật', true),array('div'=>false));?>
 	        <?php echo $this->Form->button('Reset', array('type'=>'reset','div'=>false));?>
 	    </div>
 	</div>
-	</div>
+</div>
 </div>

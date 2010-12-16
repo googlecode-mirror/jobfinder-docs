@@ -1,7 +1,7 @@
 <?php
 class JobsController extends AppController {
 	var $name = 'Jobs';
-	var $uses = array('Job','Country','Province','DegreeLevel','JobLevel','JobType','JobCategory','Skill','JobSkill');
+	var $uses = array('Job','JobApply','Country','Province','DegreeLevel','JobLevel','JobType','JobCategory','Skill','JobSkill','Resume','ResumeEducation','ResumeSkill');
 	var $namedArgs = TRUE;
 	
 	function beforeFilter(){
@@ -29,7 +29,7 @@ class JobsController extends AppController {
 			$day = $this->params['named']['day'];
 			$conditions = array('Job.status' => 1,
 								'Job.approved >=' => date('Y-m-d', strtotime('-'.$day. ' days')),
-								'Job.approved <=' => date('Y-m-d')
+								'Job.approved <=' => date('Y-m-d',time())
 			);
 			$this->paginate['Job'] = array('conditions' => $conditions,'recursive' => -1);
 			$this->set('results', $this->paginate('Job'));
@@ -544,24 +544,77 @@ class JobsController extends AppController {
 	{
 		$this->layout='default_admin';
 		$this->checkAdminSession();
-		$this->Job->recursive = 1;
+		$this->paginate['Job'] = array('order' => array('Job.modified DESC'),'recursive' => 1);
 		$this->set('jobs', $this->paginate('Job'));
 	}
-
-	function admin_view($id = null) {
+	
+	function admin_applyJob()
+	{
+		$this->layout='default_admin';
+		$this->checkAdminSession();
+		$this->paginate['JobApply'] = array('order' => array('JobApply.created DESC'), 'recursive' => 1);
+		$this->set('jobApplys', $this->paginate('JobApply'));
+	}
+	
+	function admin_viewApplyJob($id = null)
+	{
+		$this->layout='default_admin';
 		$this->checkAdminSession();
 		if (!$id) {
-			$this->Session->setFlash(__('Invalid job', true));
-			$this->redirect(array('action' => 'index'));
+			$this->Session->setFlash(__('Hồ sơ ứng tuyển không hợp lệ', true));
+			$this->redirect(array('controller'=>'jobs' ,'action' => 'admin_applyJob'));
 		}
-		$this->set('job', $this->Job->read(null,$id));
+		$jobApply = $this->JobApply->read(null,$id);
+		if(!empty($jobApply)){
+			$this->set('jobApply', $jobApply);
+		} else {
+			$this->Session->setFlash(__('Hồ sơ ứng tuyển không hợp lệ', true));
+			$this->redirect(array('controller'=>'jobs' ,'action' => 'admin_applyJob'));
+		}
+	}
+	
+	function admin_deleteApplyJob($id=null) {
+		$this->layout='default_admin';
+		$this->checkAdminSession();
+		if (!$id) {
+			$this->Session->setFlash(__('Hồ sơ ứng tuyển không hợp lệ.', true));
+			$this->redirect(array('controller'=>'jobs','action'=>'admin_applyJob'));
+		}
+		if ($this->JobApply->delete($id)) {
+			$this->Session->setFlash(__('Hồ sơ ứng tuyển đã được xóa.', true));
+			$this->redirect(array('controller'=>'jobs','action'=>'admin_applyJob'));
+		}
+		$this->Session->setFlash(__('Không thể xóa Hồ sơ ứng tuyển.', true));
+		$this->redirect(array('controller'=>'jobs','action'=>'admin_applyJob'));
+	}
+	
+	function admin_viewResume($id = null) {
+		if (!$id) {
+			$this->Session->setFlash(__('Invalid resume', true));
+			$this->redirect(array('action' => 'admin_applyJob'));
+		}
+		$this->layout='default_admin';
+		$this->checkAdminSession();
+		$this->set('nationalities', $this->Category->find('list', array(
+					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'Nationality'))))));
+		$this->set('companySizes', $this->Category->find('list', array(
+					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'CompanySize'))))));
+		$this->set('jobLevels', $this->JobLevel->find('list'));
+		$this->set('jobCategories', $this->JobCategory->find('list'));
+		$this->set('jobTypes', $this->JobType->find('list'));
+		$this->set('degreeLevels', $this->ResumeEducation->DegreeLevel->find('list'));
+		$this->set('countries', $this->Jobseeker->Country->find('list'));
+		$this->set('provinces', $this->Jobseeker->Province->find('list'));
+		$this->set('skills', $this->Skill->find('list'));
+		$this->set('proficiencies', $this->Category->find('list', array(
+					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'Proficiency'))))));
+		$this->set('resume', $this->Resume->read(null,$id));
 	}
 
 	function admin_approveJob() {
 		$this->layout='default_admin';
 		$this->checkAdminSession();
-		$this->paginate['Job'] =  array('conditions' => array('status' => array(0,2,3)));
-		$this->Job->recursive = 1;
+		$this->paginate['Job'] =  array('order' => array('Job.modified DESC'),'conditions' => array('status' => array(0,2,3)), 'recursive' => 1);
 		$this->set('jobs', $this->paginate('Job'));
 	}
 	
@@ -587,7 +640,6 @@ class JobsController extends AppController {
 		}
 		if (!empty($this->data)) {
 			$this->data['Job']['approved'] = date('Y-m-d H:i:s', time());
-			//pr($this->data);
 			if ($this->Job->save($this->data)) {
 				$this->Session->setFlash(__('Việc làm đã được duyệt', true));
 				$this->redirect(array('controller'=>'jobs', 'action' => 'admin_approveJob'));

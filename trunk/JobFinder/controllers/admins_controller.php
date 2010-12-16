@@ -26,7 +26,8 @@ class AdminsController extends AppController {
 				$this->Session->setFlash('You have successfully logged in.');
 				$this->redirect('/admins/index/');
 			} else {
-				$this->set('error', 'Either your username or password is incorrect.');
+				$this->Session->setFlash('Tên đăng nhập hoặc mật khẩu không chính xác.');
+				$this->data['Admin']['password'] = null;
 			}
 		}
 	}
@@ -36,15 +37,100 @@ class AdminsController extends AppController {
 		$this->Session->delete('Admin');
 		// redirect to posts index page
 		$this->Session->setFlash('You have successfully logged out.');
-		$this->redirect('/');
+		$this->redirect(array('controller'=>'admins','action' => 'login','admin'=>false));
     }
     
 	function index() {
         $this->checkAdminSession();
     }
     
-	function admin_index() {
+	function account() {
         $this->checkAdminSession();
+        $this->Admin->recursive = -1;
+		$this->set('admins', $this->paginate());
+    }
+    
+	function createAccount() {
+        $this->checkAdminSession();
+        $this->Admin->recursive = -1;
+		$this->set('admins', $this->paginate());
+		if (!empty($this->data)) {
+			if($this->data['Admin']['password'] != $this->data['Admin']['confirm_password']){
+				$this->Session->setFlash('Mật khẩu xác nhận không hợp lệ.');
+				$this->data['Admin']['password'] = null;
+				$this->data['Admin']['confirm_password'] = null;
+			}
+			else {
+				$this->data['Admin']['password'] = md5($this->data['Admin']['password']);
+				$this->data['Admin']['status'] = 1;
+				if ($this->Admin->save($this->data)) {
+					$this->Session->setFlash(__('The account has been created', true));
+					$this->redirect(array('action' => 'account'));
+				}
+				else {
+					$this->Session->setFlash(__('The account could not be created. Please, try again.', true));
+					$this->data['Admin']['password'] = null;
+					$this->data['Admin']['confirm_password'] = null;
+				}
+			}
+		}
+    }
+    
+	function edit($id = null) {
+        $this->checkAdminSession();
+        $this->Admin->recursive = -1;
+		$this->set('admins', $this->paginate());
+		if (!$id && empty($this->data)) {
+			$this->Session->setFlash(__('Tài khoản không hợp lệ.', true));
+			$this->redirect(array('action'=>'account'));
+		}
+		if (!empty($this->data)) {
+			if(!empty($this->data['Admin']['new_password']) || !empty($this->data['Admin']['confirm_new_password'])){
+				if(md5($this->data['Admin']['old_password']) != $this->data['Admin']['password']){
+					$this->Session->setFlash('Mật khẩu hiện tại không chính xác.');
+					$this->data['Admin']['old_password'] = null;
+					$this->data['Admin']['new_password'] = null;
+					$this->data['Admin']['confirm_new_password'] = null;
+				}
+				else if($this->data['Admin']['new_password'] != $this->data['Admin']['confirm_new_password']){
+					$this->Session->setFlash('Mật khẩu xác nhận không hợp lệ.');
+					$this->data['Admin']['old_password'] = null;
+					$this->data['Admin']['new_password'] = null;
+					$this->data['Admin']['confirm_new_password'] = null;
+				}else {
+					$this->data['Admin']['password'] = md5($this->data['Admin']['new_password']);
+				}
+			}
+			if ($this->Admin->save($this->data)) {
+				$this->Session->setFlash(__('Cập nhật tài khoản thành công', true));
+				$this->redirect(array('action' => 'account'));
+			} else {
+				$this->Session->setFlash(__('Cập nhật tài khoản thất bại.', true));
+			}
+		}
+		if (empty($this->data)) {
+			$this->data = $this->Admin->read(null, $id);
+		}
+    }
+    
+	function delete($id = null) {
+        $this->checkAdminSession();
+        if (!$id) {
+			$this->Session->setFlash(__('Tài khoản không hợp lệ.', true));
+			$this->redirect(array('action'=>'account'));
+		}
+		$admin = $this->Admin->read(null,$id);
+		if($admin['Admin']['username'] == 'admin'){
+			$this->Session->setFlash(__('Không thể xóa tài khoản này.', true));
+			$this->redirect(array('action' => 'account'));
+		}
+		if ($this->Admin->delete($id)) {
+			$this->Session->setFlash(__('Tài khoản đã được xóa.', true));
+			$this->redirect(array('action'=>'account'));
+		} else {
+			$this->Session->setFlash(__('Không thể xóa tài khoản này.', true));
+			$this->redirect(array('action' => 'account'));
+		}
     }
 }
 ?>

@@ -15,13 +15,14 @@
 	   <ul>
 			<li><?php echo $this->Html->link(__('Người tìm việc', true), array('controller' => 'jobseekers', 'action' => 'index', 'admin'=> true)); ?></li>
 			<li><?php echo $this->Html->link(__('Nhà tuyển dụng', true), array('controller' => 'employers', 'action' => 'index', 'admin'=> true)); ?></li>
-			<li><?php echo $this->Html->link(__('Administrator', true), array('controller' => 'admins', 'action' => 'account', 'admin'=> true)); ?></li>
+			<li><?php echo $this->Html->link(__('Administrator', true), array('controller' => 'admins', 'action' => 'account', 'admin'=> false)); ?></li>
 		</ul>
 	</div>
 </div>
 <div id="wrapper">
 <?php echo $this->element('admin_sidebar'); ?>
 	<div id="content">
+	<?php echo $this->Session->flash(); ?>
     <div id="box">
 	<h3><?php __('Danh sách Người tìm việc');?></h3>
 		<table width="100%">
@@ -52,9 +53,9 @@
         <td><?php echo date('d-m-y h:i:s',strtotime($jobseeker['Jobseeker']['created'])); ?>&nbsp;</td>
         <td><?php echo date('d-m-y h:i:s',strtotime($jobseeker['Jobseeker']['last_login'])); ?>&nbsp;</td>
     	<td><?php echo $status[$jobseeker['Jobseeker']['actived']]; ?>&nbsp;</td>
-        <td class="actions">
+        <td class="a-center"> 
 		<?php echo $this->Html->link(__('Xem', true), array('action' => 'view', $jobseeker['Jobseeker']['id'])); ?> | 
-		<?php echo $this->Html->link(__('Cập nhật', true), array('action' => 'edit', $jobseeker['Jobseeker']['id'])); ?>
+		<?php echo $this->Html->link(__('Sửa', true), array('action' => 'edit', $jobseeker['Jobseeker']['id'])); ?>
 	   </td>
 	</tr>
     
@@ -72,7 +73,6 @@
 	<br/>
 	<div id="box">
 		<h3>Cập nhật</h3>
-		<?php echo $this->Session->flash(); ?>
 	    <?php echo $this->Form->create('Jobseeker',array('div'=>false,'id'=>'form'));?>
         <?php
 		echo $this->Form->input('id');

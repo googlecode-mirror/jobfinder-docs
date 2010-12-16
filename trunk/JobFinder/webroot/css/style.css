@@ -35,21 +35,27 @@ select{
 	Structure
 *********************/
 #container{
-	width:960px;
+	width:1280px;
 	margin-left:auto;
 	margin-right:auto;
 }
 #header{
-	width:960px;
+	width:1280px;
 }
 #header h2{
 margin-top:20px;
 }
 #content{
-	width:740px;
-	float:left;
-	margin:10px 0 10px 0;
+	width:1060px;
+	float:right;
+	margin:10px 0px 10px 0px;
 	padding:10px;
+}
+#content_login{
+	width:500px;
+	margin:75px 90px 10px 0px;
+	padding:10px;
+
 }
 #sidebar{
 	background:#FFF;
@@ -96,7 +102,7 @@ margin-top:20px;
 #topmenu{
 	margin-top:33px;
 	width:700px;
-	float:left;
+	float:none;
 	voice-family:inherit;
 }
 #topmenu ul{
@@ -119,8 +125,7 @@ margin-top:20px;
 	background:#FFF;
 	padding:5px;
 	height:20px;
-	float:left;
-	width:950px;
+	width:1270px;
 }
 #top-panel ul{
 	list-style:none;
@@ -310,7 +315,7 @@ form#form label {
 	clear:left;
 	display:block;
 	float:left;
-	width:140px;
+	width:200px;
 	text-align:right;
 	padding-right:10px;
 	margin-bottom:5px;
@@ -363,7 +368,7 @@ form#form input[type=submit]:hover ,form#form button[type=reset]:hover{
 /*********************
 	Forms Error
 *********************/
-.message { font-weight: bold;color:#FF0000; margin-left: 10px; margin-top: 5px}
+.message { font-weight: bold;color:#FF0000; margin-left: 5px; margin-top: 5px;margin-bottom: 5px}
 
 form#form div.error-message {
 	color:#FF0000;
@@ -457,4 +462,5 @@ a.button:active span {
 .report_seo{background:transparent url(../img/icons/report_link.png) no-repeat left;}
 .modules{background:transparent url(../img/icons/bricks.png) no-repeat left;}
 .modules_manage{background:transparent url(../img/icons/bricks_gear.png) no-repeat left;}
+.logout{background:transparent url(../img/icons/arrow_left.gif) no-repeat left;}
 

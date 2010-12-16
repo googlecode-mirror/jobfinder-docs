@@ -22,7 +22,7 @@
                 </div>
         </div>
             <div style="text-align: right;">
-            	<?php echo $this->Form->submit('Đăng nhập',array('class'=>'btn_back','div'=>false)); ?>
+            	<?php echo $this->Form->submit('Đăng nhập',array('class'=>'btn_cont','div'=>false)); ?>
                 
             </div>
         </div>

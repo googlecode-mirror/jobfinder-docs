@@ -11,6 +11,7 @@
 <div class="wrap_cr">
     <!-- begin content -->
     <div id="content_cr">
+    <?php $status =  array(0 => 'Chưa duyệt', 1 =>'Đạt', 2=>'Không đạt', 3=>'Chờ duyệt lại');?>
     <?php echo $this->Session->flash(); ?>
         <!-- begin right col -->
         <div id="right_cr">
@@ -68,7 +69,9 @@
 					  </tr>
 					  <?php foreach ($resumes as $resume):?>
 						<tr>
-							<td><strong><?php echo $this->Html->Link($resume['Resume']['resume_title'], array('controller' => 'resumes', 'action' => 'view', $resume['Resume']['id'])); ?></strong></td>
+							<td><strong><?php echo $this->Html->Link($resume['Resume']['resume_title'], array('controller' => 'resumes', 'action' => 'view', $resume['Resume']['id']), array('target'=>'_blank')); ?></strong><br/>
+							<span class="cc_approved"><?php echo $status[$resume['Resume']['status']]; ?></span>
+							</td>
 							<td><?php echo date('d-m-Y H:i:s', strtotime($resume['Resume']['modified'])); ?>&nbsp;</td>
 							<td><?php echo count($resume['ResumeViewLog']); ?></td>
 							<td>
