@@ -5,7 +5,7 @@ class EmployersController extends AppController {
 	var $components = array('RequestHandler','Email','Recaptcha.Captcha' => array(
                 'private_key' => '6LeP2r0SAAAAAPYU1WQUkoj9IyVljJVQiBVshL1x',  
                 'public_key' => '6LeP2r0SAAAAAN8qyexGrxfP-6cMh6vWGuFAOL3K'));
-	var $uses = array('Job','Employer');
+	var $uses = array('Employer','Job');
 	
 	function beforeFilter(){
 		$this->layout = 'default_employer';
@@ -66,7 +66,7 @@ class EmployersController extends AppController {
 		$this->Session->delete('Employer');
 		// redirect to posts index page
 		$this->Session->setFlash('You have successfully logged out.');
-		$this->redirect('/');
+		$this->redirect(array('controller'=>'employers','action'=>'home'));
 	}
 
 	function register() {
@@ -158,9 +158,7 @@ class EmployersController extends AppController {
 	{
 		$this->layout='default_admin';
 		$this->checkAdminSession();
-		$this->set('countries', $this->Employer->Country->find('list'));
-		$this->set('provinces', $this->Employer->Province->find('list'));
-		$employers = $this->Employer->find('all');
+		$this->Employer->recursive = 1;
 		$this->set('employers', $this->paginate());
 	}
 
@@ -169,7 +167,9 @@ class EmployersController extends AppController {
 		$this->checkAdminSession();
 		$this->set('countries', $this->Employer->Country->find('list'));
 		$this->set('provinces', $this->Employer->Province->find('list'));
-		$employers = $this->Employer->find('all');
+		$this->set('companySizes', $this->Category->find('list', array(
+					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'CompanySize'))))));
+		$this->Employer->recursive = 1;
 		$this->set('employers', $this->paginate());
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid employer', true));
@@ -183,9 +183,7 @@ class EmployersController extends AppController {
 	function admin_edit($id = null) {
 		$this->layout='default_admin';
 		$this->checkAdminSession();
-		$this->set('countries', $this->Employer->Country->find('list'));
-		$this->set('provinces', $this->Employer->Province->find('list'));
-		$employers = $this->Employer->find('all');
+		$this->Employer->recursive = 1;
 		$this->set('employers', $this->paginate());
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid actived', true));

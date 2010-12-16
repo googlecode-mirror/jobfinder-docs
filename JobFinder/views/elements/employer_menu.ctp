@@ -1,15 +1,15 @@
- <div id="job_nav">
-   <div class="job_wrapmenu">
-    	<ul class="job_mainnav">
+ <div id="emp_nav">
+   <div class="emp_wrapmenu">
+    	<ul class="emp_mainnav">
         	<li><?php echo $html->link($html->tag('span', 'TRANG CHỦ'), 
 					array('controller' => 'employers', 'action' => 'home'),array('escape' => false)); ?></li>
 					
 			<li><?php echo $html->link($html->tag('span', 'ĐĂNG TUYỂN DỤNG'), 
-					array('controller' => 'employers', 'action' => 'postJob'),array('escape' => false)); ?></li>	
+					array('controller' => 'jobs', 'action' => 'postJob'),array('escape' => false)); ?></li>	
 			<li><?php echo $html->link($html->tag('span', 'QUẢN LÝ TUYỂN DỤNG'), 
 					array('controller' => 'employers', 'action' => 'index'),array('escape' => false)); ?></li>
     	</ul>
-		<div class="job_login">
+		<div class="emp_login">
     		<?php 
 				if(!$session->check('Employer')){
 					echo $html->link('Đăng nhập', array('controller' => 'employers', 'action' => 'login'));

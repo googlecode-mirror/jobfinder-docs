@@ -35,8 +35,9 @@
                 <div class="white_content">
                     <table class="table_info">
                     	<tr class="field_cp">
-							<td width="22%" rowspan="7" valign="top">
-								<img src="http://images.vietnamworks.com/js_photo.gif" alt="" />
+							<td width="22%" rowspan="7" valign="top" align="center">
+								<?php echo $html->image('../img/home/js_photo.gif', 
+    	                	  array('alt' => '', 'width' => '84', 'height' => '113'))  ?>
 							</td>
 							<td width="25%" class="txt_tilte_lv2">
 								<strong><?php echo $resume['Jobseeker']['last_name'].' '. $resume['Jobseeker']['first_name']; ?></strong></td>

@@ -26,6 +26,9 @@ p {padding:0; margin:10px 0}
 .job_wrapmenu {width:950px; margin:auto; background: #FED415;
                 -moz-border-radius: 5px; -webkit-border-radius: 5px; 
                 border: 1.5px solid #CCCCCC; padding: 5px;}
+.emp_wrapmenu {width:950px; margin:auto; background: #006699;
+                -moz-border-radius: 5px; -webkit-border-radius: 5px; 
+                border: 1.5px solid #CCCCCC; padding: 5px;}
 .job_wrapsubmenu {width:950px; margin:auto; background:#fff url(../img/home/job_corner_panel_bg.gif) repeat-x 0 100%;
                 -moz-border-radius: 5px; -webkit-border-radius: 5px; 
                 border: 1.5px solid #CCCCCC; padding: 3px;}
@@ -56,7 +59,9 @@ p {padding:0; margin:10px 0}
 	.job_btnlang_vn:hover {color:#fff !important; text-decoration:none}
 	
 	.job_foremp {position:absolute; height:52px; top:0; right:0; text-align:right;}
-		.job_forempct {background:url(../img/home/job_bgforemp.gif) repeat-x 0 100%; height:20px; float:left; padding:5px 0 10px 0; line-height:18px; text-align:right;}
+		.job_forempct {background:blue; height:20px; float:left; padding:5px 0 10px 0; line-height:18px; text-align:right;
+						-moz-border-radius: 5px; -webkit-border-radius: 5px; 
+                border: 0.5px solid blue; padding: 9px;}
 		.job_forempct a {color:#ff0 !important; text-decoration:none; font-weight:bold}
 		.job_forempct a:hover {color:#ff0; text-decoration:underline}
     	.job_forempleft {background:url(../img/home/job_bgforemp.gif) no-repeat 0 0; width:9px; float:left; display:block; height:52px}
@@ -90,9 +95,36 @@ p {padding:0; margin:10px 0}
                     color:#ffffff; text-decoration:none}
 	ul.job_mainnav li a.menuactive:hover span {}
 	
-	.job_login {float:right; padding-top:8px;margin-right: 20px;}
+	.job_login {float:right; padding-top:5px;margin-right: 20px;}
+	.job_login a {color: gray;}
     .job_login a:hover {color: blue;}
+
+#emp_nav { height:35px; min-width:950px; margin: auto;}
+	ul.emp_mainnav {margin:0; padding:1px 0 0 0; float:left}
+	ul.emp_mainnav li { float:left; margin-right:5px}
 	
+	ul.emp_mainnav li a,
+	ul.emp_mainnav li a.vsredirect { display:block; float:left;font-weight:bold; text-decoration:none; text-transform:uppercase; padding:0 0 4px 4px; color:#FED415; height:15px}
+	ul.emp_mainnav li a span,
+	ul.emp_mainnav li a.vsredirect span {display:block; padding:3px 11px 3px 7px}
+		ul.emp_mainnav li a.vsredirect:hover { background: url(../img/home/job_vs_nav_s.gif) no-repeat 0 -19px; color: #fff; }
+	ul.emp_mainnav li a.vsredirect:hover span { background: url(../img/home/job_vs_nav_s.gif) no-repeat 100% -19px; }
+
+	ul.emp_mainnav li a:hover { color:#2E77B4; text-decoration:none;}
+	ul.emp_mainnav li a:hover span {-moz-border-radius: 5px; -webkit-border-radius: 5px; 
+                border: 1px solid #CCCCCC; background: white;}
+	ul.emp_mainnav li a.menuactive {background:url(../img/home/job_mainnav_over.gif) no-repeat 0 -24px}
+	ul.emp_mainnav li a.menuactive span{background:url(../img/home/job_mainnav_over.gif) no-repeat 100% -24px}
+	
+	ul.emp_mainnav li a.menuactive:hover { 
+                    color:#ffffff; text-decoration:none}
+	ul.emp_mainnav li a.menuactive:hover span {}
+	
+	.emp_login {float:right; padding-top:5px;margin-right: 20px; color: #FFF}
+	.emp_login a {color: white;}
+    .emp_login a:hover {color: yellow;}
+
+
 #job_nav_sub { height:30px; min-width:980px;}
 	ul.job_subnav {margin:0;}
 	ul.job_subnav li {float:left; margin-right:5px}
@@ -312,7 +344,7 @@ form .required label:before {
 
 .both {	clear:both}
 /* --- line and current step */
-.ln_step {background:url(http://images.vietnamworks.com/dot_line_step.gif);	height:22px;font-size:10px;	padding-top:7px;clear:both;}
+.ln_step {background:url(../img/home/dot_line_step.gif);	height:22px;font-size:10px;	padding-top:7px;clear:both;}
 
 .ln_step a{color:#555555;text-decoration:none;}
 .ln_step a:hover{color:#ff9900;	text-decoration:underline;}
@@ -1388,81 +1420,25 @@ body{ font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px; margin:
 .btn_searchbox {background:url(http://images.vietnamworks.com/btn_searchbox.gif); 
 			width:67px;	height:29px;font-weight:bold;
 			color:#fff;	border-style:none;padding-bottom:5px;cursor:pointer;}
-/*------------------------------------------------------------------------*/
-						/* style for left menu  */
-/*------------------------------------------------------------------------*/
+			
 .boxTitle02{width:215px; background:#999; color:#FFF; font-size:11px; text-transform:uppercase; padding:5px 5px 5px 10px; display:block; margin:0}
 .listType04{padding:0; list-style-type:none; margin:0}
 		.listType04 li{background:#f4f4f4; border-bottom:1px solid #e1e1e2; border-top:1px solid #e1e1e2; display:block; padding:5px 5px 6px 30px; margin-top:3px !important;}
-		.listType04 li.icon01{background:url(http://images.vietnamworks.com/ico_toolbox_jobdetail.gif) no-repeat 5px 3px #f4f4f4;}
-		.listType04 li.icon02{background:url(http://images.vietnamworks.com/ico_toolbox_jobdetail.gif) no-repeat 5px -54px #f4f4f4;}
-		.listType04 li.icon03{background:url(http://images.vietnamworks.com/ico_toolbox_jobdetail.gif) no-repeat 5px -113px #f4f4f4;}
-		.listType04 li.icon04{background:url(http://images.vietnamworks.com/ico_toolbox_jobdetail.gif) no-repeat 5px -171px #f4f4f4;}
-		.listType04 li.icon05{background:url(http://images.vietnamworks.com/ico_toolbox_jobdetail.gif) no-repeat 5px -229px #f4f4f4;}
-		.listType04 li.icon06{background:url(http://images.vietnamworks.com/ico_toolbox_jobdetail.gif) no-repeat 5px -287px #f4f4f4;}
-		.listType04 li.icon07{background:url(http://images.vietnamworks.com/ico_toolbox_jobdetail.gif) no-repeat 5px -346px #f4f4f4;}
-		.listType04 li.icon08{background:url(http://images.vietnamworks.com/ico_toolbox_jobdetail.gif) no-repeat 5px -403px #f4f4f4;}
-		.listType04 li.icon09{background:url(http://images.vietnamworks.com/ico_toolbox_jobdetail.gif) no-repeat 5px -460px #f4f4f4;}
-		.listType04 li.icon10{background:url(http://images.vietnamworks.com/ico_toolbox_jobdetail.gif) no-repeat 5px -529px #f4f4f4;}
+		.listType04 li.icon01{background:url(../img/home/ico_toolbox_jobdetail.gif) no-repeat 5px 3px #f4f4f4;}
+		.listType04 li.icon02{background:url(../img/home/ico_toolbox_jobdetail.gif) no-repeat 5px -54px #f4f4f4;}
+		.listType04 li.icon03{background:url(../img/home/ico_toolbox_jobdetail.gif) no-repeat 5px -113px #f4f4f4;}
+		.listType04 li.icon04{background:url(../img/home/ico_toolbox_jobdetail.gif) no-repeat 5px -171px #f4f4f4;}
+		.listType04 li.icon05{background:url(../img/home/ico_toolbox_jobdetail.gif) no-repeat 5px -229px #f4f4f4;}
+		.listType04 li.icon06{background:url(../img/home/ico_toolbox_jobdetail.gif) no-repeat 5px -287px #f4f4f4;}
+		.listType04 li.icon07{background:url(../img/home/ico_toolbox_jobdetail.gif) no-repeat 5px -346px #f4f4f4;}
+		.listType04 li.icon08{background:url(../img/home/ico_toolbox_jobdetail.gif) no-repeat 5px -403px #f4f4f4;}
+		.listType04 li.icon09{background:url(../img/home/ico_toolbox_jobdetail.gif) no-repeat 5px -460px #f4f4f4;}
+		.listType04 li.icon10{background:url(../img/home/ico_toolbox_jobdetail.gif) no-repeat 5px -529px #f4f4f4;}
 		.listType04 a{color:#333; text-decoration:none;}
 		.listType04 a:hover{color:#ff9900;}
-
-/* style for left menu 2 */
-.boxlist_title {background:#a9aaad;color:#ffffff;font-size:11px !important;
-	font-weight:bold;	padding:5px 0 5px 5px;	margin-bottom:3px;	text-transform:uppercase;}
-
-ul.refine {	list-style-type:none;	margin:0;	padding:0;}
-
-ul.refine li {border-bottom:#e1e1e2 1px solid;border-top:#e1e1e2 1px solid;
-	background:#f4f4f4 url(http://images.vietnamworks.com/bul_menu.gif) left top no-repeat;
-	padding:5px 0 5px 20px;	margin-bottom:3px;	font-weight:bold;}	
-ul.refine li .all { font-size:9px; font-weight:normal}		
-ul.refine li a {color:#333; text-decoration:none;}
-ul.refine li a:hover {color:#ff9900; text-decoration:none;}
-
-ul.refinesub { list-style-type:none; padding:0; margin:3px 0 0 0}
-ul.refinesub li { font-weight:normal; padding:0 0 3px 10px; margin:0; background:url(http://images.vietnamworks.com/bullet_cat.gif) top left no-repeat!important; border:none}
-ul.refinesub li.more {padding:0; margin:0; background:none!important} 
-ul.refinesub li.more a { color:#ff9900; text-decoration:none}
-ul.refinesub li.more a:hover { color:#ff9900; text-decoration:underline}
-
-ul.refine div a { color:#ff9900; text-decoration:none; font-weight:normal;}
-ul.refine div a:hover { color:#ff9900; text-decoration:underline}
 /*------------------------------------------------------------------------*/
 						/* style for form search  */
 /*------------------------------------------------------------------------*/
-
-.formType01{color:#333; line-height:16px; margin:0;}	
-	fieldset { border:none}
-	.labelType01{width:200px; text-align:right; float:left; padding:0 10px 15px 0;}
-			
-	.inputType01{border:1px solid #336666; width:302px; float:left; padding:2px 3px;}
-	.comboType01{border:1px solid #336666; width:310px; float:left;}		
-	.listType01{float:left; padding:3px 0 10px 0;}
-		.listType01 li{padding:0 0 5px 0; clear:left;}
-			.listType01 li *{float:left;}
-			.listType01 li label{width:130px; padding:0 0 5px 2px;}		
-	.listType02{padding:0 0 5px 0;}
-	.listType02 li{float:left; padding:0 15px 10px 0;}
-	.listType02 li a {color:#555;}
-	.listType02 li a:hover {color:#FF9900;}
-	.listType03{width:350px; float:left; padding:0 0 5px 0;}
-		.listType03 li{float:left; margin-right:4px !important;}
-		.listType03 .language{width:123px; border:1px solid #336666;}
-		.listType03 .price{width:85px; border:1px solid #336666;}		
-	.divType01{float:left;}
-		.divType01 .wrapper{height:200px; width:303px; background:#CCC; border:1px solid #666; overflow:none; overflow-y:auto; padding:2px;}
-			.divType01 .wrapper ul{background:#FFF; padding:5px;}			
-	.btnType01{height:29px; margin-left:5px; font-weight:bold; padding:0 0 0 204px; cursor:pointer;}
-	.btnType01 .bkgC{background:url(http://images.vietnamworks.com/btn_c_emp.gif); height:29px; font-weight:bold; color:#fff; border-style:none; float:left; padding-bottom:4px;}
-	.btnType01 .btnLeft{background:url(http://images.vietnamworks.com/btn_l_emp.gif); width:9px; height:29px; float:left;}
-	.btnType01 .btnRight{background:url(http://images.vietnamworks.com/btn_r_emp.gif); width:9px; height:29px; float:left;}
-	.tip_anchor1{ /*CSS for link that shows hint onmouseover*/cursor: help; margin-left:2px !important; float:left;}
-	.tip_anchor:hover {background:url(http://images.vietnamworks.com/icon_q_over.gif);}
-	.error_form {color:#FF0000; font-weight:bold; padding:0 0 5px 205px}
-
-
-/*--------------------------------------------------------------------------------*/
 					/* style for quick search page */
 /*--------------------------------------------------------------------------------*/
 .tit_areasearch {font-size:12px; color:#ff9900; font-weight:bold;
@@ -1480,7 +1456,17 @@ ul.refine div a:hover { color:#ff9900; text-decoration:underline}
 					/* style for job details */
 /*--------------------------------------------------------------------------------*/
 /* style for preview */
-.tit_inf {	font-weight:bold;color:#ff9900;clear:both;background:url(http://images.vietnamworks.com/dot_line_cr.gif) top repeat-x;
+.box_pre {clear:both;	padding-top:5px}
+
+.box_pre {clear:both;padding-top:5px}
+
+.box_left {float:left;width:150px;text-align:right;padding-right:20px;color:#006699}
+.box_right {float:left;width:320px}
+	.box_right p {height:auto;margin-bottom:10px;}
+.comp_name {font-weight:bold;text-transform:uppercase}
+
+.tit_inf {	font-weight:bold;color:#ff9900;clear:both;
+		background:url(../img/home/dot_line_cr.gif) top repeat-x;
 	padding-top:15px;margin:0px 0px 5px 170px;}
 .space_search {clear:both; height:10px}
 
@@ -1490,40 +1476,6 @@ ul.refine div a:hover { color:#ff9900; text-decoration:underline}
 .txt_clicktolog a {color:#00adef; text-decoration:underline;; font-weight:bold}
 .txt_clicktolog a:hover{color:#ff9900; text-decoration:underline; font-weight:bold}
 /*--------------------------------------------------------------------------------*/
-					/* style for job alert */
-/*--------------------------------------------------------------------------------*/
-/* style for form  box */
-.box_jobalert { position:relative; margin-top:30px; margin-left:100px; _margin:auto; _left:100px; _height:1%}
-.box_picbg {position:absolute;background:url(http://images.vietnamworks.com/ja_bgform.jpg);width:83px;height:96px;left:0px;top:0px}
-.boxtop {background:url(http://images.vietnamworks.com/ja_topdot.gif) top right no-repeat; width:560px; height:12px}
-.boxtop_ctleft {background:url(http://images.vietnamworks.com/dot_boxformalert.gif) left repeat-y; width:543px; margin-left:16px;}
-.boxtop_ctright {background:url(http://images.vietnamworks.com/dot_boxformalert.gif) right repeat-y; display:block;}
-.boxbot {background:url(http://images.vietnamworks.com/ja_bottomdot.gif) top right no-repeat; width:560px; height:10px}
-
-/* style for thanks  box */
-.boxthank_top {background:url(http://images.vietnamworks.com/boxthanks_top.gif) top repeat-x; height:9px}
-.boxthank_top .boxthank_topleft {float:left; background:url(http://images.vietnamworks.com/boxthanks_tl.gif) top left no-repeat; width:10px; height:9px}
-.boxthank_top .boxthank_topright {float:right; background:url(http://images.vietnamworks.com/boxthanks_tr.gif) top right no-repeat; width:10px; height:9px}	
-
-.boxthank_bottom {background:url(http://images.vietnamworks.com/boxthanks_bottom.gif) top repeat-x; height:9px}
-.boxthank_bottom .boxthank_bottomleft {	float:left; background:url(http://images.vietnamworks.com/boxthanks_bl.gif) top left no-repeat; width:10px; height:9px}
-.boxthank_bottom .boxthank_bottomright {float:right; background:url(http://images.vietnamworks.com/boxthanks_br.gif) top right no-repeat; width:10px; height:9px}
-
-.boxthank_ct1 {	background:#f6f6f6 url(http://images.vietnamworks.com/boxthanks_left1.gif) left repeat-y}
-.boxthank_ct1 div{background:url(http://images.vietnamworks.com/boxthanks_right1.gif) right repeat-y; display:block; padding:5px 15px}
-
-.boxthank_ct2 {	border-left:#00adef 1px solid; border-right:#00adef 1px solid;padding:10px 0;}
-.boxthank_ct1 a {color:#333; text-decoration:underline}
-.boxthank_ct1 a:hover {	color:#ff9900; text-decoration:underline}
-
-.list_detail {	list-style-type:none;	padding:0;	margin:0px 30px;}
-.list_detail li {
-	background:url(http://images.vietnamworks.com/boxthanks_bullet.gif) top left no-repeat;
-	padding-left:20px;margin-bottom:10px;	clear:both;	height:11px;#height:auto;}
-
-.list_detail li .tit1 { display:block; width:80px; float:left; font-weight:bold}
-.list_detail li .tit2 { display:block; float:left;}
-
 /*--------------------------------------------------------------------------------*/
 					/* style for list job result */
 /*--------------------------------------------------------------------------------*/
@@ -1743,16 +1695,7 @@ ul.companyleftcol li.comprofile { background:#cceffc url(http://images.vietnamwo
 #right_cr_emp {	float:left;margin-left:20px;width:524px;}
 
 
-.opt_box {padding:0px; margin:0px; list-style-type:none;}
-.opt_box li {clear:both;padding-top:10px}
-.opt_box .option_b {float:left}
-.opt_box label {float:left; margin-top:3px; margin-left:5px; width:464px}
-.opt_box span {	float:left; margin-top:3px; margin-left:5px; width:464px;}
-.btn_back {	background:url(http://images.vietnamworks.com/btn_back.gif);width:67px;height:29px;
-			font-weight:bold;	color:#fff;	border-style:none;	padding-bottom:5px}
-.btn_cont {
-			background:url(http://images.vietnamworks.com/btn_continue.gif); width:95px;
-			height:29px;font-weight:bold;color:#fff;border-style:none;padding-bottom:5px}
+
 
 .qr_info {padding:0px 0px 10px 5px}
 
@@ -1919,163 +1862,13 @@ ul.companyleftcol li.comprofile { background:#cceffc url(http://images.vietnamwo
 .sub_tit_box1 a:hover {color:#ff9900;text-decoration:underline}			
 .black {color:#555555;}
 
-.extra_s {clear:both; padding-left10px;margin-bottom:10px;	height:1%;}
-.extra_s em { font-size:10px}
-.extra_s .exright {float:right;}
-.extra_s a {text-decoration:underline}
-.ln_step .step_current_emp {font-weight:bold;color:#00adef;}
-.left_box_emp {border-top:#006699 1px dashed;border-bottom:#006699 1px dashed;
-			background:url(http://images.vietnamworks.com/dot_line_ver_emp.gif) left repeat-y;
-			margin-bottom:20px}
-.left_box_emp .border_right{background:url(http://images.vietnamworks.com/dot_line_ver_emp.gif) right repeat-y;}
-.left_box_emp .pad {padding:0px 5px 10px 10px;line-height:24px}
-.left_box_emp .pad1 {padding:5px 15px 10px 10px;	text-align:justify}
-.left_box_emp h1{background:#f4f4f4;border-bottom:#006699 1px dashed;display:block;font-size:11px;
-			margin:0px;font-weight:bold;color:#ff9900;padding:5px 10px;margin:0px 1px}
+.cc_approved {
+    color: #64A700;
+    font-size: 11px;
+    font-style: italic;
+    padding: 0;
+}
 
-.left_box_emp .titright {float:right;}
-.left_box_emp .titleft {float:left;font-weight:bold}
-.left_box_emp ul {list-style-type:none; clear:both; margin:0px; padding:0px}
-.left_box_emp ul li {clear:both}
-.left_box_emp ul img {float:right; padding-top:10px}
-.left_box_emp ul span {float:left}
-.left_box_emp .optional {clear:both;font-weight:bold}
-
-.btn_bg_emp {height:29px; float:right; margin-left:5px}
-.btn_bg_emp .btn_c_emp {background:url(http://images.vietnamworks.com/btn_c_emp.gif); 
-	height:29px;color:#fff;border-style:none;
-	float:left;padding-bottom:4px;font-weight:bold;font-size:11px}
-
-.btn_bg_emp .btn_l_emp {background:url(http://images.vietnamworks.com/btn_l_emp.gif); width:9px; height:29px; float:left}
-.btn_bg_emp .btn_r_emp {background:url(http://images.vietnamworks.com/btn_r_emp.gif); width:9px; height:29px; float:left}
-.form_field .selectmulti_emp { width:160px;}
-		
-.form_field .labels {width:270px;}
-.form_field .ssub_note {padding-left:280px; padding-top:5px; padding-bottom:10px; clear:both}
-
-.step_postjob {width:760px; margin:auto}
-
-.float_left {float:left}
-.check_lb {padding:4px 15px 0px 2px;float:left;display:block}
-.list_lbs {padding:4px 0px 0px 2px;width:280px;float:left;display:block;text-align:right}
-.tit_jobdes {padding-bottom:10px;padding-top:10px}
-.selectmulti_jodes { width:400px;}
-.btn_pos1 { padding-top:10px; clear:both}
-.txt_titjob{				/*TXT in forget password*/
-	color:#33BEF2;font-size:12px;font-weight:bold;padding:5px 0px}
-.txt_titjob a {color:#33BEF2;text-decoration:underline}
-.txt_titjob a:hover {color:#FF9900;}
-
-.field_lan {width:200px;}
-
-.tit_boxlan {border-bottom:#006699 1px solid; color:#ff9900;}
-.tit_boxlan1 {color:#ff9900;}
-
-.frame_table1 {overflow:auto; height:80px; border:#7f9db9 1px solid;padding-left:20px}
-.icon_updow {vertical-align:baseline}
-
-/* style for preview */
-.box_pre {clear:both;padding-top:5px}
-
-.box_left {float:left;width:150px;text-align:right;padding-right:20px;color:#006699}
-.box_right {float:left;width:320px}
-	.box_right p {height:auto;margin-bottom:10px;}
-.comp_name {font-weight:bold;text-transform:uppercase}
-
-.edit_inf {color:#ff9900;font-weight:bold;padding:5px 0px 5px 0px;margin-left:170px;clear:both}
-.edit_inf a{color:#ff9900;font-weight:bold;text-decoration:underline}
-.tit_inf {font-weight:bold;color:#006699;padding:5px 0px 5px 170px;clear:both}
-
-.info_step {text-align:justify; margin-bottom:15px}
-
-.tb_payment {background:#555;margin-bottom:15px}
-
-.tb_payment td{background:#fff;}
-.tb_payment .tit_pay {font-weight:bold;color:#006699;padding:5px 10px;}
-.tb_payment .tit_ct {font-weight:bold;padding:3px 10px}
-.tb_payment .ct_pay {padding:3px 10px 3px 0px}
-.tb_payment .sub_l1 {padding:3px 0px 3px 25px}
-.tb_payment .sub_l2 {padding:3px 0px 3px 40px}
-.tb_payment .icon_ed {padding:2px 0px;text-align:center}
-.tb_payment .row1 {	background:#f4f4f4 url(http://images.vietnamworks.com/dot_line_tb.gif) bottom repeat-x}
-.tb_payment .row2 {	background:#fff url(http://images.vietnamworks.com/dot_line_tb.gif) bottom repeat-x}
-
-
-.line_arrow, .wrap_line, .line_tar1, .line_tar3, .line2_tar1, .line2_tar3 {	
-	height:32px}
-.line_arrow {background:#e2e2e2 url(http://images.vietnamworks.com/line_arrow.gif) left no-repeat;}
-.wrap_line {background:#e2e2e2;width:760px;margin:auto;}
-
-.line_tar1, .line_tar3, .line2_tar1, .line2_tar3 {width:14px; float:left}
-.line_tar1 {background:url(http://images.vietnamworks.com/line_arrow_tar1.gif);}
-.line2_tar1 {background:url(http://images.vietnamworks.com/line2_arrow_tar1.gif); }
-.line_tar2 {background:url(http://images.vietnamworks.com/line_arrow_tar2.gif);
-	float:left;height:22px;padding:10px 2px 0px 2px;font-weight:bold;color:#ffffff;}
-.line2_tar2 {
-	background:url(http://images.vietnamworks.com/line2_arrow_tar2.gif); 
-	float:left;height:22px;padding:10px 2px 0px 2px;font-weight:bold;color:#ffffff;}
-
-.line_tar3 {background:url(http://images.vietnamworks.com/line_arrow_tar3.gif); }
-.line2_tar3 {background:url(http://images.vietnamworks.com/line2_arrow_tar3.gif);}
-.line_tar4 {float:left;height:22px;padding:10px 2px 0px 2px;}
-
-.text_inf {	padding:10px 0;}
-
-.list_resume td{padding:5px 2px 7px 5px;}
-
-.list_resume input {padding:0;margin:0;}
-.list_resume .title_list {background:#999999;color:#ffffff;font-weight:bold;font-size:10px;}
-.list_resume .row1_list {background:#ffffff url(http://images.vietnamworks.com/dot_line_tb.gif) bottom repeat-x;}
-.list_resume .row2_list {background:#f6f6f6 url(http://images.vietnamworks.com/dot_line_tb.gif) bottom repeat-x;}
-
-.check_all {float:left; padding:10px 3px}
-.view_all1, .view_all2 {float:right; padding:10px 3px}
-.view_all1 a {font-weight:bold;color:#ff9900;text-decoration:underline}
-
-.view_all1 a:hover {font-weight:bold;color:#ff9900;text-decoration:underline}
-
-.view_all2 a {font-weight:bold;color:#00adef;text-decoration:underline}
-.view_all2 a:hover {font-weight:bold;color:#00adef;text-decoration:underline}
-
-.check_area {clear:both;padding-top:15px}
-.check_area .pad_check {padding-top:5px; margin-left:20px}
-.check_area .text_tit {padding-bottom:5px}
-
-
-.field_err{display:block;padding:0px 0px 3px 10px;margin:0px;color:#FF0000;float:left;}
-
-.field_green{display:block;color:#009900;padding:0px 0px 5px 280px;width:300px;float:left;font-weight:bold;}
-
-.info_page {background:#e7e7e7 url(http://images.vietnamworks.com/bg_infopage.gif) top no-repeat;
-	border:#0066b3 1px solid;padding:10px;margin-bottom:15px;text-align:justify;}
-
-/* style for check list */
-.boxlist_title {background:#a9aaad;color:#ffffff;font-size:12px;font-weight:bold;padding:5px 0 5px 10px;margin-bottom:3px;text-transform:uppercase;}
-
-ul.check_list {list-style-type:none;margin:0;padding:0;}
-ul.check_list li {border-bottom:#e1e1e2 1px solid;border-top:#e1e1e2 1px solid;background:#f4f4f4;height:19px;padding:5px 0 0 10px;margin-bottom:3px;}
-ul.check_list li.selecting {background:#fff;color:#ff9900;}
-ul.check_list li.selectingcompleted {background:#fff url(http://images.vietnamworks.com/check_vit2.gif) right  no-repeat;
-	color:#ff9900;}
-ul.check_list li.completed {background:#f4f4f4 url(http://images.vietnamworks.com/check_vit.gif) right  no-repeat;}
-ul.check_list li a {text-decoration:none;color:#333;}
-ul.check_list li a:hover {text-decoration:underline;color:#333;}
-ul.check_list li.disabled {color:#939598;}
-
-.tit_checklist {padding:5px 0 2px 10px;height:19px;}
-.tit_checklist .tit_right {	float:right;}
-.tit_checklist .tit_left {float:left;	font-weight:bold}
-
-.leftbox_mar {margin-bottom:15px;}
-
-/* end check list */
-
-
-/***********************************************************************************************/
-/***********************************************************************************************/
-/***********************************************************************************************/
-/***********************************************************************************************/
-/*****KYO******************************************************************************************/
 /* Cake */
 div.error-message {
 	color:#FF0000;

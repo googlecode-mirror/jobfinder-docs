@@ -31,6 +31,16 @@ class Employer extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
+		'actived' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				//'message' => 'Mật khẩu phải từ 4 đến 15 ký tự',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
 		'company_name' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),

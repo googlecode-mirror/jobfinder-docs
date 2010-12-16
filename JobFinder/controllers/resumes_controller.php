@@ -145,9 +145,10 @@ class ResumesController extends AppController {
 		if ($this->Resume->delete($id)) {
 			$this->Session->setFlash(__('Hồ sơ đã được xóa.', true));
 			$this->redirect(array('controller'=>'jobseekers','action'=>'index'));
+		} else {
+			$this->Session->setFlash(__('Không thể xóa hồ sơ.', true));
+			$this->redirect(array('controller'=>'jobseekers','action'=>'index'));	
 		}
-		$this->Session->setFlash(__('Không thể xóa hồ sơ.', true));
-		$this->redirect(array('controller'=>'jobseekers','action'=>'index'));
 	}
 	
 	function editPersonalInformation($id = null){
@@ -615,7 +616,102 @@ class ResumesController extends AppController {
 			}
 		}
 	}
+	
+	function admin_index(){
+		$this->layout='default_admin';
+		$this->checkAdminSession();
+		$this->paginate['Resume'] = array('order' => array('Resume.modified DESC'),'recursive' => 1);
+		$this->set('resumes', $this->paginate('Resume'));
+	}
 
+	function admin_preview($id = null){
+		$this->layout='default_admin';
+		$this->checkAdminSession();
+		if (!$id) {
+			$this->Session->setFlash(__('Invalid resume', true));
+			$this->redirect(array('action' => 'index', 'admin'=>true));
+		}
+		$this->set('nationalities', $this->Category->find('list', array(
+					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'Nationality'))))));
+		$this->set('companySizes', $this->Category->find('list', array(
+					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'CompanySize'))))));
+		$this->set('jobLevels', $this->JobLevel->find('list'));
+		$this->set('jobCategories', $this->JobCategory->find('list'));
+		$this->set('jobTypes', $this->JobType->find('list'));
+		$this->set('degreeLevels', $this->ResumeEducation->DegreeLevel->find('list'));
+		$this->set('countries', $this->Jobseeker->Country->find('list'));
+		$this->set('provinces', $this->Jobseeker->Province->find('list'));
+		$this->set('skills', $this->Skill->find('list'));
+		$this->set('proficiencies', $this->Category->find('list', array(
+					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'Proficiency'))))));
+		$this->set('resume', $this->Resume->read(null,$id));
+	}
+	
+	function admin_delete($id=null) {
+		$this->layout='default_admin';
+		$this->checkAdminSession();
+		if (!$id) {
+			$this->Session->setFlash(__('Hồ sơ không hợp lệ.', true));
+			$this->redirect(array('action' => 'index', 'admin'=>true));
+		}
+		if ($this->Resume->delete($id)) {
+			$this->Session->setFlash(__('Hồ sơ đã được xóa.', true));
+			$this->redirect(array('action' => 'index', 'admin'=>true));
+		}else {
+			$this->Session->setFlash(__('Không thể xóa hồ sơ.', true));
+			$this->redirect(array('action' => 'index', 'admin'=>true));
+		}
+	}
+	
+	function admin_approveResume() {
+		$this->layout='default_admin';
+		$this->checkAdminSession();
+		$this->paginate['Resume'] = array('order' => array('Resume.modified DESC'),'conditions' => array('status' => array(0,2,3)),'recursive' => 1);
+		$this->set('resumes', $this->paginate('Resume'));
+	}
+	
+	function admin_approve($id = null) {
+		$this->layout = 'default_admin';
+		$this->checkAdminSession();
+		$this->set('nationalities', $this->Category->find('list', array(
+					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'Nationality'))))));
+		$this->set('companySizes', $this->Category->find('list', array(
+					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'CompanySize'))))));
+		$this->set('jobLevels', $this->JobLevel->find('list'));
+		$this->set('jobCategories', $this->JobCategory->find('list'));
+		$this->set('jobTypes', $this->JobType->find('list'));
+		$this->set('degreeLevels', $this->ResumeEducation->DegreeLevel->find('list'));
+		$this->set('countries', $this->Jobseeker->Country->find('list'));
+		$this->set('provinces', $this->Jobseeker->Province->find('list'));
+		$this->set('skills', $this->Skill->find('list'));
+		$this->set('proficiencies', $this->Category->find('list', array(
+					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'Proficiency'))))));
+		if (!$id && empty($this->data)) {
+			$this->Session->setFlash(__('Invalid resume', true));
+			$this->redirect(array('controller'=>'resumes' ,'action' => 'admin_approveResume'));
+		}
+		if (!empty($this->data)) {
+			$this->data['Resume']['approved'] = date('Y-m-d H:i:s', time());
+			if ($this->Resume->save($this->data)) {
+				$this->Session->setFlash(__('Hồ sơ đã được duyệt', true));
+				$this->redirect(array('controller'=>'resumes', 'action' => 'admin_approveResume'));
+			} else {
+				$this->Session->setFlash(__('The resume could not be saved. Please, try again.', true));
+			}
+		}
+		if (empty($this->data)) {
+			$resume = $this->Resume->read(null,$id);
+			if(!empty($resume)){
+				$this->set('resume', $resume);
+				$this->data = $resume;
+			}
+			else {
+				$this->Session->setFlash(__('Invalid resume', true));
+				$this->redirect(array('controller'=>'resume','action' => 'admin_index'));
+			}
+		}
+	}
+	
 	function getProvinces() {
 		if(!empty($this->data['Resume']['country_id'])) {
 			$this->set('options',$this->Jobseeker->Province->find('list',array(

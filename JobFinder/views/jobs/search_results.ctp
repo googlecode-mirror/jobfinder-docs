@@ -25,21 +25,19 @@
             <!-- start: table heading -->
             <tbody>
                 <tr class="title_list">
-                    <td width="3%">&nbsp;</td>
-                    <td width="38%"><?php echo $this->Paginator->sort('Chức danh','job_title',array('style'=>'color: rgb(255, 255, 255)'));?></td>
-                    <td width="26%"><?php echo $this->Paginator->sort('Công ty','company_name',array('style'=>'color: rgb(255, 255, 255)'));?></td>
+                    <td width="35%"><?php echo $this->Paginator->sort('Chức danh','job_title',array('style'=>'color: rgb(255, 255, 255)'));?></td>
+                    <td width="25%"><?php echo $this->Paginator->sort('Công ty','company_name',array('style'=>'color: rgb(255, 255, 255)'));?></td>
                     <td width="15%"><?php echo $this->Paginator->sort('Địa điểm','job_locations',array('style'=>'color: rgb(255, 255, 255)'));?></td>
-                    <td width="18%" nowrap="nowrap"><?php echo $this->Paginator->sort('Ngày đăng tuyển','approved',array('style'=>'color: rgb(255, 255, 255)'));?></td>
+                    <td width="13%" nowrap="nowrap"><?php echo $this->Paginator->sort('Ngày đăng tuyển','approved',array('style'=>'color: rgb(255, 255, 255)'));?></td>
+                    <td width="12%" nowrap="nowrap"><?php echo $this->Paginator->sort('Ngày hết hạn','expired',array('style'=>'color: rgb(255, 255, 255)'));?></td>
                 </tr>
             <!-- end: table heading -->
             
             <!-- begin top level job -->
             <?php foreach ($results as $job):?>                                                                                                                      
                 <tr class="row2_list">
-                	<td><input type="checkbox" onclick="checkBoxes('checkinputall','job',30)" value="265056" name="jobs[]" id="job17"/></td>
-                    <td><?php echo $this->Html->link(__($job['Job']['job_title'], true), 
-                        array('controller'=> 'jobs','action' => 'view', $job['Job']['id'])); ?></td>
-                 
+                    <td><strong><?php echo $this->Html->link(__($job['Job']['job_title'], true), 
+                        array('controller'=> 'jobs','action' => 'view', $job['Job']['id'])); ?></strong></td>
                     <td><span class="txt_normal"><?php echo $job['Job']['company_name'];?></span></td>
                     <td><span class="txt_normal">
                     	<?php 
@@ -50,26 +48,20 @@
                                 echo "$provinces[$token]<br />";
                         		$token = strtok("|");
                     		}?></span></td>
-                    <td><span class="txt_normal"><?php echo date('d-m-Y',strtotime($job['Job']['approved'])) ;?></span></td>
+                    <td><span class="txt_normal"><?php echo date('d-m-Y',strtotime($job['Job']['approved'])) ;?>
+                    	<?php if(strtotime($job['Job']['approved']) >= strtotime('-1 days') && strtotime($job['Job']['approved']) <= time()):?>
+                    	<sup class="iconnew">MỚI</sup>
+                    	<?php endif;?>
+                    	</span></td>
+                    <td><span class="txt_normal"><?php echo date('d-m-Y',strtotime($job['Job']['expired'])) ;?></span></td>
                 </tr>
             <?php endforeach; ?>
             </tbody>
         </table>
         <div style="padding-bottom: 5px;" class="navigation">
-            <div class="navigationLeft">
-                <ul class="listTypeFloat">
-                    <li><a title="Chon Tat Ca" href="javascript:doCheck(true);" class="link">Chọn tất cả</a>&nbsp;|&nbsp;</li>
-                    <li><a title="Bo Chon Tat Ca" href="javascript:doCheck(false);" class="link">Bỏ tất cả mục chọn</a></li>
-                </ul>
-                <br class="clear"/>
-                <div class="checked_jobs"><strong>Với việc đã chọn:</strong></div>
-                <ul class="listTypeFloat">
-                    <li>
-                        <input type="button" value="Lưu" name="btnSaveCheckedJobs" onclick="doSaveJobs()">
-                    </li>
-                </ul>
-                <br class="clear"/>
-            </div>
+            <p>
+				<?php echo $this->Paginator->counter(array('format' => __('Trang %page%/%pages%, tổng cộng %count% việc làm', true)));?>	
+			</p>
             <!--Hiển thị số trang-->
             <div class="navigationRight">
             	<?php echo $this->Paginator->prev('<< ' . __('Trước', true), array(), null, array('class'=>'disabled'));?>
