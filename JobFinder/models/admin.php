@@ -6,31 +6,17 @@ class Admin extends AppModel {
 		'username' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
+				'message' => 'Vui lòng nhập Tên đăng nhập',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-			'isUnique' => array(
-			'rule' => array('isUnique'),
-			'message' => 'Tên đăng nhập đã được sử dụng.',
 			),
 		),
 		'password' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'status' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
-				//'message' => 'Mật khẩu phải từ 4 đến 15 ký tự',
+				'message' => 'Vui lòng nhập Mật khẩu',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
