@@ -6,7 +6,7 @@ class Skill extends AppModel {
 		'name' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				'message' => 'Vui lòng nhập kỹ năng',
+				'message' => 'Vui lòng nhập tên kỹ năng',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule

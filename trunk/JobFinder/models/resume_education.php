@@ -25,7 +25,7 @@ class ResumeEducation extends AppModel {
 		'program' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				'message' => 'Vui lòng nhập Trường ',
+				'message' => 'Vui lòng nhập Trường',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -45,7 +45,7 @@ class ResumeEducation extends AppModel {
 		'start_date' => array(
 			'startBeforeEnd' => array(
                 'rule' => array('startBeforeEnd', 'end_date'),
-                'message' => 'The start time must be before the end time.', 
+                'message' => 'Ngày bắt đầu phải trước ngày kết thúc', 
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -53,7 +53,7 @@ class ResumeEducation extends AppModel {
 			),
 			'date' => array(
 				'rule' => array('date'),
-				//'message' => 'Your custom message here',
+				'message' => 'Ngày bắt đầu không hợp lệ',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -64,7 +64,7 @@ class ResumeEducation extends AppModel {
 			'date' => array(
 				'rule' => array('date'),
 				'allowEmpty' => true,
-				//'message' => 'Your custom message here',
+				'message' => 'Ngày kết thúc không hợp lệ',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule

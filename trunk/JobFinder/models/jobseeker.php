@@ -13,7 +13,7 @@ class Jobseeker extends AppModel {
 		'email' => array(
 			'email' => array(
 				'rule' => array('email'),
-	//'message' => 'Your custom message here',
+				'message' => 'Địa chỉ email không hợp lệ',
 	//'allowEmpty' => false,
 	//'required' => false,
 	//'last' => false, // Stop validation after this rule
@@ -21,7 +21,7 @@ class Jobseeker extends AppModel {
 	),
 		'isUnique' => array(
 			'rule' => array('isUnique'),
-		'message' => 'This email has already been used.',
+		'message' => 'Địa chỉ email này đã được sử sụng',
 	//'allowEmpty' => false,
 	//'required' => false,
 	//'last' => false, // Stop validation after this rule

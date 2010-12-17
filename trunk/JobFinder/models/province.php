@@ -6,7 +6,7 @@ class Province extends AppModel {
 		'country_id' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				'message' => 'Vui lòng nhập mã Quốc gia',
+				'message' => 'Vui lòng chọn Quốc gia',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -16,7 +16,7 @@ class Province extends AppModel {
 		'name' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				'message' => 'Vui lòng nhập Tên quốc gia',
+				'message' => 'Vui lòng nhập Tên tỉnh/thành phố',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
