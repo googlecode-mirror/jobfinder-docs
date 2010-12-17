@@ -15,7 +15,7 @@ class JobSaved extends AppModel {
 		'job_id' => array(
 			'isUnique' => array(
 				'rule' => array('isUnique'),
-				//'message' => 'Your custom message here',
+				'message' => 'Bạn đã lưu công việc này',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule

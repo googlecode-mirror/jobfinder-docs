@@ -45,7 +45,7 @@ class ResumeTargetJob extends AppModel {
 		'job_types' => array(
 			'multiple' => array(
 				'rule' => array('multiple', array('min'=>1, 'max'=>3)),
-       			'message' => 'Please select at least one and maximum 3 option',
+       			'message' => 'Vui lòng chọn một và tối đa 3 loại hình công việc',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -55,7 +55,7 @@ class ResumeTargetJob extends AppModel {
 		'job_locations' => array(
 			'multiple' => array(
 				'rule' => array('multiple', array('min'=>1, 'max'=>3)),
-				'message' => 'Please select at least one and maximum 3 option',
+				'message' => 'Vui lòng chọn một và tối đa 3 nơi làm việc',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -65,7 +65,7 @@ class ResumeTargetJob extends AppModel {
 		'job_categories' => array(
 			'multiple' => array(
 				'rule' => array('multiple', array('min'=>1, 'max'=>3)),
-				'message' => 'Please select at least one and maximum 3 option',
+				'message' => 'Vui lòng chọn một và tối đa 3 ngành nghề',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -75,8 +75,8 @@ class ResumeTargetJob extends AppModel {
 		'current_salary' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
-				'allowEmpty'=> true
-				//'message' => 'Please select at least one and maximum 3 option',
+				'allowEmpty'=> true,
+				'message' => 'Vui lòng nhập số tiền',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -86,8 +86,8 @@ class ResumeTargetJob extends AppModel {
 		'desired_salary' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
-				'allowEmpty'=> true
-				//'message' => 'Please select at least one and maximum 3 option',
+				'allowEmpty'=> true,
+				'message' => 'Vui lòng nhập số tiền',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule

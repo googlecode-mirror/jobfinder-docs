@@ -6,7 +6,7 @@ class JobLevel extends AppModel {
 		'level' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				'message' => 'Vui lòng nhập Cấp độ',
+				'message' => 'Vui lòng nhập Cấp bậc',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule

@@ -75,7 +75,7 @@ class ResumeJobExp extends AppModel {
 		'start_date' => array(
 			'date' => array(
 				'rule' => array('date'),
-				//'message' => 'Your custom message here',
+				'message' => 'Ngày bắt đầu không hợp lệ',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -83,7 +83,7 @@ class ResumeJobExp extends AppModel {
 			),
 			'startBeforeEnd' => array(
                 'rule' => array('startBeforeEnd', 'end_date'),
-                'message' => 'The start time must be before the end time.', 
+                'message' => 'Ngày bắt đầu phải trước ngày kết thúc', 
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -93,7 +93,7 @@ class ResumeJobExp extends AppModel {
 		'end_date' => array(
 			'date' => array(
 				'rule' => array('date'),
-				//'message' => 'Your custom message here',
+				'message' => 'Ngày kết thúc không hợp lệ',
 				'allowEmpty' => true,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule

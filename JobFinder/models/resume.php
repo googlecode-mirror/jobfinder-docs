@@ -87,7 +87,7 @@ class Resume extends AppModel {
 		'telephone' => array(
 			'phone' => array(
 				'rule' => array('phone','/^[[:space:]\-0-9]{7,}$/i',null),
-				//'message' => 'Your custom message here',
+				'message' => 'Số điện thoại không hợp lệ',
 				'allowEmpty' => true,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -97,7 +97,7 @@ class Resume extends AppModel {
 		'mobile' => array(
 			'phone' => array(
 				'rule' => array('phone','/^[[:space:]\-0-9]{7,}$/i',null),
-				//'message' => 'Your custom message here',
+				'message' => 'Số điện thoại không hợp lệ',
 				'allowEmpty' => true,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
