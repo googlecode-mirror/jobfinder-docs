@@ -76,7 +76,7 @@ class Job extends AppModel {
 		'telephone' => array(
 			'phone' => array(
 				'rule' => array('phone','/^[[:space:]\-0-9]{7,}$/i',null),
-				//'message' => 'Your custom message here',
+				'message' => 'Số điện thoại không hợp lệ',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -86,7 +86,7 @@ class Job extends AppModel {
 		'mobile' => array(
 			'phone' => array(
 				'rule' => array('phone','/^[[:space:]\-0-9]{7,}$/i',null),
-				//'message' => 'Your custom message here',
+				'message' => 'Số điện thoại không hợp lệ',
 				'allowEmpty' => true,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -96,7 +96,7 @@ class Job extends AppModel {
 		'email' => array(
 			'email' => array(
 				'rule' => array('email'),
-				//'message' => 'Your custom message here',
+				'message' => 'Địa chỉ email không hợp lệ',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -146,7 +146,7 @@ class Job extends AppModel {
 		'job_categories' => array(
 			'multiple' => array(
 				'rule' => array('multiple', array('min'=>1, 'max'=>3)),
-       			'message' => 'Please select at least one and maximum 3 option',
+       			'message' => 'Vui lòng chọn một và tối đa 3 ngành nghề',
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -157,7 +157,7 @@ class Job extends AppModel {
 		'job_locations' => array(
 			'multiple' => array(
 				'rule' => array('multiple', array('min'=>1, 'max'=>3)),
-       			'message' => 'Please select at least one and maximum 3 option',
+       			'message' => 'Vui lòng chọn một và tối đa 3 nơi làm việc',
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -188,7 +188,7 @@ class Job extends AppModel {
 		'expired' => array(
 			'date' => array(
 				'rule' => array('date'),
-				//'message' => 'Your custom message here',
+				'message' => 'Ngày hết hạn không hợp lệ',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
