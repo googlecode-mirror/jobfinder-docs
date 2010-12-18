@@ -54,7 +54,7 @@
 		<td><?php echo $this->Html->link($jobApply['Resume']['resume_title'], array('action' => 'viewResume', $jobApply['JobApply']['resume_id'], 'admin'=> true), array('target'=>'_blank')); ?>&nbsp;</td>
 		<td><?php echo $jobApply['JobApply']['created']; ?>&nbsp;</td>
 		<td class="a-center">
-			<?php echo $this->Html->link(__('Xem', true), array('action' => 'viewApplyJob', $jobApply['JobApply']['id'], 'admin'=> true)); ?> | 
+			<?php echo $this->Html->link(__('Xem', true), array('action' => 'viewApplyJob', $jobApply['JobApply']['id'], 'admin'=> true), array('target'=>'_blank')); ?> | 
 			<?php echo $this->Html->link(__('Xóa', true), array('action' => 'deleteApplyJob', $jobApply['JobApply']['id'], 'admin'=> true), null, sprintf(__('Bạn có chắc chắn muốn xóa %s?', true), $jobApply['JobApply']['subject'])); ?>
 		</td>
 	</tr>

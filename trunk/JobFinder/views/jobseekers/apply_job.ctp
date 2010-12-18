@@ -25,7 +25,7 @@
                 	</p>
                 	<p>
                 		<label><span class="require">*</span> Thư giới thiệu:</label> 
-                		<?php echo $this->Form->input('JobApply.cover_letter',array('label'=>false,'class'=>'field','div'=>false,'rows'=>10)); ?>
+                		<?php echo $this->Form->input('JobApply.cover_letter',array('label'=>false,'class'=>'co_pro_area','div'=>false,'rows'=>10)); ?>
                 	</p>
                 	<p>
                 		<br/>

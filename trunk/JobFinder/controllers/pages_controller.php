@@ -82,8 +82,8 @@ class PagesController extends AppController {
 											'conditions'=>array('Job.status' => 1),
 											'order' => array('Job.priority DESC', 'Job.approved DESC'),
 											'limit' => 10));
-		$provinces = $this->Job->Province->find('list');
-		$this->set(compact('page', 'subpage', 'title_for_layout','total','jobs','provinces'));
+		$locations = $this->Job->Province->find('list');
+		$this->set(compact('page', 'subpage', 'title_for_layout','total','jobs','locations'));
 		$this->render(implode('/', $path));
 	}
 	

@@ -1,14 +1,10 @@
-<br clear="all"/>
 <div id="body_content">
-    <div class="step_postjob">
-        <img width="300" height="30" alt="" 
-            src="http://images.vietnamworks.com/post_job_signup_vn.gif"/>
-    </div>
     <!-- begin wrap -->
     <div class="wrap_cr_emp">
     <!-- begin content -->
         <div id="content_cr">
         <div id="right_cr">
+        <h2>ĐĂNG TIN TUYỂN DỤNG</h2>
         	<?php echo $this->Form->create('Job', array('class'=>'form_field')); ?>
         	<?php echo $this->Form->input('id',array('label'=>false,'type'=>'hidden')); ?>
         	<?php echo $this->Form->input('employer_id',array('label'=>false,'type'=>'hidden')); ?>

@@ -66,6 +66,6 @@
     
 	</div>
 	<br/>
-	
+	<?php echo $this->Html->link(__('Hoàn thành', true), array('action' => 'admin_preview',$this->Session->read('jobID')));  ?>
 	</div>
 </div>

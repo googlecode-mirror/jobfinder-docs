@@ -10,18 +10,13 @@
 ?>
 <head>
 <title>
-		<?php __('JobFinder Admin: '); ?>
+		<?php __('JobFinder: '); ?>
 		<?php echo $title_for_layout; ?>
 </title>
 </head>
 <body>
 	<div id="container">	
     	<?php echo $content_for_layout; ?>
-	<div id="footer">
-	<div id="credits">
-    </div>
-    <br />
-</div>
 </div>
 
 

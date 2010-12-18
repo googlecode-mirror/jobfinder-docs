@@ -66,5 +66,6 @@
 	</div>
 	<br/>
 	<?php echo $this->Html->link(__('Trở lại', true), array('action' => 'admin_modifyJob', $this->Session->read('jobID'))); ?>
+	<?php echo $this->Html->link(__('Hoàn tất', true), array('action' => 'admin_preview',$this->Session->read('jobID')));?>
 	</div>
 </div>

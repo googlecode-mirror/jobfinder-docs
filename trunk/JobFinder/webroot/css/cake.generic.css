@@ -45,6 +45,7 @@ p {padding:0; margin:10px 0}
 
 /* ------------ header --------------------- */
 #job_header { background:url(../img/home/job_topheadbg.gif) repeat-x; height:226px; min-width:980px; color:#333333}
+#emp_header { background:url(../img/home/job_topheadbg_emp.gif) repeat-x; height:226px; min-width:980px; color:#FFFFFF}
 #job_header a:hover {color:#f90;}
 		
 	.job_wrap_header {width:980px; margin:auto; position:relative}	
@@ -1259,7 +1260,7 @@ body{ font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px; margin:
 .box_thank .thank_tit { font-weight:bold; font-size:12px; color:#ff9900; margin-bottom:20px}
 .box_thank .jobtitle { color:#00adef; font-weight:bold}
 .box_thank .thank_people { text-align:right; font-style:italic}
-.box_thank_list { list-style-type:none; margin:20px 0 0 0; padding:20px 0 0 0; background:url(images/dot_line_cr.gif) top repeat-x}
+.box_thank_list { list-style-type:none; margin:20px 0 0 0; padding:20px 0 0 0; background:url(..img/home/dot_line_cr.gif) top repeat-x}
 .box_thank_list li { background:url(http://images.vietnamworks.com/appthank_arrow.gif) top left no-repeat; padding-left:25px; margin-bottom:17px; line-height:15px}
 
 /*--------------------------------------------------------------------------*/
@@ -1422,6 +1423,7 @@ body{ font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px; margin:
 			color:#fff;	border-style:none;padding-bottom:5px;cursor:pointer;}
 			
 .boxTitle02{width:215px; background:#999; color:#FFF; font-size:11px; text-transform:uppercase; padding:5px 5px 5px 10px; display:block; margin:0}
+.dboxTitle02{width:215px; background:#006699; color:#FFF; font-size:11px; text-transform:uppercase; padding:5px 5px 5px 10px; display:block; margin:0}
 .listType04{padding:0; list-style-type:none; margin:0}
 		.listType04 li{background:#f4f4f4; border-bottom:1px solid #e1e1e2; border-top:1px solid #e1e1e2; display:block; padding:5px 5px 6px 30px; margin-top:3px !important;}
 		.listType04 li.icon01{background:url(../img/home/ico_toolbox_jobdetail.gif) no-repeat 5px 3px #f4f4f4;}
@@ -1442,7 +1444,7 @@ body{ font-family:Verdana, Arial, Helvetica, sans-serif; font-size:11px; margin:
 					/* style for quick search page */
 /*--------------------------------------------------------------------------------*/
 .tit_areasearch {font-size:12px; color:#ff9900; font-weight:bold;
-	background:url(http://images.vietnamworks.com/dot_line_cr.gif) top repeat-x; padding-top:10px; margin-bottom:10px; padding-left:5px;}
+	background:url(../img/home/dot_line_cr.gif) top repeat-x; padding-top:10px; margin-bottom:10px; padding-left:5px;}
 .inputType02{border:1px solid #336666; width:318px; padding:2px 3px; margin-left:5px; margin-right:10px !important; margin-bottom:5px}	
 .comboType02_industry{border:1px solid #336666; width:250px; margin-left:5px;}
 .comboType02{border:1px solid #336666; width:150px; margin-left:5px;}
@@ -1564,7 +1566,7 @@ ul.companyleftcol li.comprofile { background:#cceffc url(http://images.vietnamwo
 .boxleft_print {float:left;width:150px;text-align:right;padding-right:20px;color:#333;font-weight:bold}
 .boxright_print {float:left;width:420px;text-align:justify}
 .compname_print {font-weight:bold;text-transform:uppercase}
-.titinf_print {font-weight:bold;color:#ff9900;clear:both;background:url(http://images.vietnamworks.com/dot_line_cr.gif) top repeat-x;
+.titinf_print {font-weight:bold;color:#ff9900;clear:both;background:url(../img/home/dot_line_cr.gif) top repeat-x;
 	padding-top:15px;margin:0px 0px 5px 170px;}
 .space_search {clear:both; height:10px}
 
@@ -1589,7 +1591,7 @@ ul.companyleftcol li.comprofile { background:#cceffc url(http://images.vietnamwo
 	.jobsearch_byindustry .quick_list{width:257px;}
 .jobsearch_byfunction {width:220px; height:630px; float:left; background:url(http://images.vietnamworks.com/dot_line_col_cr.gif) right repeat-y;}
 .jobsearch_bytype {width:220px; height:630px; float:left;}
-.jobsearch_bykeyword { width:550px; height:110px; float:left;}
+.jobsearch_bykeyword { width:550px; height:120px; float:left;}
 .jobsearch_byday { width:300px; height:110px; float:left;}
 
 /***********************************************************************************************/
@@ -1763,7 +1765,7 @@ ul.companyleftcol li.comprofile { background:#cceffc url(http://images.vietnamwo
 .tb_list .td_bg1 {	background:#ffffff url(http://images.vietnamworks.com/dot_line_tb.gif) top repeat-x;}
 .tb_list .tb_icon td {padding:0px}
 
-.line_dotted {	background:url(http://images.vietnamworks.com/dot_line_cr.gif) top repeat-x;height:10px;margin-top:5px;	clear:both}
+.line_dotted {	background:url(../img/home/dot_line_cr.gif) top repeat-x;height:10px;margin-top:5px;	clear:both}
 
 .frame_table {overflow:auto; width:460px; height:80px; border:#7f9db9 1px solid;padding-left:20px}
 .btn_add {margin-left:170px}

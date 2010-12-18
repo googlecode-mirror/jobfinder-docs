@@ -165,19 +165,6 @@ class Employer extends AppModel {
 			'finderQuery' => '',
 			'counterQuery' => ''
 		),
-		'ResumeSaved' => array(
-			'className' => 'ResumeSaved',
-			'foreignKey' => 'employer_id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		),
 		'ResumeViewLog' => array(
 			'className' => 'ResumeViewLog',
 			'foreignKey' => 'employer_id',

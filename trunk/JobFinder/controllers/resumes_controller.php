@@ -2,10 +2,71 @@
 class ResumesController extends AppController {
 	var $name = 'Resumes';
 	var $components = array('RequestHandler');
-	var $uses = array('Resume','ResumeJobExp','ResumeEducation','Job','ResumeSkill', 'Skill','JobLevel','JobCategory','JobType');
+	var $uses = array('Resume','ResumeJobExp','ResumeEducation','Job','ResumeSkill', 'Skill','JobLevel','JobCategory','JobType','Province');
 
 	function beforeFilter(){
 		$this->set('total',$this->Job->find('count', array('conditions'=>array('Job.status' => 1))));
+	}
+	
+	function search(){
+		$this->layout = 'default_employer';
+		$this->getNamedArgs();
+		$this->set('categories', $this->JobCategory->find('list'));
+		$this->set('jobLevels', $this->JobLevel->find('list'));
+		$this->set('locations', $this->Province->find('list'));
+		if(!empty($this->data))
+		{
+			$this->redirect(array('action'=>'search',
+				'keyword'=> $this->data['Resume']['keyword'],
+				'category'=> $this->data['Resume']['category'],
+				'location'=> $this->data['Resume']['location'],
+				'job_level'=> $this->data['Resume']['job_level'],
+				'years_exp'=> $this->data['Resume']['years_exp']));
+		}
+		if(isset($this->params['named']['keyword']) || isset($this->params['named']['years_exp']) || isset($this->params['named']['job_level']) 
+		|| isset($this->params['named']['category']) || isset($this->params['named']['location']))
+		{
+			$keyword = '';
+			$category = '';
+			$location = '';
+			$years_exp = '';
+			$job_level = '';
+			if(isset($this->params['named']['keyword']))
+				$keyword = $this->params['named']['keyword'];
+			if(isset($this->params['named']['category']))
+				$category = $this->params['named']['category'];
+			if(isset($this->params['named']['location']))
+				$location = $this->params['named']['location'];
+			if(isset($this->params['named']['job_level']))
+				$job_level = $this->params['named']['job_level'];
+			if(isset($this->params['named']['years_exp']))
+				$years_exp = $this->params['named']['years_exp'];
+			
+			$joins = array(array('table' => 'resume_target_jobs',
+								'alias' => 'ResumeTargetJob',
+								'type' => 'left',
+            					'foreignKey' => false,
+           		 				'conditions'=> array('ResumeTargetJob.resume_id = resume.id')));
+			
+			$conditions = array('Resume.status' => 1,
+								'Resume.privacy_status' => 1,
+								'Resume.years_exp LIKE' => '%'.$years_exp.'%',
+								'ResumeTargetJob.job_level_id LIKE' => '%'.$job_level.'%',
+								'ResumeTargetJob.job_categories LIKE' => '%'.$category.'%',
+								'ResumeTargetJob.job_locations LIKE' => '%'.$location.'%',
+								'OR' => array('Resume.resume_title LIKE ' => '%'.$keyword.'%',
+								'ResumeTargetJob.career_objective LIKE ' => '%'.$keyword.'%',
+								'Jobseeker.first_name LIKE ' => '%'.$keyword.'%',
+								'Jobseeker.last_name LIKE ' => '%'.$keyword.'%'
+								));
+			
+			$this->paginate['Resume'] = array('joins'=> $joins, 'conditions' => $conditions,'recursive' => 2);
+			$this->set('results', $this->paginate('Resume'));
+		} else{
+			$conditions = array('Resume.resume_title' => '');
+			$this->paginate['Resume'] = array('conditions' => $conditions,'recursive' => 1);
+			$this->set('results', $this->paginate('Resume'));
+		}
 	}
 	
 	function view($id = null) {

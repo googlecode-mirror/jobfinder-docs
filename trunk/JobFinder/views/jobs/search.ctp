@@ -1,16 +1,3 @@
-<div id="job_nav_sub">
-	<div class="job_wrapsubmenu">
-		<ul class="job_subnav">
-			<li><?php echo $html->link($html->tag('span', 'Tìm Kiếm Nhanh'), 
-					array('controller' => 'jobs', 'action' => 'search'),array('escape' => false)); ?>
-			</li>
-			<li><?php echo $html->link($html->tag('span', 'Tìm Kiếm Nâng Cao'), 
-					array('controller' => 'jobs', 'action' => 'advanceSearch'),array('escape' => false)); ?>
-			</li>	
-		</ul>	
-		<br clear="all"/>
-	</div><!-- end wrap -->		
-</div>
 <div class="wrap_search">
 	<div class="line_title">
         <img width="300" height="30" alt="Tìm việc, tìm việc làm, tìm việc nhanh" 
@@ -24,18 +11,22 @@
             <div class="white_content">
                 <!-- begin quick search --> 
                 <div class="jobsearch_bykeyword">
-                	<?php echo $this->Form->create('Job',array('action'=>'searchResults'));?>
+                	<?php echo $this->Form->create('Job',array('action'=>'search'));?>
                     <h2 style="background: none repeat scroll 0% 0% transparent; margin: 0pt 0pt 10px;" 
                         class="tit_areasearch">Tìm Việc Bằng Từ Khóa</h2>
                     <?php echo $this->Form->Input('keyword',array('class'=>'inputType02','maxlength'=>'80','label'=>false,'div'=>false));?>
                     <?php echo $this->Form->Submit('Tìm kiếm',array('style'=>'margin-bottom: 7px; width: 70px;','div'=>false));?>
                     <br/>
                     <?php echo $this->Form->Input('jobCategory',array('class'=>'comboType02_industry','label'=>false,'div'=>false,'empty'=>'Bất kỳ ngành nghề'));?>
-					<?php echo $this->Form->Input('province',array('class'=>'comboType02','label'=>false,'div'=>false,'empty'=>'Tất cả địa điểm'));?>
-                    <?php echo $this->Form->end();?>
+					<?php echo $this->Form->Input('location',array('class'=>'comboType02','label'=>false,'div'=>false,'empty'=>'Tất cả địa điểm'));?>
+                    <br/>
+                    <br/>
+                    <?php echo $this->Form->Input('jobType',array('class'=>'comboType02_industry','label'=>false,'div'=>false,'empty'=>'Bất kỳ loại hình công việc'));?>
+                    <?php echo $this->Form->Input('jobLevel',array('class'=>'comboType02','label'=>false,'div'=>false,'empty'=>'Bất kỳ cấp bậc'));?>
+					<br/>
+					<?php echo $this->Form->end();?>
              	</div>                          
                 <!-- end quick search -->
-
     			<div style="clear: both;"></div>
     			
                 <!-- begin by category -->
@@ -65,7 +56,7 @@
 				<div class="jobsearch_bytype">
 					<div class="tit_areasearch">Theo Loại Hình Công việc</div>
                     <ul class="quick_list">
-                    	<?php foreach ($jobTypes as $jobType):?>
+                    	<?php foreach ($listJobTypes as $jobType):?>
                     	<li>» <?php echo $html->link($jobType['JobType']['type'], array('controller' => 'jobs', 'action' => 'searchResults', 'type' => $jobType['JobType']['id']),array('escape' => false)); ?></li>                           						
                			<?php endforeach;?>
                		</ul>

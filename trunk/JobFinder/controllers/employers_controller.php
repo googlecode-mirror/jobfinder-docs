@@ -5,7 +5,8 @@ class EmployersController extends AppController {
 	var $components = array('RequestHandler','Email','Recaptcha.Captcha' => array(
                 'private_key' => '6LeP2r0SAAAAAPYU1WQUkoj9IyVljJVQiBVshL1x',  
                 'public_key' => '6LeP2r0SAAAAAN8qyexGrxfP-6cMh6vWGuFAOL3K'));
-	var $uses = array('Employer','Job');
+	var $uses = array('Employer','Job','JobApply','Resume','ResumeJobExp','ResumeEducation','Job','ResumeSkill', 'Skill','JobLevel','JobCategory','JobType');
+	var $namedArgs = TRUE;
 	
 	function beforeFilter(){
 		$this->layout = 'default_employer';
@@ -18,11 +19,95 @@ class EmployersController extends AppController {
 	
 	function index(){
 		$employer = $this->checkEmployerSession();
-		$this->paginate['Job'] =  array('conditions' => array('employer_id' => $employer['Employer']['id'], 'status'=>1));
-		$this->Employer->Job->recursive = 1;
+		$this->paginate['Job'] =  array('conditions' => array('employer_id' => $employer['Employer']['id'], 'status'=>1),'order'=>'Job.approved DESC','recursive'=>1);
 		$this->set('jobs', $this->paginate('Job'));
 	}
 
+	function manageJob(){
+		$employer = $this->checkEmployerSession();
+		$this->getNamedArgs();
+		if(isset($this->params['named']['status'])){
+			$status = $this->params['named']['status'];
+			if($status == 4){
+				$this->paginate['Job'] =  array('conditions' => array('employer_id' => $employer['Employer']['id'], 'status'=>1, 'expired > '=>date('Y-m-d',time())),'recursive'=>1);
+				$this->set('jobs', $this->paginate('Job'));
+			}
+			else {
+				$this->paginate['Job'] =  array('conditions' => array('employer_id' => $employer['Employer']['id'], 'status'=>$status),'recursive'=>1);
+				$this->set('jobs', $this->paginate('Job'));
+			}
+		}
+		else {
+			$this->paginate['Job'] =  array('conditions' => array('employer_id' => $employer['Employer']['id'], 'status'=>array(1,2)),'recursive'=>1);
+			$this->set('jobs', $this->paginate('Job'));
+		}
+	}
+	
+	function manageCandidates(){
+		$employer = $this->checkEmployerSession();
+		$this->paginate['JobApply'] =  array('conditions' => array('Job.employer_id'=> $employer['Employer']['id']),'order'=>'JobApply.created DESC' ,'recursive'=>1);
+		$this->set('jobApplys', $this->paginate('JobApply'));
+	}
+	
+	function viewApplyJob($id = null)
+	{
+		$employer = $this->checkEmployerSession();
+		if (!$id) {
+			$this->Session->setFlash(__('Hồ sơ ứng tuyển không hợp lệ', true));
+			$this->redirect(array('action' => 'manageCandidates'));
+		}
+		$jobApply = $this->JobApply->read(null,$id);
+		if(!empty($jobApply)){
+			$this->set('jobApply', $jobApply);
+		} else {
+			$this->Session->setFlash(__('Hồ sơ ứng tuyển không hợp lệ', true));
+			$this->redirect(array('action' => 'manageCandidates'));
+		}
+	}
+	
+	function deleteApplyJob($id=null) {
+		$employer = $this->checkEmployerSession();
+		if (!$id) {
+			$this->Session->setFlash(__('Hồ sơ ứng tuyển không hợp lệ.', true));
+			$this->redirect(array('action' => 'manageCandidates'));
+		}
+		if ($this->JobApply->delete($id)) {
+			$this->Session->setFlash(__('Hồ sơ ứng tuyển đã được xóa.', true));
+			$this->redirect(array('action' => 'manageCandidates'));
+		} else {
+			$this->Session->setFlash(__('Không thể xóa Hồ sơ ứng tuyển.', true));
+			$this->redirect(array('action' => 'manageCandidates'));
+		}
+	}
+	
+	function viewResume($id = null){
+		$request_params = Router::getParams();
+		$this->Session->write('auth_redirect','/'.$request_params['url']['url']);
+		$employer = $this->checkEmployerSession();
+		if (!$id) {
+			$this->Session->setFlash(__('Invalid resume', true));
+			$this->redirect(array('action' => 'index'));
+		}
+		$this->set('nationalities', $this->Category->find('list', array(
+					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'Nationality'))))));
+		$this->set('companySizes', $this->Category->find('list', array(
+					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'CompanySize'))))));
+		$this->set('jobLevels', $this->JobLevel->find('list'));
+		$this->set('jobCategories', $this->JobCategory->find('list'));
+		$this->set('jobTypes', $this->JobType->find('list'));
+		$this->set('degreeLevels', $this->ResumeEducation->DegreeLevel->find('list'));
+		$this->set('countries', $this->Jobseeker->Country->find('list'));
+		$this->set('provinces', $this->Jobseeker->Province->find('list'));
+		$this->set('skills', $this->Skill->find('list'));
+		$this->set('proficiencies', $this->Category->find('list', array(
+					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'Proficiency'))))));
+		$resume = $this->Resume->read(null,$id);
+		$resumeViewLog = array('ResumeViewLog' => array('resume_id' => $resume['Resume']['id'],
+									'employer_id' => $employer['Employer']['id'], 'created' => date('Y-m-d H:i:s',time())));
+		$this->Employer->ResumeViewLog->save($resumeViewLog);
+		$this->set('resume', $this->Resume->read(null,$id));
+	}
+	
 	function login() {
 		$employer = $this->Session->read('Employer');
 		if ($employer){
