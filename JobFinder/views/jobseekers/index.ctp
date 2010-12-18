@@ -15,7 +15,7 @@
     <?php echo $this->Session->flash(); ?>
         <!-- begin right col -->
         <div id="right_cr">
-        	<h2>Quản lý nghề nghiệp</h2>     
+        	<h2>QUẢN LÝ NGHỀ NGHIỆP</h2>     
             <div class="box_corner">
 				<div class="blue_bg_title"><strong>Việc làm đã lưu</strong></div>
 				<div class="white_tablecontent">

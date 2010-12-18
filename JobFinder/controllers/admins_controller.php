@@ -1,6 +1,7 @@
 <?php
 class AdminsController extends AppController {
 	var $name = 'Admins';
+	var $uses = array('Admin','Job','Resume');
 	
 	function beforeFilter(){
 		$this->layout='default_admin';
@@ -42,6 +43,10 @@ class AdminsController extends AppController {
     
 	function index() {
         $this->checkAdminSession();
+		$jobs = $this->Job->find('all',array('limit' => 10,'order' => array('Job.modified DESC'),'recursive' => 1));
+		$this->set('jobs', $jobs);
+		$resumes = $this->Resume->find('all',array('order' => array('Resume.modified DESC'),'recursive' => 1));
+		$this->set('resumes', $resumes);
     }
     
 	function account() {

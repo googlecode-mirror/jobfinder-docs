@@ -1,16 +1,3 @@
-<div id="job_nav_sub">
-	<div class="job_wrapsubmenu">
-		<ul class="job_subnav">
-			<li><?php echo $html->link($html->tag('span', 'Tìm Kiếm Nhanh'), 
-					array('controller' => 'jobs', 'action' => 'search'),array('escape' => false)); ?>
-			</li>
-			<li><?php echo $html->link($html->tag('span', 'Tìm Kiếm Nâng Cao'), 
-					array('controller' => 'jobs', 'action' => 'advanceSearch'),array('escape' => false)); ?>
-			</li>	
-		</ul>	
-		<br clear="all"/>
-	</div><!-- end wrap -->		
-</div>
 <div class="wrap_search">   
     <div style="height: 5%;margin-left: 90px " class="line_title ">
     	  <?php echo $html->image('../img/home/btxt_search_result_vn.gif', 
@@ -25,11 +12,11 @@
             <!-- start: table heading -->
             <tbody>
                 <tr class="title_list">
-                    <td width="35%"><?php echo $this->Paginator->sort('Chức danh','job_title',array('style'=>'color: rgb(255, 255, 255)'));?></td>
-                    <td width="25%"><?php echo $this->Paginator->sort('Công ty','company_name',array('style'=>'color: rgb(255, 255, 255)'));?></td>
-                    <td width="15%"><?php echo $this->Paginator->sort('Địa điểm','job_locations',array('style'=>'color: rgb(255, 255, 255)'));?></td>
-                    <td width="13%" nowrap="nowrap"><?php echo $this->Paginator->sort('Ngày đăng tuyển','approved',array('style'=>'color: rgb(255, 255, 255)'));?></td>
-                    <td width="12%" nowrap="nowrap"><?php echo $this->Paginator->sort('Ngày hết hạn','expired',array('style'=>'color: rgb(255, 255, 255)'));?></td>
+                    <td width="35%"><?php echo $this->Paginator->sort('CHỨC DANH','job_title',array('style'=>'color: rgb(255, 255, 255)'));?></td>
+                    <td width="25%"><?php echo $this->Paginator->sort('CÔNG TY','company_name',array('style'=>'color: rgb(255, 255, 255)'));?></td>
+                    <td width="15%"><?php echo $this->Paginator->sort('ĐỊA ĐIỂM','job_locations',array('style'=>'color: rgb(255, 255, 255)'));?></td>
+                    <td width="13%" nowrap="nowrap"><?php echo $this->Paginator->sort('NGÀY ĐĂNG TUYỂN','approved',array('style'=>'color: rgb(255, 255, 255)'));?></td>
+                    <td width="12%" nowrap="nowrap"><?php echo $this->Paginator->sort('NGÀY HẾT HẠN','expired',array('style'=>'color: rgb(255, 255, 255)'));?></td>
                 </tr>
             <!-- end: table heading -->
             
@@ -71,21 +58,22 @@
             <br class="clear"/>
         </div>
 
-        <!-- end Job detail -->
         <div class="box_corner">				
         <div class="blue_bg_title"><strong>Tìm việc nhanh</strong></div>
         <div class="white_content">
             <table width="100%" cellspacing="0" cellpadding="0" border="0">
                 <tbody>
-                	<?php echo $this->Form->create('Job',array('action'=>'searchResults'));?>
+                	<?php echo $this->Form->create('Job',array('action'=>'search'));?>
                     <tr>
                     <td><?php echo $this->Form->Input('keyword',array('class'=>'text_box','maxlength'=>'80','label'=>false,'div'=>false));?></td>
                     <td>
                         <?php echo $this->Form->Input('jobCategory',array('class'=>'comboType02_industry','label'=>false,'div'=>false,'empty'=>'Bất kỳ ngành nghề'));?>  
                     </td>
                     <td>
-                        <?php echo $this->Form->Input('province',array('class'=>'comboType02','label'=>false,'div'=>false,'empty'=>'Tất cả địa điểm'));?>    
+                        <?php echo $this->Form->Input('location',array('class'=>'comboType02','label'=>false,'div'=>false,'empty'=>'Tất cả địa điểm'));?>    
                     </td>
+        			<?php echo $this->Form->Input('jobType',array('type'=>'hidden'));?>
+        			<?php echo $this->Form->Input('jobLevel',array('type'=>'hidden'));?>
                     <td><?php echo $this->Form->Submit('Tìm việc',array('class'=>'btn_cont','div'=>false));?></td>
                     </tr>
                     <tr>
@@ -94,7 +82,7 @@
                     </tr>            
                 </tbody>
             </table>
-	    </div><!--end xboxcontent-->		
+	    </div>
         </div>
         </div>
     </div>

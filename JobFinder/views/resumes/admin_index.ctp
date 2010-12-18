@@ -51,7 +51,7 @@
     <tr<?php echo $class;?>>
 		<td><?php echo $this->Html->link($resume['Resume']['resume_title'], array('action' => 'preview', $resume['Resume']['id'], 'admin'=> true)); ?>&nbsp;</td>
 		<td><?php echo $resume['Jobseeker']['email']; ?>&nbsp;</td>
-		<td><?php  ?>&nbsp;</td>
+		<td><?php echo count($resume['ResumeViewLog']); ?>&nbsp;</td>
 		<td><?php echo $privacyStatus[$resume['Resume']['privacy_status']]; ?>&nbsp;</td>
 		<td><?php echo $resume['Resume']['created']; ?>&nbsp;</td>
 		<td><?php echo $resume['Resume']['modified']; ?>&nbsp;</td>

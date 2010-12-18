@@ -49,7 +49,7 @@
 		<!-- begin logo - banner -->
 		<div class="job_toplogobanner">
 			<div class="floatLeft">
-                <a href="#/">
+                <a href="/JobFinder">
                     <?php echo $html->image('../img/home/banner.jpg', 
     	                	  array('alt' => '', 'width' => '980', 'height' => '198'))  ?>
                 </a>

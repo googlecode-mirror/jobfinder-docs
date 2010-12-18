@@ -1,10 +1,13 @@
 <div id="job_contentbg">
 <div class="job_wrap">	
 <div class="job_conrer_panel">			
-	<?php echo $this->Form->create('Job',array('action'=>'searchResults','class'=>'job_formquicksearch'));?>
+	<?php echo $this->Form->create('Job',array('action'=>'search','class'=>'job_formquicksearch'));?>
         <label for="input1"><strong>Tìm Việc Nhanh:</strong></label> 
         <?php echo $this->Form->Input('keyword',array('label'=>false,'div'=>false));?>
-        <?php echo $this->Form->Input('province',array('class'=>'comboType02','label'=>false,'div'=>false,'empty'=>'Tất cả địa điểm'));?>
+        <?php echo $this->Form->Input('location',array('class'=>'comboType02','label'=>false,'div'=>false,'empty'=>'Tất cả địa điểm'));?>
+        <?php echo $this->Form->Input('jobCategory',array('type'=>'hidden'));?>
+        <?php echo $this->Form->Input('jobType',array('type'=>'hidden'));?>
+        <?php echo $this->Form->Input('jobLevel',array('type'=>'hidden'));?>
         <?php echo $this->Form->Submit('Tìm việc',array('div'=>false,'class'=>'job_btn1'));?>	
     <br clear="all"/>
 </div>

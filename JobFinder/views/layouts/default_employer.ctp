@@ -33,7 +33,7 @@
 
 <body>
 	<!-- begin header -->
-    <div id="job_header">
+    <div id="emp_header">
         <div class="job_wrap_header">
 		<div class="job_tophead"><strong>Thống kê:</strong> Số việc đăng tuyển 
             <span><?php echo $total;?></span>            
@@ -49,7 +49,7 @@
 		<!-- begin logo - banner -->
 		<div class="job_toplogobanner">
 			<div class="floatLeft">
-                <a href="#/">
+                <a href="/JobFinder/employers/home">
                     <?php echo $html->image('../img/home/banner.jpg', 
     	                	  array('alt' => '', 'width' => '980', 'height' => '198'))  ?>
                 </a>

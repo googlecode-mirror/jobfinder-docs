@@ -76,7 +76,8 @@
 </table>
 </div>
 	<br/>
-<?php echo $this->Html->link($html->tag('span', 'Trở về'), 
-                            array('controller'=> 'jobs', 'action' => 'admin_applyJob'),array('escape' => false, 'class'=>'button')); ?>
+	<div style="text-align: right;">
+    	   <a href="#" onclick="window.close()">Đóng</a>
+    </div>
 	</div>
 </div>

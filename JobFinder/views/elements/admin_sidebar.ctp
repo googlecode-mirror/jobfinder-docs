@@ -11,6 +11,7 @@
 			<ul>
 				<li><?php echo $this->Html->link(__('Đăng tin tuyển dụng', true), array('controller' => 'jobs', 'action' => 'postJob', 'admin'=> true),array('class'=>'manage_page')); ?></li>
                 <li><?php echo $this->Html->link(__('Duyệt việc làm', true), array('controller' => 'jobs', 'action' => 'approveJob', 'admin'=> true),array('class'=>'folder')); ?></li>
+                <li><?php echo $this->Html->link(__('Hồ sơ ứng tuyển', true), array('controller' => 'jobs', 'action' => 'applyJob', 'admin'=> true),array('class'=>'folder_table')); ?></li>
            	</ul>
        	</li>
 		<li><h3><?php echo $this->Html->link(__('Quản lý tài khoản', true), array('controller' => 'jobseekers', 'action' => 'index', 'admin'=> true),array('class'=>'user')); ?></h3>

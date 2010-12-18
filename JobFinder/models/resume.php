@@ -191,19 +191,6 @@ class Resume extends AppModel {
 			'finderQuery' => '',
 			'counterQuery' => ''
 		),
-		'ResumeSaved' => array(
-			'className' => 'ResumeSaved',
-			'foreignKey' => 'resume_id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		),
 		'ResumeSkill' => array(
 			'className' => 'ResumeSkill',
 			'foreignKey' => 'resume_id',

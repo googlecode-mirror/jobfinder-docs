@@ -11,9 +11,19 @@ class JobsController extends AppController {
 	function search()
 	{
 		$this->set('jobCategories', $this->JobCategory->find('list'));
-		$this->set('provinces', $this->Province->find('list'));
+		$this->set('locations', $this->Province->find('list'));
+		$this->set('jobTypes', $this->JobType->find('list'));
+		$this->set('jobLevels', $this->JobLevel->find('list'));
 		$this->set('listJobCategories', $this->JobCategory->find('all',array('contain'=>false, 'fields'=>array('JobCategory.id','JobCategory.name'),'order' => array('JobCategory.name'))));
-		$this->set('jobTypes', $this->JobType->find('all',array('contain'=>false, 'fields'=>array('JobType.id','JobType.type'))));
+		$this->set('listJobTypes', $this->JobType->find('all',array('contain'=>false, 'fields'=>array('JobType.id','JobType.type'))));
+		if(!empty($this->data)) {
+			$this->redirect(array('action'=>'searchResults',
+				'keyword'=>$this->data['Job']['keyword'],
+				'jobCategory'=>$this->data['Job']['jobCategory'],
+				'location'=>$this->data['Job']['location'],
+				'jobType'=>$this->data['Job']['jobType'],
+				'jobLevel'=>$this->data['Job']['jobLevel']));
+		}
 	}
 
 	function advanceSearch()
@@ -25,6 +35,7 @@ class JobsController extends AppController {
 		$this->getNamedArgs();
 		$this->set('jobCategories', $this->JobCategory->find('list'));
 		$this->set('provinces', $this->Province->find('list'));
+		$this->set('locations', $this->Province->find('list'));
 		if(isset($this->params['named']['day'])){
 			$day = $this->params['named']['day'];
 			$conditions = array('Job.status' => 1,
@@ -34,32 +45,55 @@ class JobsController extends AppController {
 			$this->paginate['Job'] = array('conditions' => $conditions,'recursive' => -1);
 			$this->set('results', $this->paginate('Job'));
 		}
-		if(isset($this->params['named']['category'])){
+		elseif(isset($this->params['named']['category'])){
 			$category = $this->params['named']['category'];
 			$conditions = array('Job.status' => 1,
 								'Job.job_categories LIKE ' => '%'.$category.'%');
 			$this->paginate['Job'] = array('conditions' => $conditions,'recursive' => -1);
 			$this->set('results', $this->paginate('Job'));
 		}
-		if(isset($this->params['named']['type'])){
+		elseif(isset($this->params['named']['type'])){
 			$type = $this->params['named']['type'];
 			$conditions = array('Job.status' => 1,
-								'Job.job_types LIKE ' => '%'.$type.'%');
+								'Job.job_type_id ' => $type);
 			$this->paginate['Job'] = array('conditions' => $conditions,'recursive' => -1);
 			$this->set('results', $this->paginate('Job'));
 		}
-		if(!empty($this->data))
+		elseif(isset($this->params['named']['keyword']) || isset($this->params['named']['jobCategory']) 
+				|| isset($this->params['named']['location']) || isset($this->params['named']['jobType']) || isset($this->params['named']['jobLevel']))
 		{
+			$keyword = '';
+			$category = '';
+			$location = '';
+			$type = '';
+			$level = '';
+			if(isset($this->params['named']['keyword']))
+				$keyword = $this->params['named']['keyword'];
+			if(isset($this->params['named']['jobCategory']))
+				$category = $this->params['named']['jobCategory'];
+			if(isset($this->params['named']['location']))
+				$location = $this->params['named']['location'];
+			if(isset($this->params['named']['jobType']))
+				$type = $this->params['named']['jobType'];
+			if(isset($this->params['named']['jobLevel']))
+				$level = $this->params['named']['jobLevel'];
+			
 			$conditions = array('Job.status' => 1,
-								'Job.job_categories LIKE ' => '%'.$this->data['Job']['jobCategory'].'%',
-								'Job.job_locations LIKE ' => '%'.$this->data['Job']['province'].'%',
-								'OR' => array('Job.job_title LIKE ' => '%'.$this->data['Job']['keyword'].'%',
-								'Job.job_description LIKE ' => '%'.$this->data['Job']['keyword'].'%',
-								'Job.company_name LIKE ' => '%'.$this->data['Job']['keyword'].'%',
-								'Job.minimun_salary' => $this->data['Job']['keyword'],
-								'Job.maximun_salary' => $this->data['Job']['keyword'],
+								'Job.job_categories LIKE ' => '%'.$category.'%',
+								'Job.job_locations LIKE ' => '%'.$location.'%',
+								'Job.job_type_id LIKE ' => '%'.$type.'%',
+								'Job.job_level_id LIKE ' => '%'.$level.'%',
+								'OR' => array('Job.job_title LIKE ' => '%'.$keyword.'%',
+								'Job.job_description LIKE ' => '%'.$keyword.'%',
+								'Job.company_name LIKE ' => '%'.$keyword.'%',
+								'Job.minimun_salary' => $keyword,
+								'Job.maximun_salary' => $keyword,
 			));
 			$this->paginate['Job'] = array('conditions' => $conditions,'recursive' => -1);
+			$this->set('results', $this->paginate('Job'));
+		}
+		else {
+			$this->paginate['Job'] = array('conditions' => array('Job.status' => 1), 'recursive' => -1);
 			$this->set('results', $this->paginate('Job'));
 		}
 	}
@@ -583,9 +617,10 @@ class JobsController extends AppController {
 		if ($this->JobApply->delete($id)) {
 			$this->Session->setFlash(__('Hồ sơ ứng tuyển đã được xóa.', true));
 			$this->redirect(array('controller'=>'jobs','action'=>'admin_applyJob'));
+		} else{
+			$this->Session->setFlash(__('Không thể xóa Hồ sơ ứng tuyển.', true));
+			$this->redirect(array('controller'=>'jobs','action'=>'admin_applyJob'));	
 		}
-		$this->Session->setFlash(__('Không thể xóa Hồ sơ ứng tuyển.', true));
-		$this->redirect(array('controller'=>'jobs','action'=>'admin_applyJob'));
 	}
 	
 	function admin_viewResume($id = null) {

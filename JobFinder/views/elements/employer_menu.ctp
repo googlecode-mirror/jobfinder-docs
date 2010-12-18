@@ -3,7 +3,8 @@
     	<ul class="emp_mainnav">
         	<li><?php echo $html->link($html->tag('span', 'TRANG CHỦ'), 
 					array('controller' => 'employers', 'action' => 'home'),array('escape' => false)); ?></li>
-					
+			<li><?php echo $html->link($html->tag('span', 'TÌM HỒ SƠ'), 
+					array('controller' => 'resumes', 'action' => 'search'),array('escape' => false)); ?></li>			
 			<li><?php echo $html->link($html->tag('span', 'ĐĂNG TUYỂN DỤNG'), 
 					array('controller' => 'jobs', 'action' => 'postJob'),array('escape' => false)); ?></li>	
 			<li><?php echo $html->link($html->tag('span', 'QUẢN LÝ TUYỂN DỤNG'), 

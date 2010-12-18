@@ -1,9 +1,22 @@
-﻿<?php
+<?php
 	$gender =  array(0 => 'Nam', 1 =>'Nữ');
 	$yesno = array(0=> 'Không', 1=> 'Có');
 	$martial =  array(0 => 'Độc thân', 1 =>'Đã kết hôn');
 	$privacy =  array(0 => 'Hồ sơ ẩn', 1 =>'Cho phép tìm kiếm');
 ?>
+<div id="job_nav_sub">
+	<div class="job_wrapsubmenu">
+		<ul class="job_subnav">
+			<li><?php echo $html->link($html->tag('span', 'Tuyển Dụng'), 
+					array('controller' => 'employers', 'action' => 'manageJob'),array('escape' => false)); ?>
+			</li>
+			<li><?php echo $html->link($html->tag('span', 'Hồ Sơ Ứng Tuyển'), 
+					array('controller' => 'employers', 'action' => 'manageCandidates'),array('escape' => false)); ?>
+			</li>		
+		</ul>	
+		<br clear="all"/>
+	</div><!-- end wrap -->		
+</div>
 <div id="body_content">
     <!-- begin wrap -->
     <div class="wrap_cr">
@@ -11,8 +24,8 @@
         <div id="content_cr">
             <!-- begin Resume Information -->
             <div class="box_corner">
-                <div class="blue_bg_title"><strong>Thông Tin Hồ Sơ</strong></div>
-                <div class="white_content">
+                <div class="dblue_bg_title"><strong>Thông Tin Hồ Sơ</strong></div>
+                <div class="dwhite_content">
                     <table width="100%">					  
                     	<tr class="field_cp">
 							<td width="22%"><strong>Tiêu đề hồ sơ:</strong></td>
@@ -29,8 +42,8 @@
             
             <!-- begin Personal Information -->
             <div class="box_corner">
-                <div class="blue_bg_title"><strong>Thông Tin Cá Nhân</strong></div>
-                <div class="white_content">
+                <div class="dblue_bg_title"><strong>Thông Tin Cá Nhân</strong></div>
+                <div class="dwhite_content">
                     <table class="table_info">
                     	<tr class="field_cp">
 							<td width="22%" rowspan="7" valign="top">
@@ -71,8 +84,8 @@
             
             <!-- begin Summary -->
             <div class="box_corner">
-                <div class="blue_bg_title"><strong>Tóm lược</strong></div>
-                <div class="white_content">
+                <div class="dblue_bg_title"><strong>Tóm lược</strong></div>
+                <div class="dwhite_content">
                     <table class="table_info">
                    		<tr>
 							<td width="21%" class="txt_tilte_lv2" style="text-align:right">Công Việc Mong Muốn</td>
@@ -205,8 +218,8 @@
             
             <!-- begin Resume Information -->
             <div class="box_corner">
-                <div class="blue_bg_title"><strong>Hồ sơ</strong></div>
-                <div class="white_content">
+                <div class="dblue_bg_title"><strong>Hồ sơ</strong></div>
+                <div class="dwhite_content">
                     <table class="table_info">
                    		<tr>
 							<td width="22%" valign="top">
@@ -297,6 +310,8 @@
             <!--end Summary-->
         </div>
         <div style="text-align: right;">
+        	<?php echo $this->Html->link($html->tag('span', 'Trở về'), 
+                            array('action' => 'manageCandidates'),array('escape' => false, 'class'=>'button')); ?>
         	<a href="#" onclick="window.close()">Đóng</a>
     	</div>
     </div>
