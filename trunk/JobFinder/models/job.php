@@ -75,7 +75,7 @@ class Job extends AppModel {
 		),
 		'telephone' => array(
 			'phone' => array(
-				'rule' => array('phone','/^[[:space:]\-0-9]{7,}$/i',null),
+				'rule' => array('phone','/^[[:space:]\.\-0-9]{7,}$/i',null),
 				'message' => 'Số điện thoại không hợp lệ',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -83,9 +83,19 @@ class Job extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
+		'fax' => array(
+			'phone' => array(
+				'rule' => array('phone','/^[[:space:]\.\-0-9]{7,}$/i',null),
+				'message' => 'Số fax không hợp lệ',
+				'allowEmpty' => true,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
 		'mobile' => array(
 			'phone' => array(
-				'rule' => array('phone','/^[[:space:]\-0-9]{7,}$/i',null),
+				'rule' => array('phone','/^[[:space:]\.\-0-9]{7,}$/i',null),
 				'message' => 'Số điện thoại không hợp lệ',
 				'allowEmpty' => true,
 				//'required' => false,

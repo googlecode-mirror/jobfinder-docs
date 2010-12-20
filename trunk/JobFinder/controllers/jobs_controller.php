@@ -10,8 +10,8 @@ class JobsController extends AppController {
 
 	function search()
 	{
-		$this->set('jobCategories', $this->JobCategory->find('list'));
-		$this->set('locations', $this->Province->find('list'));
+		$this->set('jobCategories', $this->JobCategory->find('list', array('order'=> array('JobCategory.name ASC'))));
+		$this->set('locations', $this->Province->find('list', array('order'=> array('Province.name ASC'))));
 		$this->set('jobTypes', $this->JobType->find('list'));
 		$this->set('jobLevels', $this->JobLevel->find('list'));
 		$this->set('listJobCategories', $this->JobCategory->find('all',array('contain'=>false, 'fields'=>array('JobCategory.id','JobCategory.name'),'order' => array('JobCategory.name'))));
@@ -26,16 +26,11 @@ class JobsController extends AppController {
 		}
 	}
 
-	function advanceSearch()
-	{
-
-	}
-
 	function searchResults(){
 		$this->getNamedArgs();
-		$this->set('jobCategories', $this->JobCategory->find('list'));
+		$this->set('jobCategories', $this->JobCategory->find('list', array('order'=> array('JobCategory.name ASC'))));
 		$this->set('provinces', $this->Province->find('list'));
-		$this->set('locations', $this->Province->find('list'));
+		$this->set('locations', $this->Province->find('list', array('order'=> array('Province.name ASC'))));
 		if(isset($this->params['named']['day'])){
 			$day = $this->params['named']['day'];
 			$conditions = array('Job.status' => 1,
@@ -392,6 +387,8 @@ class JobsController extends AppController {
 			$this->redirect(array('controller'=> 'employers', 'action' => 'index'));
 		}
 		if (!empty($this->data)) {
+			if($this->data['Job']['status'] == 1 || $this->data['Job']['status'] == 2)
+				$this->data['Job']['status'] = 3;
 			if ($this->Job->save($this->data)) {
 				$this->Session->write('jobID', $this->Job->id);
 				$this->Session->setFlash(__('The job has been saved', true));
@@ -495,6 +492,8 @@ class JobsController extends AppController {
 			$this->redirect(array('controller'=> 'employers', 'action' => 'index'));
 		}
 		if (!empty($this->data)) {
+			if($this->data['Job']['status'] == 1 || $this->data['Job']['status'] == 2)
+				$this->data['Job']['status'] = 3;
 			if ($this->Job->save($this->data)) {
 				$this->Session->write('jobID', $this->Job->id);
 				$this->Session->setFlash(__('The job has been saved', true));
@@ -771,7 +770,6 @@ class JobsController extends AppController {
 				}
 				$this->data['Job']['job_locations'] = $jobLocations;
 				$this->data['Job']['job_categories'] = $jobCategories;
-				//$this->data['Job']['employer_id'] = '12313';
 				$this->data['Job']['status'] = 0;
 				if ($this->Job->save($this->data)) {
 					$this->Session->setFlash(__('The Job has been saved', true));
@@ -968,6 +966,8 @@ class JobsController extends AppController {
 			$this->redirect(array('controller'=> 'jobs', 'action' => 'admin_index'));
 		}
 		if (!empty($this->data)) {
+			if($this->data['Job']['status'] == 1 || $this->data['Job']['status'] == 2)
+				$this->data['Job']['status'] = 3;
 			if ($this->Job->save($this->data)) {
 				$this->Session->write('jobID', $this->Job->id);
 				$this->Session->setFlash(__('The job has been saved', true));
@@ -1070,6 +1070,8 @@ class JobsController extends AppController {
 			$this->redirect(array('controller'=> 'employers', 'action' => 'index'));
 		}
 		if (!empty($this->data)) {
+			if($this->data['Job']['status'] == 1 || $this->data['Job']['status'] == 2)
+				$this->data['Job']['status'] = 3;
 			if ($this->Job->save($this->data)) {
 				$this->Session->write('jobID', $this->Job->id);
 				$this->Session->setFlash(__('The job has been saved', true));

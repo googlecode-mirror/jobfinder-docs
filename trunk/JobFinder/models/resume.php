@@ -86,7 +86,7 @@ class Resume extends AppModel {
 		),
 		'telephone' => array(
 			'phone' => array(
-				'rule' => array('phone','/^[[:space:]\-0-9]{7,}$/i',null),
+				'rule' => array('phone','/^[[:space:]\.\-0-9]{7,}$/i',null),
 				'message' => 'Số điện thoại không hợp lệ',
 				'allowEmpty' => true,
 				//'required' => false,
@@ -96,7 +96,7 @@ class Resume extends AppModel {
 		),
 		'mobile' => array(
 			'phone' => array(
-				'rule' => array('phone','/^[[:space:]\-0-9]{7,}$/i',null),
+				'rule' => array('phone','/^[[:space:]\.\-0-9]{7,}$/i',null),
 				'message' => 'Số điện thoại không hợp lệ',
 				'allowEmpty' => true,
 				//'required' => false,

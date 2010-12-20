@@ -1,10 +1,10 @@
 <div id="body_content">
+    <!-- begin wrap -->
+    <div class="wrap_cr">
     <div class="step_postjob">
         <img width="300" height="30" alt="" 
             src="../img/home/create_resume_signup_vn.gif"/>
     </div>
-    <!-- begin wrap -->
-    <div class="wrap_cr">
         <!-- begin content -->
         <div id="content_cr">
             <?php echo $this->Form->create('Jobseeker', array('action' => 'register','class'=>'form_field')); ?>
@@ -61,7 +61,7 @@
                 			<?php echo $this->Form->input('province_id',array('label'=>false,'id'=>'provinces', 'empty' => 'Vui lòng chọn...', 'class'=>'field','div'=>false)); ?>
                 		</p>
                 		<?php echo $ajax->observeField('countries',array('url'=>'getProvinces','update'=>'provinces'));?>					  
-                        <div style="display:block;	margin-left:170px; float:left;">
+                        <div style="display:block;	margin-left:275px; float:left;">
                             <?php echo $captchaTool->show();?>
                         </div>
                         <div class="more">

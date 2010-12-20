@@ -1,5 +1,5 @@
 <div id="header">
-	<h2>CakePHP: the rapid development php framework</h2>
+	<h2>JobFinder: Administrator</h2>
 	<div id="topmenu">
     	<ul>
         	<li class="current"><?php echo $this->Html->link(__('Dashboard', true), array('controller' => 'admins', 'action' => 'index', 'admin'=> false)); ?></li>

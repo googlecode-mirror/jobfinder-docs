@@ -2,7 +2,7 @@
 	<div class="job_wrapsubmenu">
 		<ul class="job_subnav">
 			<li><?php echo $html->link($html->tag('span', 'Tài khoản'), 
-					array('controller' => 'jobseekers', 'action' => 'profile'),array('escape' => false)); ?>
+					array('controller' => 'jobseekers', 'action' => 'account'),array('escape' => false)); ?>
 			</li>	
 		</ul>	
 		<br clear="all"/>
@@ -11,7 +11,6 @@
 <div class="wrap_cr">
     <!-- begin content -->
     <div id="content_cr">
-    <?php $status =  array(0 => 'Chưa duyệt', 1 =>'Đạt', 2=>'Không đạt', 3=>'Chờ duyệt lại');?>
     <?php echo $this->Session->flash(); ?>
         <!-- begin right col -->
         <div id="right_cr">
@@ -26,6 +25,7 @@
 						<td width="20%"><?php echo $this->Paginator->sort('Tình trạng','status');?></td>
 						<td width="25%"><?php __('Chức năng');?></td>
 					  </tr>
+					    <?php $status =  array(0 => 'Chưa duyệt', 1 =>'Đạt', 2=>'Không đạt', 3=>'Chờ duyệt lại');?>
 						<?php foreach ($jobsaveds as $jobsaved):?>
 						<tr>
 							<td><strong><?php echo $this->Html->Link($jobsaved['Job']['job_title'], array('controller' => 'jobs', 'action' => 'view', $jobsaved['JobSaved']['job_id'])); ?></strong></td>

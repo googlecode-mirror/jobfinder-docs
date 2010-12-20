@@ -1,11 +1,11 @@
 <br clear="all"/>
 <div id="body_content">
+    <!-- begin wrap -->
+    <div class="wrap_cr">
     <div class="step_postjob">
         <img width="300" height="30" alt="" 
             src="http://images.vietnamworks.com/post_job_signup_vn.gif"/>
     </div>
-    <!-- begin wrap -->
-    <div class="wrap_cr">
     <!-- begin content -->
         <div id="content_cr">
         	<?php echo $this->Form->create('Employer', array('action' => 'register','class'=>'form_field')); ?>

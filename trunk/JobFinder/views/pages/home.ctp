@@ -31,43 +31,43 @@
                                         'border'=>'0', 'title'=>'Intel Corporation'))  ?>
     	                </a></td>
                         <td> <a target="_blank" href="###">
-    	                   <?php echo $html->image('../img/banner_logo/intel_88x43.gif', 
+    	                   <?php echo $html->image('../img/banner_logo/adidas-88x43.gif', 
     	                	  array('alt' => 'Intel Corporation', 'width' => '88', 'height' => '43', 
                                         'border'=>'0', 'title'=>'Intel Corporation'))  ?>
     	                </a></td>                    
                     </tr>
                     <tr>
                         <td> <a target="_blank" href="###">
-    	                   <?php echo $html->image('../img/banner_logo/intel_88x43.gif', 
+    	                   <?php echo $html->image('../img/banner_logo/logo_tobacco_5.gif', 
     	                	  array('alt' => 'Intel Corporation', 'width' => '88', 'height' => '43', 
                                         'border'=>'0', 'title'=>'Intel Corporation'))  ?>
     	                </a></td>
                         <td> <a target="_blank" href="###">
-    	                   <?php echo $html->image('../img/banner_logo/intel_88x43.gif', 
-    	                	  array('alt' => 'Intel Corporation', 'width' => '88', 'height' => '43', 
-                                        'border'=>'0', 'title'=>'Intel Corporation'))  ?>
-    	                </a></td>
-                    </tr>
-                    <tr>
-                        <td> <a target="_blank" href="###">
-    	                   <?php echo $html->image('../img/banner_logo/intel_88x43.gif', 
-    	                	  array('alt' => 'Intel Corporation', 'width' => '88', 'height' => '43', 
-                                        'border'=>'0', 'title'=>'Intel Corporation'))  ?>
-    	                </a></td>
-                        <td> <a target="_blank" href="###">
-    	                   <?php echo $html->image('../img/banner_logo/intel_88x43.gif', 
+    	                   <?php echo $html->image('../img/banner_logo/jotun_88x43_3.gif', 
     	                	  array('alt' => 'Intel Corporation', 'width' => '88', 'height' => '43', 
                                         'border'=>'0', 'title'=>'Intel Corporation'))  ?>
     	                </a></td>
                     </tr>
                     <tr>
                         <td> <a target="_blank" href="###">
-    	                   <?php echo $html->image('../img/banner_logo/intel_88x43.gif', 
+    	                   <?php echo $html->image('../img/banner_logo/logo_88x43_panasonic_3.gif', 
     	                	  array('alt' => 'Intel Corporation', 'width' => '88', 'height' => '43', 
                                         'border'=>'0', 'title'=>'Intel Corporation'))  ?>
     	                </a></td>
                         <td> <a target="_blank" href="###">
-    	                   <?php echo $html->image('../img/banner_logo/intel_88x43.gif', 
+    	                   <?php echo $html->image('../img/banner_logo/logo_hsbc.gif', 
+    	                	  array('alt' => 'Intel Corporation', 'width' => '88', 'height' => '43', 
+                                        'border'=>'0', 'title'=>'Intel Corporation'))  ?>
+    	                </a></td>
+                    </tr>
+                    <tr>
+                        <td> <a target="_blank" href="###">
+    	                   <?php echo $html->image('../img/banner_logo/canon1_88x43.gif', 
+    	                	  array('alt' => 'Intel Corporation', 'width' => '88', 'height' => '43', 
+                                        'border'=>'0', 'title'=>'Intel Corporation'))  ?>
+    	                </a></td>
+                        <td> <a target="_blank" href="###">
+    	                   <?php echo $html->image('../img/banner_logo/navigosgroup_88x43_2.gif', 
     	                	  array('alt' => 'Intel Corporation', 'width' => '88', 'height' => '43', 
                                         'border'=>'0', 'title'=>'Intel Corporation'))  ?>
     	                </a></td>
