@@ -57,6 +57,61 @@ class JobseekersController extends AppController {
 		$this->redirect('/');
 	}
 
+	function account(){
+		$jobseeker = $this->checkJobSeekerSession();
+		$this->set('countries', $this->Jobseeker->Country->find('list'));
+		$this->set('provinces', $this->Jobseeker->Province->find('list'));
+		if (!empty($this->data)) {
+			if ($this->Jobseeker->save($this->data)) {
+				$this->Session->setFlash(__('Tài khoản đã được cập nhật', true));
+				$jobseeker = $this->Jobseeker->read(null,$this->data['Jobseeker']['id']);
+				$this->Session->write('Jobseeker', $jobseeker);
+				$this->redirect(array('action'=>'account'));
+			}
+			else {
+				$this->Session->setFlash(__('Tài khoản không thể cập nhật', true));
+			}
+		}
+		if(empty($this->data)){
+			$this->data = $this->Jobseeker->read(null,$jobseeker['Jobseeker']['id']);
+		}
+	}
+	
+	function changePassword(){
+		$jobseeker = $this->checkJobSeekerSession();
+		if (!empty($this->data)) {
+			if(md5($this->data['Jobseeker']['old_password']) != $this->data['Jobseeker']['password']){
+				$this->Session->setFlash('Mật khẩu hiện tại không chính xác.');
+				$this->data['Jobseeker']['old_password'] = null;
+				$this->data['Jobseeker']['new_password'] = null;
+				$this->data['Jobseeker']['confirm_new_password'] = null;
+				$this->redirect(array('action'=>'account'));
+			}
+			else if(empty($this->data['Jobseeker']['new_password']) || empty($this->data['Jobseeker']['confirm_new_password'])){
+				$this->Session->setFlash('Vui lòng nhập mật khẩu.');
+				$this->data['Jobseeker']['old_password'] = null;
+				$this->data['Jobseeker']['new_password'] = null;
+				$this->data['Jobseeker']['confirm_new_password'] = null;
+				$this->redirect(array('action'=>'account'));
+			}
+			else if($this->data['Jobseeker']['new_password'] != $this->data['Jobseeker']['confirm_new_password']){
+				$this->Session->setFlash('Mật khẩu xác nhận không hợp lệ.');
+				$this->data['Jobseeker']['old_password'] = null;
+				$this->data['Jobseeker']['new_password'] = null;
+				$this->data['Jobseeker']['confirm_new_password'] = null;
+				$this->redirect(array('action'=>'account'));
+			}else {
+				$this->data['Jobseeker']['password'] = md5($this->data['Jobseeker']['new_password']);
+				if ($this->Jobseeker->save($this->data)) {
+					$this->Session->setFlash(__('Thay đổi mật khẩu thành công', true));
+					$this->redirect(array('action' => 'account'));
+				} else {
+					$this->Session->setFlash(__('Thay đổi mật khẩu thất bại.', true));
+				}
+			}
+		}
+	}
+	
 	function register() {
 		$this->set('countries', $this->Jobseeker->Country->find('list'));
 		$provinces = array();

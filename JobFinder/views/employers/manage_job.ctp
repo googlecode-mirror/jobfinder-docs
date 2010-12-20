@@ -7,6 +7,9 @@
 			<li><?php echo $html->link($html->tag('span', 'Hồ Sơ Ứng Tuyển'), 
 					array('controller' => 'employers', 'action' => 'manageCandidates'),array('escape' => false)); ?>
 			</li>		
+			<li><?php echo $html->link($html->tag('span', 'Tài Khoản'), 
+					array('controller' => 'employers', 'action' => 'account'),array('escape' => false)); ?>
+			</li>	
 		</ul>	
 		<br clear="all"/>
 	</div><!-- end wrap -->		
@@ -54,9 +57,12 @@
 						<td width="15%">Hồ sơ ứng tuyển</td>
 						<td width="25%"><?php __('Chức năng');?></td>
 					  </tr>
+					      <?php $status =  array(0 => 'Chưa duyệt', 1 =>'Đạt', 2=>'Không đạt', 3=>'Chờ duyệt lại');?>
 						<?php foreach ($jobs as $job):?>
 						<tr>
-							<td><strong><?php echo $this->Html->Link($job['Job']['job_title'], array('controller' => 'jobs', 'action' => 'view', $job['Job']['id']), array('target'=>'_blank')); ?></strong></td>
+							<td><strong><?php echo $this->Html->Link($job['Job']['job_title'], array('controller' => 'jobs', 'action' => 'view', $job['Job']['id']), array('target'=>'_blank')); ?><br/></strong>
+							<span class="cc_approved"><?php if($job['Job']['status'] == 1 || $job['Job']['status'] == 2) { echo $status[$job['Job']['status']]; }?></span>
+							</td>
 							<td><?php echo $job['Job']['job_code']; ?></td>
 							<td><?php echo $job['JobViewLog'][0]['views']; ?></td>
 							<td><?php echo count($job['JobApply']); ?></td>

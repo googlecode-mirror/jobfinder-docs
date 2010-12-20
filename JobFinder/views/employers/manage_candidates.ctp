@@ -6,6 +6,9 @@
 			</li>
 			<li><?php echo $html->link($html->tag('span', 'Hồ Sơ Ứng Tuyển'), 
 					array('controller' => 'employers', 'action' => 'manageCandidates'),array('escape' => false)); ?>
+			</li>	
+			<li><?php echo $html->link($html->tag('span', 'Tài Khoản'), 
+					array('controller' => 'employers', 'action' => 'account'),array('escape' => false)); ?>
 			</li>		
 		</ul>	
 		<br clear="all"/>
@@ -29,6 +32,7 @@
 						<td width="15%"><?php echo $this->Paginator->sort('Ngày nộp','created');?></td>
 						<td width="15%"><?php __('Chức năng');?></td>
 					  </tr>
+					      <?php $status =  array(0 => 'Chưa duyệt', 1 =>'Đạt', 2=>'Không đạt', 3=>'Chờ duyệt lại');?>
 						<?php foreach ($jobApplys as $jobApply):?>
 						<tr>
 							<td><strong><?php echo $jobApply['JobApply']['subject'];?></strong></td>

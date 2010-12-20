@@ -11,9 +11,9 @@ class ResumesController extends AppController {
 	function search(){
 		$this->layout = 'default_employer';
 		$this->getNamedArgs();
-		$this->set('categories', $this->JobCategory->find('list'));
+		$this->set('categories', $this->JobCategory->find('list', array('order'=> array('JobCategory.name ASC'))));
 		$this->set('jobLevels', $this->JobLevel->find('list'));
-		$this->set('locations', $this->Province->find('list'));
+		$this->set('locations', $this->Province->find('list', array('order'=> array('Province.name ASC'))));
 		if(!empty($this->data))
 		{
 			$this->redirect(array('action'=>'search',

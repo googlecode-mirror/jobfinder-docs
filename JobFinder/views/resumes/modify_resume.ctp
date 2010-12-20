@@ -99,7 +99,7 @@
                                 </p>
                                 <p>
                                     <label>Đăng Hình:</label>
-                                    <?php echo $this->Form->input('picture', array('label'=>false,'type' => 'file','div'=>false,'style'=>'margin-left: 10px; width: 250px;','error'=>array('wrap'=>'span')));?>
+                                    <?php echo $this->Form->input('picture', array('label'=>false,'type' => 'file','div'=>false,'style'=>'margin-left: 25px; width: 250px;','error'=>array('wrap'=>'span')));?>
                                     <img alt="" style="display: none;" src="../img/home/loading.gif"
                                         id="loading"/>
                                 </p>

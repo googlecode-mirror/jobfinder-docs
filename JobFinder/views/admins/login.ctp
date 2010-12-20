@@ -1,5 +1,5 @@
 <div id="header">
-	<h2>CakePHP: the rapid development php framework</h2>
+	<h2>JobFinder: Administrator</h2>
 </div>
 <div id="wrapper" style="margin-top:60px;margin-left:350px">
 	<div id="content_login">

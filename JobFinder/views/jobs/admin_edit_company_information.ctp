@@ -1,5 +1,5 @@
 <div id="header">
-	<h2>CakePHP: the rapid development php framework</h2>
+	<h2>JobFinder: Administrator</h2>
 	<div id="topmenu">
     	<ul>
         	        	<li><?php echo $this->Html->link(__('Dashboard', true), array('controller' => 'admins', 'action' => 'index', 'admin'=> false)); ?></li>
@@ -30,6 +30,7 @@
 	<?php echo $this->Session->flash(); ?>
         <?php echo $this->Form->create('Job',array('div'=>false,'id'=>'form'));?>
         <?php echo $this->Form->input('id');?>
+        <?php echo $this->Form->input('status', array('type'=>'hidden'));?>
         <?php echo $this->Form->input('company_name',array('label'=>'Tên công ty:','div'=>false,'error'=>array('wrap'=>'span'))); ?>
         <?php echo $this->Form->input('company_size',array('label'=>'Quy mô công ty:','empty'=>'Vui lòng chọn...','div'=>false,'class'=>'block','style'=>'width:230px','error'=>array('wrap'=>'span'))); ?>
 		<?php echo $this->Form->input('company_profile',array('label'=>'Sơ lược công ty:','rows'=>10,'div'=>false,'error'=>array('wrap'=>'span'))); ?>

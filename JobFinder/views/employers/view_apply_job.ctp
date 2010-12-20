@@ -7,6 +7,9 @@
 			<li><?php echo $html->link($html->tag('span', 'Hồ Sơ Ứng Tuyển'), 
 					array('controller' => 'employers', 'action' => 'manageCandidates'),array('escape' => false)); ?>
 			</li>		
+			<li><?php echo $html->link($html->tag('span', 'Tài Khoản'), 
+					array('controller' => 'employers', 'action' => 'account'),array('escape' => false)); ?>
+			</li>	
 		</ul>	
 		<br clear="all"/>
 	</div><!-- end wrap -->		

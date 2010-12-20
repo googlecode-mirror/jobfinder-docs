@@ -93,8 +93,8 @@ class Employer extends AppModel {
 		),
 		'telephone' => array(
 			'phone' => array(
-				'rule' => array('phone','/^[[:space:]\-0-9]{7,}$/i',null),
-				//'message' => 'Your custom message here',
+				'rule' => array('phone','/^[[:space:]\.\-0-9]{7,}$/i',null),
+				'message' => 'Số điện thoại không hợp lệ',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -103,8 +103,8 @@ class Employer extends AppModel {
 		),
 		'mobile' => array(
 			'phone' => array(
-				'rule' => array('phone','/^[[:space:]\-0-9]{7,}$/i',null),
-				//'message' => 'Your custom message here',
+				'rule' => array('phone','/^[[:space:]\.\-0-9]{7,}$/i',null),
+				'message' => 'Số điện thoại không hợp lệ',
 				'allowEmpty' => true,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -113,8 +113,8 @@ class Employer extends AppModel {
 		),
 		'fax' => array(
 			'phone' => array(
-				'rule' => array('phone','/^[[:space:]\-0-9]{7,}$/i',null),
-				//'message' => 'Your custom message here',
+				'rule' => array('phone','/^[[:space:]\.\-0-9]{7,}$/i',null),
+				'message' => 'Số fax không hợp lệ',
 				'allowEmpty' => true,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule

@@ -136,7 +136,7 @@ class EmployersController extends AppController {
 						$this->Session->delete('auth_redirect');
 						$this->redirect($auth_redirect);
 					}
-					$this->redirect('/employers/index/');
+					$this->redirect(array('controller'=>'employers', 'action'=>'index'));
 				}
 			}
 			else {
@@ -152,6 +152,63 @@ class EmployersController extends AppController {
 		// redirect to posts index page
 		$this->Session->setFlash('You have successfully logged out.');
 		$this->redirect(array('controller'=>'employers','action'=>'home'));
+	}
+	
+	function account(){
+		$employer = $this->checkEmployerSession();
+		$this->set('companySizes', $this->Category->find('list', array(
+					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'CompanySize'))))));
+		$this->set('countries', $this->Employer->Country->find('list'));
+		$this->set('provinces', $this->Employer->Province->find('list'));
+		if (!empty($this->data)) {
+			if ($this->Employer->save($this->data)) {
+				$this->Session->setFlash(__('Tài khoản đã được cập nhật', true));
+				$employer = $this->Employer->read(null,$this->data['Employer']['id']);
+				$this->Session->write('Employer', $employer);
+				$this->redirect(array('action'=>'account'));
+			}
+			else {
+				$this->Session->setFlash(__('Tài khoản không thể cập nhật', true));
+			}
+		}
+		if(empty($this->data)){
+			$this->data = $this->Employer->read(null,$employer['Employer']['id']);
+		}
+	}
+	
+	function changePassword(){
+		$employer = $this->checkEmployerSession();
+		if (!empty($this->data)) {
+			if(md5($this->data['Employer']['old_password']) != $this->data['Employer']['password']){
+				$this->Session->setFlash('Mật khẩu hiện tại không chính xác.');
+				$this->data['Employer']['old_password'] = null;
+				$this->data['Employer']['new_password'] = null;
+				$this->data['Employer']['confirm_new_password'] = null;
+				$this->redirect(array('action'=>'account'));
+			}
+			else if(empty($this->data['Employer']['new_password']) || empty($this->data['Employer']['confirm_new_password'])){
+				$this->Session->setFlash('Vui lòng nhập mật khẩu.');
+				$this->data['Employer']['old_password'] = null;
+				$this->data['Employer']['new_password'] = null;
+				$this->data['Employer']['confirm_new_password'] = null;
+				$this->redirect(array('action'=>'account'));
+			}
+			else if($this->data['Employer']['new_password'] != $this->data['Employer']['confirm_new_password']){
+				$this->Session->setFlash('Mật khẩu xác nhận không hợp lệ.');
+				$this->data['Employer']['old_password'] = null;
+				$this->data['Employer']['new_password'] = null;
+				$this->data['Employer']['confirm_new_password'] = null;
+				$this->redirect(array('action'=>'account'));
+			}else {
+				$this->data['Employer']['password'] = md5($this->data['Employer']['new_password']);
+				if ($this->Employer->save($this->data)) {
+					$this->Session->setFlash(__('Thay đổi mật khẩu thành công', true));
+					$this->redirect(array('action' => 'account'));
+				} else {
+					$this->Session->setFlash(__('Thay đổi mật khẩu thất bại.', true));
+				}
+			}
+		}
 	}
 
 	function register() {

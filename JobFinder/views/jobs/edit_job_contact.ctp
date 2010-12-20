@@ -8,6 +8,7 @@
         	<?php echo $this->Form->create('Job', array('class'=>'form_field')); ?>
         	<?php echo $this->Form->input('id',array('label'=>false,'type'=>'hidden')); ?>
         	<?php echo $this->Form->input('employer_id',array('label'=>false,'type'=>'hidden')); ?>
+        	<?php echo $this->Form->input('status', array('type'=>'hidden'));?>
                 <!-- begin Company Information -->
  			    <div class="box_corner">				
 					<div class="dblue_bg_title">

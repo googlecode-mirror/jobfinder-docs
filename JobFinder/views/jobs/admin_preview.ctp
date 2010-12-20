@@ -1,5 +1,5 @@
 <div id="header">
-<h2>CakePHP: the rapid development php framework</h2>
+<h2>JobFinder: Administrator</h2>
 <div id="topmenu">
 <ul>
 	        	<li><?php echo $this->Html->link(__('Dashboard', true), array('controller' => 'admins', 'action' => 'index', 'admin'=> false)); ?></li>
@@ -170,10 +170,11 @@ array('controller' => 'jobs', 'action' => 'admin_modifySkill',$job['Job']['id'] 
 			<div class="box_right">
 			<div class="box_pre"><?php if(empty($job['JobSkill'])){ echo __('Chưa có thông tin về kỹ năng yêu cầu'); }?>
 			<?php foreach ($job['JobSkill'] as $jobSkill):?>
-			<div><?php echo $skills[$jobSkill['skill_id']]; ?></div>
+			<div><strong><?php echo $skills[$jobSkill['skill_id']]; ?></strong></div>
 			<div><?php echo $proficiencies[$jobSkill['proficiency']]; ?></div>
 			<div><?php echo $jobSkill['year_use']. ' năm'; ?></div>
 			<div>Mô tả: <?php echo $jobSkill['description']; ?></div>
+			<br/>
 			<?php endforeach;?></div>
 			</div>
 			</div>
