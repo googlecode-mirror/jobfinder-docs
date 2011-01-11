@@ -22,8 +22,9 @@
                 </div>
         </div>
             <div style="text-align: right;">
-            	<?php echo $this->Form->submit('Đăng nhập',array('div'=>false)); ?>
-                
+            	<?php echo $this->Html->link($html->tag('span', 'Đăng ký'), 
+                        array('action' => 'register'),array('escape' => false, 'class'=>'button'));?>
+                <?php echo $this->Form->submit('Đăng nhập',array('div'=>false)); ?>               
             </div>
         </div>
     </div>

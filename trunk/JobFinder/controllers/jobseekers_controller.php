@@ -196,8 +196,6 @@ class JobseekersController extends AppController {
 	}
 
 	function index(){
-		$request_params = Router::getParams();
-		$this->Session->write('auth_redirect','/'.$request_params['url']['url']);
 		$jobseeker = $this->checkJobSeekerSession();
 		$this->paginate['JobSaved'] =  array('conditions' => array('jobseeker_id' => $jobseeker['Jobseeker']['id']));
 		$this->paginate['Resume'] =  array('conditions' => array('jobseeker_id' => $jobseeker['Jobseeker']['id']));
