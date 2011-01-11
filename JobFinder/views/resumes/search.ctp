@@ -33,7 +33,7 @@
                           <label> Số năm kinh nghiệm:</label>
 						  <?php echo $this->Form->input('years_exp', array('label'=>false,'class'=>'field','div'=>false,'error'=>array('wrap'=>'span')));?>
 						</p>
-						<p style="margin-left:170px" >
+						<p style="margin-left:275px" >
 				  			<?php echo $this->Form->submit('Tìm kiếm',array('class'=>'btn_c_emp','div'=>false)); ?>
 						</p>
                         </td> </tr> </tbody>
@@ -65,7 +65,17 @@
                     <td><strong><?php echo $this->Html->link($resume['Jobseeker']['last_name'].' '.$resume['Jobseeker']['first_name'], array('controller'=>'employers','action' => 'viewResume', $resume['Resume']['id']));?> </strong></td>
                     <td><strong><?php echo $resume['Resume']['resume_title'];?></strong></td>
                     <td><span class="txt_normal"><?php echo $resume['Resume']['years_exp'].' năm';?></span></td>
-                    <td><span class="txt_normal"><?php echo $resume['Resume']['years_exp'].' năm';?></span></td>
+                    <td><span class="txt_normal">
+            		<?php if(!empty($resume['ResumeTargetJob'])){
+	            			$string = $resume['ResumeTargetJob'][0]['job_locations'];
+	                        $token = strtok($string, "|");                        
+	                        while ($token != false)
+	                        {
+	                        	echo "$locations[$token]<br />";
+	                        	$token = strtok("|");
+	                        }
+            		}?>	        
+  					</span></td>
                     <td><span class="txt_normal"><?php echo date('d-m-Y',strtotime($resume['Resume']['approved'])) ;?></span></td>
                 </tr>
             <?php endforeach; ?>
