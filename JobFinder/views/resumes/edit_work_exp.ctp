@@ -1,4 +1,5 @@
 <div class="wrap_cr">
+        	<?php echo $this->Session->flash(); ?>
     <img width="300" height="30" alt="btxt_edit_resume_vn"
         style="margin-left: 115px;" 
         src="../img/home/btxt_edit_resume_vn.gif" />
@@ -6,6 +7,7 @@
     <div id="content_cr">
     <?php echo $this->Form->create('Resume',array('action'=>'editWorkExp'));?>
     <?php echo $this->Form->input('id'); ?>
+    <?php echo $this->Form->input('status', array('type'=>'hidden')); ?>
         <!-- begin right col -->
         <div id="right_cr">
             <div class="box_corner">

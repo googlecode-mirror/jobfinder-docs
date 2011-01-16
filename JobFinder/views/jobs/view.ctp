@@ -1,21 +1,7 @@
-<div id="job_nav_sub">
-	<div class="job_wrapsubmenu">
-		<ul class="job_subnav">
-        	<li><?php echo $html->link($html->tag('span', 'Tìm Kiếm Nhanh'), 
-					array('controller' => 'jobs', 'action' => 'search'),array('escape' => false)); ?>
-			</li>
-			<li><?php echo $html->link($html->tag('span', 'Tìm Kiếm Nâng Cao'), 
-					array('controller' => 'jobs', 'action' => 'advanceSearch'),array('escape' => false)); ?>
-			</li>				
-		</ul>	
-		<br clear="all"/>
-	</div>
-    <!-- end submenu -->
-</div>
 <div class="wrap_search">
 	<div class="line_title">
-        <img width="300" height="30" alt="Chi tiết công việc, việc làm" 
-                src="../img/home/btxt_job_detail_vn.gif"/>
+		 <?php echo $html->image('../img/home/btxt_job_detail_vn.gif', 
+    	                	  array('alt' => 'Chi tiết công việc, việc làm', 'width' => '300', 'height' => '30'))  ?>
     </div>
     <?php echo $this->Session->flash(); ?>
     <div id="search_contentpage">
@@ -24,10 +10,9 @@
         	<!-- begin left menu -->
             <h3 class="boxTitle02">CÔNG CỤ</h3>
             <ul class="listType04">
-				<li class="icon10"><?php if(strtotime($job['Job']['expired']) > time()){ echo __('Nộp đơn'); } else{
+				<li class="icon10"><?php if(strtotime($job['Job']['expired']) < time()){ echo __('Nộp đơn'); } else{
 					echo $this->Html->link('Nộp đơn', array('controller'=> 'jobseekers', 'action' => 'applyJob', $job['Job']['id']));
-				}?>
-				<?php  ?></li>
+				}?></li>
                 <li class="icon03"><?php echo $this->Html->link('Lưu việc làm này', array('controller'=> 'jobs', 'action' => 'saveJob', $job['Job']['id'])); ?></li>
                 <li class="icon06"><?php echo $this->Html->link('Tìm kiếm', array('controller'=> 'jobs', 'action' => 'search')); ?></li>
             </ul>							               
@@ -131,8 +116,12 @@
 										<?php foreach ($job['JobSkill'] as $jobSkill):?>
 										<div><?php echo $skills[$jobSkill['skill_id']]; ?></div>
 										<div><?php echo $proficiencies[$jobSkill['proficiency']]; ?></div>
+										<?php if(!empty($jobSkill['year_use'])): ?>
 										<div><?php echo $jobSkill['year_use']. ' năm'; ?></div>
+										<?php endif;?>
+										<?php if(!empty($jobSkill['description'])): ?>
 										<div>Mô tả: <?php echo $jobSkill['description']; ?></div>
+										<?php endif;?>
 										<?php endforeach;?>
                                 	</div>
                             	</div>
@@ -243,7 +232,7 @@
                 <div style="height: 1%;">
                     <strong>Số lần xem</strong>: <?php echo $job['JobViewLog'][0]['views']; ?> | 
                     <strong>Ngày hết hạn</strong>: <?php echo date('d-m-Y',strtotime($job['Job']['expired'])) ;?>
-                    <?php if(strtotime($job['Job']['expired']) > time()):?>
+                    <?php if(strtotime($job['Job']['expired']) < time()):?>
                     <strong style="color:darkblue">Đã hết hạn</strong>
                     <?php endif;?>
                 </div>   

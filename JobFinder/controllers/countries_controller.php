@@ -13,10 +13,10 @@ class CountriesController extends AppController {
 		if(!empty($this->data)) {
 			$this->Country->create();
 			if ($this->Country->save($this->data)) {
-				$this->Session->setFlash(__('The Country has been saved', true));
+				$this->Session->setFlash(__('Thêm mới thành công.', true));
 				$this->redirect(array('controller'=>'provinces','action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The Province could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 			}
 		}
 	}
@@ -30,10 +30,10 @@ class CountriesController extends AppController {
 		}
 		if (!empty($this->data)) {
 			if ($this->Country->save($this->data)) {
-				$this->Session->setFlash(__('The country has been saved', true));
+				$this->Session->setFlash(__('Cập nhật thành công.', true));
 				$this->redirect(array('controller'=>'provinces','action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The country could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 			}
 		}
 		if (empty($this->data)) {
@@ -43,14 +43,14 @@ class CountriesController extends AppController {
 
 	function admin_delete($id = null) {
 		if (!$id) {
-			$this->Session->setFlash(__('Invalid id for country', true));
+			$this->Session->setFlash(__('Quốc gia không hợp lệ.', true));
 			$this->redirect(array('controller'=>'provinces','action' => 'index'));
 		}
 		if ($this->Country->delete($id)) {
-			$this->Session->setFlash(__('Country deleted', true));
+			$this->Session->setFlash(__('Đã xóa thành công.', true));
 			$this->redirect(array('controller'=>'provinces','action' => 'index'));
 		}
-		$this->Session->setFlash(__('Country was not deleted', true));
+		$this->Session->setFlash(__('Không thể xóa quốc gia này.', true));
 		$this->redirect(array('controller'=>'provinces','action' => 'index'));
 	}
 }

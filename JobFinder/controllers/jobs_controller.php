@@ -35,23 +35,23 @@ class JobsController extends AppController {
 			$day = $this->params['named']['day'];
 			$conditions = array('Job.status' => 1,
 								'Job.approved >=' => date('Y-m-d', strtotime('-'.$day. ' days')),
-								'Job.approved <=' => date('Y-m-d',time())
+								'Job.approved <=' => date('Y-m-d', time())
 			);
-			$this->paginate['Job'] = array('conditions' => $conditions,'recursive' => -1);
+			$this->paginate['Job'] = array('conditions' => $conditions,'recursive' => -1,'order'=> array('approved DESC'));
 			$this->set('results', $this->paginate('Job'));
 		}
 		elseif(isset($this->params['named']['category'])){
 			$category = $this->params['named']['category'];
 			$conditions = array('Job.status' => 1,
 								'Job.job_categories LIKE ' => '%'.$category.'%');
-			$this->paginate['Job'] = array('conditions' => $conditions,'recursive' => -1);
+			$this->paginate['Job'] = array('conditions' => $conditions,'recursive' => -1,'order'=> array('approved DESC'));
 			$this->set('results', $this->paginate('Job'));
 		}
 		elseif(isset($this->params['named']['type'])){
 			$type = $this->params['named']['type'];
 			$conditions = array('Job.status' => 1,
 								'Job.job_type_id ' => $type);
-			$this->paginate['Job'] = array('conditions' => $conditions,'recursive' => -1);
+			$this->paginate['Job'] = array('conditions' => $conditions,'recursive' => -1,'order'=> array('approved DESC'));
 			$this->set('results', $this->paginate('Job'));
 		}
 		elseif(isset($this->params['named']['keyword']) || isset($this->params['named']['jobCategory']) 
@@ -84,11 +84,11 @@ class JobsController extends AppController {
 								'Job.minimun_salary' => $keyword,
 								'Job.maximun_salary' => $keyword,
 			));
-			$this->paginate['Job'] = array('conditions' => $conditions,'recursive' => -1);
+			$this->paginate['Job'] = array('conditions' => $conditions,'recursive' => -1,'order'=> array('approved DESC'));
 			$this->set('results', $this->paginate('Job'));
 		}
 		else {
-			$this->paginate['Job'] = array('conditions' => array('Job.status' => 1), 'recursive' => -1);
+			$this->paginate['Job'] = array('conditions' => array('Job.status' => 1), 'recursive' => -1,'order'=> array('approved DESC'));
 			$this->set('results', $this->paginate('Job'));
 		}
 	}
@@ -108,7 +108,7 @@ class JobsController extends AppController {
 		$this->set('languages', $this->Category->find('list', array(
 					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'Language'))))));
 		if (!$id) {
-			$this->Session->setFlash(__('Invalid job', true));
+			$this->Session->setFlash(__('Việc làm không tồn tại.', true));
 			$this->redirect(array('action' => 'search'));
 		}
 		$job = $this->Job->read(null,$id);
@@ -120,7 +120,7 @@ class JobsController extends AppController {
 			$this->set('job', $this->Job->read(null,$id));
 		}
 		else {
-			$this->Session->setFlash(__('Invalid job', true));
+			$this->Session->setFlash(__('Việc làm không tồn tại.', true));
 			$this->redirect(array('action' => 'search'));
 		}
 	}
@@ -144,7 +144,7 @@ class JobsController extends AppController {
 		$this->set('languages', $this->Category->find('list', array(
 					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'Language'))))));
 		if (!$id) {
-			$this->Session->setFlash(__('Invalid job', true));
+			$this->Session->setFlash(__('Việc làm không tồn tại.', true));
 			$this->redirect(array('controller'=>'employers','action' => 'index'));
 		}
 		$job = $this->Job->read(null,$id);
@@ -152,7 +152,7 @@ class JobsController extends AppController {
 			$this->set('job', $job);
 		}
 		else {
-			$this->Session->setFlash(__('Invalid job', true));
+			$this->Session->setFlash(__('Việc làm không tồn tại.', true));
 			$this->redirect(array('controller'=>'employers','action' => 'index'));
 		}
 	}
@@ -194,7 +194,7 @@ class JobsController extends AppController {
 					//Create view log
 					$jobViewLog = array('JobViewLog' => array('job_id' => $this->Job->id,'views' => 0));
 					$this->Job->JobViewLog->save($jobViewLog);
-					$this->Session->setFlash(__('The Job has been saved', true));
+					//$this->Session->setFlash(__('The Job has been saved', true));
 					$this->Session->write('jobID', $this->Job->id);
 					$this->redirect(array('action' => 'addSkill'));
 				} else {
@@ -222,7 +222,7 @@ class JobsController extends AppController {
 		$this->set('applicationLanguages', $this->Category->find('list', array(
 					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'Language'))))));
 		if (!$id && empty($this->data)) {
-			$this->Session->setFlash(__('Invalid job', true));
+			$this->Session->setFlash(__('Công việc không tồn tại.', true));
 			$this->redirect(array('controller'=> 'jobs', 'action' => 'admin_index'));
 		}
 		if (!empty($this->data)) {
@@ -238,11 +238,11 @@ class JobsController extends AppController {
 				$this->data['Job']['job_categories'] = $jobCategories;
 				$this->data['Job']['status'] = 0;
 				if ($this->Job->save($this->data)) {
-					$this->Session->setFlash(__('The Job has been saved', true));
+					//$this->Session->setFlash(__('The Job has been saved', true));
 					$this->Session->write('jobID', $this->Job->id);
 					$this->redirect(array('action' => 'addSkill'));
 				} else {
-					$this->Session->setFlash(__('The Job could not be saved. Please, try again.', true));
+					$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 				}
 			}
 		}
@@ -290,12 +290,18 @@ class JobsController extends AppController {
 		$this->set('listSkills', $this->Skill->find('list'));
 
 		if (!empty($this->data)) {
-			if ($this->Job->JobSkill->save($this->data)) {
-				$this->Session->setFlash(__('The skill has been saved', true));
+			if(empty($this->data['JobSkill']['skill_id'])){
+				$this->Session->setFlash(__('Vui lòng chọn kỹ năng.', true));
+			}
+			else if(empty($this->data['JobSkill']['proficiency'])){
+				$this->Session->setFlash(__('Vui lòng chọn trình độ.', true));
+			}
+			else if ($this->Job->JobSkill->save($this->data)) {
+				//$this->Session->setFlash(__('The skill has been saved', true));
 				$this->redirect(array('action' => 'addSkill'));
 			}
 			else {
-				$this->Session->setFlash(__('The skill could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 			}
 		}
 	}
@@ -311,17 +317,23 @@ class JobsController extends AppController {
 		$this->set('isModify', $isModify);
 
 		if (!$id && empty($this->data)) {
-			$this->Session->setFlash(__('Invalid skill', true));
+			$this->Session->setFlash(__('Kỹ năng công việc không tồn tại.', true));
 			//Not found
 		}
 		if (!empty($this->data)) {
-			if ($this->Job->JobSkill->save($this->data)) {
+			if(empty($this->data['JobSkill']['skill_id'])){
+				$this->Session->setFlash(__('Vui lòng chọn kỹ năng.', true));
+			}
+			else if(empty($this->data['JobSkill']['proficiency'])){
+				$this->Session->setFlash(__('Vui lòng chọn trình độ.', true));
+			}
+			else if ($this->Job->JobSkill->save($this->data)) {
 				$this->Session->setFlash(__('The skill has been saved', true));
 				if(isset($this->params['form']['modify']))
 				$this->redirect(array('action' => 'modifySkill',$this->data['JobSkill']['job_id']));
 				$this->redirect(array('action' => 'addSkill',$this->data['JobSkill']['job_id']));
 			} else {
-				$this->Session->setFlash(__('The skill could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 			}
 		}
 		if (empty($this->data)) {
@@ -336,18 +348,18 @@ class JobsController extends AppController {
 		$this->layout = 'default_employer';
 		$employer = $this->checkEmployerSession();
 		if (!$id) {
-			$this->Session->setFlash(__('Invalid id for skill', true));
+			$this->Session->setFlash(__('Kỹ năng không tồn tại.', true));
 			//Not found
 		}
 		if ($this->Job->JobSkill->delete($id)) {
-			$this->Session->setFlash(__('Skill deleted', true));
+			$this->Session->setFlash(__('Đã xóa kỹ năng thành công.', true));
 			if($isModify)
 			$this->redirect(array('action'=>'modifySkill'));
 			$this->redirect(array('action'=>'addSkill'));
 		}
-		$this->Session->setFlash(__('Skill was not deleted', true));
+		$this->Session->setFlash(__('Không thể xóa kỹ năng. Vui lòng thử lại sau.', true));
 		if($isModify)
-		$this->redirect(array('action'=>'modifySkill'));
+			$this->redirect(array('action'=>'modifySkill'));
 		$this->redirect(array('action'=>'addSkill'));
 	}
 
@@ -365,12 +377,18 @@ class JobsController extends AppController {
 		array('JobSkill.job_id' => $this->Session->read('jobID')))));
 		$this->set('listSkills', $this->Skill->find('list'));
 		if (!empty($this->data)) {
-			if ($this->Job->JobSkill->save($this->data)) {
+			if(empty($this->data['JobSkill']['skill_id'])){
+				$this->Session->setFlash(__('Vui lòng chọn kỹ năng.', true));
+			}
+			else if(empty($this->data['JobSkill']['proficiency'])){
+				$this->Session->setFlash(__('Vui lòng chọn trình độ.', true));
+			}
+			else if ($this->Job->JobSkill->save($this->data)) {
 				$this->Session->setFlash(__('The skill has been saved', true));
 				$this->redirect(array('action' => 'modifySkill',$this->data['JobSkill']['job_id']));
 			}
 			else {
-				$this->Session->setFlash(__('The skill could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 			}
 		}
 	}
@@ -383,7 +401,7 @@ class JobsController extends AppController {
 		$this->set('countries', $this->Job->Country->find('list'));
 		$this->set('provinces', $this->Job->Province->find('list'));
 		if (!$id && empty($this->data)) {
-			$this->Session->setFlash(__('Invalid job', true));
+			$this->Session->setFlash(__('Việc làm không tồn tại.', true));
 			$this->redirect(array('controller'=> 'employers', 'action' => 'index'));
 		}
 		if (!empty($this->data)) {
@@ -391,10 +409,10 @@ class JobsController extends AppController {
 				$this->data['Job']['status'] = 3;
 			if ($this->Job->save($this->data)) {
 				$this->Session->write('jobID', $this->Job->id);
-				$this->Session->setFlash(__('The job has been saved', true));
+				$this->Session->setFlash(__('Cập nhật thành công.', true));
 				$this->redirect(array('controller'=>'Jobs','action' => 'preview',$this->data['Job']['id']));
 			} else {
-				$this->Session->setFlash(__('The job could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 			}
 		}
 		if (empty($this->data)) {
@@ -403,7 +421,7 @@ class JobsController extends AppController {
 				$this->data = $job;
 			}
 			else {
-				$this->Session->setFlash(__('Invalid job', true));
+				$this->Session->setFlash(__('Việc làm không tồn tại.', true));
 				$this->redirect(array('controller'=>'employers','action' => 'index'));
 			}
 		}
@@ -424,7 +442,7 @@ class JobsController extends AppController {
 		$this->set('applicationLanguages', $this->Category->find('list', array(
 					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'Language'))))));
 		if (!$id && empty($this->data)) {
-			$this->Session->setFlash(__('Invalid job', true));
+			$this->Session->setFlash(__('Việc làm không tồn tại.', true));
 			$this->redirect(array('controller'=> 'employers', 'action' => 'index'));
 		}
 		if (!empty($this->data)) {
@@ -442,11 +460,11 @@ class JobsController extends AppController {
 				if($this->data['Job']['status'] == 1 || $this->data['Job']['status'] == 2)
 				$this->data['Job']['status'] = 3;
 				if ($this->Job->save($this->data)) {
-					$this->Session->setFlash(__('The Job has been saved', true));
+					$this->Session->setFlash(__('Cập nhật thành công.', true));
 					$this->Session->write('jobID', $this->Job->id);
 					$this->redirect(array('controller'=>'Jobs','action' => 'preview',$this->data['Job']['id']));
 				} else {
-					$this->Session->setFlash(__('The Job could not be saved. Please, try again.', true));
+					$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 				}
 			}
 		}
@@ -478,7 +496,7 @@ class JobsController extends AppController {
 				$this->data = $job;
 			}
 			else {
-				$this->Session->setFlash(__('Invalid job', true));
+				$this->Session->setFlash(__('Việc làm không tồn tại.', true));
 				$this->redirect(array('controller'=>'employers','action' => 'index'));
 			}
 		}
@@ -488,7 +506,7 @@ class JobsController extends AppController {
 		$this->layout = 'default_employer';
 		$employer = $this->checkEmployerSession();
 		if (!$id && empty($this->data)) {
-			$this->Session->setFlash(__('Invalid job', true));
+			$this->Session->setFlash(__('Việc làm không tồn tại.', true));
 			$this->redirect(array('controller'=> 'employers', 'action' => 'index'));
 		}
 		if (!empty($this->data)) {
@@ -496,10 +514,10 @@ class JobsController extends AppController {
 				$this->data['Job']['status'] = 3;
 			if ($this->Job->save($this->data)) {
 				$this->Session->write('jobID', $this->Job->id);
-				$this->Session->setFlash(__('The job has been saved', true));
+				$this->Session->setFlash(__('Cập nhật thành công.', true));
 				$this->redirect(array('controller'=>'Jobs','action' => 'preview',$this->data['Job']['id']));
 			} else {
-				$this->Session->setFlash(__('The job could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 			}
 		}
 		if (empty($this->data)) {
@@ -508,7 +526,7 @@ class JobsController extends AppController {
 				$this->data = $job;
 			}
 			else {
-				$this->Session->setFlash(__('Invalid job', true));
+				$this->Session->setFlash(__('Việc làm không tồn tại.', true));
 				$this->redirect(array('controller'=>'employers','action' => 'index'));
 			}
 		}
@@ -518,7 +536,7 @@ class JobsController extends AppController {
 		$this->layout = 'default_employer';
 		$employer = $this->checkEmployerSession();
 		if (!$id) {
-			$this->Session->setFlash(__('Công việc không hợp lệ.', true));
+			$this->Session->setFlash(__('Công việc không tồn tại.', true));
 			$this->redirect(array('controller'=>'employers','action'=>'index'));
 		}
 		if ($this->Job->delete($id)) {
@@ -533,7 +551,7 @@ class JobsController extends AppController {
 	{
 		$jobseeker = $this->checkJobSeekerSession();
 		if (!$id) {
-			$this->Session->setFlash(__('Invalid job', true));
+			$this->Session->setFlash(__('Việc làm không tồn tại.', true));
 			$this->redirect(array('action' => 'index'));
 		}
 		$jobApply = $this->Job->JobApply->find('all',array('conditions' => array(array('JobApply.jobseeker_id' => $jobseeker['Jobseeker']['id']),
@@ -562,14 +580,14 @@ class JobsController extends AppController {
 
 	function deleteSavedJob($id=null) {
 		if (!$id) {
-			$this->Session->setFlash(__('Invalid id for Job', true));
+			$this->Session->setFlash(__('Việc làm không tồn tại.', true));
 			$this->redirect(array('controller'=>'jobseekers', 'action'=>'index'));
 		}
 		if ($this->Job->JobSaved->delete($id)) {
-			$this->Session->setFlash(__('Job Saved deleted', true));
+			$this->Session->setFlash(__('Việc làm đã được xóa khỏi danh sách.', true));
 			$this->redirect(array('controller'=>'jobseekers', 'action'=>'index'));
 		}
-		$this->Session->setFlash(__('Job saved was not deleted', true));
+		$this->Session->setFlash(__('Vui lòng thử lại sau.', true));
 		$this->redirect(array('controller'=>'jobseekers', 'action' => 'index'));
 	}
 	
@@ -678,7 +696,7 @@ class JobsController extends AppController {
 				$this->Session->setFlash(__('Việc làm đã được duyệt', true));
 				$this->redirect(array('controller'=>'jobs', 'action' => 'admin_approveJob'));
 			} else {
-				$this->Session->setFlash(__('The job could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 			}
 		}
 		if (empty($this->data)) {
@@ -688,7 +706,7 @@ class JobsController extends AppController {
 				$this->data = $job;
 			}
 			else {
-				$this->Session->setFlash(__('Invalid job', true));
+				$this->Session->setFlash(__('Việc làm không tồn tại.', true));
 				$this->redirect(array('controller'=>'jobs','action' => 'admin_index'));
 			}
 		}
@@ -728,11 +746,11 @@ class JobsController extends AppController {
 					//Create view log
 					$jobViewLog = array('JobViewLog' => array('job_id' => $this->Job->id,'views' => 0));
 					$this->Job->JobViewLog->save($jobViewLog);
-					$this->Session->setFlash(__('The Job has been saved', true));
+					$this->Session->setFlash(__('Tạo việc làm thành công.', true));
 					$this->Session->write('jobID', $this->Job->id);
 					$this->redirect(array('action' => 'admin_addSkill'));
 				} else {
-					$this->Session->setFlash(__('The Job could not be saved. Please, try again.', true));
+					$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 				}
 			}
 		}
@@ -756,7 +774,7 @@ class JobsController extends AppController {
 		$this->set('applicationLanguages', $this->Category->find('list', array(
 					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'Language'))))));
 		if (!$id && empty($this->data)) {
-			$this->Session->setFlash(__('Invalid job', true));
+			$this->Session->setFlash(__('Việc làm không tồn tại.', true));
 			$this->redirect(array('controller'=> 'jobs', 'action' => 'admin_index'));
 		}
 		if (!empty($this->data)) {
@@ -772,11 +790,11 @@ class JobsController extends AppController {
 				$this->data['Job']['job_categories'] = $jobCategories;
 				$this->data['Job']['status'] = 0;
 				if ($this->Job->save($this->data)) {
-					$this->Session->setFlash(__('The Job has been saved', true));
+					$this->Session->setFlash(__('Cập nhật thành công.', true));
 					$this->Session->write('jobID', $this->Job->id);
 					$this->redirect(array('action' => 'admin_addSkill'));
 				} else {
-					$this->Session->setFlash(__('The Job could not be saved. Please, try again.', true));
+					$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 				}
 			}
 		}
@@ -813,7 +831,7 @@ class JobsController extends AppController {
 		$this->layout='default_admin';
 		$this->checkAdminSession();
 		if (!$id) {
-			$this->Session->setFlash(__('Công việc không hợp lệ.', true));
+			$this->Session->setFlash(__('Công việc không tồn tại.', true));
 			$this->redirect(array('controller'=>'jobs','action'=>'admin_index'));
 		}
 		if ($this->Job->delete($id)) {
@@ -839,12 +857,18 @@ class JobsController extends AppController {
 		$this->set('listSkills', $this->Skill->find('list'));
 
 		if (!empty($this->data)) {
-			if ($this->Job->JobSkill->save($this->data)) {
-				$this->Session->setFlash(__('The skill has been saved', true));
+			if(empty($this->data['JobSkill']['skill_id'])){
+				$this->Session->setFlash(__('Vui lòng chọn kỹ năng.', true));
+			}
+			else if(empty($this->data['JobSkill']['proficiency'])){
+				$this->Session->setFlash(__('Vui lòng chọn trình độ.', true));
+			}
+			else if ($this->Job->JobSkill->save($this->data)) {
+				$this->Session->setFlash(__('Thêm kỹ năng thành công.', true));
 				$this->redirect(array('action' => 'admin_addSkill'));
 			}
 			else {
-				$this->Session->setFlash(__('The skill could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 			}
 		}
 	}
@@ -864,13 +888,19 @@ class JobsController extends AppController {
 			//Not found
 		}
 		if (!empty($this->data)) {
-			if ($this->Job->JobSkill->save($this->data)) {
-				$this->Session->setFlash(__('The skill has been saved', true));
+			if(empty($this->data['JobSkill']['skill_id'])){
+				$this->Session->setFlash(__('Vui lòng chọn kỹ năng.', true));
+			}
+			else if(empty($this->data['JobSkill']['proficiency'])){
+				$this->Session->setFlash(__('Vui lòng chọn trình độ.', true));
+			}
+			else if ($this->Job->JobSkill->save($this->data)) {
+				$this->Session->setFlash(__('Cập nhật thành công.', true));
 				if(isset($this->params['form']['modify']))
 					$this->redirect(array('action' => 'admin_modifySkill',$this->data['JobSkill']['job_id']));
 				$this->redirect(array('action' => 'admin_addSkill',$this->data['JobSkill']['job_id']));
 			} else {
-				$this->Session->setFlash(__('The skill could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 			}
 		}
 		if (empty($this->data)) {
@@ -885,16 +915,16 @@ class JobsController extends AppController {
 		$this->layout = 'default_admin';
 		$this->checkAdminSession();
 		if (!$id) {
-			$this->Session->setFlash(__('Invalid id for skill', true));
+			$this->Session->setFlash(__('Kỹ năng không tồn tại.', true));
 			$this->redirect(array('action'=>'addSkill'));
 		}
 		if ($this->Job->JobSkill->delete($id)) {
-			$this->Session->setFlash(__('Skill deleted', true));
+			$this->Session->setFlash(__('Đã xóa kỹ năng.', true));
 			if($isModify)
 				$this->redirect(array('action'=>'admin_modifySkill'));
 			$this->redirect(array('action'=>'admin_addSkill'));
 		}
-		$this->Session->setFlash(__('Skill was not deleted', true));
+		$this->Session->setFlash(__('Vui lòng thử lại sau.', true));
 		if($isModify)
 			$this->redirect(array('action'=>'admin_modifySkill'));
 		$this->redirect(array('action'=>'admin_addSkill'));
@@ -914,12 +944,18 @@ class JobsController extends AppController {
 		array('JobSkill.job_id' => $this->Session->read('jobID')))));
 		$this->set('listSkills', $this->Skill->find('list'));
 		if (!empty($this->data)) {
-			if ($this->Job->JobSkill->save($this->data)) {
-				$this->Session->setFlash(__('The skill has been saved', true));
+			if(empty($this->data['JobSkill']['skill_id'])){
+				$this->Session->setFlash(__('Vui lòng chọn kỹ năng.', true));
+			}
+			else if(empty($this->data['JobSkill']['proficiency'])){
+				$this->Session->setFlash(__('Vui lòng chọn trình độ.', true));
+			}
+			else if ($this->Job->JobSkill->save($this->data)) {
+				$this->Session->setFlash(__('Thêm mới kỹ năng thành công.', true));
 				$this->redirect(array('action' => 'admin_modifySkill',$this->data['JobSkill']['job_id']));
 			}
 			else {
-				$this->Session->setFlash(__('The skill could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 			}
 		}
 	}
@@ -941,7 +977,7 @@ class JobsController extends AppController {
 		$this->set('languages', $this->Category->find('list', array(
 					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'Language'))))));
 		if (!$id) {
-			$this->Session->setFlash(__('Invalid job', true));
+			$this->Session->setFlash(__('Việc làm không tồn tại.', true));
 			$this->redirect(array('controller'=>'jobs','action' => 'admin_index'));
 		}
 		$job = $this->Job->read(null,$id);
@@ -949,7 +985,7 @@ class JobsController extends AppController {
 			$this->set('job', $job);
 		}
 		else {
-			$this->Session->setFlash(__('Invalid job', true));
+			$this->Session->setFlash(__('Việc làm không tồn tại.', true));
 			$this->redirect(array('controller'=>'jobs','action' => 'admin_index'));
 		}
 	}
@@ -970,10 +1006,10 @@ class JobsController extends AppController {
 				$this->data['Job']['status'] = 3;
 			if ($this->Job->save($this->data)) {
 				$this->Session->write('jobID', $this->Job->id);
-				$this->Session->setFlash(__('The job has been saved', true));
+				$this->Session->setFlash(__('Cập nhật thành công.', true));
 				$this->redirect(array('controller'=>'jobs','action' => 'admin_preview',$this->data['Job']['id']));
 			} else {
-				$this->Session->setFlash(__('The job could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 			}
 		}
 		if (empty($this->data)) {
@@ -982,7 +1018,7 @@ class JobsController extends AppController {
 				$this->data = $job;
 			}
 			else {
-				$this->Session->setFlash(__('Invalid job', true));
+				$this->Session->setFlash(__('Việc làm không tồn tại.', true));
 				$this->redirect(array('controller'=>'jobs','action' => 'admin_index'));
 			}
 		}
@@ -1003,7 +1039,7 @@ class JobsController extends AppController {
 		$this->set('applicationLanguages', $this->Category->find('list', array(
 					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'Language'))))));
 		if (!$id && empty($this->data)) {
-			$this->Session->setFlash(__('Invalid job', true));
+			$this->Session->setFlash(__('Việc làm không tồn tại.', true));
 			$this->redirect(array('controller'=> 'jobs', 'action' => 'admin_index'));
 		}
 		if (!empty($this->data)) {
@@ -1020,11 +1056,11 @@ class JobsController extends AppController {
 				if($this->data['Job']['status'] == 1 || $this->data['Job']['status'] == 2)
 				$this->data['Job']['status'] = 3;
 				if ($this->Job->save($this->data)) {
-					$this->Session->setFlash(__('The Job has been saved', true));
+					$this->Session->setFlash(__('Cập nhật thành công.', true));
 					$this->Session->write('jobID', $this->Job->id);
 					$this->redirect(array('controller'=>'jobs','action' => 'admin_preview',$this->data['Job']['id']));
 				} else {
-					$this->Session->setFlash(__('The Job could not be saved. Please, try again.', true));
+					$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 				}
 			}
 		}
@@ -1066,7 +1102,7 @@ class JobsController extends AppController {
 		$this->layout = 'default_admin';
 		$this->checkAdminSession();
 		if (!$id && empty($this->data)) {
-			$this->Session->setFlash(__('Invalid job', true));
+			$this->Session->setFlash(__('Việc làm không tồn tại.', true));
 			$this->redirect(array('controller'=> 'employers', 'action' => 'index'));
 		}
 		if (!empty($this->data)) {
@@ -1074,10 +1110,10 @@ class JobsController extends AppController {
 				$this->data['Job']['status'] = 3;
 			if ($this->Job->save($this->data)) {
 				$this->Session->write('jobID', $this->Job->id);
-				$this->Session->setFlash(__('The job has been saved', true));
+				$this->Session->setFlash(__('Cập nhật thành công.', true));
 				$this->redirect(array('controller'=>'Jobs','action' => 'admin_preview',$this->data['Job']['id']));
 			} else {
-				$this->Session->setFlash(__('The job could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 			}
 		}
 		if (empty($this->data)) {
@@ -1086,7 +1122,7 @@ class JobsController extends AppController {
 				$this->data = $job;
 			}
 			else {
-				$this->Session->setFlash(__('Invalid job', true));
+				$this->Session->setFlash(__('Việc làm không tồn tại.', true));
 				$this->redirect(array('controller'=>'jobs','action' => 'admin_index'));
 			}
 		}

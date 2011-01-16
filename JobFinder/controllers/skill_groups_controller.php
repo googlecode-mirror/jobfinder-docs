@@ -13,10 +13,10 @@ class SkillGroupsController extends AppController {
 		if (!empty($this->data)) {
 			$this->SkillGroup->create();
 			if ($this->SkillGroup->save($this->data)) {
-				$this->Session->setFlash(__('The Skill Group has been saved', true));
+				$this->Session->setFlash(__('Thêm mới thành công.', true));
 				$this->redirect(array('controller'=>'skills','action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The Skill Group could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 			}
 		}
 	}
@@ -25,15 +25,15 @@ class SkillGroupsController extends AppController {
 		$this->SkillGroup->recursive = -1;
 		$this->set('skillGroups', $this->paginate('SkillGroup'));
 		if (!$id && empty($this->data)) {
-			$this->Session->setFlash(__('Invalid SkillGroup', true));
+			$this->Session->setFlash(__('Nhóm kỹ năng không tồn tại.', true));
 			$this->redirect(array('controller'=>'skills','action' => 'index'));
 		}
 		if (!empty($this->data)) {
 			if ($this->SkillGroup->save($this->data)) {
-				$this->Session->setFlash(__('The Skill Group has been saved', true));
+				$this->Session->setFlash(__('Cập nhật thành công.', true));
 				$this->redirect(array('controller'=>'skills','action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The Skill Group could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 			}
 		}
 		if (empty($this->data)) {
@@ -43,14 +43,14 @@ class SkillGroupsController extends AppController {
 
 	function admin_delete($id = null) {
 		if (!$id) {
-			$this->Session->setFlash(__('Invalid id for Skill Group', true));
+			$this->Session->setFlash(__('Nhóm kỹ năng không tồn tại.', true));
 			$this->redirect(array('controller'=>'skills','action'=>'index'));
 		}
 		if ($this->SkillGroup->delete($id)) {
-			$this->Session->setFlash(__('Skill Group deleted', true));
+			$this->Session->setFlash(__('Đã xóa thành công.', true));
 			$this->redirect(array('controller'=>'skills','action'=>'index'));
 		}
-		$this->Session->setFlash(__('Skill Group was not deleted', true));
+		$this->Session->setFlash(__('Không thể xóa nhóm kỹ năng này.', true));
 		$this->redirect(array('controller'=>'skills','action'=>'index'));
 	}
 }

@@ -24,7 +24,7 @@ class AdminsController extends AppController {
 				$dbuser['Admin']['last_login'] = date("Y-m-d H:i:s");
 				$this->Admin->save($dbuser, false, array('last_login'));
 				// redirect the user
-				$this->Session->setFlash('You have successfully logged in.');
+				//$this->Session->setFlash('You have successfully logged in.');
 				$this->redirect('/admins/index/');
 			} else {
 				$this->Session->setFlash('Tên đăng nhập hoặc mật khẩu không chính xác.');
@@ -37,7 +37,7 @@ class AdminsController extends AppController {
         // delete the user session
 		$this->Session->delete('Admin');
 		// redirect to posts index page
-		$this->Session->setFlash('You have successfully logged out.');
+		//$this->Session->setFlash('You have successfully logged out.');
 		$this->redirect(array('controller'=>'admins','action' => 'login','admin'=>false));
     }
     
@@ -69,11 +69,11 @@ class AdminsController extends AppController {
 				$this->data['Admin']['password'] = md5($this->data['Admin']['password']);
 				$this->data['Admin']['status'] = 1;
 				if ($this->Admin->save($this->data)) {
-					$this->Session->setFlash(__('The account has been created', true));
+					$this->Session->setFlash(__('Tạo tài khoản thành công.', true));
 					$this->redirect(array('action' => 'account'));
 				}
 				else {
-					$this->Session->setFlash(__('The account could not be created. Please, try again.', true));
+					$this->Session->setFlash(__('Tạo tài khoản thất bại. Vui lòng kiểm tra lại.', true));
 					$this->data['Admin']['password'] = null;
 					$this->data['Admin']['confirm_password'] = null;
 				}
@@ -86,7 +86,7 @@ class AdminsController extends AppController {
         $this->Admin->recursive = -1;
 		$this->set('admins', $this->paginate());
 		if (!$id && empty($this->data)) {
-			$this->Session->setFlash(__('Tài khoản không hợp lệ.', true));
+			$this->Session->setFlash(__('Tài khoản không tồn tại.', true));
 			$this->redirect(array('action'=>'account'));
 		}
 		if (!empty($this->data)) {
@@ -121,7 +121,7 @@ class AdminsController extends AppController {
 	function delete($id = null) {
         $this->checkAdminSession();
         if (!$id) {
-			$this->Session->setFlash(__('Tài khoản không hợp lệ.', true));
+			$this->Session->setFlash(__('Tài khoản không tồn tại.', true));
 			$this->redirect(array('action'=>'account'));
 		}
 		$admin = $this->Admin->read(null,$id);

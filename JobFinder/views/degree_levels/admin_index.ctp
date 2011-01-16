@@ -65,6 +65,22 @@
 	 	|<?php echo $this->Paginator->numbers();?>
  		| <?php echo $this->Paginator->next(__('Kế tiếp', true) . ' >>', array(), null, array('class' => 'disabled'));?>
 	</div>
+<<<<<<< .mine
+	</div>
+	<br/>
+	<div id="box">
+		<h3>Thêm mới Bằng cấp</h3>     
+		<?php echo $this->Session->flash(); ?>
+      	<?php echo $this->Form->create('DegreeLevel',array('div'=>false,'id'=>'form','error'=>array('wrap'=>'span')));?>
+		<?php echo $this->Form->Input('level_name',array('label'=>'Bằng cấp:','div'=>false,'error'=>array('wrap'=>'span')));?>
+		<div align="center">
+        <br />
+	    	<?php echo $this->Form->Submit(__('Lưu', true),array('div'=>false));?>
+	        <?php echo $this->Form->button('Reset', array('type'=>'reset','div'=>false));?>
+	    </div>
+	</div>
+	</div>
+=======
 	</div>
 	<br/>
 	<div id="box">
@@ -79,4 +95,5 @@
 	    </div>
 	</div>
 	</div>
+>>>>>>> .r154
 </div>

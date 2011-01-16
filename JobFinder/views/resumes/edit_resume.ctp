@@ -1,4 +1,5 @@
 <div class="wrap_cr">
+        	<?php echo $this->Session->flash(); ?>
     <img width="300" height="30" alt="btxt_edit_resume_vn"
         style="margin-left: 115px;" 
         src="../img/home/btxt_edit_resume_vn.gif" />
@@ -23,6 +24,7 @@
                                 </td>
                                 <td width="82%">
                                 	<?php echo $this->Form->input('id'); ?>
+                                	<?php echo $this->Form->input('status', array('type'=>'hidden')); ?>
                                     <?php echo $this->Form->input('resume_title', array('label'=>false,
                                             'type'=>'text','style'=>'width: 325px', 'div'=>false,'error' => array('wrap' => 'span'))); ?>
                                 </td>

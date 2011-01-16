@@ -1,8 +1,8 @@
 <br clear="all"/>
 <div id="body_content">
    <div class="line_title">
-        <img width="300" height="30" alt="Chi tiết công việc, việc làm" 
-                src="../img/home/btxt_job_detail_vn.gif"/>
+        <?php echo $html->image('../img/home/btxt_job_detail_vn.gif', 
+    	    array('alt' => 'Chi tiết công việc, việc làm', 'width' => '300', 'height' => '30'))  ?>
     </div>
     <!-- begin wrap -->
     <div class="wrap_cr_emp">
@@ -174,8 +174,12 @@
 										<?php foreach ($job['JobSkill'] as $jobSkill):?>
 										<div><?php echo $skills[$jobSkill['skill_id']]; ?></div>
 										<div><?php echo $proficiencies[$jobSkill['proficiency']]; ?></div>
+										<?php if(!empty($jobSkill['year_use'])): ?>
 										<div><?php echo $jobSkill['year_use']. ' năm'; ?></div>
+										<?php endif;?>
+										<?php if(!empty($jobSkill['description'])): ?>
 										<div>Mô tả: <?php echo $jobSkill['description']; ?></div>
+										<?php endif;?>
 										<?php endforeach;?>
                                 	</div>
                             	</div>

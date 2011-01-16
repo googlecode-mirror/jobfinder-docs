@@ -392,7 +392,7 @@ form .required label:before {
 .form_field {display:inline;}
 .form_field p {display:block;clear:both;margin:0px;	height:28px}
 .form_field .text_row {height:60px}
-.form_field .text {display:block;margin-left:10px;float:left;padding-top:2px}
+.form_field .text {display:block;margin-left:25px;float:left;padding-top:2px}
 .form_field label {width:250px;padding-top:2px;	text-align:right;float:left}
 .form_field .lb_hide {color:#939598}
 .form_field .field {width:250px;display:block;margin-left:25px;float:left}
@@ -401,7 +401,7 @@ form .required label:before {
 .form_field .field_dis {background:#f4f4f4;	border-style:none;border:#7f9db9 solid 1px;color:#939598;width:212px;height:15px}
 .form_field .field1 {width:100px;display:block;margin-left:10px;float:left}
 
-.form_field .text_area {width:215px;display:block;margin-left:10px;float:left;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:11px}
+.form_field .text_area {width:215px;display:block;margin-left:25px;float:left;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:11px}
 .form_field .text_area1 {width:268px;height:50px;display:block;	margin-left:10px;float:left;
 			font-family:Verdana, Arial, Helvetica, sans-serif;font-size:11px}
             
@@ -1598,7 +1598,7 @@ ul.companyleftcol li.comprofile { background:#cceffc url(http://images.vietnamwo
 /***********************************************************************************************/
 /*****EMPLOY***********************************************************************************/
 
-#body_content{width:980px; margin:auto}
+#body_content{width:955px; margin:auto}
 /*--------------- NEW LAYOUT ----------------------*/
 	#header{width:950px; margin:0 auto;}
 		#headerBar{height:130px; padding:0;}
