@@ -2,7 +2,7 @@
 class ResumesController extends AppController {
 	var $name = 'Resumes';
 	var $components = array('RequestHandler');
-	var $uses = array('Resume','ResumeJobExp','ResumeEducation','Job','ResumeSkill', 'Skill','JobLevel','JobCategory','JobType','Province');
+	var $uses = array('Resume','ResumeJobExp','ResumeEducation','ResumeSkill','Job','Skill','JobLevel','JobCategory','JobType','Province');
 
 	function beforeFilter(){
 		$this->set('total',$this->Job->find('count', array('conditions'=>array('Job.status' => 1))));
@@ -92,7 +92,7 @@ class ResumesController extends AppController {
 
 	function preview($id = null) {
 		if (!$id) {
-			$this->Session->setFlash(__('Invalid resume', true));
+			$this->Session->setFlash(__('Hồ sơ không tồn tại', true));
 			$this->redirect(array('controller'=>'jobseekers','action' => 'index'));
 		}
 		$this->set('nationalities', $this->Category->find('list', array(
@@ -122,7 +122,7 @@ class ResumesController extends AppController {
 			$this->Resume->create();
 			$this->data['Resume']['jobseeker_id'] = $jobseeker['Jobseeker']['id'];
 			if ($this->Resume->save($this->data)) {
-				$this->Session->setFlash(__('The resume has been saved', true));
+				$this->Session->setFlash(__('Tạo hồ sơ thành công.', true));
 				$this->Session->write('resumeID', $this->Resume->id);
 				$this->Session->write('years_exp', $this->data['Resume']['years_exp']);
 				if($this->data['Resume']['years_exp'] == 0){
@@ -132,7 +132,7 @@ class ResumesController extends AppController {
 					$this->redirect(array('action' => 'addJobExp'));
 				}
 			} else {
-				$this->Session->setFlash(__('The resume could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 			}
 		}
 	}
@@ -145,7 +145,7 @@ class ResumesController extends AppController {
 		$this->set('countries', $this->Jobseeker->Country->find('list'));
 		$this->set('provinces', $this->Jobseeker->Province->find('list'));
 		if (!$id && empty($this->data)) {
-			$this->Session->setFlash(__('Invalid resume', true));
+			$this->Session->setFlash(__('Hồ sơ không tồn tại.', true));
 			$this->redirect(array('controller'=> 'jobseeker', 'action' => 'index'));
 		}
 		if (!empty($this->data)) {
@@ -156,7 +156,7 @@ class ResumesController extends AppController {
 				if ($this->Resume->save($this->data)) {
 					$this->Session->write('resumeID', $this->Resume->id);
 					$this->Session->write('years_exp', $this->data['Resume']['years_exp']);
-					$this->Session->setFlash(__('The resume has been saved', true));
+					//$this->Session->setFlash(__('The resume has been saved', true));
 					if($this->data['Resume']['years_exp'] != 0){
 						$this->redirect(array('controller'=>'Resumes','action' => 'addJobExp',$this->data['Resume']['id']));
 					}
@@ -165,7 +165,7 @@ class ResumesController extends AppController {
 					}
 				}
 				else {
-					$this->Session->setFlash(__('The resume could not be saved. Please, try again.', true));
+					$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 				}
 			}
 		}
@@ -179,16 +179,19 @@ class ResumesController extends AppController {
 		$jobseeker = $this->checkJobSeekerSession();
 		$this->set('jobseeker', $jobseeker);
 		if (!$id && empty($this->data)) {
-			$this->Session->setFlash(__('Invalid resume', true));
+			$this->Session->setFlash(__('Hồ sơ không tồn tại.', true));
 			$this->redirect(array('controller'=> 'jobseeker', 'action' => 'index'));
 		}
 		if (!empty($this->data)) {
+			if($this->data['Resume']['status'] == 1|| $this->data['Resume']['status'] == 2){
+				$this->data['Resume']['status'] = 3;
+			}
 			if ($this->Resume->save($this->data)) {
 				$this->Session->write('resumeID', $this->Resume->id);
-				$this->Session->setFlash(__('The resume has been saved', true));
+				$this->Session->setFlash(__('Thông tin hồ sơ được cập nhật.', true));
 				$this->redirect(array('controller'=>'Resumes','action' => 'preview',$this->data['Resume']['id']));
 			} else {
-				$this->Session->setFlash(__('The resume could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 			}
 		}
 		if (empty($this->data)) {
@@ -200,7 +203,7 @@ class ResumesController extends AppController {
 	function delete($id=null) {
 		$jobseeker = $this->checkJobSeekerSession();
 		if (!$id) {
-			$this->Session->setFlash(__('Hồ sơ không hợp lệ.', true));
+			$this->Session->setFlash(__('Hồ sơ không tồn tại.', true));
 			$this->redirect(array('controller'=>'jobseekers','action'=>'index'));
 		}
 		if ($this->Resume->delete($id)) {
@@ -220,16 +223,19 @@ class ResumesController extends AppController {
 		$this->set('countries', $this->Jobseeker->Country->find('list'));
 		$this->set('provinces', $this->Jobseeker->Province->find('list'));
 		if (!$id && empty($this->data)) {
-			$this->Session->setFlash(__('Invalid resume', true));
+			$this->Session->setFlash(__('Hồ sơ không tồn tại', true));
 			$this->redirect(array('controller'=> 'jobseeker', 'action' => 'index'));
 		}
 		if (!empty($this->data)) {
+			if($this->data['Resume']['status'] == 1|| $this->data['Resume']['status'] == 2){
+				$this->data['Resume']['status'] = 3;
+			}
 			if ($this->Resume->save($this->data)) {
 				$this->Session->write('resumeID', $this->Resume->id);
-				$this->Session->setFlash(__('The resume has been saved', true));
+				$this->Session->setFlash(__('Thông tin cá nhân được cập nhật.', true));
 				$this->redirect(array('controller'=>'Resumes','action' => 'preview',$this->data['Resume']['id']));
 			} else {
-				$this->Session->setFlash(__('The resume could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 			}
 		}
 		if (empty($this->data)) {
@@ -242,7 +248,7 @@ class ResumesController extends AppController {
 		$jobseeker = $this->checkJobSeekerSession();
 		$this->set('jobseeker', $jobseeker);
 		if (!$id && empty($this->data)) {
-			$this->Session->setFlash(__('Invalid resume', true));
+			$this->Session->setFlash(__('Hồ sơ không tồn tại.', true));
 			$this->redirect(array('controller'=> 'jobseeker', 'action' => 'index'));
 		}
 		if (!empty($this->data)) {
@@ -251,14 +257,17 @@ class ResumesController extends AppController {
 				$this->Session->setFlash(__('Bạn có quá trình làm việc, số năm kinh nghiệm không thể nhập 0', true));
 			}
 			else {
+				if($this->data['Resume']['status'] == 1|| $this->data['Resume']['status'] == 2){
+					$this->data['Resume']['status'] = 3;
+				}
 				if ($this->Resume->save($this->data)) {
 					$this->Session->write('resumeID', $this->Resume->id);
 					$this->Session->write('years_exp', $this->data['Resume']['years_exp']);
-					$this->Session->setFlash(__('The resume has been saved', true));
+					$this->Session->setFlash(__('Kinh nghiệm làm việc được cập nhật.', true));
 					$this->redirect(array('controller'=>'Resumes','action' => 'preview',$this->data['Resume']['id']));
 				}
 				else {
-					$this->Session->setFlash(__('The resume could not be saved. Please, try again.', true));
+					$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 				}
 			}
 		}
@@ -283,11 +292,11 @@ class ResumesController extends AppController {
 		
 		if (!empty($this->data)) {
 			if ($this->Resume->ResumeJobExp->save($this->data)) {
-				$this->Session->setFlash(__('The job exp has been saved', true));
+				$this->Session->setFlash(__('Thêm mới thành công.', true));
 				$this->redirect(array('action' => 'addJobExp'));
 			}
 			else {
-				$this->Session->setFlash(__('The job exp could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 			}
 		}
 	}
@@ -300,17 +309,17 @@ class ResumesController extends AppController {
 		$this->set('provinces', $this->Jobseeker->Province->find('list'));
 		$this->set('isModify', $isModify);
 		if (!$id && empty($this->data)) {
-			$this->Session->setFlash(__('Invalid job exp', true));
+			$this->Session->setFlash(__('Hồ sơ không tồn tại.', true));
 			//Not found
 		}
 		if (!empty($this->data)) {
 			if ($this->Resume->ResumeJobExp->save($this->data)) {
-				$this->Session->setFlash(__('The job exp has been saved', true));
+				$this->Session->setFlash(__('Cập nhật thành công.', true));
 				if(isset($this->params['form']['modify']))
 					$this->redirect(array('action'=>'modifyJobExp', $this->data['ResumeJobExp']['resume_id']));
 				$this->redirect(array('action'=>'addJobExp', $this->data['ResumeJobExp']['resume_id']));
 			} else {
-				$this->Session->setFlash(__('The job exp could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 			}
 		}
 		if (empty($this->data)) {
@@ -323,16 +332,16 @@ class ResumesController extends AppController {
 
 	function deleteJobExp($id = null, $isModify = null) {
 		if (!$id) {
-			$this->Session->setFlash(__('Invalid id for Job exp', true));
+			$this->Session->setFlash(__('Hồ sơ không tồn tại.', true));
 			//Not found
 		}
 		if ($this->Resume->ResumeJobExp->delete($id)) {
-			$this->Session->setFlash(__('Job exp deleted', true));
+			$this->Session->setFlash(__('Quá trình làm việc đã được xóa.', true));
 			if($isModify)
 				$this->redirect(array('action'=>'modifyJobExp'));
 			$this->redirect(array('action'=>'addJobExp'));
 		}
-		$this->Session->setFlash(__('Job exp was not deleted', true));
+		$this->Session->setFlash(__('Không thể xóa quá trình làm việc. Vui lòng thử lại sau.', true));
 		if($isModify)
 				$this->redirect(array('action'=>'modifyJobExp'));
 		$this->redirect(array('action'=>'addJobExp'));
@@ -352,11 +361,11 @@ class ResumesController extends AppController {
 
 		if (!empty($this->data)) {
 			if ($this->Resume->ResumeJobExp->save($this->data)) {
-				$this->Session->setFlash(__('The job exp has been saved', true));
+				$this->Session->setFlash(__('Cập nhật thành công.', true));
 				$this->redirect(array('action' => 'modifyJobExp',$this->data['ResumeJobExp']['resume_id']));
 			}
 			else {
-				$this->Session->setFlash(__('The job exp could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 			}		
 		}
 	}
@@ -373,11 +382,11 @@ class ResumesController extends AppController {
 
 		if (!empty($this->data)) {
 			if ($this->Resume->ResumeEducation->save($this->data)) {
-				$this->Session->setFlash(__('The resume education has been saved', true));
+				$this->Session->setFlash(__('Thêm mới thành công.', true));
 				$this->redirect(array('action' => 'addEducation'));
 			}
 			else {
-				$this->Session->setFlash(__('The resume education could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 			}
 		}
 	}
@@ -389,25 +398,22 @@ class ResumesController extends AppController {
 		$this->set('isModify', $isModify);
 		
 		if (!$id && empty($this->data)) {
-			$this->Session->setFlash(__('Invalid education', true));
+			$this->Session->setFlash(__('Quá trình học tập không tồn tại.', true));
 			//Not found
 		}
 		if (!empty($this->data)) {
 			if ($this->Resume->ResumeEducation->save($this->data)) {
-				$this->Session->setFlash(__('The education has been saved', true));
+				$this->Session->setFlash(__('Cập nhật thành công.', true));
 				if(isset($this->params['form']['modify'])) 
 					$this->redirect(array('action' => 'modifyEducation', $this->data['ResumeEducation']['resume_id']));
 				$this->redirect(array('action' => 'addEducation', $this->data['ResumeEducation']['resume_id']));
 			} else {
-				$this->Session->setFlash(__('The education could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 			}
 		}
 		if (empty($this->data)) {
 			$this->data = $this->Resume->ResumeEducation->read(null, $id);
 			$this->Session->write('resumeID', $this->data['ResumeEducation']['resume_id']);
-			if(empty($this->data)){
-				//redirect to not found
-			}
 		}
 		$this->set('resumeEducations', $this->Resume->ResumeEducation->find('all', array('contain' => false, 'conditions' =>
 		array('ResumeEducation.resume_id' => $this->Session->read('resumeID')))));
@@ -416,7 +422,7 @@ class ResumesController extends AppController {
 
 	function deleteEducation($id = null, $isModify = null) {
 		if (!$id) {
-			$this->Session->setFlash(__('Invalid id for Education', true));
+			$this->Session->setFlash(__('Quá trình học tập không tồn tại.', true));
 			//Not found
 		}
 		if ($this->Resume->ResumeEducation->delete($id)) {
@@ -443,11 +449,11 @@ class ResumesController extends AppController {
 
 		if (!empty($this->data)) {
 			if ($this->Resume->ResumeEducation->save($this->data)) {
-				$this->Session->setFlash(__('The resume education has been saved', true));
+				$this->Session->setFlash(__('Cập nhật thành công.', true));
 				$this->redirect(array('action' => 'modifyEducation',$this->data['ResumeEducation']['resume_id']));
 			}
 			else {
-				$this->Session->setFlash(__('The resume education could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 			}
 		}
 	}
@@ -485,15 +491,15 @@ class ResumesController extends AppController {
 				$this->data['ResumeTargetJob']['job_locations'] = $jobLocations;
 				$this->data['ResumeTargetJob']['job_categories'] = $jobCategories;
 				if ($this->Resume->ResumeTargetJob->save($this->data)) {
-					$this->Session->setFlash(__('The resume target job has been saved', true));
+					//$this->Session->setFlash(__('The resume target job has been saved', true));
 					$this->redirect(array('action' => 'addSkill'));
 				}
 				else {
-					$this->Session->setFlash(__('The resume target job could not be saved. Please, try again.', true));
+					$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 				}
 			}
 			else {
-				$this->Session->setFlash(__('The resume target job could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 			}
 		}
 	}
@@ -508,7 +514,7 @@ class ResumesController extends AppController {
 					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'CompanySize'))))));
 		
 		if (!$id && empty($this->data)) {
-			$this->Session->setFlash(__('Invalid resume', true));
+			$this->Session->setFlash(__('Hồ sơ không tồn tại.', true));
 			//Not found
 		}
 		if (!empty($this->data)) {
@@ -529,15 +535,15 @@ class ResumesController extends AppController {
 				$this->data['ResumeTargetJob']['job_locations'] = $jobLocations;
 				$this->data['ResumeTargetJob']['job_categories'] = $jobCategories;
 				if ($this->Resume->ResumeTargetJob->save($this->data)) {
-					$this->Session->setFlash(__('The resume target job has been saved', true));
+					$this->Session->setFlash(__('Tạo hồ sơ hoàn tất.', true));
 					$this->redirect(array('action' => 'preview',$this->data['ResumeTargetJob']['resume_id']));
 				}
 				else {
-					$this->Session->setFlash(__('The resume target job could not be saved. Please, try again.', true));
+					$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 				}
 			}
 			else {
-				$this->Session->setFlash(__('The resume target job could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 			}
 		}
 		if (empty($this->data)) {
@@ -597,12 +603,18 @@ class ResumesController extends AppController {
 		array('ResumeSkill.resume_id' => $this->Session->read('resumeID')))));
 		$this->set('listSkills', $this->Skill->find('list'));
 		if (!empty($this->data)) {
-			if ($this->Resume->ResumeSkill->save($this->data)) {
-				$this->Session->setFlash(__('The skill has been saved', true));
+			if(empty($this->data['ResumeSkill']['skill_id'])){
+				$this->Session->setFlash(__('Vui lòng chọn kỹ năng.', true));
+			}
+			else if(empty($this->data['ResumeSkill']['proficiency'])){
+				$this->Session->setFlash(__('Vui lòng chọn trình độ.', true));
+			}
+			else if ($this->Resume->ResumeSkill->save($this->data)) {
+				$this->Session->setFlash(__('Thêm mới kỹ năng thành công.', true));
 				$this->redirect(array('action' => 'addSkill'));
 			}
 			else {
-				$this->Session->setFlash(__('The skill could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 			}
 		}
 	}
@@ -621,13 +633,19 @@ class ResumesController extends AppController {
 			//Not found
 		}
 		if (!empty($this->data)) {
-			if ($this->Resume->ResumeSkill->save($this->data)) {
-				$this->Session->setFlash(__('The skill has been saved', true));
+			if(empty($this->data['ResumeSkill']['skill_id'])){
+				$this->Session->setFlash(__('Vui lòng chọn kỹ năng.', true));
+			}
+			else if(empty($this->data['ResumeSkill']['proficiency'])){
+				$this->Session->setFlash(__('Vui lòng chọn trình độ.', true));
+			}
+			else if ($this->Resume->ResumeSkill->save($this->data)) {
+				$this->Session->setFlash(__('Cập nhật thành công.', true));
 				if(isset($this->params['form']['modify']))
 					$this->redirect(array('action' => 'modifySkill',$this->data['ResumeSkill']['resume_id']));
 				$this->redirect(array('action' => 'addSkill',$this->data['ResumeSkill']['resume_id']));
 			} else {
-				$this->Session->setFlash(__('The skill could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 			}
 		}
 		if (empty($this->data)) {
@@ -640,16 +658,16 @@ class ResumesController extends AppController {
 
 	function deleteSkill($id = null, $isModify = null) {
 		if (!$id) {
-			$this->Session->setFlash(__('Invalid id for skill', true));
+			$this->Session->setFlash(__('Kỹ năng không tồn tại.', true));
 			//Not found
 		}
 		if ($this->Resume->ResumeSkill->delete($id)) {
-			$this->Session->setFlash(__('Skill deleted', true));
+			$this->Session->setFlash(__('Xóa kỹ năng thành công.', true));
 			if($isModify)
 				$this->redirect(array('action'=>'modifySkill'));
 			$this->redirect(array('action'=>'addSkill'));
 		}
-		$this->Session->setFlash(__('Skill was not deleted', true));
+		$this->Session->setFlash(__('Không thể xóa kỹ năng. Vui lòng thử lại sau.', true));
 		if($isModify)
 			$this->redirect(array('action'=>'modifySkill'));
 		$this->redirect(array('action'=>'addSkill'));
@@ -668,12 +686,18 @@ class ResumesController extends AppController {
 		array('ResumeSkill.resume_id' => $this->Session->read('resumeID')))));
 		$this->set('listSkills', $this->Skill->find('list'));
 		if (!empty($this->data)) {
-			if ($this->Resume->ResumeSkill->save($this->data)) {
-				$this->Session->setFlash(__('The skill has been saved', true));
+			if(empty($this->data['ResumeSkill']['skill_id'])){
+				$this->Session->setFlash(__('Vui lòng chọn kỹ năng.', true));
+			}
+			else if(empty($this->data['ResumeSkill']['proficiency'])){
+				$this->Session->setFlash(__('Vui lòng chọn trình độ.', true));
+			}
+			else if ($this->Resume->ResumeSkill->save($this->data)) {
+				$this->Session->setFlash(__('Thêm mới thành công.', true));
 				$this->redirect(array('action' => 'modifySkill',$this->data['ResumeSkill']['resume_id']));
 			}
 			else {
-				$this->Session->setFlash(__('The skill could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 			}
 		}
 	}
@@ -689,7 +713,7 @@ class ResumesController extends AppController {
 		$this->layout='default_admin';
 		$this->checkAdminSession();
 		if (!$id) {
-			$this->Session->setFlash(__('Invalid resume', true));
+			$this->Session->setFlash(__('Hồ sơ không tồn tại.', true));
 			$this->redirect(array('action' => 'index', 'admin'=>true));
 		}
 		$this->set('nationalities', $this->Category->find('list', array(
@@ -712,7 +736,7 @@ class ResumesController extends AppController {
 		$this->layout='default_admin';
 		$this->checkAdminSession();
 		if (!$id) {
-			$this->Session->setFlash(__('Hồ sơ không hợp lệ.', true));
+			$this->Session->setFlash(__('Hồ sơ không tồn tại.', true));
 			$this->redirect(array('action' => 'index', 'admin'=>true));
 		}
 		if ($this->Resume->delete($id)) {
@@ -748,7 +772,7 @@ class ResumesController extends AppController {
 		$this->set('proficiencies', $this->Category->find('list', array(
 					'conditions' => array('Category.category_type_id' => $this->CategoryType->field('id', array('name =' => 'Proficiency'))))));
 		if (!$id && empty($this->data)) {
-			$this->Session->setFlash(__('Invalid resume', true));
+			$this->Session->setFlash(__('Hồ sơ không tồn tại.', true));
 			$this->redirect(array('controller'=>'resumes' ,'action' => 'admin_approveResume'));
 		}
 		if (!empty($this->data)) {
@@ -757,7 +781,7 @@ class ResumesController extends AppController {
 				$this->Session->setFlash(__('Hồ sơ đã được duyệt', true));
 				$this->redirect(array('controller'=>'resumes', 'action' => 'admin_approveResume'));
 			} else {
-				$this->Session->setFlash(__('The resume could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 			}
 		}
 		if (empty($this->data)) {
@@ -767,7 +791,7 @@ class ResumesController extends AppController {
 				$this->data = $resume;
 			}
 			else {
-				$this->Session->setFlash(__('Invalid resume', true));
+				$this->Session->setFlash(__('Hồ sơ không tồn tại.', true));
 				$this->redirect(array('controller'=>'resume','action' => 'admin_index'));
 			}
 		}

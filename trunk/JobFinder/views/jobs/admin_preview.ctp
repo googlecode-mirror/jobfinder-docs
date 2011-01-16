@@ -172,8 +172,12 @@ array('controller' => 'jobs', 'action' => 'admin_modifySkill',$job['Job']['id'] 
 			<?php foreach ($job['JobSkill'] as $jobSkill):?>
 			<div><strong><?php echo $skills[$jobSkill['skill_id']]; ?></strong></div>
 			<div><?php echo $proficiencies[$jobSkill['proficiency']]; ?></div>
+			<?php if(!empty($jobSkill['year_use'])): ?>
 			<div><?php echo $jobSkill['year_use']. ' năm'; ?></div>
+			<?php endif;?>
+			<?php if(!empty($jobSkill['description'])): ?>
 			<div>Mô tả: <?php echo $jobSkill['description']; ?></div>
+			<?php endif;?>
 			<br/>
 			<?php endforeach;?></div>
 			</div>

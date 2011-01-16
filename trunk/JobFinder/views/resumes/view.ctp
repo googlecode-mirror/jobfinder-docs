@@ -279,8 +279,12 @@
 							<div>
 								<p class="txt_tilte_lv2"><?php echo $skills[$resumeSkill['skill_id']];?></p>
 								<p><?php echo $proficiencies[$resumeSkill['proficiency']];?></p>
+								<?php if(!empty($resumeSkill['year_use'])): ?>
 								<p><?php echo $resumeSkill['year_use']. ' năm';?></p>
+								<?php endif;?>
+								<?php if(!empty($resumeSkill['description'])): ?>
 								<p>Mô tả: <?php echo $resumeSkill['description'];?></p>
+								<?php endif;?>
 							</div>
 							<?php endforeach;?>
 						</td>

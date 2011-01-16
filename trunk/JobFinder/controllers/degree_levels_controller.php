@@ -14,10 +14,10 @@ class DegreeLevelsController extends AppController {
 		if (!empty($this->data)) {
 			$this->DegreeLevel->create();
 			if ($this->DegreeLevel->save($this->data)) {
-				$this->Session->setFlash(__('The Degree level has been saved', true));
+				$this->Session->setFlash(__('Thêm mới thành công.', true));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The Degree level could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 			}
 		}
 	}
@@ -26,7 +26,7 @@ class DegreeLevelsController extends AppController {
 		$this->DegreeLevel->recursive = -1;
 		$this->set('degreeLevel', $this->paginate());
 		if (!$id) {
-			$this->Session->setFlash(__('Invalid level', true));
+			$this->Session->setFlash(__('Bằng cấp không tồn tại.', true));
 			$this->redirect(array('action' => 'index'));
 		}
 		if (empty($this->data)) {
@@ -38,15 +38,15 @@ class DegreeLevelsController extends AppController {
 		$this->DegreeLevel->recursive = -1;
 		$this->set('degreeLevel', $this->paginate());
 		if (!$id && empty($this->data)) {
-			$this->Session->setFlash(__('Invalid Degree level', true));
+			$this->Session->setFlash(__('Bằng cấp không tồn tại.', true));
 			$this->redirect(array('action' => 'index'));
 		}
 		if (!empty($this->data)) {
 			if ($this->DegreeLevel->save($this->data)) {
-				$this->Session->setFlash(__('The Degree level has been saved', true));
+				$this->Session->setFlash(__('Cập nhật thành công.', true));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The Degree Level could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 			}
 		}
 		if (empty($this->data)) {
@@ -56,14 +56,14 @@ class DegreeLevelsController extends AppController {
 
 	function admin_delete($id = null) {
 		if (!$id) {
-			$this->Session->setFlash(__('Invalid id for country', true));
+			$this->Session->setFlash(__('Bằng cấp không tồn tại.', true));
 			$this->redirect(array('action'=>'index'));
 		}
 		if ($this->DegreeLevel->delete($id)) {
-			$this->Session->setFlash(__('Degree Level deleted', true));
+			$this->Session->setFlash(__('Đã xóa thành công.', true));
 			$this->redirect(array('action'=>'index'));
 		}
-		$this->Session->setFlash(__('Degree Level was not deleted', true));
+		$this->Session->setFlash(__('Không thể xóa bằng cấp này.', true));
 		$this->redirect(array('action' => 'index'));
 	}
 }

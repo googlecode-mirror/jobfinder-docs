@@ -16,7 +16,7 @@ class JobTypesController extends AppController {
 				$this->Session->setFlash(__('Thêm mới thành công.', true));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('Vui lòng kiểm tra dữ liệu nhập vào.', true));
+				$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 			}
 		}
 	}
@@ -25,7 +25,7 @@ class JobTypesController extends AppController {
 		$this->JobTypes->recursive = -1;
 		$this->set('jobTypes', $this->paginate());
 		if (!$id && empty($this->data)) {
-			$this->Session->setFlash(__('Loại hình công việc không hợp lệ.', true));
+			$this->Session->setFlash(__('Loại hình công việc không tồn tại.', true));
 			$this->redirect(array('action' => 'index'));
 		}
 		if (empty($this->data)) {
@@ -37,7 +37,7 @@ class JobTypesController extends AppController {
 		$this->JobTypes->recursive = -1;
 		$this->set('jobTypes', $this->paginate());
 		if (!$id && empty($this->data)) {
-			$this->Session->setFlash(__('Loại hình công việc không hợp lệ.', true));
+			$this->Session->setFlash(__('Loại hình công việc không tồn tại.', true));
 			$this->redirect(array('action' => 'index'));
 		}
 		if (!empty($this->data)) {
@@ -45,7 +45,7 @@ class JobTypesController extends AppController {
 				$this->Session->setFlash(__('Cập nhật thành công.', true));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('Vui lòng kiểm tra dữ liệu nhập vào.', true));
+				$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 			}
 		}
 		if (empty($this->data)) {
@@ -55,7 +55,7 @@ class JobTypesController extends AppController {
 
 	function admin_delete($id = null) {
 		if (!$id) {
-			$this->Session->setFlash(__('Loại hình công việc không hợp lệ.', true));
+			$this->Session->setFlash(__('Loại hình công việc không tồn tại.', true));
 			$this->redirect(array('action'=>'index'));
 		}
 		if ($this->JobType->delete($id)) {

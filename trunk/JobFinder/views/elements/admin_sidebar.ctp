@@ -18,7 +18,7 @@
 			<ul>
 				<li><?php echo $this->Html->link(__('Người tìm việc', true), array('controller' => 'jobseekers', 'action' => 'index', 'admin'=> true),array('class'=>'group')); ?></li>
 			<li><?php echo $this->Html->link(__('Nhà tuyển dụng', true), array('controller' => 'employers', 'action' => 'index', 'admin'=> true),array('class'=>'group')); ?></li>
-			<li><?php echo $this->Html->link(__('Administrator', true), array('controller' => 'admins', 'action' => 'account', 'admin'=> true),array('class'=>'group')); ?></li>
+			<li><?php echo $this->Html->link(__('Administrator', true), array('controller' => 'admins', 'action' => 'account', 'admin'=> false),array('class'=>'group')); ?></li>
   			</ul>
         </li>
         <?php if($this->Session->read('Admin')):?>

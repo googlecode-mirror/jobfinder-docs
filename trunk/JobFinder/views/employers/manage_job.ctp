@@ -43,6 +43,9 @@
 					if($this->params['named']['status'] == 3){
 						echo __('Việc làm đã chỉnh sửa chờ duyệt');
 					}
+					if($this->params['named']['status'] == 4){
+						echo __('Việc làm đã hết hạn');
+					}
 				} else {
 					echo __('Việc làm đã duyệt');
 				}
@@ -60,7 +63,11 @@
 					      <?php $status =  array(0 => 'Chưa duyệt', 1 =>'Đạt', 2=>'Không đạt', 3=>'Chờ duyệt lại');?>
 						<?php foreach ($jobs as $job):?>
 						<tr>
-							<td><strong><?php echo $this->Html->Link($job['Job']['job_title'], array('controller' => 'jobs', 'action' => 'view', $job['Job']['id']), array('target'=>'_blank')); ?><br/></strong>
+							<td><strong><?php if($job['Job']['status'] == 1)
+								echo $this->Html->Link($job['Job']['job_title'], array('controller' => 'jobs', 'action' => 'view', $job['Job']['id']), array('target'=>'_blank')); 
+								else {
+									echo $job['Job']['job_title'];
+								}?><br/></strong>
 							<span class="cc_approved"><?php if($job['Job']['status'] == 1 || $job['Job']['status'] == 2) { echo $status[$job['Job']['status']]; }?></span>
 							</td>
 							<td><?php echo $job['Job']['job_code']; ?></td>

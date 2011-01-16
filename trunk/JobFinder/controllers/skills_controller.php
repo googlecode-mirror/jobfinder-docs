@@ -18,10 +18,10 @@ class SkillsController extends AppController {
 		if(!empty($this->data)) {
 			$this->Skill->create();
 			if ($this->Skill->save($this->data)) {
-				$this->Session->setFlash(__('The Skill has been saved', true));
+				$this->Session->setFlash(__('Thêm mới thành công.', true));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The Skill could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 			}
 		}
 	}
@@ -34,7 +34,7 @@ class SkillsController extends AppController {
 		$this->set('listSkillGroups', $this->paginate('SkillGroup'));
 		$this->set('skillGroups', $this->Skill->SkillGroup->find('list'));
 		if (!$id && empty($this->data)) {
-			$this->Session->setFlash(__('Invalid Skill', true));
+			$this->Session->setFlash(__('Kỹ năng không tồn tại.', true));
 			$this->redirect(array('action' => 'index'));
 		}
 		if (empty($this->data)) {
@@ -50,15 +50,15 @@ class SkillsController extends AppController {
 		$this->set('listSkillGroups', $this->paginate('SkillGroup'));
 		$this->set('skillGroups', $this->Skill->SkillGroup->find('list'));
 		if (!$id && empty($this->data)) {
-			$this->Session->setFlash(__('Invalid Skill', true));
+			$this->Session->setFlash(__('Kỹ năng không tồn tại.', true));
 			$this->redirect(array('action' => 'index'));
 		}
 		if (!empty($this->data)) {
 			if ($this->Skill->save($this->data)) {
-				$this->Session->setFlash(__('The Skill has been saved', true));
+				$this->Session->setFlash(__('Cập nhật thành công.', true));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The Skill could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 			}
 		}
 		if (empty($this->data)) {
@@ -68,14 +68,14 @@ class SkillsController extends AppController {
 
 	function admin_delete($id = null) {
 		if (!$id) {
-			$this->Session->setFlash(__('Invalid id for Skill', true));
+			$this->Session->setFlash(__('Kỹ năng không tồn tại.', true));
 			$this->redirect(array('action'=>'index'));
 		}
 		if ($this->Skill->delete($id)) {
-			$this->Session->setFlash(__('Skill deleted', true));
+			$this->Session->setFlash(__('Đã xóa thành công.', true));
 			$this->redirect(array('action'=>'index'));
 		}
-		$this->Session->setFlash(__('Skill was not deleted', true));
+		$this->Session->setFlash(__('Không thể xóa kỹ năng này.', true));
 		$this->redirect(array('action' => 'index'));
 	}
 }

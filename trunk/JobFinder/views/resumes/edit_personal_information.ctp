@@ -1,4 +1,5 @@
 <div class="wrap_cr">
+        	<?php echo $this->Session->flash(); ?>
     <img width="300" height="30" alt="btxt_edit_resume_vn"
         style="margin-left: 115px;" 
         src="../img/home/btxt_edit_resume_vn.gif" />
@@ -19,6 +20,7 @@
                                     <img alt="" src="http://images.vietnamworks.com/js_photo.gif"/>
                                 </div>
                                 <?php echo $this->Form->input('id', array('type'=>'hidden')); ?>
+                                <?php echo $this->Form->input('status', array('type'=>'hidden')); ?>
                                 <p>
                                     <label class="lb_hide"><span class="require">*</span> Tên:</label>
                                     <?php echo $this->Form->input('first_name', array('label'=> false,

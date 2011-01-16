@@ -187,10 +187,13 @@
 			<?php foreach ($resume['ResumeSkill'] as $resumeSkill):?>
 			<div style="padding-bottom: 5px;"><strong><?php echo $skills[$resumeSkill['skill_id']];?></strong></div>
 			<div style="padding-bottom: 5px;"><?php echo $proficiencies[$resumeSkill['proficiency']];?></div>
+			<?php if(!empty($resumeSkill['year_use'])):?>
 			<div style="padding-bottom: 5px;"><?php echo $resumeSkill['year_use']. ' năm';?></div>
-			<div style="padding-bottom: 5px;"><?php echo $countries[$resumeJobExp['country_id']] .' - ' .$provinces[$resumeJobExp['province_id']] ;?></div>
+			<?php endif;?>
+			<?php if(!empty($resumeSkill['description'])):?>
 			<div style="padding-bottom: 5px;">Mô tả: <br/>
 			<?php echo $resumeSkill['description'];?></div>
+			<?php endif;?>
 			<br/>
 			<?php endforeach;?></div>
 			</div>

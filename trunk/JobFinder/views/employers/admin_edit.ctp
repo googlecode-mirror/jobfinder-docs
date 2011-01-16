@@ -2,7 +2,7 @@
 	<h2>JobFinder: Administrator</h2>
 	<div id="topmenu">
     	<ul>
-        	<li><?php echo $this->Html->link(__('Dashboard', true), array('controller' => 'admins', 'action' => 'index')); ?></li>
+        	<li><?php echo $this->Html->link(__('Dashboard', true), array('controller' => 'admins', 'action' => 'index','admin'=> false)); ?></li>
             <li><?php echo $this->Html->link(__('Danh mục', true), array('controller' => 'JobCategories', 'action' => 'index', 'admin'=> true)); ?></li>
             <li><?php echo $this->Html->link(__('Quản lý hồ sơ', true), array('controller' => 'resumes', 'action' => 'index', 'admin'=> true)); ?></li>
             <li><?php echo $this->Html->link(__('Quản lý tuyển dụng', true), array('controller' => 'jobs', 'action' => 'index', 'admin'=> true)); ?></li>
@@ -81,7 +81,7 @@
 	    <?php echo $this->Form->create('Employer',array('div'=>false,'id'=>'form'));?>
         <?php
         echo $this->Form->input('id');
-		echo $this->Form->input('actived',array('options'=>$status,'label'=>'Trạng thái:','empty'=>'Vui lòng chọn...','div'=>false));
+		echo $this->Form->input('actived',array('options'=>$status,'label'=>'Trạng thái:','empty'=>'Vui lòng chọn...','div'=>false,'error'=>array('wrap'=>'span')));
     	?>
 		<div align="center">
 			<br/>

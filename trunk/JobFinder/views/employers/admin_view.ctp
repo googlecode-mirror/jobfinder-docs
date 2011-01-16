@@ -2,7 +2,7 @@
 	<h2>JobFinder: Administrator</h2>
 	<div id="topmenu">
     	<ul>
-        	<li><?php echo $this->Html->link(__('Dashboard', true), array('controller' => 'admins', 'action' => 'index')); ?></li>
+        	<li><?php echo $this->Html->link(__('Dashboard', true), array('controller' => 'admins', 'action' => 'index','admin'=> false)); ?></li>
             <li><?php echo $this->Html->link(__('Danh mục', true), array('controller' => 'JobCategories', 'action' => 'index', 'admin'=> true)); ?></li>
             <li><?php echo $this->Html->link(__('Quản lý hồ sơ', true), array('controller' => 'resumes', 'action' => 'index', 'admin'=> true)); ?></li>
             <li><?php echo $this->Html->link(__('Quản lý tuyển dụng', true), array('controller' => 'jobs', 'action' => 'index', 'admin'=> true)); ?></li>
@@ -79,21 +79,21 @@
 	    <?php echo $this->Form->create('Employer',array('div'=>false,'id'=>'form'));?>
         <?php
 		echo $this->Form->input('id');
-		echo $this->Form->input('email',array('label'=>'Email:','div'=>false,'disabled'=>true));
-		echo $this->Form->input('company_name',array('label'=>'Tên:','div'=>false,'disabled'=>true));
-		echo $this->Form->input('company_size',array('label'=>'Quy mô công ty:','div'=>false,'disabled'=>true));
-		echo $this->Form->input('company_profile',array('label'=>'Sơ lược:','div'=>false,'disabled'=>true));
-		echo $this->Form->input('country_id',array('label'=>'Quốc gia:','div'=>false,'class'=>'block' ,'disabled'=>true));
-		echo $this->Form->input('province_id',array('label'=>'Tỉnh/thành:','div'=>false,'class'=>'block' ,'disabled'=>true));
-		echo $this->Form->input('address',array('label'=>'Địa chỉ:','div'=>false,'disabled'=>true));
-		echo $this->Form->input('website',array('label'=>'Website:','div'=>false,'disabled'=>true));
-		echo $this->Form->input('contact_name',array('label'=>'Người liên hệ:','div'=>false,'disabled'=>true));
-		echo $this->Form->input('contact_position',array('label'=>'Chức vụ:','div'=>false,'disabled'=>true));
-		echo $this->Form->input('telephone',array('label'=>'Điện thoại:','div'=>false,'disabled'=>true));
-		echo $this->Form->input('mobile',array('label'=>'Di động:','div'=>false,'disabled'=>true));
-		echo $this->Form->input('fax',array('label'=>'Fax:','div'=>false,'disabled'=>true));
+		echo $this->Form->input('email',array('label'=>'Email:','div'=>false,'disabled'=>true,'error'=>array('wrap'=>'span')));
+		echo $this->Form->input('company_name',array('label'=>'Tên:','div'=>false,'disabled'=>true,'error'=>array('wrap'=>'span')));
+		echo $this->Form->input('company_size',array('label'=>'Quy mô công ty:','div'=>false,'disabled'=>true,'error'=>array('wrap'=>'span')));
+		echo $this->Form->input('company_profile',array('label'=>'Sơ lược:','div'=>false,'disabled'=>true,'error'=>array('wrap'=>'span')));
+		echo $this->Form->input('country_id',array('label'=>'Quốc gia:','div'=>false,'class'=>'block' ,'disabled'=>true,'error'=>array('wrap'=>'span')));
+		echo $this->Form->input('province_id',array('label'=>'Tỉnh/thành:','div'=>false,'class'=>'block' ,'disabled'=>true,'error'=>array('wrap'=>'span')));
+		echo $this->Form->input('address',array('label'=>'Địa chỉ:','div'=>false,'disabled'=>true,'error'=>array('wrap'=>'span')));
+		echo $this->Form->input('website',array('label'=>'Website:','div'=>false,'disabled'=>true,'error'=>array('wrap'=>'span')));
+		echo $this->Form->input('contact_name',array('label'=>'Người liên hệ:','div'=>false,'disabled'=>true,'error'=>array('wrap'=>'span')));
+		echo $this->Form->input('contact_position',array('label'=>'Chức vụ:','div'=>false,'disabled'=>true,'error'=>array('wrap'=>'span')));
+		echo $this->Form->input('telephone',array('label'=>'Điện thoại:','div'=>false,'disabled'=>true,'error'=>array('wrap'=>'span')));
+		echo $this->Form->input('mobile',array('label'=>'Di động:','div'=>false,'disabled'=>true,'error'=>array('wrap'=>'span')));
+		echo $this->Form->input('fax',array('label'=>'Fax:','div'=>false,'disabled'=>true,'error'=>array('wrap'=>'span')));
 		echo $this->Form->input('actived',array('label'=>'Trạng thái:','options' => $status, 
-                                        'empty' => 'Vui lòng chọn...','class'=>'block','div'=>false,'disabled'=>true));
+                                        'empty' => 'Vui lòng chọn...','class'=>'block','div'=>false,'disabled'=>true,'error'=>array('wrap'=>'span')));
     	?>
 		<div align="center">
 			<br/>

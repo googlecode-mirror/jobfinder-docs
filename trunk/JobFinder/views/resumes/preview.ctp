@@ -9,6 +9,7 @@
     <div class="wrap_cr">
         <!-- begin content -->
         <div id="content_cr">
+        <?php echo $this->Session->flash(); ?>
             <!-- begin Resume Information -->
             <div class="box_corner">
                 <div class="blue_bg_title"><strong>Thông Tin Hồ Sơ </strong><span class="link_bgtitle"><?php echo $html->link('[Chỉnh sửa]', 
@@ -288,8 +289,12 @@
 							<div>
 								<p class="txt_tilte_lv2"><?php echo $skills[$resumeSkill['skill_id']];?></p>
 								<p><?php echo $proficiencies[$resumeSkill['proficiency']];?></p>
+								<?php if(!empty($resumeSkill['year_use'])): ?>
 								<p><?php echo $resumeSkill['year_use']. ' năm';?></p>
+								<?php endif;?>
+								<?php if(!empty($resumeSkill['description'])): ?>
 								<p>Mô tả: <?php echo $resumeSkill['description'];?></p>
+								<?php endif;?>
 							</div>
 							<?php endforeach;?>
 						</td>

@@ -1,4 +1,5 @@
 <div class="wrap_cr">
+        	<?php echo $this->Session->flash(); ?>
     <img width="300" height="30" alt="btxt_edit_resume_vn"
         style="margin-left: 115px;" 
         src="../img/home/btxt_edit_resume_vn.gif" />

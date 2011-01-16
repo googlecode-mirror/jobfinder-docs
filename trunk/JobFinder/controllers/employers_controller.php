@@ -85,7 +85,7 @@ class EmployersController extends AppController {
 		$this->Session->write('auth_redirect','/'.$request_params['url']['url']);
 		$employer = $this->checkEmployerSession();
 		if (!$id) {
-			$this->Session->setFlash(__('Invalid resume', true));
+			$this->Session->setFlash(__('Hồ sơ không tồn tại.', true));
 			$this->redirect(array('action' => 'index'));
 		}
 		$this->set('nationalities', $this->Category->find('list', array(
@@ -120,7 +120,7 @@ class EmployersController extends AppController {
 			// if found and passwords match
 			if(!empty($dbuser) && ($dbuser['Employer']['password'] == md5($this->data['Employer']['password']))) {
 				if($dbuser['Employer']['actived'] == 0){
-					$this->Session->setFlash('Your account have not been actived yet.');
+					$this->Session->setFlash('Tài khoản chưa được kích hoạt.');
 					$this->data['Employer']['password'] = null;
 				}
 				else{
@@ -130,7 +130,7 @@ class EmployersController extends AppController {
 					$dbuser['Employer']['last_login'] = date("Y-m-d H:i:s");
 					$this->Employer->save($dbuser, false, array('last_login'));
 					// redirect the user
-					$this->Session->setFlash('You have successfully logged in.');
+					//$this->Session->setFlash('You have successfully logged in.');
 					$auth_redirect = $this->Session->read('auth_redirect');
 					if(!empty($auth_redirect)){
 						$this->Session->delete('auth_redirect');
@@ -140,7 +140,7 @@ class EmployersController extends AppController {
 				}
 			}
 			else {
-				$this->set('error', 'Either your email or password is incorrect.');
+				$this->Session->setFlash(__('Email hoặc mật khẩu đăng nhập không đúng.', true));
 				$this->data['Employer']['password'] = null;
 			}
 		}
@@ -150,7 +150,7 @@ class EmployersController extends AppController {
 		// delete the user session
 		$this->Session->delete('Employer');
 		// redirect to posts index page
-		$this->Session->setFlash('You have successfully logged out.');
+		//$this->Session->setFlash('You have successfully logged out.');
 		$this->redirect(array('controller'=>'employers','action'=>'home'));
 	}
 	
@@ -168,7 +168,7 @@ class EmployersController extends AppController {
 				$this->redirect(array('action'=>'account'));
 			}
 			else {
-				$this->Session->setFlash(__('Tài khoản không thể cập nhật', true));
+				$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 			}
 		}
 		if(empty($this->data)){
@@ -235,13 +235,13 @@ class EmployersController extends AppController {
 						$this->redirect('/employers/login');
 					}
 					else {
-						$this->Session->setFlash(__('The account could not be created. Please, try again.', true));
+						$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 						$this->data['Employer']['password'] = null;
 						$this->data['Employer']['confirm_password'] = null;
 					}
 				}
 				else {
-					$this->Session->setFlash('Captcha code invalid');
+					$this->Session->setFlash('Mã xác nhận Captcha không chính xác.');
 					$this->data['Employer']['password'] = null;
 					$this->data['Employer']['confirm_password'] = null;
 				}
@@ -251,7 +251,6 @@ class EmployersController extends AppController {
 
 	function activate($user_id = null, $in_hash = null) {
 		$this->Employer->id = $user_id;
-
 		if ($this->Employer->exists() && ($in_hash == $this->Employer->getActivationHash())) {
 			if (empty($this->data)) {
 
@@ -259,7 +258,6 @@ class EmployersController extends AppController {
 				// Update the active flag in the database
 				$this->Employer->set('actived', 1);
 				$this->Employer->save();
-
 				$this->Session->setFlash('Your account has been activated, please log in below.');
 				$this->redirect('/employers/login');
 			}
@@ -314,7 +312,7 @@ class EmployersController extends AppController {
 		$this->Employer->recursive = 1;
 		$this->set('employers', $this->paginate());
 		if (!$id) {
-			$this->Session->setFlash(__('Invalid employer', true));
+			$this->Session->setFlash(__('Tài khoản nhà tuyển dụng không tồn tại.', true));
 			$this->redirect(array('action' => 'admin_index'));
 		}
 		if (empty($this->data)) {
@@ -328,15 +326,15 @@ class EmployersController extends AppController {
 		$this->Employer->recursive = 1;
 		$this->set('employers', $this->paginate());
 		if (!$id && empty($this->data)) {
-			$this->Session->setFlash(__('Invalid actived', true));
+			$this->Session->setFlash(__('Tài khoản nhà tuyển dụng không tồn tại.', true));
 			$this->redirect(array('action' => 'admin_index'));
 		}
 		if (!empty($this->data)) {
 			if ($this->Employer->save($this->data, false, array('actived'))) {
-				$this->Session->setFlash(__('Has been saved', true));
+				$this->Session->setFlash(__('Cập nhật thành công.', true));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('Could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('Vui lòng kiểm tra lại thông tin.', true));
 			}
 		}
 		if (empty($this->data)) {
